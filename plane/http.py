@@ -14,7 +14,7 @@ from .errors import HTTPException
 
 class HTTPClient:
     def __init__(self, token: str, loop: asyncio.AbstractEventLoop) -> None:
-        self._headers = {"Authorization": f"Ravy {token}"}
+        self._headers: dict[str, str] = {"Authorization": f"Ravy {token}"}
         self._session = aiohttp.ClientSession(loop=loop, headers=self._headers)
 
         if not token:
