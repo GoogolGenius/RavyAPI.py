@@ -7,3 +7,4 @@ Heavily adapted design from the ksoftapi official Python wrapper.
 from __future__ import annotations
 
 from .client import *
+from .errors import *
