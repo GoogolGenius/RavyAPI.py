@@ -19,8 +19,8 @@ class Client:
 
     def __init__(self, token: str, loop: Optional[asyncio.AbstractEventLoop] = None):
         self.loop = loop or asyncio.get_event_loop()
-        self._closed: bool = False
         self._http = HTTPClient(token, self.loop)
+        self._closed: bool = False
         self._users = Users(self._http, self._ROUTES)
         self._urls = URLs(self._http, self._ROUTES)
 

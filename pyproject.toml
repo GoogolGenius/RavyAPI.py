@@ -1,0 +1,40 @@
+[build-system]
+build-backend = "setuptools.build_meta"
+requires = ["setuptools >= 62.1.0", "wheel"]
+
+[project]
+authors = [{name = "Erich Nguyen", email = "erich.nguyen@outlook.com"}]
+classifiers = [
+  "Development Status :: 1 - Planning",
+  "Natural Language :: English",
+  "Programming Language :: Python",
+  "Typing :: Typed",
+]
+description = "A simple experimental Python wrapper for the Ravy API."
+keywords = [
+  "Ravy",
+  "API",
+  "Python",
+  "Wrapper",
+]
+
+license = {file = "LICENSE"}
+maintainers = [
+  {name = "Erich Nguyen", email = "erich.nguyen@outlook.com"},
+]
+name = "Plane"
+readme = "README.md"
+requires-python = ">=3.8"
+version = "0.1.0a"
+
+dependencies = ["aiohttp"]
+
+[project.urls]
+# changelog = "" # TODO: Add changelog
+# documentation = "" # TODO: Add documentation
+homepage = "https://github.com/GoogleGenius/plane"
+repository = "https://github.com/GoogleGenius/plane"
+
+[tool.pyright]
+pythonVersion = "3.8"
+typeCheckingMode = "strict"
