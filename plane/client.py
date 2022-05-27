@@ -18,10 +18,9 @@ class Client:
     _ROUTES = Routes()
 
     def __init__(self, token: str, loop: Optional[asyncio.AbstractEventLoop] = None):
-        self._loop = loop or asyncio.get_event_loop()
-        self._http = HTTPClient(token, self._loop)
+        self.loop = loop or asyncio.get_event_loop()
         self._closed: bool = False
-
+        self._http = HTTPClient(token, self.loop)
         self._users = Users(self._http, self._ROUTES)
         self._urls = URLs(self._http, self._ROUTES)
 
@@ -34,12 +33,16 @@ class Client:
         exc_val: Optional[BaseException],
         exc_tb: Optional[TracebackType],
     ) -> None:
-        if not self._closed:
+        if not self.closed:
             await self.close()
 
     async def close(self) -> None:
         await self._http.close()
         self._closed = True
+
+    @property
+    def closed(self) -> bool:
+        return self._closed
 
     @property
     def users(self) -> Users:
