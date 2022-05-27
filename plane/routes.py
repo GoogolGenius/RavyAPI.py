@@ -18,6 +18,10 @@ class Routes:
     def urls(self) -> URLs:
         return URLs()
 
+    @property
+    def tokens(self) -> Tokens:
+        return Tokens()
+
 
 class Users:
     _ENDPOINT_URL = "/users"
@@ -43,3 +47,11 @@ class URLs:
 
     def url(self, url: str) -> str:
         return self._ENDPOINT_URL + f"/{url}"
+
+
+class Tokens:
+    _ENDPOINT_URL = "/tokens"
+
+    # Does this make sense as a property or function?
+    def current(self) -> str:
+        return self._ENDPOINT_URL + "/@current"

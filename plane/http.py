@@ -8,11 +8,13 @@ from typing import Any
 
 import aiohttp
 
-from .const import BASE_URL
 from .errors import HTTPException
+from .routes import Routes
 
 
 class HTTPClient:
+    """The internal HTTP client for handling requests to the Ravy API."""
+
     def __init__(self, token: str, loop: asyncio.AbstractEventLoop) -> None:
         self._headers: dict[str, str] = {"Authorization": f"Ravy {token}"}
         self._session = aiohttp.ClientSession(loop=loop, headers=self._headers)
@@ -28,6 +30,15 @@ class HTTPClient:
             raise HTTPException(response.status, await response.text())
 
     async def get(self, path: str) -> dict[Any, Any]:
-        async with self._session.get(BASE_URL + path) as response:
+        async with self._session.get(self.routes.base + path) as response:
             await self._validate(response)
             return await response.json()
+
+    async def post(self, path: str, data: dict[Any, Any]) -> dict[Any, Any]:
+        async with self._session.post(self.routes.base + path, json=data) as response:
+            await self._validate(response)
+            return await response.json()
+
+    @property
+    def routes(self) -> Routes:
+        return Routes()

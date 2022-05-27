@@ -6,22 +6,20 @@ import asyncio
 
 from typing import Optional
 
-from .endpoints import Users
-from .endpoints import URLs
+from .endpoints import Users, URLs, Tokens
 
 from .http import HTTPClient
-from .routes import Routes
 
 
 class Client:
-    _ROUTES = Routes()
-
     def __init__(self, token: str, loop: Optional[asyncio.AbstractEventLoop] = None):
+        self.token = token
         self.loop = loop or asyncio.get_event_loop()
         self._http = HTTPClient(token, self.loop)
         self._closed: bool = False
-        self._users = Users(self._http, self._ROUTES)
-        self._urls = URLs(self._http, self._ROUTES)
+        self._users = Users(self._http)
+        self._urls = URLs(self._http)
+        self._tokens = Tokens(self._http)
 
     async def close(self) -> None:
         await self._http.close()
@@ -38,3 +36,7 @@ class Client:
     @property
     def urls(self) -> URLs:
         return self._urls
+
+    @property
+    def tokens(self) -> Tokens:
+        return self._tokens
