@@ -1,4 +1,4 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 setup(
     name="plane",
@@ -8,7 +8,7 @@ setup(
     author="GoogleGenius",
     author_email="erich.nguyen@outlook.com",
     license="GPLv3",
-    packages=["plane"],
+    packages=find_packages(),
     install_requires=["aiohttp"],
     classifiers=[
         "Development Status :: 1 - Planning",
