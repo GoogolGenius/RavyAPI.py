@@ -4,7 +4,6 @@ __all__: tuple[str, ...] = ("Client",)
 
 import asyncio
 
-from types import TracebackType
 from typing import Optional
 
 from .endpoints import Users
@@ -23,18 +22,6 @@ class Client:
         self._closed: bool = False
         self._users = Users(self._http, self._ROUTES)
         self._urls = URLs(self._http, self._ROUTES)
-
-    async def __aenter__(self) -> Client:
-        return self
-
-    async def __aexit__(
-        self,
-        exc_type: Optional[type],
-        exc_val: Optional[BaseException],
-        exc_tb: Optional[TracebackType],
-    ) -> None:
-        if not self.closed:
-            await self.close()
 
     async def close(self) -> None:
         await self._http.close()
