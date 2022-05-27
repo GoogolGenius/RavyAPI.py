@@ -8,20 +8,57 @@ from ..http import HTTPClient
 
 
 class Users:
+    """The implementation class for requests to the `users` endpoint."""
+
     def __init__(self, http: HTTPClient) -> None:
         self._http = http
 
     async def get_user(self, id: int) -> dict[Any, Any]:
+        """Fetch a user from the Ravy API.
+        
+        Parameters
+        ----------
+        id : int
+            The user's Discord ID.
+        """
         return await self._http.get(self._http.routes.users.user(id))
 
     async def get_pronouns(self, id: int) -> dict[Any, Any]:
+        """Fetch a user's pronouns from the Ravy API.
+        
+        Parameters
+        ----------
+        id : int
+            The user's Discord ID.
+        """
         return await self._http.get(self._http.routes.users.pronouns(id))
 
     async def get_bans(self, id: int) -> dict[Any, Any]:
+        """Fetch a user's bans from the Ravy API.
+        
+        Parameters
+        ----------
+        id : int
+            The user's Discord ID.
+        """
         return await self._http.get(self._http.routes.users.bans(id))
 
     async def get_whitelists(self, id: int) -> dict[Any, Any]:
+        """Fetch a user's whitelists from the Ravy API.
+        
+        Parameters
+        ----------
+        id : int
+            The user's Discord ID.
+        """
         return await self._http.get(self._http.routes.users.whitelists(id))
 
     async def get_reputation(self, id: int) -> dict[Any, Any]:
+        """Fetch a user's reputation from the Ravy API.
+
+        Parameters
+        ----------
+        id : int
+            The user's Discord ID.
+        """
         return await self._http.get(self._http.routes.users.reputation(id))

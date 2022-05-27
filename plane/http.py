@@ -30,15 +30,32 @@ class HTTPClient:
             raise HTTPException(response.status, await response.text())
 
     async def get(self, path: str) -> dict[Any, Any]:
+        """Execute a GET request to the Ravy API.
+
+        Parameters
+        ----------
+        path : str
+            The path URL to the endpoint.
+        """
         async with self._session.get(self.routes.base + path) as response:
             await self._validate(response)
             return await response.json()
 
     async def post(self, path: str, data: dict[Any, Any]) -> dict[Any, Any]:
+        """Execute a POST request to the Ravy API.
+
+        Parameters
+        ----------
+        path : str
+            The path URL to the endpoint.
+        data : dict[Any, Any]
+            The JSON data to send with the request.
+        """
         async with self._session.post(self.routes.base + path, json=data) as response:
             await self._validate(response)
             return await response.json()
 
     @property
     def routes(self) -> Routes:
+        """The URL routes for the Ravy API."""
         return Routes()
