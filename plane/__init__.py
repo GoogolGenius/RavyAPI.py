@@ -1,12 +1,17 @@
-"""
-A simple experimental Python wrapper for the Ravy.org API. 
-
-Heavily adapted design from the ksoftapi official Python wrapper.
-"""
+"""A simple experimental Python wrapper for the Ravy.org API."""
 
 from __future__ import annotations
+
+from typing import Final
 
 from .client import *
 from .errors import *
 
-__version__ = "0.1.0a"
+__author__: Final[str] = "GoogleGenius"
+__repository__: Final[str] = "https://github.com/GoogleGenius/plane"
+__copyright__: Final[str] = "Copyright 2022-Present GoogleGenius"
+__license__: Final[str] = "GNU GPLv3"
+__version__: Final[str] = "0.1.0a"
+__maintainer__: Final[str] = "GoogleGenius"
+__email__: Final[str] = "erich.nguyen@outlook.com"
+__status__: Final[str] = "Planning"
