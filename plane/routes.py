@@ -2,13 +2,13 @@ from __future__ import annotations
 
 __all__: tuple[str, ...] = ("Routes",)
 
-_BASE = "https://ravy.org/api/v1"
+from .const import BASE_URL
 
 
 class Routes:
     @property
     def base(self) -> str:
-        return _BASE
+        return BASE_URL
 
     @property
     def users(self) -> Users:

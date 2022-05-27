@@ -8,25 +8,26 @@ from typing import Any
 
 import aiohttp
 
+from .const import BASE_URL
 from .errors import HTTPException
 
 
 class HTTPClient:
-    BASE_URL = "https://ravy.org/api/v1"
-
-    def __init__(self, api_key: str, loop: asyncio.AbstractEventLoop) -> None:
-        self._headers = {"Authorization": f"Ravy {api_key}"}
+    def __init__(self, token: str, loop: asyncio.AbstractEventLoop) -> None:
+        self._headers = {"Authorization": f"Ravy {token}"}
         self._session = aiohttp.ClientSession(loop=loop, headers=self._headers)
 
-    async def _validate_response(self, response: aiohttp.ClientResponse) -> None:
-        if not response.ok:
-            raise HTTPException(response.status, await response.text())
+        if not token:
+            raise ValueError("No API token provided")
 
     async def close(self) -> None:
         await self._session.close()
 
+    async def _validate(self, response: aiohttp.ClientResponse) -> None:
+        if not response.ok:
+            raise HTTPException(response.status, await response.text())
+
     async def get(self, path: str) -> dict[Any, Any]:
-        async with self._session.get(self.BASE_URL + path) as response:
-            print(self.BASE_URL + path)
-            await self._validate_response(response)
+        async with self._session.get(BASE_URL + path) as response:
+            await self._validate(response)
             return await response.json()
