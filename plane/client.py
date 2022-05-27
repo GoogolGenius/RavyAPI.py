@@ -7,8 +7,8 @@ import asyncio
 from types import TracebackType
 from typing import Optional
 
-from plane.endpoints.users import Users
-from plane.endpoints.urls import URLs
+from .endpoints import Users
+from .endpoints import URLs
 
 from .http import HTTPClient
 from .routes import Routes
