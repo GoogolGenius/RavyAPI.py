@@ -1,6 +1,6 @@
 import asyncio
-from .endpoints.urls import URLs
-from .endpoints.users import Users
+from plane.endpoints.users import Users
+from plane.endpoints.urls import URLs
 from types import TracebackType
 from typing import Optional
 
