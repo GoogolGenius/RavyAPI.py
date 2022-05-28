@@ -1,4 +1,3 @@
-# WIP
 from __future__ import annotations
 from typing import Any
 
@@ -36,6 +35,7 @@ class GetUserResponse:
     """
 
     def __init__(self, data: dict[Any, Any]) -> None:
+        self.data = data
         self.pronouns: str = data["pronouns"]
         self.trust = Trust(data["trust"])
         self.whitelists = WhitelistEntry(data["whitelists"])
@@ -54,6 +54,7 @@ class GetPronounsResponse:
     """
 
     def __init__(self, data: dict[Any, Any]) -> None:
+        self.data = data
         self.pronouns: str = data["pronouns"]
 
 
@@ -69,6 +70,7 @@ class GetBansResponse:
     """
 
     def __init__(self, data: dict[Any, Any]) -> None:
+        self.data = data
         self.trust = Trust(data["trust"])
         self.bans = [BanEntry(ban) for ban in data["bans"]]
 
@@ -85,6 +87,7 @@ class GetWhitelistsResponse:
     """
 
     def __init__(self, data: dict[Any, Any]) -> None:
+        self.data = data
         self.whitelists = [
             WhitelistEntry(whitelist) for whitelist in data["whitelists"]
         ]
@@ -103,6 +106,7 @@ class GetReputationResponse:
     """
 
     def __init__(self, data: dict[Any, Any]) -> None:
+        self.data = data
         self.rep = [ReputationEntry(rep) for rep in data["rep"]]
         self.trust = Trust(data["trust"])
 
@@ -119,6 +123,7 @@ class Trust:
     """
 
     def __init__(self, data: dict[Any, Any]) -> None:
+        self.data = data
         self.level: int = data["level"]
         self.label: str = data["label"]
 
@@ -135,6 +140,7 @@ class WhitelistEntry:
     """
 
     def __init__(self, data: dict[Any, Any]) -> None:
+        self.data = data
         self.provider: str = data["provider"]
         self.reason: str = data["reason"]
 
@@ -155,6 +161,7 @@ class BanEntry:
     """
 
     def __init__(self, data: dict[Any, Any]) -> None:
+        self.data = data
         self.provider: str = data["provider"]
         self.reason: str = data["reason"]
         self.reason_key: str | None = data["reason_key"]
@@ -177,6 +184,7 @@ class ReputationEntry:
     """
 
     def __init__(self, data: dict[Any, Any]) -> None:
+        self.data = data
         self.provider: str = data["provider"]
         self.score: float = data["score"]
         self.upvotes: int | None = data["upvotes"]
@@ -195,5 +203,6 @@ class SentinelEntry:
     """
 
     def __init__(self, data: dict[Any, Any]) -> None:
+        self.data = data
         self.verified: bool = data["verified"]
         self.id: int = int(data["id"])

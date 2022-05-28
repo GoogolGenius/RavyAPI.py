@@ -2,9 +2,8 @@ from __future__ import annotations
 
 __all__: tuple[str, ...] = ("URLs",)
 
-from typing import Any
-
 from ..http import HTTPClient
+from ..models import GetURLResponse
 
 
 class URLs:
@@ -19,7 +18,7 @@ class URLs:
         """
         self._http = http
 
-    async def get_url(self, url: str) -> dict[Any, Any]:
+    async def get_url(self, url: str) -> GetURLResponse:
         """Analyze a URL by requesting the Ravy API.
 
         Parameters
@@ -27,4 +26,4 @@ class URLs:
         url : str
             The URL to analyze.
         """
-        return await self._http.get(self._http.paths.urls.url(url))
+        return GetURLResponse(await self._http.get(self._http.paths.urls.url(url)))
