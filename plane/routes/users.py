@@ -18,12 +18,12 @@ class Users:
     def __init__(self, http: HTTPClient) -> None:
         self._http = http
 
-    async def get_user(self, id: int) -> GetUserResponse:
+    async def get_user(self, user_id: int) -> GetUserResponse:
         """Fetch a user from the Ravy API.
 
         Parameters
         ----------
-        id : int
+        user_id : int
             The user's Discord ID.
 
         Returns
@@ -31,14 +31,16 @@ class Users:
         GetUserResponse
             The user's information model.
         """
-        return GetUserResponse(await self._http.get(self._http.paths.users(id).route))
+        return GetUserResponse(
+            await self._http.get(self._http.paths.users(user_id).route)
+        )
 
-    async def get_pronouns(self, id: int) -> GetPronounsResponse:
+    async def get_pronouns(self, user_id: int) -> GetPronounsResponse:
         """Fetch a user's pronouns from the Ravy API.
 
         Parameters
         ----------
-        id : int
+        user_id : int
             The user's Discord ID.
 
         Returns
@@ -47,15 +49,15 @@ class Users:
             The user's pronouns model.
         """
         return GetPronounsResponse(
-            await self._http.get(self._http.paths.users(id).pronouns)
+            await self._http.get(self._http.paths.users(user_id).pronouns)
         )
 
-    async def get_bans(self, id: int) -> GetBansResponse:
+    async def get_bans(self, user_id: int) -> GetBansResponse:
         """Fetch a user's bans from the Ravy API.
 
         Parameters
         ----------
-        id : int
+        user_id : int
             The user's Discord ID.
 
         Returns
@@ -63,14 +65,16 @@ class Users:
         GetBansResponse
             The user's bans model.
         """
-        return GetBansResponse(await self._http.get(self._http.paths.users(id).bans))
+        return GetBansResponse(
+            await self._http.get(self._http.paths.users(user_id).bans)
+        )
 
-    async def get_whitelists(self, id: int) -> GetWhitelistsResponse:
+    async def get_whitelists(self, user_id: int) -> GetWhitelistsResponse:
         """Fetch a user's whitelists from the Ravy API.
 
         Parameters
         ----------
-        id : int
+        user_id : int
             The user's Discord ID.
 
         Returns
@@ -79,15 +83,15 @@ class Users:
             The user's whitelists model.
         """
         return GetWhitelistsResponse(
-            await self._http.get(self._http.paths.users(id).whitelists)
+            await self._http.get(self._http.paths.users(user_id).whitelists)
         )
 
-    async def get_reputation(self, id: int) -> GetReputationResponse:
+    async def get_reputation(self, user_id: int) -> GetReputationResponse:
         """Fetch a user's reputation from the Ravy API.
 
         Parameters
         ----------
-        id : int
+        user_id : int
             The user's Discord ID.
 
         Returns
@@ -96,5 +100,5 @@ class Users:
             The user's reputation model.
         """
         return GetReputationResponse(
-            await self._http.get(self._http.paths.users(id).reputation)
+            await self._http.get(self._http.paths.users(user_id).reputation)
         )

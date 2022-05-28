@@ -26,4 +26,6 @@ class URLs:
         url : str
             The URL to analyze.
         """
-        return GetWebsiteResponse(await self._http.get(self._http.paths.urls(url).route))
+        return GetWebsiteResponse(
+            await self._http.get(self._http.paths.urls(url).route)
+        )

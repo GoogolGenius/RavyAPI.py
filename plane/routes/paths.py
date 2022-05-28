@@ -105,35 +105,17 @@ class Users:
 
     @property
     def pronouns(self) -> str:
-        """The URL strcture for the child endpoint `pronouns` of `users`.
-
-        Parameters
-        ----------
-        id : int
-            The user's Discord ID.
-        """
+        """The URL strcture for the child endpoint `pronouns` of `users`."""
         return self._route + "/pronouns"
 
     @property
     def bans(self) -> str:
-        """The URL structure for the child endpoint `bans` of `users`.
-
-        Parameters
-        ----------
-        id : int
-            The user's Discord ID.
-        """
+        """The URL structure for the child endpoint `bans` of `users`."""
         return self._route + "/bans"
 
     @property
     def whitelists(self) -> str:
-        """The URL structure for the child endpoint `whitelists` of `users`.
-
-        Parameters
-        ----------
-        id : int
-            The user's Discord ID.
-        """
+        """The URL structure for the child endpoint `whitelists` of `users`."""
         return self._route + "/whitelists"
 
     @property

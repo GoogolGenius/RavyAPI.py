@@ -149,7 +149,9 @@ class GetWhitelistsResponse:
 
     def __init__(self, data: dict[str, Any]) -> None:
         self._data = data
-        self._whitelists = [WhitelistEntry(whitelist) for whitelist in data["whitelists"]]
+        self._whitelists = [
+            WhitelistEntry(whitelist) for whitelist in data["whitelists"]
+        ]
         self._trust = Trust(data["trust"])
 
     @property
@@ -287,14 +289,14 @@ class SentinelEntry:
     ----------
     verified : bool
         Whether this user has linked their account to sentinel
-    id : str
+    internal_id : str
         Internal ID for debug purposes
     """
 
     def __init__(self, data: dict[str, Any]) -> None:
         self._data = data
         self._verified: bool = data["verified"]
-        self._id: int = int(data["id"])
+        self._internal_id: int = int(data["id"])
 
     @property
     def data(self) -> dict[str, Any]:
@@ -307,6 +309,8 @@ class SentinelEntry:
         return self._verified
 
     @property
-    def id(self) -> int:
+    def internal_id(self) -> int:
         """Internal ID for debug purposes."""
-        return self._id
+        return (
+            self._internal_id
+        )  # Need to ask Ravy whether or not this is just the Discord Snowflake ID
