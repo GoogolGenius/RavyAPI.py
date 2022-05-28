@@ -27,21 +27,32 @@ class HTTPClient:
 
     async def _validate(self, response: aiohttp.ClientResponse) -> None:
         if not response.ok:
-            raise HTTPException(response.status, await response.text())
+            try:
+                data = await response.json()
+            except aiohttp.ContentTypeError:
+                data = await response.text()
 
-    async def get(self, path: str) -> dict[str, Any]:
+            raise HTTPException(response.status, data)
+
+    async def get(
+        self, path: str, params: dict[str, str] | None = None
+    ) -> dict[str, Any]:
         """Execute a GET request to the Ravy API.
 
         Parameters
         ----------
         path : str
             The path URL to the endpoint.
+        params : dict[str, str] | None
+            The query parameters to send with the request, if any.
         """
-        async with self._session.get(self.paths.base + path) as response:
+        async with self._session.get(self.paths.base + path, params=params) as response:
             await self._validate(response)
             return await response.json()
 
-    async def post(self, path: str, data: dict[str, Any]) -> dict[str, Any]:
+    async def post(
+        self, path: str, data: dict[str, Any], params: dict[str, str] | None = None
+    ) -> dict[str, Any]:
         """Execute a POST request to the Ravy API.
 
         Parameters
@@ -51,7 +62,9 @@ class HTTPClient:
         data : dict[str, Any]
             The JSON data to send with the request.
         """
-        async with self._session.post(self.paths.base + path, json=data) as response:
+        async with self._session.post(
+            self.paths.base + path, json=data, params=params
+        ) as response:
             await self._validate(response)
             return await response.json()
 
