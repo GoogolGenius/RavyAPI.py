@@ -1,0 +1,60 @@
+site_name: Plane Docs
+
+copyright: Copyright &copy; 2022-Present GoogleGenius
+
+repo_url: https://github.com/GoogleGenius/plane
+repo_name: GoogleGenius/plane
+
+theme:
+  name: material
+  features:
+    - navigation.expand
+    - navigation.tabs
+    - navigation.top
+    - search.share
+    - search.suggest
+    - toc.integrate
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode
+
+plugins:
+  - search
+  - mkdocstrings:
+      default_handler: python
+      handlers:
+        python:
+          selection:
+            docstring_style: numpy
+            inherited_members: true
+          rendering:
+            docstring_section_style: spacy
+            show_signature_annotations: true
+            show_source: false
+      watch:
+        - plane
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.tilde
+  - toc:
+      permalink: true

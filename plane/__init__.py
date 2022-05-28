@@ -1,4 +1,23 @@
-"""A simple experimental Python wrapper for the Ravy.org API."""
+"""A simple experimental Python wrapper for the Ravy.org API.
+
+```python
+import asyncio
+
+import plane
+
+
+async def main() -> None:
+    client = plane.Client("token")
+
+    token_info = await client.tokens.get_token()
+    print(token_info.type)
+
+    await client.close()
+
+
+asyncio.run(main())
+```
+"""
 
 from __future__ import annotations
 
