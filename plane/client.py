@@ -15,8 +15,8 @@ class Client:
     ----------
     token : str
         The token used to authenticate with the Ravy API.
-    loop : asyncio.AbstractEventLoop
-        The asyncio event loop used to run the client.
+    loop : asyncio.AbstractEventLoop | None
+        The asyncio event loop used to run the client. The default event loop is used if this is None.
 
     Methods
     -------
@@ -24,7 +24,9 @@ class Client:
         Close the client.
     """
 
-    def __init__(self, token: str, loop: asyncio.AbstractEventLoop | None = None):
+    def __init__(
+        self, token: str, loop: asyncio.AbstractEventLoop | None = None
+    ):
         """
         Parameters
         ----------
@@ -53,15 +55,15 @@ class Client:
 
     @property
     def users(self) -> Users:
-        """The users endpoint."""
+        """The users route."""
         return self._users
 
     @property
     def urls(self) -> URLs:
-        """The urls endpoint."""
+        """The urls route."""
         return self._urls
 
     @property
     def tokens(self) -> Tokens:
-        """The tokens endpoint."""
+        """The tokens route."""
         return self._tokens

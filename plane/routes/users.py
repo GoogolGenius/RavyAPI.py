@@ -13,7 +13,7 @@ from ..models import (
 
 
 class Users:
-    """The implementation class for requests to the `users` endpoint."""
+    """The implementation class for requests to the `users` route."""
 
     def __init__(self, http: HTTPClient) -> None:
         self._http = http

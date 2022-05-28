@@ -6,7 +6,7 @@ from typing import Any
 
 
 class GetWebsiteResponse:
-    """The URL data model.
+    """The website response data model.
 
     Attributes
     ----------

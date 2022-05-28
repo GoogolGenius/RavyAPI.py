@@ -13,14 +13,16 @@ __all__: tuple[str, ...] = (
 
 from typing import Any
 
-from . import Trust, BanEntry
+from .generic import Trust, BanEntry
 
 
 class GetUserResponse:
-    """The user data model.
+    """The user response data model.
 
     Attributes
     ----------
+    data : dict[str, Any]
+        The raw data from the API.
     pronouns : str
         The user's pronouns.
     trust : Trust
@@ -81,10 +83,12 @@ class GetUserResponse:
 
 
 class GetPronounsResponse:
-    """The pronouns data model.
+    """The pronouns response data model.
 
     Attributes
     ----------
+    data : dict[str, Any]
+        The raw data from the API.
     pronouns: str
         The user's pronouns.
     """
@@ -105,10 +109,12 @@ class GetPronounsResponse:
 
 
 class GetBansResponse:
-    """The bans data model.
+    """The bans response data model.
 
     Attributes
     ----------
+    data : dict[str, Any]
+        The raw data from the API.
     trust : Trust
         The trust model of the user (limited).
     bans : list[BanEntry]
@@ -137,10 +143,12 @@ class GetBansResponse:
 
 
 class GetWhitelistsResponse:
-    """The whitelists data model.
+    """The whitelists response data model.
 
     Attributes
     ----------
+    data : dict[str, Any]
+        The raw data from the API.
     whitelists : list[WhitelistEntry]
         A list of whitelist entry models.
     trust : Trust
@@ -171,10 +179,12 @@ class GetWhitelistsResponse:
 
 
 class GetReputationResponse:
-    """The reputation data model.
+    """The reputation response data model.
 
     Attributes
     ----------
+    data : dict[str, Any]
+        The raw data from the API.
     rep : list[ReputationEntry]
         A list of reputation entry models.
     trust : Trust
@@ -207,6 +217,8 @@ class WhitelistEntry:
 
     Attributes
     ----------
+    data : dict[str, Any]
+        The raw data from the API.
     provider : str
         Source for where the user is whitelisted.
     reason : str
@@ -239,6 +251,8 @@ class ReputationEntry:
 
     Attributes
     ----------
+    data : dict[str, Any]
+        The raw data from the API.
     provider : str
         Source for where the user is banned.
     score : float
@@ -311,6 +325,5 @@ class SentinelEntry:
     @property
     def internal_id(self) -> int:
         """Internal ID for debug purposes."""
-        return (
-            self._internal_id
-        )  # Need to ask Ravy whether or not this is just the Discord Snowflake ID
+        return self._internal_id
+        # Need to ask Ravy whether or not this is just the Discord ID

@@ -7,13 +7,13 @@ from ..models import GetGuildResponse
 
 
 class Guilds:
-    """The implementation class for requests to the `guilds` endpoint."""
+    """The implementation class for requests to the `guilds` route."""
 
     def __init__(self, http: HTTPClient) -> None:
         self._http = http
 
     async def get_guild(self, guild_id: int) -> GetGuildResponse:
-        """Analyze a URL by requesting the Ravy API.
+        """Fetch a guild by requesting the Ravy API.
 
         Parameters
         ----------

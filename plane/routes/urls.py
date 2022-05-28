@@ -7,19 +7,13 @@ from ..models import GetWebsiteResponse
 
 
 class URLs:
-    """The implementation class for requests to the `urls` endpoint."""
+    """The implementation class for requests to the `urls` route."""
 
     def __init__(self, http: HTTPClient) -> None:
-        """
-        Parameters
-        ----------
-        http : HTTPClient
-            The internal HTTP client to use for requests.
-        """
         self._http = http
 
     async def get_website(self, url: str) -> GetWebsiteResponse:
-        """Analyze a URL by requesting the Ravy API.
+        """Analyze a website URL by requesting the Ravy API.
 
         Parameters
         ----------

@@ -11,17 +11,18 @@ class HTTPException(Exception):
     status : int
         The HTTP status code of the error.
     exc_message : str
-        The error message from the API."""
+        The error message from the API.
+    """
 
     def __init__(self, status: int, exc_message: str):
-        """Construct the exception.
-
+        """
         Parameters
         ----------
         status : int
             The HTTP status code of the error.
         exc_message : str
-            The error message from the API."""
+            The error message from the API.
+        """
         self.status = status
         self.exc_message = exc_message
 

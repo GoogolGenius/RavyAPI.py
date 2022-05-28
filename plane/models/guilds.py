@@ -4,7 +4,7 @@ __all__: tuple[str, ...] = ("GetGuildResponse",)
 
 from typing import Any
 
-from . import Trust, BanEntry
+from .generic import Trust, BanEntry
 
 
 class GetGuildResponse:

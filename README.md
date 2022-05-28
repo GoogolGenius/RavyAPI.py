@@ -19,5 +19,5 @@ TODO:
 DONE:
 
 - [x] Basic HTTP requests functionality
-- [x] Few API functionalities/endpoints
+- [x] Few API functionalities/routes
 - [x] Docstrings (so far)

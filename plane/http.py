@@ -40,23 +40,28 @@ class HTTPClient:
         Parameters
         ----------
         path : str
-            The path URL to the endpoint.
+            The path URL to the route.
         params : dict[str, str] | None
             The query parameters to send with the request, if any.
         """
-        async with self._session.get(self.paths.base + path, params=params) as response:
+        async with self._session.get(
+            self.paths.base + path, params=params
+        ) as response:
             await self._validate(response)
             return await response.json()
 
     async def post(
-        self, path: str, data: dict[str, Any], params: dict[str, str] | None = None
+        self,
+        path: str,
+        data: dict[str, Any],
+        params: dict[str, str] | None = None,
     ) -> dict[str, Any]:
         """Execute a POST request to the Ravy API.
 
         Parameters
         ----------
         path : str
-            The path URL to the endpoint.
+            The path URL to the route.
         data : dict[str, Any]
             The JSON data to send with the request.
         """
@@ -68,5 +73,5 @@ class HTTPClient:
 
     @property
     def paths(self) -> Paths:
-        """The URL paths for the Ravy API."""
+        """The route paths for the Ravy API."""
         return Paths()

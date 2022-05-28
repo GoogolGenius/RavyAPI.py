@@ -7,7 +7,7 @@ from typing_extensions import Literal
 
 
 class GetTokenResponse:
-    """The token data model.
+    """The token response data model.
 
     Attributes
     ----------
@@ -19,7 +19,7 @@ class GetTokenResponse:
         The access of the token.
     application : str
         The application of the token.
-    type : “ravy“ | “ksoft“
+    type : Literal["ravy", "ksoft"]
         The type of the token.
     """
 
@@ -52,5 +52,5 @@ class GetTokenResponse:
 
     @property
     def type(self) -> Literal["ravy", "ksoft"]:
-        """The type of the token."""
+        """The type of the token, either 'ravy or 'ksoft.'"""
         return self._type
