@@ -10,10 +10,8 @@ This API is heavily inspired and is based upon the [ksoftapi Python wrapper](htt
 
 TODO:
 
-- [ ] Abstract responses to objects
 - [ ] Full API coverage
 - [ ] More flexibility
-- [ ] Public documentation
 - [ ] Unit tests
 
 DONE:
@@ -21,3 +19,5 @@ DONE:
 - [x] Basic HTTP requests functionality
 - [x] Few API functionalities/routes
 - [x] Docstrings (so far)
+- [x] Public documentation
+- [x] Abstract responses to objects
