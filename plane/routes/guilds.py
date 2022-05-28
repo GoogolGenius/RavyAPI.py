@@ -3,7 +3,7 @@ from __future__ import annotations
 __all__: tuple[str, ...] = ("URLs",)
 
 from ..http import HTTPClient
-from ..models import GetWebsiteResponse
+from ..models import GetGuildResponse
 
 
 class URLs:
@@ -18,12 +18,12 @@ class URLs:
         """
         self._http = http
 
-    async def get_website(self, url: str) -> GetWebsiteResponse:
+    async def get_website(self, id: int) -> GetGuildResponse:
         """Analyze a URL by requesting the Ravy API.
 
         Parameters
         ----------
-        url : str
-            The URL to analyze.
+        id : int
+            The Discord ID of the guild.
         """
-        return GetWebsiteResponse(await self._http.get(self._http.paths.urls.url(url)))
+        return GetGuildResponse(await self._http.get(self._http.paths.guilds.guild(id)))

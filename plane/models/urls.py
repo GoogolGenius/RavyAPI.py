@@ -1,11 +1,11 @@
 from __future__ import annotations
 
-__all__: tuple[str, ...] = ("GetURLResponse",)
+__all__: tuple[str, ...] = ("GetWebsiteResponse",)
 
 from typing import Any
 
 
-class GetURLResponse:
+class GetWebsiteResponse:
     """The URL data model.
 
     Attributes

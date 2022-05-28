@@ -28,6 +28,11 @@ class Paths:
         """Route paths for the main `tokens` endpoint."""
         return Tokens()
 
+    @property
+    def guilds(self) -> Guilds:
+        """Route paths for the main `guilds` endpoint."""
+        return Guilds()
+
 
 class Users:
     """A class containing route paths for the `users` main endpoint."""
@@ -106,3 +111,19 @@ class Tokens:
         This is the current token used.
         """
         return self._ENDPOINT_URL + "/@current"
+
+
+class Guilds:
+    """A class containing route paths for the `guilds` main endpoint."""
+
+    _ENDPOINT_URL = "/guilds"
+
+    def guild(self, id: int) -> str:
+        """The URL structure for the `guilds` main parent endpoint.
+
+        Parameters
+        ----------
+        id : int
+            The guild's Discord ID.
+        """
+        return self._ENDPOINT_URL + f"/{id}"
