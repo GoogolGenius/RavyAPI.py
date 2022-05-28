@@ -9,13 +9,15 @@ This is currently a work in progress state. Since this is a first experience as 
 This API is heavily inspired and is based upon the [ksoftapi Python wrapper](https://github.com/KSoft-Si/ksoftapi.py). The license will be updated by the full release in order to reflect this.
 
 TODO:
-[ ] Abstract responses to objects
-[ ] Full API coverage
-[ ] More flexibility
-[ ] Public documentation
-[ ] Unit tests
+
+- [ ] Abstract responses to objects
+- [ ] Full API coverage
+- [ ] More flexibility
+- [ ] Public documentation
+- [ ] Unit tests
 
 DONE:
-[x] Basic HTTP requests functionality
-[x] Few API functionalities/endpoints
-[x] Docstrings (so far)
+
+- [x] Basic HTTP requests functionality
+- [x] Few API functionalities/endpoints
+- [x] Docstrings (so far)
