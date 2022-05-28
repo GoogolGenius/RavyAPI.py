@@ -310,7 +310,7 @@ class SentinelEntry:
     def __init__(self, data: dict[str, Any]) -> None:
         self._data = data
         self._verified: bool = data["verified"]
-        self._internal_id: int = int(data["id"])
+        self._internal_id: str = str(data["id"])
 
     @property
     def data(self) -> dict[str, Any]:
@@ -323,7 +323,6 @@ class SentinelEntry:
         return self._verified
 
     @property
-    def internal_id(self) -> int:
+    def internal_id(self) -> str:
         """Internal ID for debug purposes."""
         return self._internal_id
-        # Need to ask Ravy whether or not this is just the Discord ID
