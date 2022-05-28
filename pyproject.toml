@@ -24,7 +24,7 @@ maintainers = [
 ]
 name = "plane"
 readme = "README.md"
-requires-python = ">=3.8"
+requires-python = ">=3.7"
 version = "0.1.0a"
 
 dependencies = ["aiohttp"]
@@ -34,7 +34,7 @@ homepage = "https://github.com/GoogleGenius/plane"
 repository = "https://github.com/GoogleGenius/plane"
 
 [tool.pyright]
-pythonVersion = "3.8"
+pythonVersion = "3.7"
 typeCheckingMode = "strict"
 
 [tool.setuptools.packages.find]
