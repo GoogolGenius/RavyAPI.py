@@ -33,9 +33,12 @@ dependencies = ["aiohttp"]
 homepage = "https://github.com/GoogleGenius/plane"
 repository = "https://github.com/GoogleGenius/plane"
 
+[tool.setuptools.packages.find]
+where = ["plane"]
+
 [tool.pyright]
 pythonVersion = "3.7"
 typeCheckingMode = "strict"
 
-[tool.setuptools.packages.find]
-where = ["plane"]
+[tool.black]
+lineLength = 79
