@@ -60,7 +60,7 @@ class BanEntry:
         self._data = data
         self._provider: str = data["provider"]
         self._reason: str = data["reason"]
-        self._reason_key: str | None = data["reason_key"]
+        self._reason_key: str | None = data.get("reason_key")
         self._moderator: str = data["moderator"]
 
     @property

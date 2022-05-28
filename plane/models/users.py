@@ -267,8 +267,8 @@ class ReputationEntry:
         self._data = data
         self._provider: str = data["provider"]
         self._score: float = data["score"]
-        self._upvotes: int | None = data["upvotes"]
-        self._downvotes: int | None = data["downvotes"]
+        self._upvotes: int | None = data.get("upvotes")
+        self._downvotes: int | None = data.get("downvotes")
 
     @property
     def data(self) -> dict[str, Any]:
