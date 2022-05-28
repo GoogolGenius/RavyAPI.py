@@ -32,11 +32,6 @@ class Client:
             The token used to authenticate with the Ravy API.
         loop : asyncio.AbstractEventLoop
             The asyncio event loop used to run the client.
-
-        Raises
-        ------
-        ValueError
-            If no token is provided.
         """
         self.token = token
         self.loop = loop or asyncio.get_event_loop()

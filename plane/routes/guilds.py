@@ -26,4 +26,4 @@ class URLs:
         id : int
             The Discord ID of the guild.
         """
-        return GetGuildResponse(await self._http.get(self._http.paths.guilds.guild(id)))
+        return GetGuildResponse(await self._http.get(self._http.paths.guilds(id).route))

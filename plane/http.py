@@ -16,11 +16,9 @@ class HTTPClient:
     """The internal HTTP client for handling requests to the Ravy API."""
 
     def __init__(self, token: str, loop: asyncio.AbstractEventLoop) -> None:
-        self._headers: dict[str, str] = {"Authorization": f"Ravy {token}"}
+        self.token = token
+        self._headers: dict[str, str] = {"Authorization": f"Ravy {self.token}"}
         self._session = aiohttp.ClientSession(loop=loop, headers=self._headers)
-
-        if not token:
-            raise ValueError("No API token provided")
 
     async def close(self) -> None:
         await self._session.close()
@@ -34,9 +32,7 @@ class HTTPClient:
 
             raise HTTPException(response.status, data)
 
-    async def get(
-        self, path: str, params: dict[str, str] | None = None
-    ) -> dict[str, Any]:
+    async def get(self, path: str, params: dict[str, str] | None = None) -> dict[str, Any]:
         """Execute a GET request to the Ravy API.
 
         Parameters
@@ -50,9 +46,7 @@ class HTTPClient:
             await self._validate(response)
             return await response.json()
 
-    async def post(
-        self, path: str, data: dict[str, Any], params: dict[str, str] | None = None
-    ) -> dict[str, Any]:
+    async def post(self, path: str, data: dict[str, Any], params: dict[str, str] | None = None) -> dict[str, Any]:
         """Execute a POST request to the Ravy API.
 
         Parameters
@@ -62,9 +56,7 @@ class HTTPClient:
         data : dict[str, Any]
             The JSON data to send with the request.
         """
-        async with self._session.post(
-            self.paths.base + path, json=data, params=params
-        ) as response:
+        async with self._session.post(self.paths.base + path, json=data, params=params) as response:
             await self._validate(response)
             return await response.json()
 
