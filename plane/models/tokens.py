@@ -19,7 +19,7 @@ class GetTokenResponse:
         The access of the token.
     application : str
         The application of the token.
-    type : Literal["ravy", "ksoft"]
+    token_type : Literal["ravy", "ksoft"]
         The type of the token.
     """
 
@@ -28,7 +28,7 @@ class GetTokenResponse:
         self._user: str = data["user"]
         self._access: list[str] = data["access"]
         self._application: str = data["application"]
-        self._type: Literal["ravy", "ksoft"] = data["type"]
+        self._token_type: Literal["ravy", "ksoft"] = data["type"]
 
     @property
     def data(self) -> dict[str, Any]:
@@ -51,6 +51,6 @@ class GetTokenResponse:
         return self._application
 
     @property
-    def type(self) -> Literal["ravy", "ksoft"]:
+    def token_type(self) -> Literal["ravy", "ksoft"]:
         """The type of the token, either 'ravy or 'ksoft.'"""
-        return self._type
+        return self._token_type
