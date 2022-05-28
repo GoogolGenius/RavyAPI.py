@@ -4,7 +4,7 @@ __all__: tuple[str, ...] = ("Client",)
 
 import asyncio
 
-from .endpoints import Users, URLs, Tokens
+from .routes import Users, URLs, Tokens
 from .http import HTTPClient
 
 

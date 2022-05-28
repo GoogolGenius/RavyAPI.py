@@ -27,4 +27,4 @@ class URLs:
         url : str
             The URL to analyze.
         """
-        return await self._http.get(self._http.routes.urls.url(url))
+        return await self._http.get(self._http.paths.urls.url(url))

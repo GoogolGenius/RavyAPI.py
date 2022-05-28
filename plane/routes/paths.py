@@ -1,12 +1,12 @@
 from __future__ import annotations
 
-__all__: tuple[str, ...] = ("Routes",)
+__all__: tuple[str, ...] = ("Paths",)
 
-from .const import BASE_URL
+from ..const import BASE_URL
 
 
-class Routes:
-    """A base class for all Ravy API URL routes."""
+class Paths:
+    """A base class for all Ravy API URL route paths."""
 
     @property
     def base(self) -> str:
@@ -15,22 +15,22 @@ class Routes:
 
     @property
     def users(self) -> Users:
-        """Routes for the main `users` endpoint."""
+        """Route paths for the main `users` endpoint."""
         return Users()
 
     @property
     def urls(self) -> URLs:
-        """Routes for the main `urls` endpoint."""
+        """Route paths for the main `urls` endpoint."""
         return URLs()
 
     @property
     def tokens(self) -> Tokens:
-        """Routes for the main `tokens` endpoint."""
+        """Route paths for the main `tokens` endpoint."""
         return Tokens()
 
 
 class Users:
-    """A class containing routes for the `users` main endpoint."""
+    """A class containing route paths for the `users` main endpoint."""
 
     _ENDPOINT_URL = "/users"
 
@@ -79,7 +79,7 @@ class Users:
 
 
 class URLs:
-    """A class containing routes for the `urls` main endpoint."""
+    """A class containing route paths for the `urls` main endpoint."""
 
     _ENDPOINT_URL = "/urls"
 
@@ -95,7 +95,7 @@ class URLs:
 
 
 class Tokens:
-    """A class containing routes for the `tokens` main endpoint."""
+    """A class containing route paths for the `tokens` main endpoint."""
 
     _ENDPOINT_URL = "/tokens"
 

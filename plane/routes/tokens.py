@@ -21,4 +21,4 @@ class Tokens:
 
     async def get_token(self) -> dict[Any, Any]:
         """Fetch the current token from the Ravy API."""
-        return await self._http.get(self._http.routes.tokens.current())
+        return await self._http.get(self._http.paths.tokens.current())

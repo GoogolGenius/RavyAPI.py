@@ -1,13 +1,22 @@
 # WIP
 from __future__ import annotations
+from typing import Any
 
-__all__: tuple[str, ...] = ()
+__all__: tuple[str, ...] = (
+    "GetUserResponse",
+    "GetPronounsResponse",
+    "GetBansResponse",
+    "GetWhitelistsResponse",
+    "GetReputationResponse",
+    "Trust",
+    "WhitelistEntry",
+    "BanEntry",
+    "ReputationEntry",
+    "SentinelEntry",
+)
 
-from dataclasses import dataclass
 
-
-@dataclass
-class GetUser:
+class GetUserResponse:
     """The user data model.
 
     Attributes
@@ -26,16 +35,16 @@ class GetUser:
         The sentinel entry model of the user.
     """
 
-    pronouns: str
-    trust: Trust
-    whitelists: WhitelistEntry
-    bans: BanEntry
-    rep: ReputationEntry
-    sentinel: SentinelEntry
+    def __init__(self, data: dict[Any, Any]) -> None:
+        self.pronouns: str = data["pronouns"]
+        self.trust = Trust(data["trust"])
+        self.whitelists = WhitelistEntry(data["whitelists"])
+        self.bans = BanEntry(data["bans"])
+        self.rep = ReputationEntry(data["rep"])
+        self.sentinel = SentinelEntry(data["sentinel"])
 
 
-@dataclass
-class GetPronouns:
+class GetPronounsResponse:
     """The pronouns data model.
 
     Attributes
@@ -44,11 +53,11 @@ class GetPronouns:
         The user's pronouns.
     """
 
-    pronouns: str
+    def __init__(self, data: dict[Any, Any]) -> None:
+        self.pronouns: str = data["pronouns"]
 
 
-@dataclass
-class GetBans:
+class GetBansResponse:
     """The bans data model.
 
     Attributes
@@ -59,12 +68,12 @@ class GetBans:
         A list of ban entry models for the user.
     """
 
-    trust: Trust
-    bans: list[BanEntry]
+    def __init__(self, data: dict[Any, Any]) -> None:
+        self.trust = Trust(data["trust"])
+        self.bans = [BanEntry(ban) for ban in data["bans"]]
 
 
-@dataclass
-class GetWhitelists:
+class GetWhitelistsResponse:
     """The whitelists data model.
 
     Attributes
@@ -75,12 +84,14 @@ class GetWhitelists:
         The trust model of the user (limited).
     """
 
-    whitelists: list[WhitelistEntry]
-    trust: Trust
+    def __init__(self, data: dict[Any, Any]) -> None:
+        self.whitelists = [
+            WhitelistEntry(whitelist) for whitelist in data["whitelists"]
+        ]
+        self.trust = Trust(data["trust"])
 
 
-@dataclass
-class GetReputation:
+class GetReputationResponse:
     """The reputation data model.
 
     Attributes
@@ -91,11 +102,11 @@ class GetReputation:
         The trust model of the user (limited).
     """
 
-    rep: list[ReputationEntry]
-    trust: Trust
+    def __init__(self, data: dict[Any, Any]) -> None:
+        self.rep = [ReputationEntry(rep) for rep in data["rep"]]
+        self.trust = Trust(data["trust"])
 
 
-@dataclass
 class Trust:
     """The trust data model.
 
@@ -107,11 +118,11 @@ class Trust:
         What the number means.
     """
 
-    level: int
-    label: str
+    def __init__(self, data: dict[Any, Any]) -> None:
+        self.level: int = data["level"]
+        self.label: str = data["label"]
 
 
-@dataclass
 class WhitelistEntry:
     """The whitelist entry data model.
 
@@ -123,11 +134,11 @@ class WhitelistEntry:
         Why the user is whitelisted, usually STAFF.
     """
 
-    provider: str
-    reason: str
+    def __init__(self, data: dict[Any, Any]) -> None:
+        self.provider: str = data["provider"]
+        self.reason: str = data["reason"]
 
 
-@dataclass
 class BanEntry:
     """The ban entry data model.
 
@@ -143,13 +154,13 @@ class BanEntry:
         User ID of the responsible moderator, usually Discord
     """
 
-    provider: str
-    reason: str
-    reason_key: str | None
-    moderator: str
+    def __init__(self, data: dict[Any, Any]) -> None:
+        self.provider: str = data["provider"]
+        self.reason: str = data["reason"]
+        self.reason_key: str | None = data["reason_key"]
+        self.moderator: str = data["moderator"]
 
 
-@dataclass
 class ReputationEntry:
     """The reputation entry data model.
 
@@ -165,13 +176,13 @@ class ReputationEntry:
         Amount of downvotes this user has received, optional
     """
 
-    provider: str
-    score: float
-    upvotes: int | None
-    downvotes: int | None
+    def __init__(self, data: dict[Any, Any]) -> None:
+        self.provider: str = data["provider"]
+        self.score: float = data["score"]
+        self.upvotes: int | None = data["upvotes"]
+        self.downvotes: int | None = data["downvotes"]
 
 
-@dataclass
 class SentinelEntry:
     """The sentinel entry data model.
 
@@ -183,5 +194,6 @@ class SentinelEntry:
         Internal ID for debug purposes
     """
 
-    verified: bool
-    id: str
+    def __init__(self, data: dict[Any, Any]) -> None:
+        self.verified: bool = data["verified"]
+        self.id: int = int(data["id"])

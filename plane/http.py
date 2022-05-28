@@ -9,7 +9,7 @@ from typing import Any
 import aiohttp
 
 from .errors import HTTPException
-from .routes import Routes
+from .routes.paths import Paths
 
 
 class HTTPClient:
@@ -37,7 +37,7 @@ class HTTPClient:
         path : str
             The path URL to the endpoint.
         """
-        async with self._session.get(self.routes.base + path) as response:
+        async with self._session.get(self.paths.base + path) as response:
             await self._validate(response)
             return await response.json()
 
@@ -51,11 +51,11 @@ class HTTPClient:
         data : dict[Any, Any]
             The JSON data to send with the request.
         """
-        async with self._session.post(self.routes.base + path, json=data) as response:
+        async with self._session.post(self.paths.base + path, json=data) as response:
             await self._validate(response)
             return await response.json()
 
     @property
-    def routes(self) -> Routes:
-        """The URL routes for the Ravy API."""
-        return Routes()
+    def paths(self) -> Paths:
+        """The URL paths for the Ravy API."""
+        return Paths()
