@@ -57,7 +57,7 @@ class Users:
         ----------
         id : int
             The user's Discord ID.
-        
+
         Returns
         -------
         GetBansResponse

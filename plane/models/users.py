@@ -21,9 +21,9 @@ class GetUserResponse:
 
     Attributes
     ----------
-    pronouns: str
+    pronouns : str
         The user's pronouns.
-    trust: Trust
+    trust : Trust
         The trust model of the user.
     whitelists : WhitelistEntry
         The whitelist entry model of the user.
@@ -62,7 +62,7 @@ class GetBansResponse:
 
     Attributes
     ----------
-    trust: Trust
+    trust : Trust
         The trust model of the user (limited).
     bans : list[BanEntry]
         A list of ban entry models for the user.
@@ -78,9 +78,9 @@ class GetWhitelistsResponse:
 
     Attributes
     ----------
-    whitelists: list[WhitelistEntry]
+    whitelists : list[WhitelistEntry]
         A list of whitelist entry models.
-    trust: Trust
+    trust : Trust
         The trust model of the user (limited).
     """
 
@@ -96,9 +96,9 @@ class GetReputationResponse:
 
     Attributes
     ----------
-    rep: list[ReputationEntry]
+    rep : list[ReputationEntry]
         A list of reputation entry models.
-    trust: Trust
+    trust : Trust
         The trust model of the user (limited).
     """
 
