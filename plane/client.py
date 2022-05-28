@@ -4,8 +4,6 @@ __all__: tuple[str, ...] = ("Client",)
 
 import asyncio
 
-from typing import Optional
-
 from .endpoints import Users, URLs, Tokens
 from .http import HTTPClient
 
@@ -26,7 +24,7 @@ class Client:
         Close the client.
     """
 
-    def __init__(self, token: str, loop: Optional[asyncio.AbstractEventLoop] = None):
+    def __init__(self, token: str, loop: asyncio.AbstractEventLoop | None = None):
         """
         Parameters
         ----------
