@@ -23,7 +23,8 @@ class HTTPClient:
     async def close(self) -> None:
         await self._session.close()
 
-    async def _handle(self, response: aiohttp.ClientResponse) -> None:
+    @staticmethod
+    async def _handle(response: aiohttp.ClientResponse) -> None:
         if not response.ok:
             try:
                 data = await response.json()
