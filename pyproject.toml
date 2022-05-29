@@ -44,4 +44,4 @@ pythonVersion = "3.7"
 typeCheckingMode = "strict"
 
 [tool.black]
-lineLength = 79
+lineLength = 88
