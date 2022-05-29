@@ -24,6 +24,7 @@ class HTTPException(Exception):
         exc_data : str
             The error message from the API.
         """
+        super().__init__()
         self._status = status
         self._exc_data = exc_data
 
