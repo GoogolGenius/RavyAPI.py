@@ -37,7 +37,7 @@ repository = "https://github.com/GoogleGenius/plane"
 license-files = ["LICENSE"]
 
 [tool.setuptools.packages.find]
-include = ["plane"]
+include = ["plane*"]
 
 [tool.pyright]
 pythonVersion = "3.7"
