@@ -91,7 +91,7 @@ class KSoft:
         user_id : int
             The Discord ID of the user.
         """
-        return self._route + f"/bans/{user_id}"
+        return f"{self._route}/bans/{user_id}"
 
 
 class Tokens:
@@ -141,18 +141,18 @@ class Users:
     @property
     def pronouns(self) -> str:
         """The URL strcture for the child route `pronouns` of `users`."""
-        return self._route + "/pronouns"
+        return f"{self._route}/pronouns"
 
     @property
     def bans(self) -> str:
         """The URL structure for the child route `bans` of `users`."""
-        return self._route + "/bans"
+        return f"{self._route}/bans"
 
     @property
     def whitelists(self) -> str:
         """The URL structure for the child route `whitelists` of `users`."""
-        return self._route + "/whitelists"
+        return f"{self._route}/whitelists"
 
     @property
     def reputation(self) -> str:
-        return self._route + "/rep"
+        return f"{self._route}/rep"
