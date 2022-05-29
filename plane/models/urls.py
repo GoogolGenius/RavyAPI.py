@@ -12,7 +12,7 @@ class GetWebsiteResponse:
     ----------
     data : dict[str, Any]
         The raw data from the API.
-    is_fraudulent : str
+    is_fraudulent : bool
         Whether the URL is fraudulent.
     message : str
         The message about the URL.
@@ -20,8 +20,8 @@ class GetWebsiteResponse:
 
     def __init__(self, data: dict[str, Any]) -> None:
         self._data = data
-        self._is_fraudulent: str = data["isFraudulent"]
-        self._message = data["message"]
+        self._is_fraudulent: bool = data["isFraudulent"]
+        self._message: str = data["message"]
 
     @property
     def data(self) -> dict[str, Any]:
@@ -29,7 +29,7 @@ class GetWebsiteResponse:
         return self._data
 
     @property
-    def is_fraudulent(self) -> str:
+    def is_fraudulent(self) -> bool:
         """Whether the URL is fraudulent."""
         return self._is_fraudulent
 
