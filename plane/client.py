@@ -38,7 +38,12 @@ class Client:
         Parameters
         ----------
         token : str
-            The token used to authenticate with the Ravy API.
+            The token used to authenticate with the API.
+        token_type : Literal["Ravy", "KSoft"]
+            The type of token used to authenticate. If "KSoft", only the `ksoft` endpoint
+            is supported. All endpoints are available with "Ravy." There is no wrapper
+            validation for this. Upon an invalid request, the generic `HTTPException`
+            will be raised with the respective information.
         loop : asyncio.AbstractEventLoop
             The asyncio event loop used to run the client.
         """
