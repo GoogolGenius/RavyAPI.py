@@ -324,5 +324,8 @@ class SentinelEntry:
 
     @property
     def internal_id(self) -> str:
-        """Internal ID for debug purposes."""
+        """Internal ID for debug purposes.
+
+        !!! note
+            This is a hex string and not converted to `int`."""
         return self._internal_id

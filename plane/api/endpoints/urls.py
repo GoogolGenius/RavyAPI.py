@@ -14,7 +14,9 @@ class URLs:
     def __init__(self, http: HTTPClient) -> None:
         self._http = http
 
-    async def get_website(self, url: str, encode: bool = True) -> GetWebsiteResponse:
+    async def get_website(
+        self, url: str, encode: bool = True
+    ) -> GetWebsiteResponse:
         """Analyze a website URL by requesting the Ravy API.
 
         Parameters
@@ -27,4 +29,6 @@ class URLs:
         if encode:
             url = urllib.parse.quote_plus(url)
 
-        return GetWebsiteResponse(await self._http.get(self._http.paths.urls(url).route))
+        return GetWebsiteResponse(
+            await self._http.get(self._http.paths.urls(url).route)
+        )

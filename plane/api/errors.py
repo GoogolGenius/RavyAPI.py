@@ -21,7 +21,7 @@ class HTTPException(Exception):
         ----------
         status : int
             The HTTP status code of the error.
-        exc_message : str
+        exc_data : str
             The error message from the API.
         """
         self._status = status

@@ -18,6 +18,11 @@ class Paths:
         return Guilds(guild_id)
 
     @property
+    def ksoft(self) -> KSoft:
+        """Route paths for the main `ksoft` route."""
+        return KSoft()
+
+    @property
     def tokens(self) -> Tokens:
         """Route paths for the main `tokens` route."""
         return Tokens()
@@ -60,6 +65,33 @@ class Guilds:
     def guild_id(self) -> int:
         """The guild ID passed in to the `guilds` route"""
         return self._guild_id
+
+
+class KSoft:
+    """Route paths for the `ksoft` route.
+
+    This class was created with expansion in mind to avoid potential breakage.
+    However, with the current Ravy API this might look a bit strange compared
+    to the other route classes.
+    """
+
+    def __init__(self) -> None:
+        self._route = "/ksoft"
+
+    @property
+    def route(self) -> str:
+        """The route path for the `avatars` route."""
+        return self._route
+
+    def bans(self, user_id: int) -> str:
+        """Route paths for the `bans` route.
+
+        Parameters
+        ----------
+        user_id : int
+            The Discord ID of the user.
+        """
+        return self._route + f"/bans/{user_id}"
 
 
 class Tokens:
