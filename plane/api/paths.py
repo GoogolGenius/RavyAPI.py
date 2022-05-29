@@ -13,7 +13,8 @@ class Paths:
         """Route paths for the main `avatars` route."""
         return Avatars()
 
-    def guilds(self, guild_id: int) -> Guilds:
+    @staticmethod
+    def guilds(guild_id: int) -> Guilds:
         """Route paths for the main `guilds` route."""
         return Guilds(guild_id)
 
@@ -27,11 +28,13 @@ class Paths:
         """Route paths for the main `tokens` route."""
         return Tokens()
 
-    def urls(self, url: str) -> URLs:
+    @staticmethod
+    def urls(url: str) -> URLs:
         """Route paths for the main `urls` route."""
         return URLs(url)
 
-    def users(self, user_id: int) -> Users:
+    @staticmethod
+    def users(user_id: int) -> Users:
         """Route paths for the main `users` route."""
         return Users(user_id)
 
