@@ -1,4 +1,5 @@
 from __future__ import annotations
+from typing import Any
 
 __all__: tuple[str, ...] = ("HTTPException",)
 
@@ -10,11 +11,11 @@ class HTTPException(Exception):
     ----------
     status : int
         The HTTP status code of the error.
-    exc_message : str
+    exc_message : str | dict[str, Any]
         The error message from the API.
     """
 
-    def __init__(self, status: int, exc_message: str):
+    def __init__(self, status: int, exc_message: str | dict[str, Any]):
         """
         Parameters
         ----------
@@ -28,4 +29,10 @@ class HTTPException(Exception):
 
     def __str__(self) -> str:
         """Return the string representation of the exception."""
-        return f"{self.status}\n{self.exc_message}"
+        if isinstance(self.exc_message, dict):
+            return (
+                f"({self.status}) {self.exc_message['error']}"
+                f" - {self.exc_message['details']}"
+            )
+
+        return f"({self.status}) {self.exc_message}"

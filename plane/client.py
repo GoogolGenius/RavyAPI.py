@@ -16,7 +16,7 @@ class Client:
     token : str
         The token used to authenticate with the Ravy API.
     loop : asyncio.AbstractEventLoop | None
-        The asyncio event loop used to run the client. The default event loop is used if this is None.
+        The asyncio event loop used to run the client. Default event loop is used if None.
 
     Methods
     -------
