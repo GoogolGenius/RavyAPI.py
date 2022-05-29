@@ -23,7 +23,8 @@ class HTTPClient:
     async def close(self) -> None:
         await self._session.close()
 
-    async def _handle(self, response: aiohttp.ClientResponse) -> None:
+    @staticmethod
+    async def _handle(response: aiohttp.ClientResponse) -> None:
         if not response.ok:
             try:
                 data = await response.json()
@@ -44,9 +45,7 @@ class HTTPClient:
         params : dict[str, str] | None
             The query parameters to send with the request, if any.
         """
-        async with self._session.get(
-            BASE_URL + path, params=params
-        ) as response:
+        async with self._session.get(BASE_URL + path, params=params) as response:
             await self._handle(response)
             return await response.json()
 

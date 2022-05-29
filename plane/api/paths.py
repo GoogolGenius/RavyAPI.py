@@ -13,7 +13,8 @@ class Paths:
         """Route paths for the main `avatars` route."""
         return Avatars()
 
-    def guilds(self, guild_id: int) -> Guilds:
+    @staticmethod
+    def guilds(guild_id: int) -> Guilds:
         """Route paths for the main `guilds` route."""
         return Guilds(guild_id)
 
@@ -27,11 +28,13 @@ class Paths:
         """Route paths for the main `tokens` route."""
         return Tokens()
 
-    def urls(self, url: str) -> URLs:
+    @staticmethod
+    def urls(url: str) -> URLs:
         """Route paths for the main `urls` route."""
         return URLs(url)
 
-    def users(self, user_id: int) -> Users:
+    @staticmethod
+    def users(user_id: int) -> Users:
         """Route paths for the main `users` route."""
         return Users(user_id)
 
@@ -91,7 +94,7 @@ class KSoft:
         user_id : int
             The Discord ID of the user.
         """
-        return self._route + f"/bans/{user_id}"
+        return f"{self._route}/bans/{user_id}"
 
 
 class Tokens:
@@ -141,18 +144,18 @@ class Users:
     @property
     def pronouns(self) -> str:
         """The URL strcture for the child route `pronouns` of `users`."""
-        return self._route + "/pronouns"
+        return f"{self._route}/pronouns"
 
     @property
     def bans(self) -> str:
         """The URL structure for the child route `bans` of `users`."""
-        return self._route + "/bans"
+        return f"{self._route}/bans"
 
     @property
     def whitelists(self) -> str:
         """The URL structure for the child route `whitelists` of `users`."""
-        return self._route + "/whitelists"
+        return f"{self._route}/whitelists"
 
     @property
     def reputation(self) -> str:
-        return self._route + "/rep"
+        return f"{self._route}/rep"

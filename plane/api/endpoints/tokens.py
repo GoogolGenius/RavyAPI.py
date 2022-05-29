@@ -21,6 +21,4 @@ class Tokens:
         GetTokenResponse
             The response from the API.
         """
-        return GetTokenResponse(
-            await self._http.get(self._http.paths.tokens.route)
-        )
+        return GetTokenResponse(await self._http.get(self._http.paths.tokens.route))
