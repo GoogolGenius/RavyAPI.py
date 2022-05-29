@@ -4,8 +4,8 @@ __all__: tuple[str, ...] = ("Client",)
 
 import asyncio
 
-from .routes import Users, URLs, Tokens
 from .http import HTTPClient
+from .routes import Users, URLs, Tokens
 
 
 class Client:
@@ -35,9 +35,9 @@ class Client:
         loop : asyncio.AbstractEventLoop
             The asyncio event loop used to run the client.
         """
-        self.token = token
         self.loop = loop or asyncio.get_event_loop()
-        self._http = HTTPClient(token, self.loop)
+        self._token = token
+        self._http = HTTPClient(self._token, self.loop)
         self._closed: bool = False
         self._users = Users(self._http)
         self._urls = URLs(self._http)

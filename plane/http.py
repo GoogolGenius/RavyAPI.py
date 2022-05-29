@@ -17,14 +17,16 @@ class HTTPClient:
     """The internal HTTP client for handling requests to the Ravy API."""
 
     def __init__(self, token: str, loop: asyncio.AbstractEventLoop) -> None:
-        self.token = token
-        self._headers: dict[str, str] = {"Authorization": f"Ravy {self.token}"}
+        self._token = token
+        self._headers: dict[str, str] = {
+            "Authorization": f"Ravy {self._token}"
+        }
         self._session = aiohttp.ClientSession(loop=loop, headers=self._headers)
 
     async def close(self) -> None:
         await self._session.close()
 
-    async def _validate(self, response: aiohttp.ClientResponse) -> None:
+    async def _handle(self, response: aiohttp.ClientResponse) -> None:
         if not response.ok:
             try:
                 data = await response.json()
@@ -48,7 +50,7 @@ class HTTPClient:
         async with self._session.get(
             BASE_URL + path, params=params
         ) as response:
-            await self._validate(response)
+            await self._handle(response)
             return await response.json()
 
     async def post(
@@ -69,7 +71,7 @@ class HTTPClient:
         async with self._session.post(
             BASE_URL + path, json=data, params=params
         ) as response:
-            await self._validate(response)
+            await self._handle(response)
             return await response.json()
 
     @property

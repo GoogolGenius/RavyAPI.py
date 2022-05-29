@@ -17,6 +17,6 @@ class Tokens:
         """Fetch the current token from the Ravy API."""
         return GetTokenResponse(
             await self._http.get(
-                self._http.paths.tokens(self._http.token).route
+                self._http.paths.tokens(self._http._token).route
             )
         )
