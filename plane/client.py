@@ -20,7 +20,8 @@ class Client:
     token_type : Literal["Ravy", "KSoft"]
         The type of token used to authenticate with the Ravy API.
     loop : asyncio.AbstractEventLoop | None
-        The asyncio event loop used to run the client. Default event loop is used if None.
+        The asyncio event loop used to run the client. 
+        Default event loop is used if None.
 
     Methods
     -------
@@ -40,12 +41,15 @@ class Client:
         token : str
             The token used to authenticate with the API.
         token_type : Literal["Ravy", "KSoft"]
-            The type of token used to authenticate. If "KSoft", only the `ksoft` endpoint
-            is supported. All endpoints are available with "Ravy." There is no wrapper
-            validation for this. Upon an invalid request, the generic `HTTPException`
-            will be raised with the respective information.
+            The type of token used to authenticate.
         loop : asyncio.AbstractEventLoop
             The asyncio event loop used to run the client.
+
+        !!! note
+            If `token_type` is "KSoft", only the `ksoft` endpoint is supported. All
+            endpoints are available with "Ravy."There is no wrapper validation for this.
+            Upon an invalid request, the generic `HTTPException` will be raised with
+            the respective information.
         """
         self.token = token
         self.token_type = token_type
