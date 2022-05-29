@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-# from . import paths as paths
+from .avatars import *
 from .urls import *
 from .users import *
 from .tokens import *

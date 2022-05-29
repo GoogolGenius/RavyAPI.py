@@ -9,17 +9,18 @@ class Paths:
     """A base class for all Ravy API URL route paths."""
 
     @property
-    def base(self) -> str:
-        """The base URL for the Ravy API."""
-        return BASE_URL
+    def avatars(self) -> Avatars:
+        """Route paths for the main `avatars` route."""
+        return Avatars()
 
     def guilds(self, guild_id: int) -> Guilds:
         """Route paths for the main `guilds` route."""
         return Guilds(guild_id)
 
-    def tokens(self, token: str) -> Tokens:
+    @property
+    def tokens(self) -> Tokens:
         """Route paths for the main `tokens` route."""
-        return Tokens(token)
+        return Tokens()
 
     def urls(self, url: str) -> URLs:
         """Route paths for the main `urls` route."""
@@ -28,6 +29,19 @@ class Paths:
     def users(self, user_id: int) -> Users:
         """Route paths for the main `users` route."""
         return Users(user_id)
+
+
+class Avatars:
+    """Route paths for the `avatars` route.
+
+    This is the same as the `base` url of the Ravy API; however,
+    this is created as a more concrete class for avatars.
+    """
+
+    @property
+    def route(self) -> str:
+        """The route path for the `avatars` route."""
+        return BASE_URL
 
 
 class Guilds:
@@ -51,21 +65,10 @@ class Guilds:
 class Tokens:
     """A class containing route paths for the `tokens` main route."""
 
-    def __init__(self, token: str) -> None:
-        # Token passed in for the property. Any point since this is internal ?
-        # Very questionable design decisions by myself... lol
-        self._token = token
-        self._route = "/tokens/@current"
-
     @property
     def route(self) -> str:
         """The route path for the `tokens` route."""
-        return self._route
-
-    @property
-    def token(self) -> str:
-        """The token used by the HTTPClient (internal)."""
-        return self._token
+        return "/tokens/@current"
 
 
 class URLs:

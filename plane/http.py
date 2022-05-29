@@ -8,6 +8,7 @@ from typing import Any
 
 import aiohttp
 
+from .const import BASE_URL
 from .errors import HTTPException
 from .routes.paths import Paths
 
@@ -33,7 +34,7 @@ class HTTPClient:
             raise HTTPException(response.status, data)
 
     async def get(
-        self, path: str, params: dict[str, str] | None = None
+        self, path: str, params: dict[str, Any] | None = None
     ) -> dict[str, Any]:
         """Execute a GET request to the Ravy API.
 
@@ -45,7 +46,7 @@ class HTTPClient:
             The query parameters to send with the request, if any.
         """
         async with self._session.get(
-            self.paths.base + path, params=params
+            BASE_URL + path, params=params
         ) as response:
             await self._validate(response)
             return await response.json()
@@ -54,7 +55,7 @@ class HTTPClient:
         self,
         path: str,
         data: dict[str, Any],
-        params: dict[str, str] | None = None,
+        params: dict[str, Any] | None = None,
     ) -> dict[str, Any]:
         """Execute a POST request to the Ravy API.
 
@@ -66,7 +67,7 @@ class HTTPClient:
             The JSON data to send with the request.
         """
         async with self._session.post(
-            self.paths.base + path, json=data, params=params
+            BASE_URL + path, json=data, params=params
         ) as response:
             await self._validate(response)
             return await response.json()
