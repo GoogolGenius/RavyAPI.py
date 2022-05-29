@@ -19,7 +19,7 @@ class KSoft:
         ----------
         user_id : int
             The Discord ID of the user.
-        
+
         Returns
         -------
         GetKSoftBanResponse
