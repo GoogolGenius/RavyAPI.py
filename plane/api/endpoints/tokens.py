@@ -14,7 +14,13 @@ class Tokens:
         self._http = http
 
     async def get_token(self) -> GetTokenResponse:
-        """Fetch the current token from the Ravy API."""
+        """Get current token information.
+        
+        Returns
+        -------
+        GetTokenResponse
+            The response from the API.
+        """
         return GetTokenResponse(
             await self._http.get(self._http.paths.tokens.route)
         )

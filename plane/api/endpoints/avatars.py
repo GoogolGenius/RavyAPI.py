@@ -20,7 +20,7 @@ class Avatars:
         threshold: float = 0.97,
         method: Literal["ssim", "phash"] = "phash",
     ) -> CheckAvatarResponse:
-        """Fetch a guild by requesting the Ravy API.
+        """Check if avatar is fraudulent (Discord CDN).
 
         Parameters
         ----------
@@ -30,6 +30,11 @@ class Avatars:
             How similar the avatar needs to be for it to match (0-1, default 0.97).
         method : Literal["ssim", "phash"]
             Which method to use for matching the avatars (“ssim“ or “phash“, default is “phash“)
+        
+        Returns
+        -------
+        CheckAvatarResponse
+            The response from the API.
         """
         return CheckAvatarResponse(
             await self._http.get(

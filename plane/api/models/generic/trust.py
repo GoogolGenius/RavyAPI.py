@@ -11,7 +11,7 @@ class Trust:
     Attributes
     ----------
     data : dict[str, Any]
-        The raw data from the API.
+        The raw JSON data from the API.
     level : int
         From 0-6, higher is better, default is 3.
     label : str
@@ -30,7 +30,7 @@ class Trust:
 
     @property
     def level(self) -> int:
-        """From 0-6, higher is better."""
+        """From 0-6, higher is better, default is 3."""
         return self._level
 
     @property

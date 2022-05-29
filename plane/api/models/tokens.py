@@ -27,7 +27,7 @@ class GetTokenResponse:
         self._data = data
         self._user: str = data["user"]
         self._access: list[str] = data["access"]
-        self._application: str = data["application"]
+        self._application: int = int(data["application"])
         self._token_type: Literal["ravy", "ksoft"] = data["type"]
 
     @property
@@ -42,11 +42,11 @@ class GetTokenResponse:
 
     @property
     def access(self) -> list[str]:
-        """The access of the token."""
+        """The permission nodes of the token."""
         return self._access
 
     @property
-    def application(self) -> str:
+    def application(self) -> int:
         """The application ID of the token."""
         return self._application
 

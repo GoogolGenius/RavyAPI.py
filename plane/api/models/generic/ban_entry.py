@@ -6,20 +6,20 @@ from typing import Any
 
 
 class BanEntry:
-    """The ban entry data model.
+    """Ban entry data model.
 
     Attributes
     ----------
     data : dict[str, Any]
-        The raw data from the API.
+        The raw JSON data from the API.
     provider : str
-        Source for where the user is banned.
+        Source for where the user was banned.
     reason : str
-        Why the user is banned, usually STAFF.
+        Why the user was banned.
     reason_key : str | None
-        Machine-readable version of the reason - only present for providers ravy and dservices
+        Machine-readable version of the reason - only present for providers ravy and dservices.
     moderator : str
-        User ID of the responsible moderator, usually Discord
+        User ID of the responsible moderator, usually Discord.
     """
 
     def __init__(self, data: dict[str, Any]) -> None:
@@ -36,12 +36,12 @@ class BanEntry:
 
     @property
     def provider(self) -> str:
-        """Source for where the user is banned."""
+        """Source for where the user was banned."""
         return self._provider
 
     @property
     def reason(self) -> str:
-        """Why the user is banned, usually STAFF."""
+        """Why the user was banned."""
         return self._reason
 
     @property

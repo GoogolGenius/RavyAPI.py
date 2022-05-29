@@ -17,14 +17,14 @@ class URLs:
     async def get_website(
         self, url: str, encode: bool = True
     ) -> GetWebsiteResponse:
-        """Analyze a website URL by requesting the Ravy API.
+        """Get website information.
 
         Parameters
         ----------
         url : str
-            The URL to analyze. Must be properly encoded.
+            The url-encoded url to look up.
         encode : bool
-            Whether to automatically encode the URL; defaults to True.
+            Whether to auto-encode the url, True by default.
         """
         if encode:
             url = urllib.parse.quote_plus(url)

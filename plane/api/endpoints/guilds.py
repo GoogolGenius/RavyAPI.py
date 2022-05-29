@@ -13,12 +13,17 @@ class Guilds:
         self._http = http
 
     async def get_guild(self, guild_id: int) -> GetGuildResponse:
-        """Fetch a guild by requesting the Ravy API.
+        """Get extensive guild information.
 
         Parameters
         ----------
         guild_id : int
-            The Discord ID of the guild.
+            Guild ID of the guild to look up.
+
+        Returns
+        -------
+        GetGuildResponse
+            The response from the API.
         """
         return GetGuildResponse(
             await self._http.get(self._http.paths.guilds(guild_id).route)

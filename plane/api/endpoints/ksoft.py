@@ -13,12 +13,12 @@ class KSoft:
         self._http = http
 
     async def get_ban(self, user_id: int) -> GetKSoftBanResponse:
-        """Fetch a guild by requesting the Ravy API.
+        """Get KSoft ban status.
 
         Parameters
         ----------
         user_id : int
-            The Discord ID of the user.
+            User ID of the user to look up.
 
         Returns
         -------
