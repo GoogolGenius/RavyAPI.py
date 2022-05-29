@@ -24,8 +24,12 @@ class Avatars:
 
         Parameters
         ----------
-        guild_id : int
-            The Discord ID of the guild.
+        avatar_url : str
+            Link to the avatar, should start with cdn.discordapp.com.
+        threshold : float
+            How similar the avatar needs to be for it to match (0-1, default 0.97).
+        method : Literal["ssim", "phash"]
+            Which method to use for matching the avatars (“ssim“ or “phash“, default is “phash“)
         """
         return CheckAvatarResponse(
             await self._http.get(
