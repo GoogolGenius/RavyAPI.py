@@ -17,10 +17,7 @@ class HTTPClient:
     """The internal HTTP client for handling requests to the Ravy API."""
 
     def __init__(self, token: str, loop: asyncio.AbstractEventLoop) -> None:
-        self._token = token
-        self._headers: dict[str, str] = {
-            "Authorization": f"Ravy {self._token}"
-        }
+        self._headers: dict[str, str] = {"Authorization": f"Ravy {token}"}
         self._session = aiohttp.ClientSession(loop=loop, headers=self._headers)
 
     async def close(self) -> None:
