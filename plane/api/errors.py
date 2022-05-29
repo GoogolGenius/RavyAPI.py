@@ -11,11 +11,11 @@ class HTTPException(Exception):
     ----------
     status : int
         The HTTP status code of the error.
-    exc_message : str | dict[str, Any]
-        The error message from the API.
+    exc_data : str | dict[str, Any]
+        The error data from the API.
     """
 
-    def __init__(self, status: int, exc_message: str | dict[str, Any]):
+    def __init__(self, status: int, exc_data: str | dict[str, Any]):
         """
         Parameters
         ----------
@@ -25,17 +25,17 @@ class HTTPException(Exception):
             The error message from the API.
         """
         self._status = status
-        self._exc_message = exc_message
+        self._exc_data = exc_data
 
     def __str__(self) -> str:
         """Return the string representation of the exception."""
-        if isinstance(self.exc_message, dict):
+        if isinstance(self.exc_data, dict):
             return (
-                f"({self.status}) {self.exc_message['error']}"
-                f" - {self.exc_message['details']}"
+                f"({self.status}) {self.exc_data['error']}"
+                f" - {self.exc_data['details']}"
             )
 
-        return f"({self.status}) {self.exc_message}"
+        return f"({self.status}) {self.exc_data}"
 
     @property
     def status(self) -> int:
@@ -43,6 +43,6 @@ class HTTPException(Exception):
         return self._status
 
     @property
-    def exc_message(self) -> str | dict[str, Any]:
-        """The error message from the API."""
-        return self._exc_message
+    def exc_data(self) -> str | dict[str, Any]:
+        """The error data from the API."""
+        return self._exc_data
