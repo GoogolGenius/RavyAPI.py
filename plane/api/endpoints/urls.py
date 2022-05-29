@@ -14,7 +14,9 @@ class URLs:
     def __init__(self, http: HTTPClient) -> None:
         self._http = http
 
-    async def get_website(self, url: str, encode: bool = True) -> GetWebsiteResponse:
+    async def get_website(
+        self, url: str, encode: bool = True
+    ) -> GetWebsiteResponse:
         """Get website information.
 
         Parameters

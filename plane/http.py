@@ -5,6 +5,7 @@ __all__: tuple[str, ...] = ("HTTPClient",)
 import asyncio
 
 from typing import Any
+from typing_extensions import Literal
 
 import aiohttp
 
@@ -16,9 +17,15 @@ from .api.paths import Paths
 class HTTPClient:
     """The internal HTTP client for handling requests to the Ravy API."""
 
-    def __init__(self, token: str, loop: asyncio.AbstractEventLoop) -> None:
-        self._headers: dict[str, str] = {"Authorization": f"Ravy {token}"}
-        self._session = aiohttp.ClientSession(loop=loop, headers=self._headers)
+    def __init__(
+        self,
+        token: str,
+        token_type: Literal["Ravy", "KSoft"],
+        loop: asyncio.AbstractEventLoop,
+    ) -> None:
+        self._session = aiohttp.ClientSession(
+            loop=loop, headers={"Authorization": f"{token_type} {token}"}
+        )
 
     async def close(self) -> None:
         await self._session.close()
@@ -45,7 +52,9 @@ class HTTPClient:
         params : dict[str, str] | None
             The query parameters to send with the request, if any.
         """
-        async with self._session.get(BASE_URL + path, params=params) as response:
+        async with self._session.get(
+            BASE_URL + path, params=params
+        ) as response:
             await self._handle(response)
             return await response.json()
 
