@@ -3,7 +3,7 @@ from __future__ import annotations
 __all__: tuple[str, ...] = ("Tokens",)
 
 
-from ..http import HTTPClient
+from ...http import HTTPClient
 from ..models import GetTokenResponse
 
 
@@ -16,7 +16,5 @@ class Tokens:
     async def get_token(self) -> GetTokenResponse:
         """Fetch the current token from the Ravy API."""
         return GetTokenResponse(
-            await self._http.get(
-                self._http.paths.tokens(self._http._token).route
-            )
+            await self._http.get(self._http.paths.tokens.route)
         )

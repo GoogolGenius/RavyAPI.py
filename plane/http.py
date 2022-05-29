@@ -9,8 +9,8 @@ from typing import Any
 import aiohttp
 
 from .const import BASE_URL
-from .errors import HTTPException
-from .routes.paths import Paths
+from .api.errors import HTTPException
+from .api.paths import Paths
 
 
 class HTTPClient:

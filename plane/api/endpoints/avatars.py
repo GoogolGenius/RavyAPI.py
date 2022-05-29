@@ -4,7 +4,7 @@ __all__: tuple[str, ...] = ("Avatars",)
 
 from typing_extensions import Literal
 
-from ..http import HTTPClient
+from ...http import HTTPClient
 from ..models import CheckAvatarResponse
 
 

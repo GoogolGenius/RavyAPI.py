@@ -4,7 +4,7 @@ from __future__ import annotations
 from typing_extensions import Final
 
 from .client import *
-from .errors import *
+from .api import *
 
 __author__: Final[str] = "GoogleGenius"
 __repository__: Final[str] = "https://github.com/GoogleGenius/plane"

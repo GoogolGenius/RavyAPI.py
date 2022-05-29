@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 from .avatars import *
-from .generic import *
 from .guilds import *
 from .urls import *
 from .users import *

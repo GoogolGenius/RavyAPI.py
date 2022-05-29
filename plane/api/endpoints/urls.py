@@ -2,7 +2,7 @@ from __future__ import annotations
 
 __all__: tuple[str, ...] = ("URLs",)
 
-from ..http import HTTPClient
+from ...http import HTTPClient
 from ..models import GetWebsiteResponse
 
 
