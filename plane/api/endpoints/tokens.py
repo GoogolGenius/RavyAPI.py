@@ -15,7 +15,7 @@ class Tokens:
 
     async def get_token(self) -> GetTokenResponse:
         """Get current token information.
-        
+
         Returns
         -------
         GetTokenResponse
