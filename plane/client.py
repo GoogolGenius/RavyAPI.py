@@ -24,9 +24,7 @@ class Client:
         Close the client.
     """
 
-    def __init__(
-        self, token: str, loop: asyncio.AbstractEventLoop | None = None
-    ):
+    def __init__(self, token: str, loop: asyncio.AbstractEventLoop | None = None):
         """
         Parameters
         ----------

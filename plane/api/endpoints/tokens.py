@@ -15,12 +15,10 @@ class Tokens:
 
     async def get_token(self) -> GetTokenResponse:
         """Get current token information.
-        
+
         Returns
         -------
         GetTokenResponse
             The response from the API.
         """
-        return GetTokenResponse(
-            await self._http.get(self._http.paths.tokens.route)
-        )
+        return GetTokenResponse(await self._http.get(self._http.paths.tokens.route))

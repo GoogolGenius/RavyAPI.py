@@ -30,7 +30,7 @@ class Avatars:
             How similar the avatar needs to be for it to match (0-1, default 0.97).
         method : Literal["ssim", "phash"]
             Which method to use for matching the avatars (“ssim“ or “phash“, default is “phash“)
-        
+
         Returns
         -------
         CheckAvatarResponse
