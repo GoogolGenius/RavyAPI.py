@@ -24,8 +24,8 @@ class HTTPException(Exception):
         exc_message : str
             The error message from the API.
         """
-        self.status = status
-        self.exc_message = exc_message
+        self._status = status
+        self._exc_message = exc_message
 
     def __str__(self) -> str:
         """Return the string representation of the exception."""
@@ -36,3 +36,13 @@ class HTTPException(Exception):
             )
 
         return f"({self.status}) {self.exc_message}"
+
+    @property
+    def status(self) -> int:
+        """The HTTP status code of the error."""
+        return self._status
+
+    @property
+    def exc_message(self) -> str | dict[str, Any]:
+        """The error message from the API."""
+        return self._exc_message
