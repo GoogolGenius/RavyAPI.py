@@ -20,7 +20,7 @@ class Client:
     token_type : Literal["Ravy", "KSoft"]
         The type of token used to authenticate with the Ravy API.
     loop : asyncio.AbstractEventLoop | None
-        The asyncio event loop used to run the client. 
+        The asyncio event loop used to run the client.
         Default event loop is used if None.
 
     Methods
