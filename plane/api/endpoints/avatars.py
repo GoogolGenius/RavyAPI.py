@@ -2,10 +2,14 @@ from __future__ import annotations
 
 __all__: tuple[str, ...] = ("Avatars",)
 
+from typing import TYPE_CHECKING
 from typing_extensions import Literal
 
-from ...http import HTTPClient
 from ..models import CheckAvatarResponse
+from ...utils import with_permission_check
+
+if TYPE_CHECKING:
+    from ...http import HTTPClient
 
 
 class Avatars:
@@ -14,6 +18,7 @@ class Avatars:
     def __init__(self, http: HTTPClient) -> None:
         self._http = http
 
+    @with_permission_check("avatars")
     async def check_avatar(
         self,
         avatar_url: str,
@@ -29,7 +34,7 @@ class Avatars:
         threshold : float
             How similar the avatar needs to be for it to match (0-1, default 0.97).
         method : Literal["ssim", "phash"]
-            Which method to use for matching the avatars (“ssim“ or “phash“, default is “phash“)
+            Which method to use for matching the avatars ("ssim" or "phash", default is "phash")
 
         Returns
         -------

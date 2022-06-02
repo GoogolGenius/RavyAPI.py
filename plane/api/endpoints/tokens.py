@@ -1,10 +1,14 @@
 from __future__ import annotations
+from typing import TYPE_CHECKING
 
 __all__: tuple[str, ...] = ("Tokens",)
 
+from typing import TYPE_CHECKING
 
-from ...http import HTTPClient
 from ..models import GetTokenResponse
+
+if TYPE_CHECKING:
+    from ...http import HTTPClient
 
 
 class Tokens:

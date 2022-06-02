@@ -4,8 +4,13 @@ __all__: tuple[str, ...] = ("URLs",)
 
 import urllib.parse
 
-from ...http import HTTPClient
+from typing import TYPE_CHECKING
+
 from ..models import GetWebsiteResponse
+from ...utils import with_permission_check
+
+if TYPE_CHECKING:
+    from ...http import HTTPClient
 
 
 class URLs:
@@ -14,6 +19,7 @@ class URLs:
     def __init__(self, http: HTTPClient) -> None:
         self._http = http
 
+    @with_permission_check("urls.cached")
     async def get_website(self, url: str, encode: bool = True) -> GetWebsiteResponse:
         """Get website information.
 
