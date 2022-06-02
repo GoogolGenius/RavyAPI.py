@@ -11,8 +11,12 @@ This API is heavily inspired and is partially based upon the [ksoftapi Python wr
 TODO:
 
 - [ ] Full API coverage
+  - Add ban POST (admin.bans)
+  - Edit website POST (admin.urls)
+  - Avatars multipart/formdata POST (avatars)
 - [ ] More flexibility
-- [ ] Unit tests
+  - Use the url queries for `get_url()`
+- [ ] Unit tests (Depends; I am most certainly not mocking an *entire* API you know, however some parts...)
 
 DONE:
 
@@ -21,3 +25,4 @@ DONE:
 - [x] Docstrings (so far)
 - [x] Public documentation
 - [x] Abstract responses to objects
+- [x] Client side validation for token and permissions
