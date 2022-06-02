@@ -64,7 +64,7 @@ class AccessException(Exception):
 
     def __str__(self) -> str:
         """Return the string representation of the exception."""
-        return f"Insufficient permissions accessing route requiring \"{self.required}\""
+        return f'Insufficient permissions accessing route requiring "{self.required}"'
 
     @property
     def required(self) -> str:
