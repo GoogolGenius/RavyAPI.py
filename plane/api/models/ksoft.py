@@ -11,17 +11,13 @@ class GetKSoftBanResponse:
     def __init__(self, data: dict[str, Any]) -> None:
         self._data = data
         self._found: bool = data["found"]
-        self._user_id: int | None = (
-            int(data.get("id")) if isinstance(data.get("id"), str) else None
-        )
+        user_id = data.get("id")
+        self._user_id: int | None = int(user_id) if user_id else None
         self._tag: str | None = data.get("tag")
         self._reason: str | None = data.get("reason")
         self._proof: str | None = data.get("proof")
-        self._moderator: int | None = (
-            int(data.get("moderator"))
-            if isinstance(data.get("moderator"), str)
-            else None
-        )
+        moderator = data.get("moderator")
+        self._moderator: int | None = int(moderator) if moderator else None
         self._severe: bool | None = data.get("severe")
         self._timestamp: str | None = data.get("timestamp")
 

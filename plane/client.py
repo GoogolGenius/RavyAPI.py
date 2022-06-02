@@ -2,10 +2,6 @@ from __future__ import annotations
 
 __all__: tuple[str, ...] = ("Client",)
 
-import asyncio
-
-from typing_extensions import Literal
-
 from .http import HTTPClient
 from .api.endpoints import Avatars, Guilds, KSoft, Users, URLs, Tokens
 
@@ -29,12 +25,7 @@ class Client:
         Close the client.
     """
 
-    def __init__(
-        self,
-        token: str,
-        token_type: Literal["Ravy", "KSoft"],
-        loop: asyncio.AbstractEventLoop | None = None,
-    ):
+    def __init__(self, token: str):
         """
         Parameters
         ----------
@@ -51,10 +42,8 @@ class Client:
             Upon an invalid request, the generic `HTTPException` will be raised with
             the respective information.
         """
-        self.token = token
-        self.token_type = token_type
-        self.loop = loop or asyncio.get_event_loop()
-        self._http = HTTPClient(self.token, self.token_type, self.loop)
+        self._token = token
+        self._http = HTTPClient(self._token)
         self._closed: bool = False
         self._avatars = Avatars(self._http)
         self._guilds = Guilds(self._http)

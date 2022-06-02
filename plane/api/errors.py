@@ -1,7 +1,7 @@
 from __future__ import annotations
 from typing import Any
 
-__all__: tuple[str, ...] = ("HTTPException",)
+__all__: tuple[str, ...] = ("HTTPException", "AccessException")
 
 
 class HTTPException(Exception):
@@ -47,3 +47,26 @@ class HTTPException(Exception):
     def exc_data(self) -> str | dict[str, Any]:
         """The error data from the API."""
         return self._exc_data
+
+
+class AccessException(Exception):
+    """The base exception class for permission errors."""
+
+    def __init__(self, required: str):
+        """
+        Parameters
+        ----------
+        permission : list[str]
+            The permissions that were denied.
+        """
+        super().__init__()
+        self._required = required
+
+    def __str__(self) -> str:
+        """Return the string representation of the exception."""
+        return f"Insufficient permissions accessing route requiring {self.required}"
+
+    @property
+    def required(self) -> str:
+        """The permissions that needed."""
+        return self._required
