@@ -30,8 +30,10 @@ def with_permission_check(
         async def wrapper(
             self: Any, *args: tuple[Any, ...], **kwargs: dict[str, Any]
         ) -> Coroutine[Any, Any, Any]:
+            # skipcq: PYL-W0212  # hacky ;)
             if not has_permissions(required, self._http.permissions):
                 raise AccessException(required)
+
             return await function(self, *args, **kwargs)
 
         return wrapper
