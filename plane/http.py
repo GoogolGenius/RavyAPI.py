@@ -18,6 +18,7 @@ class HTTPClient:
 
     def __init__(self, token: str) -> None:
         self._token: str = self._token_sentinel(token)
+        self._permissions = None
         self._session = aiohttp.ClientSession(headers={"Authorization": token})
 
     @staticmethod
@@ -52,8 +53,6 @@ class HTTPClient:
         return token
 
     async def _get_permissions(self):
-        self._permissions = None
-
         if self._permissions is not None:
             return
 
