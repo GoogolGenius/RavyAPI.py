@@ -31,7 +31,8 @@ class HTTPClient:
 
             raise HTTPException(response.status, data)
 
-    def _token_sentinel(self, token: str):
+    @staticmethod
+    def _token_sentinel(token: str):
         """Validate the current token.
 
         Returns
