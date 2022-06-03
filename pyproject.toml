@@ -5,9 +5,15 @@ requires = ["setuptools >= 62.1.0", "wheel"]
 [project]
 authors = [{name = "Erich Nguyen", email = "erich.nguyen@outlook.com"}]
 classifiers = [
-  "Development Status :: 1 - Planning",
+  "Development Status :: 3 - Alpha",
+  "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+  "Programming Language :: Python :: 3.7",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
   "Natural Language :: English",
-  "Programming Language :: Python",
+  "Framework :: AsyncIO",
+  "Framework :: aiohttp",
   "Typing :: Typed",
 ]
 description = "A simple experimental Python wrapper for the Ravy API."
