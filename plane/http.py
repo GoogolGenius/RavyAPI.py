@@ -10,7 +10,7 @@ from typing import Any
 from plane.api.errors import HTTPException
 from plane.api.models import GetTokenResponse
 from plane.api.paths import Paths
-from plane.const import BASE_URL, KSOFT_TOKEN_REGEX, RAVY_TOKEN_REGEX
+from plane.const import BASE_URL, KSOFT_TOKEN_REGEX, RAVY_TOKEN_REGEX, USER_AGENT
 
 
 class HTTPClient:
@@ -21,7 +21,7 @@ class HTTPClient:
         self._permissions: list[str] | None = None
         self._phisherman_token: str | None = None
         self._session: aiohttp.ClientSession = aiohttp.ClientSession(
-            headers={"Authorization": token}
+            headers={"Authorization": token, "User-Agent": USER_AGENT}
         )
 
     @staticmethod

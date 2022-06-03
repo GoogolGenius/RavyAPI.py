@@ -1,8 +1,14 @@
 from __future__ import annotations
 
-__all__: tuple[str, ...] = ("BASE_URL", "RAVY_TOKEN_REGEX", "KSOFT_TOKEN_REGEX")
+__all__: tuple[str, ...] = ("BASE_URL", "RAVY_TOKEN_REGEX", "KSOFT_TOKEN_REGEX", "USER_AGENT")
+
+import platform
 
 from typing_extensions import Final
+
+import aiohttp
+
+from plane import _about
 
 BASE_URL: Final[str] = "https://ravy.org/api/v1"
 """The base URL of the Ravy API."""
@@ -15,3 +21,11 @@ KSOFT_TOKEN_REGEX: Final[str] = r"[0-9a-f]{40}"
 
 NULL: Final[str] = "\x00"
 """Null byte."""
+
+# Totally not copied from Hikari lol
+USER_AGENT: Final[str] = (
+    f"plane ({_about.__repository__}, {_about.__version__}) {_about.__author__} "
+    f"aiohttp/{aiohttp.__version__} "
+    f"{platform.python_implementation()}/{platform.python_version()} "
+    f"{platform.system()} {platform.architecture()[0]}"
+)
