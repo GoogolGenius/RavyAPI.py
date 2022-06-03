@@ -64,6 +64,11 @@ class Client:
         ----------
         token : str
             The phisherman token to use for `urls` routes.
+        
+        Returns
+        -------
+        Client
+            The client instance for future callable chaining.
         """
         self._http.set_phisherman_token(token)
 
@@ -75,7 +80,7 @@ class Client:
         return self._closed
 
     @property
-    async def avatars(self) -> Avatars:
+    def avatars(self) -> Avatars:
         """The avatars endpoint."""
         return self._avatars
 

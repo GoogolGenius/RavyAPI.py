@@ -136,5 +136,5 @@ class HTTPClient:
 
 
 class HTTPAwareEndpoint:
-    def __init__(self, http: Any) -> None:
+    def __init__(self, http: HTTPClient) -> None:
         self._http = http
