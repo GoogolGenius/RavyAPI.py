@@ -20,7 +20,9 @@ class HTTPClient:
         self._token: str = self._token_sentinel(token)
         self._permissions = None
         self._phisherman_token: str | None = None
-        self._session: aiohttp.ClientSession = aiohttp.ClientSession(headers={"Authorization": token})
+        self._session: aiohttp.ClientSession = aiohttp.ClientSession(
+            headers={"Authorization": token}
+        )
 
     @staticmethod
     async def _handle_response(response: aiohttp.ClientResponse) -> None:
