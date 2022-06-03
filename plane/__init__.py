@@ -2,6 +2,6 @@
 
 from __future__ import annotations
 
-from ._about import *
-from .client import *
-from .api import *
+from plane._about import *
+from plane.client import *
+from plane.api import *

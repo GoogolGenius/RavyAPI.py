@@ -13,7 +13,7 @@ __all__: tuple[str, ...] = (
 
 from typing import Any
 
-from .generic import Trust, BanEntry
+from plane.api.models.generic import Trust, BanEntry
 
 
 class GetUserResponse:

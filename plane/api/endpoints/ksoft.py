@@ -2,23 +2,16 @@ from __future__ import annotations
 
 __all__: tuple[str, ...] = ("KSoft",)
 
-from typing import TYPE_CHECKING
-
-from ..models import GetKSoftBanResponse
-from ...utils import with_permission_check
-
-if TYPE_CHECKING:
-    from ...http import HTTPClient
+from plane.api.models import GetKSoftBanResponse
+from plane.http import HTTPAwareEndpoint
+from plane.utils import with_permission_check
 
 
-class KSoft:
+class KSoft(HTTPAwareEndpoint):
     """The implementation class for requests to the `ksoft` route."""
 
-    def __init__(self, http: HTTPClient) -> None:
-        self._http = http
-
     @with_permission_check("ksoft.bans")
-    async def get_ban(self, user_id: int) -> GetKSoftBanResponse:
+    async def get_ban(self: HTTPAwareEndpoint, user_id: int) -> GetKSoftBanResponse:
         """Get KSoft ban status.
 
         Parameters

@@ -12,3 +12,6 @@ RAVY_TOKEN_REGEX = r"[A-Za-z0-9_-]{24}\.[0-9a-f]{64}"
 
 KSOFT_TOKEN_REGEX = r"[0-9a-f]{40}"
 """The regex for validating a KSoft token."""
+
+NULL = "\x00"
+"""Null byte."""

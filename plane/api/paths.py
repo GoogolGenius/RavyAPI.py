@@ -2,7 +2,7 @@ from __future__ import annotations
 
 __all__: tuple[str, ...] = ("Paths",)
 
-from ..const import BASE_URL
+from plane.const import BASE_URL
 
 
 class Paths:
@@ -28,10 +28,10 @@ class Paths:
         """Route paths for the main `tokens` route."""
         return Tokens()
 
-    @staticmethod
-    def urls(url: str) -> URLs:
+    @property
+    def urls(self) -> URLs:
         """Route paths for the main `urls` route."""
-        return URLs(url)
+        return URLs()
 
     @staticmethod
     def users(user_id: int) -> Users:
@@ -109,19 +109,10 @@ class Tokens:
 class URLs:
     """A class containing route paths for the `urls` main route."""
 
-    def __init__(self, url: str) -> None:
-        self._url = url
-        self._route = f"/urls/{self._url}"
-
     @property
     def route(self) -> str:
         """The route path for the `urls` route"""
-        return self._route
-
-    @property
-    def url(self) -> str:
-        """The website URL passed in to the `urls` route"""
-        return self._url
+        return "/urls"
 
 
 class Users:

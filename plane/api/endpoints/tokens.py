@@ -2,21 +2,14 @@ from __future__ import annotations
 
 __all__: tuple[str, ...] = ("Tokens",)
 
-from typing import TYPE_CHECKING
-
-from ..models import GetTokenResponse
-
-if TYPE_CHECKING:
-    from ...http import HTTPClient
+from plane.api.models import GetTokenResponse
+from plane.http import HTTPAwareEndpoint
 
 
-class Tokens:
+class Tokens(HTTPAwareEndpoint):
     """The implementation class for requests to the `tokens` route."""
 
-    def __init__(self, http: HTTPClient) -> None:
-        self._http = http
-
-    async def get_token(self) -> GetTokenResponse:
+    async def get_token(self: HTTPAwareEndpoint) -> GetTokenResponse:
         """Get current token information.
 
         Returns

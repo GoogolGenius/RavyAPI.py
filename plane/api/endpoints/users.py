@@ -2,29 +2,22 @@ from __future__ import annotations
 
 __all__: tuple[str, ...] = ("Users",)
 
-from typing import TYPE_CHECKING
-
-from ..models import (
+from plane.api.models import (
     GetUserResponse,
     GetPronounsResponse,
     GetBansResponse,
     GetWhitelistsResponse,
     GetReputationResponse,
 )
-from ...utils import with_permission_check
-
-if TYPE_CHECKING:
-    from ...http import HTTPClient
+from plane.http import HTTPAwareEndpoint
+from plane.utils import with_permission_check
 
 
-class Users:
+class Users(HTTPAwareEndpoint):
     """The implementation class for requests to the `users` route."""
 
-    def __init__(self, http: HTTPClient) -> None:
-        self._http = http
-
     @with_permission_check("users")
-    async def get_user(self, user_id: int) -> GetUserResponse:
+    async def get_user(self: HTTPAwareEndpoint, user_id: int) -> GetUserResponse:
         """Get extensive user information.
 
         Parameters
@@ -42,7 +35,7 @@ class Users:
         )
 
     @with_permission_check("users.pronouns")
-    async def get_pronouns(self, user_id: int) -> GetPronounsResponse:
+    async def get_pronouns(self: HTTPAwareEndpoint, user_id: int) -> GetPronounsResponse:
         """Get pronouns.
 
         Parameters
@@ -60,7 +53,7 @@ class Users:
         )
 
     @with_permission_check("users.bans")
-    async def get_bans(self, user_id: int) -> GetBansResponse:
+    async def get_bans(self: HTTPAwareEndpoint, user_id: int) -> GetBansResponse:
         """Get bans.
 
         Parameters
@@ -78,7 +71,7 @@ class Users:
         )
 
     @with_permission_check("users.whitelists")
-    async def get_whitelists(self, user_id: int) -> GetWhitelistsResponse:
+    async def get_whitelists(self: HTTPAwareEndpoint, user_id: int) -> GetWhitelistsResponse:
         """Get whitelists.
 
         Parameters
@@ -96,7 +89,7 @@ class Users:
         )
 
     @with_permission_check("users.rep")
-    async def get_reputation(self, user_id: int) -> GetReputationResponse:
+    async def get_reputation(self: HTTPAwareEndpoint, user_id: int) -> GetReputationResponse:
         """Get reputation.
 
         Parameters

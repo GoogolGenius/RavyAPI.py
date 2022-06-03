@@ -1,16 +1,16 @@
 from __future__ import annotations
 
-__all__: tuple[str, ...] = ("HTTPClient",)
+__all__: tuple[str, ...] = ("HTTPClient", "HTTPAwareEndpoint")
 
 import aiohttp
 import re
 
 from typing import Any
 
-from .api.errors import HTTPException
-from .api.models import GetTokenResponse
-from .api.paths import Paths
-from .const import BASE_URL, KSOFT_TOKEN_REGEX, RAVY_TOKEN_REGEX
+from plane.api.errors import HTTPException
+from plane.api.models import GetTokenResponse
+from plane.api.paths import Paths
+from plane.const import BASE_URL, KSOFT_TOKEN_REGEX, RAVY_TOKEN_REGEX
 
 
 class HTTPClient:
@@ -19,6 +19,7 @@ class HTTPClient:
     def __init__(self, token: str) -> None:
         self._token: str = self._token_sentinel(token)
         self._permissions = None
+        self._phisherman_token: str | None = None
         self._session = aiohttp.ClientSession(headers={"Authorization": token})
 
     @staticmethod
@@ -105,6 +106,16 @@ class HTTPClient:
             await self._handle_response(response)
             return await response.json()
 
+    def set_phisherman_token(self, token: str) -> None:
+        """Set the phisherman token.
+
+        Parameters
+        ----------
+        token : str
+            The phisherman token.
+        """
+        self._phisherman_token = token
+
     async def close(self) -> None:
         await self._session.close()
 
@@ -117,3 +128,13 @@ class HTTPClient:
     def permissions(self) -> list[str] | None:
         """The permissions for the current token."""
         return self._permissions
+
+    @property
+    def phisherman_token(self) -> str | None:
+        """The phisherman token for the current token."""
+        return self._phisherman_token
+
+
+class HTTPAwareEndpoint:
+    def __init__(self, http: Any) -> None:
+        self._http = http
