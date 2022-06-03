@@ -35,7 +35,9 @@ class Users(HTTPAwareEndpoint):
         )
 
     @with_permission_check("users.pronouns")
-    async def get_pronouns(self: HTTPAwareEndpoint, user_id: int) -> GetPronounsResponse:
+    async def get_pronouns(
+        self: HTTPAwareEndpoint, user_id: int
+    ) -> GetPronounsResponse:
         """Get pronouns.
 
         Parameters
@@ -71,7 +73,9 @@ class Users(HTTPAwareEndpoint):
         )
 
     @with_permission_check("users.whitelists")
-    async def get_whitelists(self: HTTPAwareEndpoint, user_id: int) -> GetWhitelistsResponse:
+    async def get_whitelists(
+        self: HTTPAwareEndpoint, user_id: int
+    ) -> GetWhitelistsResponse:
         """Get whitelists.
 
         Parameters
@@ -89,7 +93,9 @@ class Users(HTTPAwareEndpoint):
         )
 
     @with_permission_check("users.rep")
-    async def get_reputation(self: HTTPAwareEndpoint, user_id: int) -> GetReputationResponse:
+    async def get_reputation(
+        self: HTTPAwareEndpoint, user_id: int
+    ) -> GetReputationResponse:
         """Get reputation.
 
         Parameters

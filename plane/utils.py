@@ -32,7 +32,9 @@ def has_permissions(required: str, permissions: list[str]):
 def with_permission_check(
     required: str,
 ) -> Callable[[_EndpointF[_EndpointP, _EndpointT]], _EndpointF[_EndpointP, _EndpointT]]:
-    def decorator(function: _EndpointF[_EndpointP, _EndpointT]) -> _EndpointF[_EndpointP, _EndpointT]:
+    def decorator(
+        function: _EndpointF[_EndpointP, _EndpointT]
+    ) -> _EndpointF[_EndpointP, _EndpointT]:
         @wraps(function)
         async def wrapper(
             self: HTTPAwareEndpoint, *args: _EndpointP.args, **kwargs: _EndpointP.kwargs
