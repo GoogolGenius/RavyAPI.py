@@ -41,13 +41,19 @@ class Avatars(HTTPAwareEndpoint):
         #     raise ValueError('Parameter "avatar_url" must start with "https://cdn.discordapp.com"')
 
         if not avatar_url.startswith("https://cdn.discordapp.com"):
-            raise ValueError('Parameter "avatar_url" must start with "https://cdn.discordapp.com"')
+            raise ValueError(
+                'Parameter "avatar_url" must start with "https://cdn.discordapp.com"'
+            )
 
         if not 0 <= threshold <= 1:
-            raise ValueError('Parameter "threshold" must be of "float" or derivative between 0 and 1')
-        
+            raise ValueError(
+                'Parameter "threshold" must be of "float" or derivative between 0 and 1'
+            )
+
         if not isinstance(method, Literal["ssim", "phash"]):
-            raise ValueError('Parameter "method" must be of "Literal" "str" type "ssim" | "phash"')
+            raise ValueError(
+                'Parameter "method" must be of "Literal" "str" type "ssim" | "phash"'
+            )
 
         return CheckAvatarResponse(
             await self._http.get(
