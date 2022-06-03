@@ -42,6 +42,11 @@ include = ["plane*"]
 [tool.pyright]
 pythonVersion = "3.7"
 typeCheckingMode = "strict"
+reportUnnecessaryIsInstance = false
+
+[tool.mypy]
+python_version = "3.7"
+strict = true
 
 [tool.black]
 lineLength = 88

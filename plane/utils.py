@@ -18,7 +18,7 @@ if TYPE_CHECKING:
     ]
 
 
-def has_permissions(required: str, permissions: list[str]):
+def has_permissions(required: str, permissions: list[str]) -> bool:
     required_list = required.split(".")
 
     while required_list:
