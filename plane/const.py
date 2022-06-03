@@ -1,6 +1,11 @@
 from __future__ import annotations
 
-__all__: tuple[str, ...] = ("BASE_URL", "RAVY_TOKEN_REGEX", "KSOFT_TOKEN_REGEX", "USER_AGENT")
+__all__: tuple[str, ...] = (
+    "BASE_URL",
+    "RAVY_TOKEN_REGEX",
+    "KSOFT_TOKEN_REGEX",
+    "USER_AGENT",
+)
 
 import platform
 
