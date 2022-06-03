@@ -64,7 +64,7 @@ class Client:
         ----------
         token : str
             The phisherman token to use for `urls` routes.
-        
+
         Returns
         -------
         Client
