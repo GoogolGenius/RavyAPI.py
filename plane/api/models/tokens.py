@@ -24,7 +24,7 @@ class GetTokenResponse:
     """
 
     def __init__(self, data: dict[str, Any]) -> None:
-        self._data = data
+        self._data: dict[str, Any] = data
         self._user: str = data["user"]
         self._access: list[str] = data["access"]
         self._application: int = int(data["application"])

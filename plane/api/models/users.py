@@ -38,7 +38,7 @@ class GetUserResponse:
     """
 
     def __init__(self, data: dict[str, Any]) -> None:
-        self._data = data
+        self._data: dict[str, Any] = data
         self._pronouns: str = data["pronouns"]
         self._trust = Trust(data["trust"])
         self._whitelists = WhitelistEntry(data["whitelists"])
@@ -94,7 +94,7 @@ class GetPronounsResponse:
     """
 
     def __init__(self, data: dict[str, Any]) -> None:
-        self._data = data
+        self._data: dict[str, Any] = data
         self._pronouns: str = data["pronouns"]
 
     @property
@@ -122,7 +122,7 @@ class GetBansResponse:
     """
 
     def __init__(self, data: dict[str, Any]) -> None:
-        self._data = data
+        self._data: dict[str, Any] = data
         self._trust = Trust(data["trust"])
         self._bans = [BanEntry(ban) for ban in data["bans"]]
 
@@ -156,7 +156,7 @@ class GetWhitelistsResponse:
     """
 
     def __init__(self, data: dict[str, Any]) -> None:
-        self._data = data
+        self._data: dict[str, Any] = data
         self._whitelists = [
             WhitelistEntry(whitelist) for whitelist in data["whitelists"]
         ]
@@ -192,7 +192,7 @@ class GetReputationResponse:
     """
 
     def __init__(self, data: dict[str, Any]) -> None:
-        self._data = data
+        self._data: dict[str, Any] = data
         self._rep = [ReputationEntry(rep) for rep in data["rep"]]
         self._trust = Trust(data["trust"])
 
@@ -226,7 +226,7 @@ class WhitelistEntry:
     """
 
     def __init__(self, data: dict[str, Any]) -> None:
-        self._data = data
+        self._data: dict[str, Any] = data
         self._provider: str = data["provider"]
         self._reason: str = data["reason"]
 
@@ -264,7 +264,7 @@ class ReputationEntry:
     """
 
     def __init__(self, data: dict[str, Any]) -> None:
-        self._data = data
+        self._data: dict[str, Any] = data
         self._provider: str = data["provider"]
         self._score: float = data["score"]
         self._upvotes: int | None = data.get("upvotes")
@@ -308,7 +308,7 @@ class SentinelEntry:
     """
 
     def __init__(self, data: dict[str, Any]) -> None:
-        self._data = data
+        self._data: dict[str, Any] = data
         self._verified: bool = data["verified"]
         self._internal_id: str = str(data["id"])
 

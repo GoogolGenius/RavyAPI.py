@@ -35,6 +35,9 @@ class Avatars(HTTPAwareEndpoint):
         CheckAvatarResponse
             The response from the API.
         """
+        if not 0 <= threshold <= 1:
+            raise ValueError('Parameter "threshold" must be of float between 0 and 1')
+
         return CheckAvatarResponse(
             await self._http.get(
                 self._http.paths.avatars.route,

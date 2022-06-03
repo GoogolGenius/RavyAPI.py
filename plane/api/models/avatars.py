@@ -21,7 +21,7 @@ class CheckAvatarResponse:
     """
 
     def __init__(self, data: dict[str, Any]) -> None:
-        self._data = data
+        self._data: dict[str, Any] = data
         self._matched: bool = data["isFraudulent"]
         self._key: str = data["message"]
         self._similarity: float = data["similarity"]

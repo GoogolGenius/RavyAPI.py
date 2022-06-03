@@ -56,8 +56,8 @@ class Guilds:
     """A class containing route paths for the `guilds` main route."""
 
     def __init__(self, guild_id: int) -> None:
-        self._guild_id = guild_id
-        self._route = f"/guilds/{self._guild_id}"
+        self._guild_id: int = guild_id
+        self._route: str = f"/guilds/{self._guild_id}"
 
     @property
     def route(self) -> str:
@@ -79,7 +79,7 @@ class KSoft:
     """
 
     def __init__(self) -> None:
-        self._route = "/ksoft"
+        self._route: str = "/ksoft"
 
     @property
     def route(self) -> str:
@@ -119,8 +119,8 @@ class Users:
     """A class containing route paths for the `users` main route"""
 
     def __init__(self, user_id: int) -> None:
-        self._user_id = user_id
-        self._route = f"/users/{self._user_id}"
+        self._user_id: int = user_id
+        self._route: str = f"/users/{self._user_id}"
 
     @property
     def route(self) -> str:

@@ -9,7 +9,7 @@ from plane.api.models.generic import Trust, BanEntry
 
 class GetGuildResponse:
     def __init__(self, data: dict[str, Any]) -> None:
-        self._data = data
+        self._data: dict[str, Any] = data
         self._trust: Trust = data["trust"]
         self._bans: list[BanEntry] = [BanEntry(ban) for ban in data["bans"]]
 
