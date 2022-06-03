@@ -38,13 +38,15 @@ class URLs(HTTPAwareEndpoint):
         """
         if not isinstance(url, str):
             raise ValueError('Parameter "url" must be of "str" or derivative type')
-        
+
         if author is not None and not isinstance(author, int):
             raise ValueError('Parameter "author" must be of "int" or derivative type')
-        
+
         if phisherman_user is not None and not isinstance(phisherman_user, int):
-            raise ValueError('Parameter "phisherman_user" must be of "int" or derivative type')
-        
+            raise ValueError(
+                'Parameter "phisherman_user" must be of "int" or derivative type'
+            )
+
         if self._http.phisherman_token is None and phisherman_user:
             raise ValueError("Phisherman token required if phisherman user is set.")
 
