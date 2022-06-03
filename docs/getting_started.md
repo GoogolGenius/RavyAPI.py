@@ -15,7 +15,7 @@ async def main() -> None:
 
     # Make a simple request to get token information
     token_info = await client.tokens.get_token()
-    print(token_info.type)  # Print the token type: "ravy" | "ksoft"
+    print(token_info.token_type)  # Print the token type: "ravy" | "ksoft"
 
     # Close and teardown the client
     await client.close()
