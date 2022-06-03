@@ -19,7 +19,7 @@ class Trust:
     """
 
     def __init__(self, data: dict[str, Any]) -> None:
-        self._data = data
+        self._data: dict[str, Any] = data
         self._level: int = data["level"]
         self._label: str = data["label"]
 

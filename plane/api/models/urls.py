@@ -19,7 +19,7 @@ class GetWebsiteResponse:
     """
 
     def __init__(self, data: dict[str, Any]) -> None:
-        self._data = data
+        self._data: dict[str, Any] = data
         self._is_fraudulent: bool = data["isFraudulent"]
         self._message: str = data["message"]
 

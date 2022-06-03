@@ -25,8 +25,8 @@ class HTTPException(Exception):
             The error message from the API.
         """
         super().__init__()
-        self._status = status
-        self._exc_data = exc_data
+        self._status: int = status
+        self._exc_data: str | dict[str, Any] = exc_data
 
     def __str__(self) -> str:
         """Return the string representation of the exception."""
@@ -60,7 +60,7 @@ class AccessException(Exception):
             The permissions that were denied.
         """
         super().__init__()
-        self._required = required
+        self._required: str = required
 
     def __str__(self) -> str:
         """Return the string representation of the exception."""

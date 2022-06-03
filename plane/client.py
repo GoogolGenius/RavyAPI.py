@@ -42,15 +42,15 @@ class Client:
             Upon an invalid request, the generic `HTTPException` will be raised with
             the respective information.
         """
-        self._token = token
-        self._http = HTTPClient(self._token)
+        self._token: str = token
+        self._http: HTTPClient = HTTPClient(self._token)
         self._closed: bool = False
-        self._avatars = Avatars(self._http)
-        self._guilds = Guilds(self._http)
-        self._ksoft = KSoft(self._http)
-        self._users = Users(self._http)
-        self._urls = URLs(self._http)
-        self._tokens = Tokens(self._http)
+        self._avatars: Avatars = Avatars(self._http)
+        self._guilds: Guilds = Guilds(self._http)
+        self._ksoft: KSoft = KSoft(self._http)
+        self._users: Users = Users(self._http)
+        self._urls: URLs = URLs(self._http)
+        self._tokens: Tokens = Tokens(self._http)
 
     async def close(self) -> None:
         """Close the client."""

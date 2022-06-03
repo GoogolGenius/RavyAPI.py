@@ -23,7 +23,7 @@ class BanEntry:
     """
 
     def __init__(self, data: dict[str, Any]) -> None:
-        self._data = data
+        self._data: dict[str, Any] = data
         self._provider: str = data["provider"]
         self._reason: str = data["reason"]
         self._reason_key: str | None = data.get("reason_key")
