@@ -2,25 +2,20 @@ from __future__ import annotations
 
 __all__: tuple[str, ...] = ("Avatars",)
 
-from typing import TYPE_CHECKING
 from typing_extensions import Literal
 
-from ..models import CheckAvatarResponse
-from ...utils import with_permission_check
-
-if TYPE_CHECKING:
-    from ...http import HTTPClient
+from plane.api.models import CheckAvatarResponse
+from plane.http import HTTPAwareEndpoint
+from plane.utils import with_permission_check
 
 
-class Avatars:
+
+class Avatars(HTTPAwareEndpoint):
     """The implementation class for requests to the `guilds` route."""
-
-    def __init__(self, http: HTTPClient) -> None:
-        self._http = http
 
     @with_permission_check("avatars")
     async def check_avatar(
-        self,
+        self: HTTPAwareEndpoint,
         avatar_url: str,
         threshold: float = 0.97,
         method: Literal["ssim", "phash"] = "phash",

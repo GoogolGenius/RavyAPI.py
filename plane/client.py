@@ -2,8 +2,8 @@ from __future__ import annotations
 
 __all__: tuple[str, ...] = ("Client",)
 
-from .http import HTTPClient
-from .api.endpoints import Avatars, Guilds, KSoft, Users, URLs, Tokens
+from plane.http import HTTPClient
+from plane.api.endpoints import Avatars, Guilds, KSoft, Users, URLs, Tokens
 
 
 class Client:
@@ -56,6 +56,18 @@ class Client:
         """Close the client."""
         await self._http.close()
         self._closed = True
+
+    def set_phisherman_token(self, token: str) -> Client:
+        """Set the phisherman token.
+
+        Parameters
+        ----------
+        token : str
+            The phisherman token to use for `urls` routes.
+        """
+        self._http.set_phisherman_token(token)
+
+        return self  # for future chaining
 
     @property
     def closed(self) -> bool:

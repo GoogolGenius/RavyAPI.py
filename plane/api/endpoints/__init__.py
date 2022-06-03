@@ -2,9 +2,9 @@
 
 from __future__ import annotations
 
-from .avatars import *
-from .guilds import *
-from .ksoft import *
-from .urls import *
-from .users import *
-from .tokens import *
+from plane.api.endpoints.avatars import *
+from plane.api.endpoints.guilds import *
+from plane.api.endpoints.ksoft import *
+from plane.api.endpoints.urls import *
+from plane.api.endpoints.users import *
+from plane.api.endpoints.tokens import *
