@@ -9,7 +9,6 @@ from plane.http import HTTPAwareEndpoint
 from plane.utils import with_permission_check
 
 
-
 class Avatars(HTTPAwareEndpoint):
     """The implementation class for requests to the `guilds` route."""
 
