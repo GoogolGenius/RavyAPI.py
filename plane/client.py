@@ -25,7 +25,7 @@ class Client:
         Close the client.
     """
 
-    def __init__(self, token: str):
+    def __init__(self, token: str) -> None:
         """
         Parameters
         ----------

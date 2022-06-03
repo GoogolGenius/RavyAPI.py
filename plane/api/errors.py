@@ -15,7 +15,7 @@ class HTTPException(Exception):
         The error data from the API.
     """
 
-    def __init__(self, status: int, exc_data: str | dict[str, Any]):
+    def __init__(self, status: int, exc_data: str | dict[str, Any]) -> None:
         """
         Parameters
         ----------
@@ -52,7 +52,7 @@ class HTTPException(Exception):
 class AccessException(Exception):
     """The base exception class for permission errors."""
 
-    def __init__(self, required: str):
+    def __init__(self, required: str) -> None:
         """
         Parameters
         ----------
