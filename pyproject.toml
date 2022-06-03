@@ -16,6 +16,7 @@ classifiers = [
   "Framework :: aiohttp",
   "Typing :: Typed",
 ]
+dependencies = ["aiohttp==3.8.1", "typing-extensions==4.2.0"]
 description = "A simple experimental Python wrapper for the Ravy API."
 keywords = [
   "API",
@@ -23,7 +24,6 @@ keywords = [
   "Ravy",
   "Wrapper",
 ]
-
 license = {file = "LICENSE"}
 maintainers = [
   {name = "Erich Nguyen", email = "erich.nguyen@outlook.com"},
@@ -32,8 +32,6 @@ name = "plane"
 readme = "README.md"
 requires-python = ">=3.7"
 version = "0.1.0a"
-
-dependencies = ["aiohttp"]
 
 [project.urls]
 homepage = "https://github.com/GoogleGenius/plane"
@@ -47,8 +45,8 @@ include = ["plane*"]
 
 [tool.pyright]
 pythonVersion = "3.7"
-typeCheckingMode = "strict"
 reportUnnecessaryIsInstance = false
+typeCheckingMode = "strict"
 
 [tool.mypy]
 python_version = "3.7"
