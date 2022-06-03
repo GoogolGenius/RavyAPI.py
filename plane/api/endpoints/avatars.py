@@ -2,6 +2,8 @@ from __future__ import annotations
 
 __all__: tuple[str, ...] = ("Avatars",)
 
+# import re
+
 from typing_extensions import Literal
 
 from plane.api.models import CheckAvatarResponse
@@ -35,8 +37,17 @@ class Avatars(HTTPAwareEndpoint):
         CheckAvatarResponse
             The response from the API.
         """
+        # if re.match(r"\^https:\/\/cdn.discordapp.com\i", avatar_url) is None:
+        #     raise ValueError('Parameter "avatar_url" must start with "https://cdn.discordapp.com"')
+
+        if not avatar_url.startswith("https://cdn.discordapp.com"):
+            raise ValueError('Parameter "avatar_url" must start with "https://cdn.discordapp.com"')
+
         if not 0 <= threshold <= 1:
-            raise ValueError('Parameter "threshold" must be of float between 0 and 1')
+            raise ValueError('Parameter "threshold" must be of "float" or derivative between 0 and 1')
+        
+        if not isinstance(method, Literal["ssim", "phash"]):
+            raise ValueError('Parameter "method" must be of "Literal" "str" type "ssim" | "phash"')
 
         return CheckAvatarResponse(
             await self._http.get(

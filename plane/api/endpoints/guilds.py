@@ -24,6 +24,9 @@ class Guilds(HTTPAwareEndpoint):
         GetGuildResponse
             The response from the API.
         """
+        if not isinstance(guild_id, int):
+            raise ValueError('Parameter "guild_id" must be of "int" or derivative type')
+
         return GetGuildResponse(
             await self._http.get(
                 self._http.paths.guilds(guild_id).route,

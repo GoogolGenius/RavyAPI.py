@@ -24,6 +24,9 @@ class KSoft(HTTPAwareEndpoint):
         GetKSoftBanResponse
             The response from the API.
         """
+        if not isinstance(user_id, int):
+            raise ValueError('Parameter "user_id" must be of "int" or derivative type')
+
         return GetKSoftBanResponse(
             await self._http.get(
                 self._http.paths.ksoft.bans(user_id),

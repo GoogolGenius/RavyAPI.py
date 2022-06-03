@@ -30,6 +30,9 @@ class Users(HTTPAwareEndpoint):
         GetUserResponse
             The response from the API.
         """
+        if not isinstance(user_id, int):
+            raise ValueError('Parameter "user_id" must be of "int" or derivative type')
+
         return GetUserResponse(
             await self._http.get(self._http.paths.users(user_id).route)
         )
@@ -50,6 +53,9 @@ class Users(HTTPAwareEndpoint):
         GetPronounsResponse
             The response from the API.
         """
+        if not isinstance(user_id, int):
+            raise ValueError('Parameter "user_id" must be of "int" or derivative type')
+
         return GetPronounsResponse(
             await self._http.get(self._http.paths.users(user_id).pronouns)
         )
@@ -68,6 +74,9 @@ class Users(HTTPAwareEndpoint):
         GetBansResponse
             The response from the API.
         """
+        if not isinstance(user_id, int):
+            raise ValueError('Parameter "user_id" must be of "int" or derivative type')
+
         return GetBansResponse(
             await self._http.get(self._http.paths.users(user_id).bans)
         )
@@ -88,6 +97,9 @@ class Users(HTTPAwareEndpoint):
         GetWhitelistsResponse
             The response from the API.
         """
+        if not isinstance(user_id, int):
+            raise ValueError('Parameter "user_id" must be of "int" or derivative type')
+
         return GetWhitelistsResponse(
             await self._http.get(self._http.paths.users(user_id).whitelists)
         )
@@ -108,6 +120,9 @@ class Users(HTTPAwareEndpoint):
         GetReputationResponse
             The response from the API.
         """
+        if not isinstance(user_id, int):
+            raise ValueError('Parameter "user_id" must be of "int" or derivative type')
+
         return GetReputationResponse(
             await self._http.get(self._http.paths.users(user_id).reputation)
         )

@@ -36,10 +36,19 @@ class URLs(HTTPAwareEndpoint):
         GetWebsiteResponse
             The response from the API.
         """
-        if not self._http.phisherman_token and phisherman_user:
+        if not isinstance(url, str):
+            raise ValueError('Parameter "url" must be of "str" or derivative type')
+        
+        if author is not None and not isinstance(author, int):
+            raise ValueError('Parameter "author" must be of "int" or derivative type')
+        
+        if phisherman_user is not None and not isinstance(phisherman_user, int):
+            raise ValueError('Parameter "phisherman_user" must be of "int" or derivative type')
+        
+        if self._http.phisherman_token is None and phisherman_user:
             raise ValueError("Phisherman token required if phisherman user is set.")
 
-        if self._http.phisherman_token and not phisherman_user:
+        if self._http.phisherman_token is not None and not phisherman_user:
             raise ValueError("Phisherman user required if phisherman token is set.")
 
         return GetWebsiteResponse(
