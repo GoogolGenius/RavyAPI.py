@@ -1,28 +1,43 @@
-# plane
+# Plane
 
-(name is WIP to avoid trademark issues temporarily)
+A simple and dynamic Python wrapper for the Ravy API. Easy to use and statically typed with Microsoft Pyright.
 
-A simple experimental Python wrapper for the Ravy API.
+## Installation
 
-This is currently a work in progress state. Since this is my first experience as a developer working on an API wrapper, this might not utilize the best Python practices. If you see anything that needs to be changed, feel free to create a pull request!
+- Compatible with Python 3.7+
+- Not yet available on PyPI
 
-This API is heavily inspired and is partially based upon the [ksoftapi Python wrapper](https://github.com/KSoft-Si/ksoftapi.py). Parts of the client and HTTP client were modified off of this, as well as the model interface designs.
+```bash
+python3 pip install git+https://github.com/GoogleGenius/plane.git
+```
 
-TODO:
+## Usage
 
-- [ ] Unit tests (Depends; I am most certainly not mocking an *entire* API you know, however some parts...)
+```python
+# Import required packages
+import asyncio
 
-DONE:
+import plane
 
-- [x] Basic HTTP requests functionality
-- [x] Few API functionalities/routes
-- [x] Docstrings (so far)
-- [x] Public documentation
-- [x] Abstract responses to objects
-- [x] Client side validation for token and permissions
-- [x] More flexibility
-  - ~~Use the url queries for `get_url()`~~
-- [x] Full API coverage
-  - ~~Add ban POST (admin.bans)~~
-  - ~~Edit website POST (admin.urls)~~
-  - ~~Avatars multipart/formdata POST (avatars)~~
+
+async def main() -> None:
+    # Construct a plane client object
+    client = plane.Client("token")  # Replace "token" with your API key
+
+    # Make a simple request to get token information
+    token_info = await client.tokens.get_token()
+    print(token_info.token_type)  # Print the token type: "ravy" | "ksoft"
+
+    # Close and teardown the client
+    await client.close()
+
+
+# Start the event loop and run the main function
+asyncio.run(main())
+```
+
+## Contributing
+
+Feel free to create pull requests and issues. Just be civil, kind, and respectful.
+
+This is my first library, so if you have any suggestions or questions, please let me know! Reach out via GitHub Issues or Discord `@GoogleGenius#7777`.
