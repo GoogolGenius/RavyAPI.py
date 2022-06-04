@@ -20,7 +20,7 @@ class HTTPClient:
         self._token: str = self._token_sentinel(token)
         self._permissions: list[str] | None = None
         self._phisherman_token: str | None = None
-        self._headers={"Authorization": token, "User-Agent": USER_AGENT}
+        self._headers = {"Authorization": token, "User-Agent": USER_AGENT}
         self._session: aiohttp.ClientSession = aiohttp.ClientSession(
             base_url=BASE_URL,
             headers=self._headers,
@@ -109,7 +109,7 @@ class HTTPClient:
 
     async def close(self) -> None:
         await self._session.close()
-    
+
     @property
     def headers(self) -> dict[str, str]:
         """The headers to send with all requests."""
