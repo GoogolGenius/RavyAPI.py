@@ -29,8 +29,7 @@ class HTTPClient:
         self._phisherman_token: str | None = None
         self._headers = {"Authorization": token, "User-Agent": USER_AGENT}
         self._session: aiohttp.ClientSession = aiohttp.ClientSession(
-            base_url=BASE_URL,
-            headers=self._headers,
+            headers=self._headers
         )
 
     @staticmethod
@@ -68,7 +67,7 @@ class HTTPClient:
         if self._permissions is not None:
             return
 
-        async with self._session.get(self.paths.tokens.route) as response:
+        async with self._session.get(BASE_URL + self.paths.tokens.route) as response:
             await self._handle_response(response)
             self._permissions = GetTokenResponse(await response.json()).access
 
@@ -84,7 +83,7 @@ class HTTPClient:
         """
         await self._get_permissions()
 
-        async with self._session.get(path, **kwargs) as response:
+        async with self._session.get(BASE_URL + path, **kwargs) as response:
             await self._handle_response(response)
             return await response.json()
 
@@ -100,7 +99,7 @@ class HTTPClient:
         """
         await self._get_permissions()
 
-        async with self._session.post(path, **kwargs) as response:
+        async with self._session.post(BASE_URL + path, **kwargs) as response:
             await self._handle_response(response)
             return await response.json()
 
