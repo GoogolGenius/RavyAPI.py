@@ -40,7 +40,7 @@ class GetWebsiteResponse:
         return self._message
 
 
-@dataclass
+@dataclass(frozen=True)
 class EditWebsiteRequest:
     """The request data model for editing a website."""
 

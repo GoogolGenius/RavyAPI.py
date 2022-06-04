@@ -59,7 +59,7 @@ class BanEntryResponse:
         return self._moderator
 
 
-@dataclass
+@dataclass(frozen=True)
 class BanEntryRequest:
     """Ban entry data model.
 
