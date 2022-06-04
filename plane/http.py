@@ -20,8 +20,10 @@ class HTTPClient:
         self._token: str = self._token_sentinel(token)
         self._permissions: list[str] | None = None
         self._phisherman_token: str | None = None
+        self._headers={"Authorization": token, "User-Agent": USER_AGENT}
         self._session: aiohttp.ClientSession = aiohttp.ClientSession(
-            headers={"Authorization": token, "User-Agent": USER_AGENT}
+            base_url=BASE_URL,
+            headers=self._headers,
         )
 
     @staticmethod
@@ -59,16 +61,11 @@ class HTTPClient:
         if self._permissions is not None:
             return
 
-        async with self._session.get(BASE_URL + self.paths.tokens.route) as response:
+        async with self._session.get(self.paths.tokens.route) as response:
             await self._handle_response(response)
             self._permissions = GetTokenResponse(await response.json()).access
 
-    async def get(
-        self,
-        path: str,
-        *,
-        params: dict[str, Any] | None = None,
-    ) -> dict[str, Any]:
+    async def get(self, path: str, **kwargs: Any) -> dict[str, Any]:
         """Execute a GET request to the Ravy API.
 
         Parameters
@@ -80,17 +77,11 @@ class HTTPClient:
         """
         await self._get_permissions()
 
-        async with self._session.get(BASE_URL + path, params=params) as response:
+        async with self._session.get(path, **kwargs) as response:
             await self._handle_response(response)
             return await response.json()
 
-    async def post(
-        self,
-        path: str,
-        *,
-        data: dict[str, Any],
-        params: dict[str, Any] | None = None,
-    ) -> dict[str, Any]:
+    async def post(self, path: str, **kwargs: Any) -> dict[str, Any]:
         """Execute a POST request to the Ravy API.
 
         Parameters
@@ -102,9 +93,7 @@ class HTTPClient:
         """
         await self._get_permissions()
 
-        async with self._session.post(
-            BASE_URL + path, json=data, params=params
-        ) as response:
+        async with self._session.post(path, **kwargs) as response:
             await self._handle_response(response)
             return await response.json()
 
@@ -120,6 +109,11 @@ class HTTPClient:
 
     async def close(self) -> None:
         await self._session.close()
+    
+    @property
+    def headers(self) -> dict[str, str]:
+        """The headers to send with all requests."""
+        return self._headers
 
     @property
     def paths(self) -> Paths:
