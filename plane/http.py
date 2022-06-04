@@ -27,7 +27,7 @@ class HTTPClient:
         self._token: str = self._token_sentinel(token)
         self._permissions: list[str] | None = None
         self._phisherman_token: str | None = None
-        self._headers = {"Authorization": token, "User-Agent": USER_AGENT}
+        self._headers: dict[str, str] = {"Authorization": token, "User-Agent": USER_AGENT}
         self._session: aiohttp.ClientSession = aiohttp.ClientSession(
             headers=self._headers
         )
