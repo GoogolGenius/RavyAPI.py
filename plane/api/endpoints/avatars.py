@@ -89,13 +89,13 @@ class Avatars(HTTPAwareEndpoint):
         headers["Content-Type"] = "multipart/form-data"
 
         return CheckAvatarResponse(
-            await self._http.get(
+            await self._http.post(
                 self._http.paths.avatars.route,
                 params={
                     "threshold": threshold,
                     "method": method,
                 },
-                data=form,
+                data=form(),
                 headers=headers,
             )
         )
