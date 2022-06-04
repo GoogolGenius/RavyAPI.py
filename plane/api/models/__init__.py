@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from plane.api.models.avatars import *
+from plane.api.models.generic import *
 from plane.api.models.guilds import *
 from plane.api.models.ksoft import *
 from plane.api.models.urls import *

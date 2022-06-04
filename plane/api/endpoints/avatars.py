@@ -50,7 +50,7 @@ class Avatars(HTTPAwareEndpoint):
                 'Parameter "threshold" must be of "float" or derivative between 0 and 1'
             )
 
-        if not isinstance(method, Literal["ssim", "phash"]):
+        if method not in ("ssim", "phash"):
             raise ValueError(
                 'Parameter "method" must be of "Literal" "str" type "ssim" | "phash"'
             )

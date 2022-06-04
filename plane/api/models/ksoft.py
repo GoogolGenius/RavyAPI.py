@@ -16,7 +16,7 @@ class GetKSoftBanResponse:
         self._tag: str | None = data.get("tag")
         self._reason: str | None = data.get("reason")
         self._proof: str | None = data.get("proof")
-        moderator = data.get("moderator")
+        moderator: str | None = data.get("moderator")
         self._moderator: int | None = int(moderator) if moderator else None
         self._severe: bool | None = data.get("severe")
         self._timestamp: str | None = data.get("timestamp")

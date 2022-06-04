@@ -1,7 +1,8 @@
 from __future__ import annotations
 
-__all__: tuple[str, ...] = ("GetWebsiteResponse",)
+__all__: tuple[str, ...] = ("GetWebsiteResponse", "EditWebsiteRequest")
 
+from dataclasses import dataclass
 from typing import Any
 
 
@@ -37,3 +38,18 @@ class GetWebsiteResponse:
     def message(self) -> str:
         """The message about the URL."""
         return self._message
+
+
+@dataclass
+class EditWebsiteRequest:
+    """The request data model for editing a website."""
+
+    is_fraudulent: bool
+    message: str
+
+    def from_model(self) -> dict[str, Any]:
+        """Convert the data model to a dictionary."""
+        return {
+            "isFraudulent": self.is_fraudulent,
+            "message": self.message,
+        }

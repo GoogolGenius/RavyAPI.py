@@ -4,14 +4,16 @@ __all__: tuple[str, ...] = ("GetGuildResponse",)
 
 from typing import Any
 
-from plane.api.models.generic import Trust, BanEntry
+from plane.api.models.generic import Trust, BanEntryResponse
 
 
 class GetGuildResponse:
     def __init__(self, data: dict[str, Any]) -> None:
         self._data: dict[str, Any] = data
         self._trust: Trust = data["trust"]
-        self._bans: list[BanEntry] = [BanEntry(ban) for ban in data["bans"]]
+        self._bans: list[BanEntryResponse] = [
+            BanEntryResponse(ban) for ban in data["bans"]
+        ]
 
     @property
     def data(self) -> dict[str, Any]:
@@ -22,5 +24,5 @@ class GetGuildResponse:
         return self._trust
 
     @property
-    def bans(self) -> list[BanEntry]:
+    def bans(self) -> list[BanEntryResponse]:
         return self._bans

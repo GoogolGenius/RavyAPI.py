@@ -13,7 +13,7 @@ __all__: tuple[str, ...] = (
 
 from typing import Any
 
-from plane.api.models.generic import Trust, BanEntry
+from plane.api.models.generic import Trust, BanEntryResponse
 
 
 class GetUserResponse:
@@ -42,7 +42,7 @@ class GetUserResponse:
         self._pronouns: str = data["pronouns"]
         self._trust = Trust(data["trust"])
         self._whitelists = WhitelistEntry(data["whitelists"])
-        self._bans = BanEntry(data["bans"])
+        self._bans = BanEntryResponse(data["bans"])
         self._rep = ReputationEntry(data["rep"])
         self._sentinel = SentinelEntry(data["sentinel"])
 
@@ -67,7 +67,7 @@ class GetUserResponse:
         return self._whitelists
 
     @property
-    def bans(self) -> BanEntry:
+    def bans(self) -> BanEntryResponse:
         """The ban entry model of the user."""
         return self._bans
 
@@ -124,7 +124,7 @@ class GetBansResponse:
     def __init__(self, data: dict[str, Any]) -> None:
         self._data: dict[str, Any] = data
         self._trust = Trust(data["trust"])
-        self._bans = [BanEntry(ban) for ban in data["bans"]]
+        self._bans = [BanEntryResponse(ban) for ban in data["bans"]]
 
     @property
     def data(self) -> dict[str, Any]:
@@ -137,7 +137,7 @@ class GetBansResponse:
         return self._trust
 
     @property
-    def bans(self) -> list[BanEntry]:
+    def bans(self) -> list[BanEntryResponse]:
         """A list of ban entry models for the user."""
         return self._bans
 

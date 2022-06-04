@@ -8,6 +8,7 @@ from plane.api.models import (
     GetBansResponse,
     GetWhitelistsResponse,
     GetReputationResponse,
+    BanEntryRequest,
 )
 from plane.http import HTTPAwareEndpoint
 from plane.utils import with_permission_check
@@ -79,6 +80,60 @@ class Users(HTTPAwareEndpoint):
 
         return GetBansResponse(
             await self._http.get(self._http.paths.users(user_id).bans)
+        )
+
+    @with_permission_check("admin.bans")
+    async def add_ban(
+        self: HTTPAwareEndpoint,
+        user_id: int,
+        *,
+        provider: str,
+        reason: str,
+        moderator: int,
+        reason_key: str | None = None,
+    ) -> None:
+        """Add ban.
+
+        !!! note
+            This endpoint is only available to administrators; however, documented nevertheless.
+
+        TODO: Document parameters correctly.
+
+        Parameters
+        ----------
+        user_id : int
+            User ID of the user to look up.
+        provider : str
+            Provider of the ban.
+        reason : str
+            Reason of the ban.
+        moderator : int
+            User ID of the moderator.
+        reason_key : str | None
+            Reason key of the ban.
+        """
+        if not isinstance(user_id, int):
+            raise ValueError('Parameter "user_id" must be of "int" or derivative type')
+
+        if not isinstance(provider, str):
+            raise ValueError('Parameter "provider" must be of "str" or derivative type')
+
+        if not isinstance(reason, str):
+            raise ValueError('Parameter "reason" must be of "str" or derivative type')
+
+        if not isinstance(moderator, int):
+            raise ValueError(
+                'Parameter "moderator" must be of "int" or derivative type'
+            )
+
+        if reason_key is not None and not isinstance(reason_key, str):
+            raise ValueError(
+                'Parameter "reason_key" must be of "str" or derivative type'
+            )
+
+        await self._http.post(
+            self._http.paths.users(user_id).bans,
+            data=BanEntryRequest(provider, reason, moderator, reason_key).from_model(),
         )
 
     @with_permission_check("users.whitelists")

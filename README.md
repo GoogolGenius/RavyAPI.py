@@ -11,8 +11,8 @@ This API is heavily inspired and is partially based upon the [ksoftapi Python wr
 TODO:
 
 - [ ] Full API coverage
-  - Add ban POST (admin.bans)
-  - Edit website POST (admin.urls)
+  - ~~Add ban POST (admin.bans)~~
+  - ~~Edit website POST (admin.urls)~~
   - Avatars multipart/formdata POST (avatars)
 - [ ] Unit tests (Depends; I am most certainly not mocking an *entire* API you know, however some parts...)
 

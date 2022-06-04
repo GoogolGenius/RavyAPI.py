@@ -13,7 +13,7 @@ from typing_extensions import Final
 
 import aiohttp
 
-from plane import _about
+from plane._about import __author__, __repository__, __version__
 
 BASE_URL: Final[str] = "https://ravy.org/api/v1"
 """The base URL of the Ravy API."""
@@ -29,7 +29,7 @@ NULL: Final[str] = "\x00"
 
 # Totally not copied from Hikari lol
 USER_AGENT: Final[str] = (
-    f"plane ({_about.__repository__}, {_about.__version__}) {_about.__author__} "
+    f"plane ({__repository__}, {__version__}) {__author__} "
     f"aiohttp/{aiohttp.__version__} "
     f"{platform.python_implementation()}/{platform.python_version()} "
     f"{platform.system()} {platform.architecture()[0]}"
