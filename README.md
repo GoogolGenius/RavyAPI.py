@@ -1,6 +1,6 @@
 # Plane
 
-A simple and dynamic Python wrapper for the Ravy API. Easy to use and statically typed with Microsoft Pyright.
+A simple and dynamic asynchronous Python wrapper for the Ravy API. Easy to use and statically typed with Microsoft Pyright.
 
 ## Installation
 
