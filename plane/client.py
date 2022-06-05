@@ -14,17 +14,12 @@ from plane.api.endpoints import Avatars, Guilds, KSoft, Users, URLs, Tokens
 
 
 class Client:
-    """The heart and soul of the client interface to the Ravy API.
+    """The entry point of the client interface to the Ravy API.
 
     Attributes
     ----------
     token : str
         The token used to authenticate with the Ravy API.
-    token_type : Literal["Ravy", "KSoft"]
-        The type of token used to authenticate with the Ravy API.
-    loop : asyncio.AbstractEventLoop | None
-        The asyncio event loop used to run the client.
-        Default event loop is used if None.
 
     Methods
     -------
@@ -38,16 +33,6 @@ class Client:
         ----------
         token : str
             The token used to authenticate with the API.
-        token_type : Literal["Ravy", "KSoft"]
-            The type of token used to authenticate.
-        loop : asyncio.AbstractEventLoop
-            The asyncio event loop used to run the client.
-
-        !!! note
-            If `token_type` is "KSoft", only the `ksoft` endpoint is supported. All
-            endpoints are available with "Ravy."There is no wrapper validation for this.
-            Upon an invalid request, the generic `HTTPException` will be raised with
-            the respective information.
         """
         self._token: str = token
         self._http: HTTPClient = HTTPClient(self._token)
@@ -70,16 +55,16 @@ class Client:
         Parameters
         ----------
         token : str
-            The phisherman token to use for `urls` routes.
+            The phisherman token to use for `urls` endpoints.
 
         Returns
         -------
         Client
-            The client instance for future callable chaining.
+            The client instance for callable chaining.
         """
         self._http.set_phisherman_token(token)
 
-        return self  # for future chaining
+        return self
 
     @property
     def closed(self) -> bool:

@@ -49,8 +49,9 @@ class Paths:
 class Avatars:
     """Route paths for the `avatars` route.
 
-    This is the same as the `base` url of the Ravy API; however,
-    this is created as a more concrete class for avatars.
+    !!! note
+        This is the same as the `base` url of the Ravy API; however,
+        this is created as a more concrete class for avatars.
     """
 
     @property
@@ -80,9 +81,10 @@ class Guilds:
 class KSoft:
     """Route paths for the `ksoft` route.
 
-    This class was created with expansion in mind to avoid potential breakage.
-    However, with the current Ravy API this might look a bit strange compared
-    to the other route classes.
+    !!! note
+        This class was created with expansion in mind to avoid potential breakage.
+        However, with the current Ravy API this might look a bit strange compared
+        to the other route classes.
     """
 
     def __init__(self) -> None:

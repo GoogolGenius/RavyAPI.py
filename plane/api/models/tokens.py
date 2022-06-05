@@ -1,3 +1,10 @@
+# Copyright 2022-Present GoogleGenius
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+# http://www.apache.org/licenses/LICENSE-2.0
 from __future__ import annotations
 
 __all__: tuple[str, ...] = ("GetTokenResponse",)
@@ -17,7 +24,7 @@ class GetTokenResponse:
         The user of the token.
     access : list[str]
         The access of the token.
-    application : str
+    application : int
         The application of the token.
     token_type : Literal["ravy", "ksoft"]
         The type of the token.

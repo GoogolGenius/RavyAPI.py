@@ -33,7 +33,7 @@ class Avatars(HTTPAwareEndpoint):
 
         Parameters
         ----------
-        avatar_url : str | bytes
+        avatar : str | bytes
             Link to the avatar, should start with cdn.discordapp.com; or bytes.
         threshold : float
             How similar the avatar needs to be for it to match (0-1, default 0.97).

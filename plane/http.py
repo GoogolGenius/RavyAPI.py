@@ -37,6 +37,18 @@ class HTTPClient:
 
     @staticmethod
     async def _handle_response(response: aiohttp.ClientResponse) -> None:
+        """Process response errors for requests.
+
+        Parameters
+        ----------
+        response : aiohttp.ClientResponse
+            The response to process from the API.
+
+        Raises
+        ------
+        HTTPException
+            If the response is not a 200 status code.
+        """
         if not response.ok:
             try:
                 data = await response.json()
@@ -51,8 +63,9 @@ class HTTPClient:
 
         Returns
         -------
-        Literal["Ravy", "KSoft"]
-            The type of token.
+        token : str
+            The token passed in to the client.
+
         Raises
         ------
         ValueError
@@ -67,6 +80,7 @@ class HTTPClient:
         return token
 
     async def _get_permissions(self) -> None:
+        """Get the permissions for the current token."""
         if self._permissions is not None:
             return
 
@@ -81,8 +95,13 @@ class HTTPClient:
         ----------
         path : str
             The path URL to the route.
-        params : dict[str, str] | None
-            The query parameters to send with the request, if any.
+        **kwargs : Any
+            Any aiohttp keyword arguments to pass to the request.
+
+        Returns
+        -------
+        data : dict[str, Any]
+            The JSON data returned from the request.
         """
         await self._get_permissions()
 
@@ -97,8 +116,13 @@ class HTTPClient:
         ----------
         path : str
             The path URL to the route.
+        **kwargs : Any
+            Any aiohttp keyword arguments to pass to the request.
+
+        Returns
+        -------
         data : dict[str, Any]
-            The JSON data to send with the request.
+            The JSON data returned from the request.
         """
         await self._get_permissions()
 
@@ -117,6 +141,7 @@ class HTTPClient:
         self._phisherman_token = token
 
     async def close(self) -> None:
+        """Close the aiohttp client session."""
         await self._session.close()
 
     @property

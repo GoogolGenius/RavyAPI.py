@@ -36,7 +36,13 @@ class HTTPException(Exception):
         self._exc_data: str | dict[str, Any] = exc_data
 
     def __str__(self) -> str:
-        """Return the string representation of the exception."""
+        """Return the string representation of the exception.
+
+        Returns
+        -------
+        str
+            The string representation of the exception.
+        """
         if isinstance(self.exc_data, dict):
             return (
                 f"({self.status}) {self.exc_data['error']}"
@@ -63,17 +69,23 @@ class AccessException(Exception):
         """
         Parameters
         ----------
-        permission : list[str]
-            The permissions that were denied.
+        required : list[str]
+            The permissions that were needed.
         """
         super().__init__()
         self._required: str = required
 
     def __str__(self) -> str:
-        """Return the string representation of the exception."""
+        """Return the string representation of the exception.
+
+        Returns
+        -------
+        str
+            The string representation of the exception.
+        """
         return f'Insufficient permissions accessing route requiring "{self.required}"'
 
     @property
     def required(self) -> str:
-        """The permissions that needed."""
+        """The permissions that were needed to access the route."""
         return self._required
