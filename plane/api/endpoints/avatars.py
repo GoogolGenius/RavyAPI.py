@@ -9,6 +9,8 @@ from __future__ import annotations
 
 __all__: tuple[str, ...] = ("Avatars",)
 
+import urllib.parse
+
 from typing_extensions import Literal
 
 import aiohttp
@@ -61,7 +63,7 @@ class Avatars(HTTPAwareEndpoint):
             )
 
         if isinstance(avatar, str):
-            if not avatar.lower().startswith("https://cdn.discordapp.com"):
+            if urllib.parse.urlparse(avatar).hostname != "cdn.discordapp.com":
                 raise ValueError(
                     'Parameter "avatar_url" must start with "https://cdn.discordapp.com"'
                 )
