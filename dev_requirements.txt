@@ -1,6 +1,6 @@
 black==22.3.0
 pyright==1.1.251
 mypy==0.960
-mkdocs-material==8.3.0
+mkdocs-material==8.3.2
 mkdocstrings==0.19.0
 mkdocstrings[python]==0.19.0
