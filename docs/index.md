@@ -1,10 +1,17 @@
-# Index
+# Plane
 
-::: plane
-    options:
-        show_root_heading: true
+A simple and dynamic asynchronous Python wrapper for the Ravy API. Easy to use and statically typed with Pyright.
 
-## Quick Example
+## Installation
+
+- Compatible with Python 3.7+
+- Not yet available on PyPI
+
+```bash
+python3 pip install git+https://github.com/GoogleGenius/plane.git
+```
+
+## Usage
 
 ```python
 # Import required packages
@@ -31,8 +38,6 @@ asyncio.run(main())
 
 ## Contributing
 
-Feel free to make a pull request in the [GitHub repository](https://github.com/GoogleGenius/plane)! Make sure to report any bugs or issues as well.
+Feel free to create pull requests and issues. Just be civil, kind, and respectful.
 
-## About
-
-Created by [GoogleGenius](https://github.com/GoogleGenius). Licensed under the GNU General Public License v3.0. Please check the [LICENSE](https://github.com/GoogleGenius/plane/blob/main/LICENSE) file for more information about the license as well as this project's basis in some elements from the [ksoftapi.py](https://github.com/KSoft-Si/ksoftapi.py) wrapper.
+This is my first library, so if you have any suggestions or questions, please let me know! Reach out via GitHub Issues or Discord `@GoogleGenius#7777`.
