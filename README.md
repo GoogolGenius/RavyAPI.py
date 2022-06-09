@@ -1,11 +1,12 @@
 # Plane
 
-A simple and dynamic asynchronous Python wrapper for the Ravy API. Easy to use and statically typed with Pyright.
+A simple and dynamic asynchronous Python wrapper for the Ravy API.
 
 ## Features
+- Easy usability
 - 100% API coverage
 - Unit tested (soon™️)
-- Typed
+- Pyright type compatible
 
 ## Installation
 
