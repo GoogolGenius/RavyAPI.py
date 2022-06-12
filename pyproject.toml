@@ -46,6 +46,7 @@ include = ["plane*"]
 [tool.pyright]
 pythonVersion = "3.7"
 reportUnnecessaryIsInstance = false
+reportPrivateUsage = "warning"
 typeCheckingMode = "strict"
 
 [tool.mypy]
