@@ -46,4 +46,4 @@ asyncio.run(main())
 
 Feel free to create pull requests and issues. Just be civil, kind, and respectful.
 
-This is my first library, so if you have any suggestions or questions, please let me know! Reach out via GitHub Issues or Discord `@GoogleGenius#7777`.
+This is my first library, so if you have any suggestions or questions, please let me know! Reach out via GitHub Issues or Discord `GoogleGenius#7777`.
