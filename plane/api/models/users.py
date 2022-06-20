@@ -36,11 +36,11 @@ class GetUserResponse:
         The user's pronouns.
     trust : Trust
         The user's `plane.api.models.generic.trust.Trust` trust model.
-    whitelists : WhitelistEntry
+    whitelists : list[WhitelistEntry]
         A list of the user's `plane.api.models.users.WhitelistEntry` whitelist models.
-    bans : BanEntryResponse
+    bans : list[BanEntryResponse]
         A list of the user's `plane.api.models.generic.ban_entry.BanEntryResponse` ban models.
-    rep : ReputationEntry
+    rep : list[ReputationEntry]
         A list of the user's `plane.api.models.users.ReputationEntry` reputation models.
     sentinel : SentinelEntry
         The user's `plane.api.models.users.SentinelEntry` sentinel model.
@@ -59,13 +59,15 @@ class GetUserResponse:
     def __init__(self, data: dict[str, Any]) -> None:
         self._data: dict[str, Any] = data
         self._pronouns: str = data["pronouns"]
-        self._trust = Trust(data["trust"])
-        self._whitelists = [
+        self._trust: Trust = Trust(data["trust"])
+        self._whitelists: list[WhitelistEntry] = [
             WhitelistEntry(whitelist) for whitelist in data["whitelists"]
         ]
-        self._bans = [BanEntryResponse(ban) for ban in data["bans"]]
-        self._rep = [ReputationEntry(rep) for rep in data["rep"]]
-        self._sentinel = SentinelEntry(data["sentinel"])
+        self._bans: list[BanEntryResponse] = [
+            BanEntryResponse(ban) for ban in data["bans"]
+        ]
+        self._rep: list[ReputationEntry] = [ReputationEntry(rep) for rep in data["rep"]]
+        self._sentinel: SentinelEntry = SentinelEntry(data["sentinel"])
 
     def __repr__(self) -> str:
         return (

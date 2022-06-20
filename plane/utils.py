@@ -42,7 +42,7 @@ def has_permissions(required: str, permissions: list[str]) -> bool:
     bool
         Whether the permissions match.
     """
-    required_list = required.split(".")
+    required_list: list[str] = required.split(".")
 
     while required_list:
         if ".".join(required_list) in permissions:

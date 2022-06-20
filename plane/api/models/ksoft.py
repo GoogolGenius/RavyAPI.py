@@ -54,7 +54,7 @@ class GetKSoftBanResponse:
     def __init__(self, data: dict[str, Any]) -> None:
         self._data: dict[str, Any] = data
         self._found: bool = data["found"]
-        user_id = data.get("id")
+        user_id: str | None = data.get("id")
         self._user_id: int | None = int(user_id) if user_id else None
         self._tag: str | None = data.get("tag")
         self._reason: str | None = data.get("reason")

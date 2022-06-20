@@ -72,9 +72,9 @@ class HTTPClient:
         """
         if not response.ok:
             try:
-                data = await response.json()
+                data: str | dict[str, Any] = await response.json()
             except aiohttp.ContentTypeError:
-                data = await response.text()
+                data: str | dict[str, Any] = await response.text()
 
             raise HTTPException(response.status, data)
 
@@ -92,8 +92,8 @@ class HTTPClient:
         ValueError
             If the token is invalid.
         """
-        ravy = re.compile(RAVY_TOKEN_REGEX)
-        ksoft = re.compile(KSOFT_TOKEN_REGEX)
+        ravy: re.Pattern[str] = re.compile(RAVY_TOKEN_REGEX)
+        ksoft: re.Pattern[str] = re.compile(KSOFT_TOKEN_REGEX)
 
         if not any(regex.match(token) for regex in (ravy, ksoft)):
             raise ValueError("Invalid token provided")
@@ -190,4 +190,4 @@ class HTTPAwareEndpoint:
     __slots__: tuple[str, ...] = ("_http",)
 
     def __init__(self, http: HTTPClient) -> None:
-        self._http = http
+        self._http: HTTPClient = http
