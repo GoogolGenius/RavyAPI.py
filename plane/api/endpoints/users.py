@@ -12,12 +12,12 @@ from __future__ import annotations
 __all__: tuple[str, ...] = ("Users",)
 
 from plane.api.models import (
-    GetUserResponse,
-    GetPronounsResponse,
-    GetBansResponse,
-    GetWhitelistsResponse,
-    GetReputationResponse,
     BanEntryRequest,
+    GetBansResponse,
+    GetPronounsResponse,
+    GetReputationResponse,
+    GetUserResponse,
+    GetWhitelistsResponse,
 )
 from plane.http import HTTPAwareEndpoint
 from plane.utils import with_permission_check

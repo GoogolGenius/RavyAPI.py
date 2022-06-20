@@ -9,7 +9,7 @@
 
 from __future__ import annotations
 
-__all__: tuple[str, ...] = ("BanEntryResponse", "BanEntryRequest")
+__all__: tuple[str, ...] = ("BanEntryRequest", "BanEntryResponse")
 
 from typing import Any
 

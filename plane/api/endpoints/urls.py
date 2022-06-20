@@ -11,10 +11,11 @@ from __future__ import annotations
 
 __all__: tuple[str, ...] = ("URLs",)
 
-from typing import Any
 import urllib.parse
 
-from plane.api.models import GetWebsiteResponse, EditWebsiteRequest
+from typing import Any
+
+from plane.api.models import EditWebsiteRequest, GetWebsiteResponse
 from plane.http import HTTPAwareEndpoint
 from plane.utils import with_permission_check
 

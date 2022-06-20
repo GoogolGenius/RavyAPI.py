@@ -10,19 +10,19 @@
 from __future__ import annotations
 
 __all__: tuple[str, ...] = (
-    "GetUserResponse",
-    "GetPronounsResponse",
     "GetBansResponse",
-    "GetWhitelistsResponse",
+    "GetPronounsResponse",
     "GetReputationResponse",
-    "WhitelistEntry",
+    "GetUserResponse",
+    "GetWhitelistsResponse",
     "ReputationEntry",
     "SentinelEntry",
+    "WhitelistEntry",
 )
 
 from typing import Any
 
-from plane.api.models.generic import Trust, BanEntryResponse
+from plane.api.models.generic import BanEntryResponse, Trust
 
 
 class GetUserResponse:

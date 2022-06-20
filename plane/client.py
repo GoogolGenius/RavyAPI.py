@@ -10,7 +10,7 @@ from __future__ import annotations
 __all__: tuple[str, ...] = ("Client",)
 
 from plane.http import HTTPClient
-from plane.api.endpoints import Avatars, Guilds, KSoft, Users, URLs, Tokens
+from plane.api.endpoints import Avatars, Guilds, KSoft, URLs, Users, Tokens
 
 
 class Client:
