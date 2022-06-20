@@ -58,10 +58,10 @@ You can catch the defined errors in the `plane.api.errors` module and handle the
 try:
     token_info = await client.tokens.get_token()
 except plane.api.HTTPException as e:  # Generic HTTP error
-    if e.status_code == 429:
-        print(f"Encountered {e.status_code}: we are being ratelimited by Cloudflare!")
+    if e.status == 429:
+        print(f"Encountered {e.status}: we are being ratelimited by Cloudflare!")
     else:
-        print(f"Encountered HTTP error: ({e.status_code}) - {e.exc_data}!")
+        print(f"Encountered HTTP error: ({e.status}) - {e.exc_data}!")
 
 try:
     website_info = await client.urls.get_website("https://example.com")
