@@ -34,6 +34,12 @@ class Trust:
         self._level: int = data["level"]
         self._label: str = data["label"]
 
+    def __repr__(self) -> str:
+        return (
+            f"{self.__class__.__module__}.{self.__class__.__qualname__}"
+            f"(level={self.level!r}, label={self.label!r})"
+        )
+
     @property
     def data(self) -> dict[str, Any]:
         """The raw data returned from the Ravy API."""

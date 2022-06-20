@@ -65,6 +65,14 @@ class GetUserResponse:
         self._rep = ReputationEntry(data["rep"])
         self._sentinel = SentinelEntry(data["sentinel"])
 
+    def __repr__(self) -> str:
+        return(
+            f"{self.__class__.__module__}.{self.__class__.__qualname__}"
+            f"(pronouns={self.pronouns!r}, trust={self.trust!r}, "
+            f"whitelists={self.whitelists!r}, bans={self.bans!r}, "
+            f"rep={self.rep!r}, sentinel={self.sentinel!r})"
+        )
+
     @property
     def data(self) -> dict[str, Any]:
         """The raw data returned from the Ravy API."""
@@ -118,6 +126,12 @@ class GetPronounsResponse:
         self._data: dict[str, Any] = data
         self._pronouns: str = data["pronouns"]
 
+    def __repr__(self) -> str:
+        return(
+            f"{self.__class__.__module__}.{self.__class__.__qualname__}"
+            f"(pronouns={self.pronouns!r})"
+        )
+
     @property
     def data(self) -> dict[str, Any]:
         """The raw data returned from the Ravy API."""
@@ -148,6 +162,12 @@ class GetBansResponse:
         self._data: dict[str, Any] = data
         self._trust = Trust(data["trust"])
         self._bans = [BanEntryResponse(ban) for ban in data["bans"]]
+
+    def __repr__(self) -> str:
+        return(
+            f"{self.__class__.__module__}.{self.__class__.__qualname__}"
+            f"(trust={self.trust!r}, bans={self.bans!r})"
+        )
 
     @property
     def data(self) -> dict[str, Any]:
@@ -187,6 +207,12 @@ class GetWhitelistsResponse:
         ]
         self._trust = Trust(data["trust"])
 
+    def __repr__(self) -> str:
+        return(
+            f"{self.__class__.__module__}.{self.__class__.__qualname__}"
+            f"(whitelists={self.whitelists!r}, trust={self.trust!r})"
+        )
+
     @property
     def data(self) -> dict[str, Any]:
         """The raw data returned from the Ravy API."""
@@ -223,6 +249,12 @@ class GetReputationResponse:
         self._rep = [ReputationEntry(rep) for rep in data["rep"]]
         self._trust = Trust(data["trust"])
 
+    def __repr__(self) -> str:
+        return(
+            f"{self.__class__.__module__}.{self.__class__.__qualname__}"
+            f"(rep={self.rep!r}, trust={self.trust!r})"
+        )
+
     @property
     def data(self) -> dict[str, Any]:
         """The raw data returned from the Ravy API."""
@@ -258,6 +290,12 @@ class WhitelistEntry:
         self._data: dict[str, Any] = data
         self._provider: str = data["provider"]
         self._reason: str = data["reason"]
+
+    def __repr__(self) -> str:
+        return(
+            f"{self.__class__.__module__}.{self.__class__.__qualname__}"
+            f"(provider={self.provider!r}, reason={self.reason!r})"
+        )
 
     @property
     def data(self) -> dict[str, Any]:
@@ -307,6 +345,13 @@ class ReputationEntry:
         self._upvotes: int | None = data.get("upvotes")
         self._downvotes: int | None = data.get("downvotes")
 
+    def __repr__(self) -> str:
+        return(
+            f"{self.__class__.__module__}.{self.__class__.__qualname__}"
+            f"(provider={self.provider!r}, score={self.score!r}, "
+            f"upvotes={self.upvotes!r}, downvotes={self.downvotes!r})"
+        )
+
     @property
     def data(self) -> dict[str, Any]:
         """The raw data returned from the Ravy API."""
@@ -352,6 +397,12 @@ class SentinelEntry:
         self._data: dict[str, Any] = data
         self._verified: bool = data["verified"]
         self._internal_id: str = str(data["id"])
+
+    def __repr__(self) -> str:
+        return(
+            f"{self.__class__.__module__}.{self.__class__.__qualname__}"
+            f"(verified={self.verified!r}, internal_id={self.internal_id!r})"
+        )
 
     @property
     def data(self) -> dict[str, Any]:

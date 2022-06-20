@@ -33,9 +33,15 @@ class CheckAvatarResponse:
 
     def __init__(self, data: dict[str, Any]) -> None:
         self._data: dict[str, Any] = data
-        self._matched: bool = data["isFraudulent"]
-        self._key: str = data["message"]
+        self._matched: bool = data["matched"]
+        self._key: str = data["key"]
         self._similarity: float = data["similarity"]
+
+    def __repr__(self) -> str:
+        return (
+            f"{self.__class__.__module__}.{self.__class__.__qualname__}"
+            f"(matched={self.matched!r}, key={self.key!r}, similarity={self.similarity!r})"
+        )
 
     @property
     def data(self) -> dict[str, Any]:

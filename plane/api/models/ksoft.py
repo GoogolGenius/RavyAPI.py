@@ -64,6 +64,14 @@ class GetKSoftBanResponse:
         self._severe: bool | None = data.get("severe")
         self._timestamp: str | None = data.get("timestamp")
 
+    def __repr__(self) -> str:
+        return (
+            f"{self.__class__.__module__}.{self.__class__.__qualname__}"
+            f"(found={self.found!r}, user_id={self.user_id!r}, tag={self.tag!r}, "
+            f"reason={self.reason!r}, proof={self.proof!r}, moderator={self.moderator!r}, "
+            f"severe={self.severe!r}, timestamp={self.timestamp!r})"
+        )
+
     @property
     def data(self) -> dict[str, Any]:
         """The raw data returned from the Ravy API."""

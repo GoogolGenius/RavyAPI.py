@@ -38,6 +38,12 @@ class GetGuildResponse:
             BanEntryResponse(ban) for ban in data["bans"]
         ]
 
+    def __repr__(self) -> str:
+        return (
+            f"{self.__class__.__module__}.{self.__class__.__qualname__}"
+            f"(trust={self.trust!r}, bans={self.bans!r})"
+        )
+
     @property
     def data(self) -> dict[str, Any]:
         """The raw data returned from the Ravy API."""

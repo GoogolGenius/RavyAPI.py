@@ -47,6 +47,13 @@ class GetTokenResponse:
         self._application: int = int(data["application"])
         self._token_type: Literal["ravy", "ksoft"] = data["type"]
 
+    def __repr__(self) -> str:
+        return (
+            f"{self.__class__.__module__}.{self.__class__.__qualname__}"
+            f"(user={self.user!r}, access={self.access!r}, application={self.application!r}, "
+            f"token_type={self.token_type!r})"
+        )
+
     @property
     def data(self) -> dict[str, Any]:
         """The raw data returned from the Ravy API."""

@@ -46,6 +46,13 @@ class BanEntryResponse:
         self._reason_key: str | None = data.get("reason_key")
         self._moderator: int = int(data["moderator"])
 
+    def __repr__(self) -> str:
+        return (
+            f"{self.__class__.__module__}.{self.__class__.__qualname__}"
+            f"(provider={self.provider!r}, reason={self.reason!r}, "
+            f"reason_key={self.reason_key!r}, moderator={self.moderator!r})"
+        )
+
     @property
     def data(self) -> dict[str, Any]:
         """The raw data returned from the Ravy API."""
@@ -124,6 +131,13 @@ class BanEntryRequest:
         self._reason: str = reason
         self._moderator: int = moderator
         self._reason_key: str | None = reason_key
+
+    def __repr__(self) -> str:
+        return (
+            f"{self.__class__.__module__}.{self.__class__.__qualname__}"
+            f"(provider={self.provider!r}, reason={self.reason!r}, "
+            f"moderator={self.moderator!r}, reason_key={self.reason_key!r})"
+        )
 
     @property
     def provider(self) -> str:

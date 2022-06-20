@@ -34,6 +34,12 @@ class GetWebsiteResponse:
         self._is_fraudulent: bool = data["isFraudulent"]
         self._message: str = data["message"]
 
+    def __repr__(self) -> str:
+        return (
+            f"{self.__class__.__module__}.{self.__class__.__qualname__}"
+            f"(is_fraudulent={self.is_fraudulent!r}, message={self.message!r})"
+        )
+
     @property
     def data(self) -> dict[str, Any]:
         """The raw data returned from the Ravy API."""
@@ -86,6 +92,12 @@ class EditWebsiteRequest:
         """
         self._is_fraudulent: bool = is_fraudulent
         self._message: str = message
+
+    def __repr__(self) -> str:
+        return (
+            f"{self.__class__.__module__}.{self.__class__.__qualname__}"
+            f"(is_fraudulent={self.is_fraudulent!r}, message={self.message!r})"
+        )
 
     @property
     def is_fraudulent(self) -> bool:
