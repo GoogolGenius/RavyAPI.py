@@ -121,7 +121,7 @@ class URLs(HTTPAwareEndpoint):
         TypeError
             If any parameters are of invalid types.
         ValueError
-            If any parameters are invalid value.
+            If any parameters are invalid values.
         """
         if not isinstance(url, str):
             raise TypeError('Parameter "url" must be of type "str"')
