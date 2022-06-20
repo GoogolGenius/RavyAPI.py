@@ -17,6 +17,13 @@ from typing import Any
 class HTTPException(Exception):
     """A base class for all HTTP exceptions.
 
+    Parameters
+    ----------
+    status : int
+        The HTTP status code of the response.
+    exc_data : str | dict[str, Any]
+        The error data returned by the Ravy API.
+
     Attributes
     ----------
     status : int
@@ -32,9 +39,9 @@ class HTTPException(Exception):
         Parameters
         ----------
         status : int
-            The HTTP status code of the error.
-        exc_data : str
-            The error message from the API.
+            The HTTP status code of the response.
+        exc_data : str | dict[str, Any]
+            The error data returned by the Ravy API.
         """
         super().__init__()
         self._status: int = status
