@@ -66,7 +66,7 @@ class GetUserResponse:
         self._sentinel = SentinelEntry(data["sentinel"])
 
     def __repr__(self) -> str:
-        return(
+        return (
             f"{self.__class__.__module__}.{self.__class__.__qualname__}"
             f"(pronouns={self.pronouns!r}, trust={self.trust!r}, "
             f"whitelists={self.whitelists!r}, bans={self.bans!r}, "
@@ -127,7 +127,7 @@ class GetPronounsResponse:
         self._pronouns: str = data["pronouns"]
 
     def __repr__(self) -> str:
-        return(
+        return (
             f"{self.__class__.__module__}.{self.__class__.__qualname__}"
             f"(pronouns={self.pronouns!r})"
         )
@@ -164,7 +164,7 @@ class GetBansResponse:
         self._bans = [BanEntryResponse(ban) for ban in data["bans"]]
 
     def __repr__(self) -> str:
-        return(
+        return (
             f"{self.__class__.__module__}.{self.__class__.__qualname__}"
             f"(trust={self.trust!r}, bans={self.bans!r})"
         )
@@ -208,7 +208,7 @@ class GetWhitelistsResponse:
         self._trust = Trust(data["trust"])
 
     def __repr__(self) -> str:
-        return(
+        return (
             f"{self.__class__.__module__}.{self.__class__.__qualname__}"
             f"(whitelists={self.whitelists!r}, trust={self.trust!r})"
         )
@@ -250,7 +250,7 @@ class GetReputationResponse:
         self._trust = Trust(data["trust"])
 
     def __repr__(self) -> str:
-        return(
+        return (
             f"{self.__class__.__module__}.{self.__class__.__qualname__}"
             f"(rep={self.rep!r}, trust={self.trust!r})"
         )
@@ -292,7 +292,7 @@ class WhitelistEntry:
         self._reason: str = data["reason"]
 
     def __repr__(self) -> str:
-        return(
+        return (
             f"{self.__class__.__module__}.{self.__class__.__qualname__}"
             f"(provider={self.provider!r}, reason={self.reason!r})"
         )
@@ -346,7 +346,7 @@ class ReputationEntry:
         self._downvotes: int | None = data.get("downvotes")
 
     def __repr__(self) -> str:
-        return(
+        return (
             f"{self.__class__.__module__}.{self.__class__.__qualname__}"
             f"(provider={self.provider!r}, score={self.score!r}, "
             f"upvotes={self.upvotes!r}, downvotes={self.downvotes!r})"
@@ -399,7 +399,7 @@ class SentinelEntry:
         self._internal_id: str = str(data["id"])
 
     def __repr__(self) -> str:
-        return(
+        return (
             f"{self.__class__.__module__}.{self.__class__.__qualname__}"
             f"(verified={self.verified!r}, internal_id={self.internal_id!r})"
         )
