@@ -112,7 +112,7 @@ class Users(HTTPAwareEndpoint):
         Raises
         ------
         TypeError
-            If any parameters are invalid type.
+            If any parameters are of invalid types.
 
         Returns
         -------
