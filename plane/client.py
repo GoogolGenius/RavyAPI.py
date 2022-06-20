@@ -18,7 +18,7 @@ class Client:
 
     Attributes
     ----------
-    closed: bool
+    closed : bool
         Whether or not the client is closed.
     avatars : Avatars
         The ``avatars`` endpoint.
@@ -80,7 +80,7 @@ class Client:
 
         Parameters
         ----------
-        token: str
+        token : str
             The phisherman token to set.
 
         Returns
