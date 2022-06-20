@@ -5,6 +5,8 @@
 # You may obtain a copy of the License at
 #
 # http://www.apache.org/licenses/LICENSE-2.0
+"""Path routing for use in networking the Ravy API endpoints."""
+
 from __future__ import annotations
 
 __all__: tuple[str, ...] = ("Paths",)
@@ -13,55 +15,108 @@ from plane.const import BASE_URL
 
 
 class Paths:
-    """A base class for all Ravy API URL route paths."""
+    """A main class for routing paths to the Ravy API.
+
+    Attributes
+    ----------
+    avatars : Avatars
+        A path class for the ``avatars`` endpoint.
+    ksoft : KSoft
+        A path class for the ``ksoft`` endpoint.
+    tokens : Tokens
+        A path class for the ``tokens`` endpoint.
+    urls : URLs
+        A path class for the ``urls`` endpoint.
+
+    Methods
+    -------
+    guilds(guild_id: str) -> Guilds
+        Returns a path class for the ``guilds`` endpoint.
+    users(user_id: str) -> Users
+        Returns a path class for the ``users`` endpoint.
+    """
 
     @property
     def avatars(self) -> Avatars:
-        """Route paths for the main `avatars` route."""
+        """A path class for the ``avatars`` endpoint."""
         return Avatars()
 
     @staticmethod
     def guilds(guild_id: int) -> Guilds:
-        """Route paths for the main `guilds` route."""
+        """Returns a path class for the ``guilds`` endpoint.
+
+        Parameters
+        ----------
+        guild_id : int
+            The guild ID to route to.
+
+        Returns
+        -------
+        Guilds
+            A path class for the ``guilds`` endpoint.
+        """
         return Guilds(guild_id)
 
     @property
     def ksoft(self) -> KSoft:
-        """Route paths for the main `ksoft` route."""
+        """A path class for the ``ksoft`` endpoint."""
         return KSoft()
 
     @property
     def tokens(self) -> Tokens:
-        """Route paths for the main `tokens` route."""
+        """A path class for the ``tokens`` endpoint."""
         return Tokens()
 
     @property
     def urls(self) -> URLs:
-        """Route paths for the main `urls` route."""
+        """A path class for the ``urls`` endpoint."""
         return URLs()
 
     @staticmethod
     def users(user_id: int) -> Users:
-        """Route paths for the main `users` route."""
+        """Returns a path class for the ``users`` endpoint.
+
+        Parameters
+        ----------
+        user_id : int
+            The user ID to route to.
+
+        Returns
+        -------
+        Users
+            A path class for the ``users`` endpoint.
+        """
         return Users(user_id)
 
 
 class Avatars:
-    """Route paths for the `avatars` route.
+    """A path class for the ``avatars`` endpoint.
 
-    !!! note
-        This is the same as the `base` url of the Ravy API; however,
-        this is created as a more concrete class for avatars.
+    Attributes
+    ----------
+    route : str
+        The route for the endpoint.
     """
 
     @property
     def route(self) -> str:
-        """The route path for the `avatars` route."""
+        """The route for the endpoint.
+
+        This is the same as the base URL.
+        """
         return BASE_URL
 
 
 class Guilds:
-    """A class containing route paths for the `guilds` main route."""
+    """A path class for the ``guilds`` endpoint.
+
+    Attributes
+    ----------
+    route : str
+        The route for the endpoint.
+    guild_id : int
+        The guild ID used to route to.
+    """
 
     def __init__(self, guild_id: int) -> None:
         self._guild_id: int = guild_id
@@ -79,12 +134,17 @@ class Guilds:
 
 
 class KSoft:
-    """Route paths for the `ksoft` route.
+    """A path class for the ``ksoft`` endpoint.
 
-    !!! note
-        This class was created with expansion in mind to avoid potential breakage.
-        However, with the current Ravy API this might look a bit strange compared
-        to the other route classes.
+    Attributes
+    ----------
+    route : str
+        The route for the endpoint.
+
+    Methods
+    -------
+    bans(user_id: int) -> str
+        Returns the route for ``bans``.
     """
 
     def __init__(self) -> None:
@@ -92,40 +152,68 @@ class KSoft:
 
     @property
     def route(self) -> str:
-        """The route path for the `avatars` route."""
+        """The route for the endpoint."""
         return self._route
 
     def bans(self, user_id: int) -> str:
-        """Route paths for the `bans` route.
+        """Returns the route for ``bans``.
 
         Parameters
         ----------
         user_id : int
-            The Discord ID of the user.
+            The user ID to route to.
         """
         return f"{self._route}/bans/{user_id}"
 
 
 class Tokens:
-    """A class containing route paths for the `tokens` main route."""
+    """A path class for the ``tokens`` endpoint.
+
+    Attributes
+    ----------
+    route : str
+        The route for the endpoint.
+    """
 
     @property
     def route(self) -> str:
-        """The route path for the `tokens` route."""
+        """The route for the endpoint."""
         return "/tokens/@current"
 
 
 class URLs:
-    """A class containing route paths for the `urls` main route."""
+    """A path class for the ``urls`` endpoint.
+
+    Attributes
+    ----------
+    route : str
+        The route for the endpoint.
+    """
 
     @property
     def route(self) -> str:
-        """The route path for the `urls` route"""
+        """The route for the endpoint."""
         return "/urls"
 
 
 class Users:
-    """A class containing route paths for the `users` main route"""
+    """A path class for the ``users`` endpoint.
+
+    Attributes
+    ----------
+    route : str
+        The route for the endpoint.
+    user_id : int
+        The user ID used to route to.
+    pronouns : str
+        The route for ``pronouns``.
+    bans : str
+        The route for ``bans``.
+    whitelists : str
+        The route for ``whitelists``.
+    reputation : str
+        The route for ``reputation``.
+    """
 
     def __init__(self, user_id: int) -> None:
         self._user_id: int = user_id
@@ -133,29 +221,30 @@ class Users:
 
     @property
     def route(self) -> str:
-        """The route path for the `users` route"""
+        """The route for the endpoint."""
         return self._route
 
     @property
     def user_id(self) -> int:
-        """The user ID passed in to the `users` route"""
+        """The user ID used to route to."""
         return self._user_id
 
     @property
     def pronouns(self) -> str:
-        """The URL strcture for the child route `pronouns` of `users`."""
+        """The route for ``pronouns``."""
         return f"{self._route}/pronouns"
 
     @property
     def bans(self) -> str:
-        """The URL structure for the child route `bans` of `users`."""
+        """The route for ``bans``."""
         return f"{self._route}/bans"
 
     @property
     def whitelists(self) -> str:
-        """The URL structure for the child route `whitelists` of `users`."""
+        """The route for ``whitelists``."""
         return f"{self._route}/whitelists"
 
     @property
     def reputation(self) -> str:
+        """The route for ``reputation``."""
         return f"{self._route}/rep"

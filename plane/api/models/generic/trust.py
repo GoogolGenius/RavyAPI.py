@@ -5,6 +5,8 @@
 # You may obtain a copy of the License at
 #
 # http://www.apache.org/licenses/LICENSE-2.0
+"""A generic model for trust."""
+
 from __future__ import annotations
 
 __all__: tuple[str, ...] = ("Trust",)
@@ -13,16 +15,16 @@ from typing import Any
 
 
 class Trust:
-    """The trust data model.
-
+    """A generic model for trust.
+    
     Attributes
     ----------
-    data : dict[str, Any]
-        The raw JSON data from the API.
-    level : int
-        From 0-6, higher is better, default is 3.
-    label : str
-        What the number means.
+    data: dict[str, Any]
+        The raw data returned from the Ravy API.
+    level: int
+        TODO
+    label: str
+        TODO
     """
 
     def __init__(self, data: dict[str, Any]) -> None:
@@ -32,15 +34,15 @@ class Trust:
 
     @property
     def data(self) -> dict[str, Any]:
-        """The raw JSON data from the API."""
+        """The raw data returned from the Ravy API."""
         return self._data
 
     @property
     def level(self) -> int:
-        """From 0-6, higher is better, default is 3."""
+        """TODO"""
         return self._level
 
     @property
     def label(self) -> str:
-        """What the number means."""
+        """TODO"""
         return self._label

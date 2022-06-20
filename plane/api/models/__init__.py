@@ -5,7 +5,7 @@
 # You may obtain a copy of the License at
 #
 # http://www.apache.org/licenses/LICENSE-2.0
-"""A subpackage with representations of the Ravy API models."""
+"""API models for the Ravy API endpoints."""
 
 from __future__ import annotations
 

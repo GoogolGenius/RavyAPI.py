@@ -5,6 +5,8 @@
 # You may obtain a copy of the License at
 #
 # http://www.apache.org/licenses/LICENSE-2.0
+"""Implementations for the ``ksoft`` endpoint."""
+
 from __future__ import annotations
 
 __all__: tuple[str, ...] = ("KSoft",)
@@ -15,7 +17,13 @@ from plane.utils import with_permission_check
 
 
 class KSoft(HTTPAwareEndpoint):
-    """The implementation class for requests to the `ksoft` route."""
+    """A class with implementations for the ``ksoft`` endpoint.
+
+    Methods
+    -------
+    get_ban -> GetKSoftBanResponse
+        TODO
+    """
 
     @with_permission_check("ksoft.bans")
     async def get_ban(self: HTTPAwareEndpoint, user_id: int) -> GetKSoftBanResponse:

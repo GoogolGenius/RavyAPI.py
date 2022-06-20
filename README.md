@@ -3,6 +3,7 @@
 A simple and dynamic asynchronous Python wrapper for the Ravy API.
 
 ## Features
+
 - Easy usability
 - 100% API coverage
 - Unit tested (soon™️)

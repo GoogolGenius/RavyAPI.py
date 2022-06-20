@@ -5,6 +5,8 @@
 # You may obtain a copy of the License at
 #
 # http://www.apache.org/licenses/LICENSE-2.0
+"""API models for the ``ksoft`` endpoint."""
+
 from __future__ import annotations
 
 __all__: tuple[str, ...] = ("GetKSoftBanResponse",)
@@ -13,7 +15,29 @@ from typing import Any
 
 
 class GetKSoftBanResponse:
-    """The data model response for a KSoft ban."""
+    """A model response from :func:`plane.api.endpoints.ksoft.KSoft.get_ban`.
+    
+    Attributes
+    ----------
+    data : dict[str, Any]
+        The raw data returned from the Ravy API.
+    found: bool
+        TODO
+    user_id : int | None
+        TODO
+    tag : str | None
+        TODO
+    reason : str | None
+        TODO
+    proof : str | None
+        TODO
+    moderator : int | None
+        TODO
+    severe : bool | None
+        TODO
+    timestamp : str | None
+        TODO
+    """
 
     def __init__(self, data: dict[str, Any]) -> None:
         self._data: dict[str, Any] = data
@@ -30,57 +54,45 @@ class GetKSoftBanResponse:
 
     @property
     def data(self) -> dict[str, Any]:
-        """The raw JSON data from the API.
-
-        !!! note
-            Raw `str` IDs are not converted to `int`.
-        """
+        """The raw data returned from the Ravy API."""
         return self._data
 
     @property
     def found(self) -> bool:
-        """Whether the user was found."""
+        """TODO"""
         return self._found
 
     @property
     def user_id(self) -> int | None:
-        """The user's ID.
-
-        !!! note
-            This is casted from raw `str` to `int` type.
-        """
+        """TODO"""
         return self._user_id
 
     @property
     def tag(self) -> str | None:
-        """The user's tag."""
+        """TODO"""
         return self._tag
 
     @property
     def reason(self) -> str | None:
-        """The ban reason."""
+        """TODO"""
         return self._reason
 
     @property
     def proof(self) -> str | None:
-        """The proof."""
+        """TODO"""
         return self._proof
 
     @property
     def moderator(self) -> int | None:
-        """The moderator's name.
-
-        !!! note
-            This is casted from raw `str` to `int` type.
-        """
+        """TODO"""
         return self._moderator
 
     @property
     def severe(self) -> bool | None:
-        """Whether the ban is severe."""
+        """TODO"""
         return self._severe
 
     @property
     def timestamp(self) -> str | None:
-        """The timestamp of the ban."""
+        """TODO"""
         return self._timestamp

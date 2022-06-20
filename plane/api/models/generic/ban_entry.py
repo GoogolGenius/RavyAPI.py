@@ -5,6 +5,8 @@
 # You may obtain a copy of the License at
 #
 # http://www.apache.org/licenses/LICENSE-2.0
+"""Generic models for ban entries."""
+
 from __future__ import annotations
 
 __all__: tuple[str, ...] = ("BanEntryResponse", "BanEntryRequest")
@@ -14,20 +16,20 @@ from typing import Any
 
 
 class BanEntryResponse:
-    """Ban entry data model.
+    """A generic model for ban entry responses.
 
     Attributes
     ----------
-    data : dict[str, Any]
-        The raw JSON data from the API.
-    provider : str
-        Source for where the user was banned.
-    reason : str
-        Why the user was banned.
-    reason_key : str | None
-        Machine-readable version of the reason - only present for providers ravy and dservices.
-    moderator : int
-        User ID of the responsible moderator, usually Discord.
+    data: dict[str, Any]
+        The raw data returned from the Ravy API.
+    provider: str
+        TODO
+    reason: str
+        TODO
+    reason_key: str | None
+        TODO
+    moderator: int
+        TODO
     """
 
     def __init__(self, data: dict[str, Any]) -> None:
@@ -39,53 +41,68 @@ class BanEntryResponse:
 
     @property
     def data(self) -> dict[str, Any]:
-        """The raw JSON data from the API."""
+        """The raw data returned from the Ravy API."""
         return self._data
 
     @property
     def provider(self) -> str:
-        """Source for where the user was banned."""
+        """TODO"""
         return self._provider
 
     @property
     def reason(self) -> str:
-        """Why the user was banned."""
+        """TODO"""
         return self._reason
 
     @property
     def reason_key(self) -> str | None:
-        """Machine-readable version of the reason - only present for providers ravy and dservices."""
+        """TODO"""
         return self._reason_key
 
     @property
     def moderator(self) -> int:
-        """User ID of the responsible moderator, usually Discord."""
+        """TODO"""
         return self._moderator
 
 
 @dataclass(frozen=True)
 class BanEntryRequest:
-    """Ban entry data model.
+    """A generic model for ban entry requests.
 
     Attributes
     ----------
-    provider : str
-        Source for where the user was banned.
-    reason : str
-        Why the user was banned.
-    reason_key : str | None
-        Machine-readable version of the reason - only present for providers ravy and dservices.
-    moderator : str
-        User ID of the responsible moderator, usually Discord.
+    provider: str
+        TODO
+    reason: str
+        TODO
+    moderator: int
+        TODO
+    reason_key: str | None
+        TODO
+
+    Methods
+    -------
+    to_json() -> dict[str, Any]
+        Returns a JSON representation of the model.
     """
 
     provider: str
+    """TODO"""
     reason: str
+    """TODO"""
     moderator: int
+    """TODO"""
     reason_key: str | None = None
+    """TODO"""
 
-    def from_model(self) -> dict[str, Any]:
-        """Create a dictionary from the data model."""
+    def to_json(self) -> dict[str, Any]:
+        """Returns a JSON representation of the model.
+
+        Returns
+        -------
+        dict[str, Any]
+            A JSON representation of the model.
+        """
         data = {
             "provider": self.provider,
             "reason": self.reason,

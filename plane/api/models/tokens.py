@@ -5,6 +5,8 @@
 # You may obtain a copy of the License at
 #
 # http://www.apache.org/licenses/LICENSE-2.0
+"""API models for the ``tokens`` endpoint."""
+
 from __future__ import annotations
 
 __all__: tuple[str, ...] = ("GetTokenResponse",)
@@ -14,20 +16,20 @@ from typing_extensions import Literal
 
 
 class GetTokenResponse:
-    """The token response data model.
-
+    """A model response from :func:`plane.api.endpoints.tokens.Tokens.get_token`.
+    
     Attributes
     ----------
-    data : dict[str, Any]
-        The raw data from the API.
-    user : str
-        The user of the token.
-    access : list[str]
-        The access of the token.
-    application : int
-        The application of the token.
-    token_type : Literal["ravy", "ksoft"]
-        The type of the token.
+    data: dict[str, Any]
+        The raw data returned from the Ravy API.
+    user: str
+        TODO
+    access: list[str]
+        TODO
+    application: int
+        TODO
+    token_type: Literal["ravy", "ksoft"]
+        TODO
     """
 
     def __init__(self, data: dict[str, Any]) -> None:
@@ -39,25 +41,25 @@ class GetTokenResponse:
 
     @property
     def data(self) -> dict[str, Any]:
-        """The raw JSON data from the API."""
+        """The raw data returned from the Ravy API."""
         return self._data
 
     @property
     def user(self) -> str:
-        """The user of the token."""
+        """TODO"""
         return self._user
 
     @property
     def access(self) -> list[str]:
-        """The permission nodes of the token."""
+        """TODO"""
         return self._access
 
     @property
     def application(self) -> int:
-        """The application ID of the token."""
+        """TODO"""
         return self._application
 
     @property
     def token_type(self) -> Literal["ravy", "ksoft"]:
-        """The type of the token, either 'ravy or 'ksoft.'"""
+        """TODO"""
         return self._token_type

@@ -5,6 +5,8 @@
 # You may obtain a copy of the License at
 #
 # http://www.apache.org/licenses/LICENSE-2.0
+"""Implementations for the ``urls`` endpoint."""
+
 from __future__ import annotations
 
 __all__: tuple[str, ...] = ("URLs",)
@@ -18,8 +20,16 @@ from plane.utils import with_permission_check
 
 
 class URLs(HTTPAwareEndpoint):
-    """The implementation class for requests to the `urls` route."""
-
+    """A class with implementations for the ``urls`` endpoint.
+    
+    Methods
+    -------
+    get_website(self: URLs, website_id: int) -> GetWebsiteResponse
+        TODO
+    edit_website(self: URLs, website_id: int, request: EditWebsiteRequest) -> None
+        TODO
+    """
+    
     @with_permission_check("urls.cached")
     async def get_website(
         self: HTTPAwareEndpoint,
@@ -28,23 +38,7 @@ class URLs(HTTPAwareEndpoint):
         author: int | None = None,
         phisherman_user: int | None = None,
     ) -> GetWebsiteResponse:
-        """Get website information.
-
-        Parameters
-        ----------
-        url : str
-            The url-encoded url to look up.
-        author : int | None
-            Optional, the user that posted the message containing this URL (for auto banning, requires "admin.users").
-            The API ignores this if "admin.users" is not granted permission.
-        phisherman_user : int | None
-            Optional, required if passing phisherman_token, Discord user ID of the token owner.
-
-        Returns
-        -------
-        GetWebsiteResponse
-            The response from the API.
-        """
+        """TODO"""
         if not isinstance(url, str):
             raise ValueError('Parameter "url" must be of "str" or derivative type')
 
@@ -83,20 +77,7 @@ class URLs(HTTPAwareEndpoint):
         message: str,
         encode: bool = True,
     ) -> None:
-        """Edit website information.
-
-        !!! note
-            This endpoint is only available to administrators; however, documented nevertheless.
-
-        Parameters
-        ----------
-        url : str
-            the url-encoded url to set data for
-        is_fraudulent : bool
-            Whether the website is fraudulent or not.
-        message : str
-            The message to display to the user.
-        """
+        """TODO"""
         if not isinstance(url, str):
             raise ValueError('Parameter "url" must be of "str" or derivative type')
 
@@ -116,5 +97,5 @@ class URLs(HTTPAwareEndpoint):
 
         await self._http.post(
             f"{self._http.paths.urls.route}/{url}",
-            data=EditWebsiteRequest(is_fraudulent, message).from_model(),
+            json=EditWebsiteRequest(is_fraudulent, message).to_json(),
         )

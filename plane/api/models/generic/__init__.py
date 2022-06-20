@@ -5,7 +5,8 @@
 # You may obtain a copy of the License at
 #
 # http://www.apache.org/licenses/LICENSE-2.0
-"""Generic global data models for the Ravy API."""
+"""API models for generic object data."""
+
 from __future__ import annotations
 
 from plane.api.models.generic.ban_entry import *

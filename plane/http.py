@@ -5,6 +5,8 @@
 # You may obtain a copy of the License at
 #
 # http://www.apache.org/licenses/LICENSE-2.0
+"""Internal HTTP objects to create requests and handle responses."""
+
 from __future__ import annotations
 
 __all__: tuple[str, ...] = ("HTTPClient", "HTTPAwareEndpoint")
@@ -21,7 +23,17 @@ from plane.const import BASE_URL, KSOFT_TOKEN_REGEX, RAVY_TOKEN_REGEX, USER_AGEN
 
 
 class HTTPClient:
-    """The internal HTTP client for handling requests to the Ravy API."""
+    """Internal client using aiohttp to work with networking.
+
+    Methods
+    -------
+    get(path: str, **kwargs: Any) -> dict[str, Any]
+        Make a GET request to the given path.
+    post(path: str, **kwargs: Any) -> dict[str, Any]
+        Make a POST request to the given path.
+    close() -> None
+        Close the underlying aiohttp client.
+    """
 
     def __init__(self, token: str) -> None:
         self._token: str = self._token_sentinel(token)
@@ -89,19 +101,19 @@ class HTTPClient:
             self._permissions = GetTokenResponse(await response.json()).access
 
     async def get(self, path: str, **kwargs: Any) -> dict[str, Any]:
-        """Execute a GET request to the Ravy API.
+        """Internal method to make a GET request to the given path.
 
         Parameters
         ----------
         path : str
-            The path URL to the route.
+            The path to make the request to.
         **kwargs : Any
-            Any aiohttp keyword arguments to pass to the request.
+            The keyword arguments to pass to aiohttp.
 
         Returns
         -------
-        data : dict[str, Any]
-            The JSON data returned from the request.
+        dict[str, Any]
+            The JSON response from the API.
         """
         await self._get_permissions()
 
@@ -110,19 +122,19 @@ class HTTPClient:
             return await response.json()
 
     async def post(self, path: str, **kwargs: Any) -> dict[str, Any]:
-        """Execute a POST request to the Ravy API.
+        """Internal method to make a POST request to the given path.
 
         Parameters
         ----------
         path : str
-            The path URL to the route.
+            The path to make the request to.
         **kwargs : Any
-            Any aiohttp keyword arguments to pass to the request.
+            The keyword arguments to pass to aiohttp.
 
         Returns
         -------
-        data : dict[str, Any]
-            The JSON data returned from the request.
+        dict[str, Any]
+            The JSON response from the API.
         """
         await self._get_permissions()
 
@@ -131,37 +143,35 @@ class HTTPClient:
             return await response.json()
 
     def set_phisherman_token(self, token: str) -> None:
-        """Set the phisherman token.
-
-        Parameters
-        ----------
-        token : str
-            The phisherman token.
-        """
+        """Set the phisherman token for use in ``urls`` endpoint routes."""
         self._phisherman_token = token
 
     async def close(self) -> None:
-        """Close the aiohttp client session."""
+        """Close the underlying aiohttp client."""
         await self._session.close()
 
     @property
     def headers(self) -> dict[str, str]:
-        """The headers to send with all requests."""
+        """The headers set in the aiohttp client for requests."""
         return self._headers
 
     @property
     def paths(self) -> Paths:
-        """The route paths for the Ravy API."""
+        """An instance of :class:`plane.api.paths.Path` for routing."""
         return Paths()
 
     @property
     def permissions(self) -> list[str] | None:
-        """The permissions for the current token."""
+        """The current permissions for the token.
+        
+        This is ``None`` if the token has not yet been retrieved.
+        Should be populated with a list of string permissions after an initial request.
+        """
         return self._permissions
 
     @property
     def phisherman_token(self) -> str | None:
-        """The phisherman token for the current token."""
+        """The phisherman token for use in ``urls`` endpoint routes."""
         return self._phisherman_token
 
 

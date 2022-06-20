@@ -5,6 +5,8 @@
 # You may obtain a copy of the License at
 #
 # http://www.apache.org/licenses/LICENSE-2.0
+"""API models for the ``users`` endpoint."""
+
 from __future__ import annotations
 
 __all__: tuple[str, ...] = (
@@ -24,24 +26,24 @@ from plane.api.models.generic import Trust, BanEntryResponse
 
 
 class GetUserResponse:
-    """The user response data model.
+    """A model response from :func:`plane.api.endpoints.users.Users.get_user`.
 
     Attributes
     ----------
     data : dict[str, Any]
-        The raw data from the API.
+        The raw data returned from the Ravy API.
     pronouns : str
         The user's pronouns.
     trust : Trust
-        The trust model of the user.
+        The user's :class:`plane.api.models.generic.trust.Trust` trust model.
     whitelists : WhitelistEntry
-        The whitelist entry model of the user.
-    bans : BanEntry
-        The ban entry model of the user.
+        The user's :class:`plane.api.models.users.WhitelistEntry` whitelist model.
+    bans : BanEntryResponse
+        The user's :class:`plane.api.models.generic.ban_entry.BanEntryResponse` ban model.
     rep : ReputationEntry
-        The reputation entry model of the user.
+        The user's :class:`plane.api.models.users.ReputationEntry` reputation model.
     sentinel : SentinelEntry
-        The sentinel entry model of the user.
+        The user's :class:`plane.api.models.users.SentinelEntry` sentinel model.
     """
 
     def __init__(self, data: dict[str, Any]) -> None:
@@ -55,7 +57,7 @@ class GetUserResponse:
 
     @property
     def data(self) -> dict[str, Any]:
-        """The raw JSON data from the API."""
+        """The raw data returned from the Ravy API."""
         return self._data
 
     @property
@@ -65,38 +67,38 @@ class GetUserResponse:
 
     @property
     def trust(self) -> Trust:
-        """The trust model of the user."""
+        """The user's :class:`plane.api.models.generic.trust.Trust` trust model."""
         return self._trust
 
     @property
     def whitelists(self) -> WhitelistEntry:
-        """The whitelist entry model of the user."""
+        """The user's :class:`plane.api.models.users.WhitelistEntry` whitelist model."""
         return self._whitelists
 
     @property
     def bans(self) -> BanEntryResponse:
-        """The ban entry model of the user."""
+        """The user's :class:`plane.api.models.generic.ban_entry.BanEntryResponse` ban model."""
         return self._bans
 
     @property
     def rep(self) -> ReputationEntry:
-        """The reputation entry model of the user."""
+        """The user's :class:`plane.api.models.users.ReputationEntry` reputation model."""
         return self._rep
 
     @property
     def sentinel(self) -> SentinelEntry:
-        """The sentinel entry model of the user."""
+        """The user's :class:`plane.api.models.users.SentinelEntry` sentinel model."""
         return self._sentinel
 
 
 class GetPronounsResponse:
-    """The pronouns response data model.
+    """A model response from :func:`plane.api.endpoints.users.Users.get_pronouns`.
 
     Attributes
     ----------
     data : dict[str, Any]
-        The raw data from the API.
-    pronouns: str
+        The raw data returned from the Ravy API.
+    pronouns : str
         The user's pronouns.
     """
 
@@ -106,7 +108,7 @@ class GetPronounsResponse:
 
     @property
     def data(self) -> dict[str, Any]:
-        """The raw JSON data from the API."""
+        """The raw data returned from the Ravy API."""
         return self._data
 
     @property
@@ -116,16 +118,16 @@ class GetPronounsResponse:
 
 
 class GetBansResponse:
-    """The bans response data model.
+    """A model response from :func:`plane.api.endpoints.users.Users.get_bans`.
 
     Attributes
     ----------
     data : dict[str, Any]
-        The raw data from the API.
+        The raw data returned from the Ravy API.
     trust : Trust
-        The trust model of the user (limited).
-    bans : list[BanEntry]
-        A list of ban entry models for the user.
+        The user's :class:`plane.api.models.generic.trust.Trust` trust model.
+    bans : list[BanEntryResponse]
+        A list of the user's :class:`plane.api.models.generic.ban_entry.BanEntryResponse` ban models.
     """
 
     def __init__(self, data: dict[str, Any]) -> None:
@@ -135,31 +137,31 @@ class GetBansResponse:
 
     @property
     def data(self) -> dict[str, Any]:
-        """The raw JSON data from the API."""
+        """The raw data returned from the Ravy API."""
         return self._data
 
     @property
     def trust(self) -> Trust:
-        """The trust model of the user."""
+        """The user's :class:`plane.api.models.generic.trust.Trust` trust model."""
         return self._trust
 
     @property
     def bans(self) -> list[BanEntryResponse]:
-        """A list of ban entry models for the user."""
+        """A list of the user's :class:`plane.api.models.generic.ban_entry.BanEntryResponse` ban models."""
         return self._bans
 
 
 class GetWhitelistsResponse:
-    """The whitelists response data model.
+    """A model response from :func:`plane.api.endpoints.users.Users.get_whitelists`.
 
     Attributes
     ----------
     data : dict[str, Any]
-        The raw data from the API.
+        The raw data returned from the Ravy API.
     whitelists : list[WhitelistEntry]
-        A list of whitelist entry models.
+        A list of the user's :class:`plane.api.models.users.WhitelistEntry` whitelist models.
     trust : Trust
-        The trust model of the user (limited).
+        The user's :class:`plane.api.models.generic.trust.Trust` trust model.
     """
 
     def __init__(self, data: dict[str, Any]) -> None:
@@ -171,31 +173,31 @@ class GetWhitelistsResponse:
 
     @property
     def data(self) -> dict[str, Any]:
-        """The raw JSON data from the API."""
+        """The raw data returned from the Ravy API."""
         return self._data
 
     @property
     def whitelists(self) -> list[WhitelistEntry]:
-        """A list of whitelist entry models."""
+        """A list of the user's :class:`plane.api.models.users.WhitelistEntry` whitelist models."""
         return self._whitelists
 
     @property
     def trust(self) -> Trust:
-        """The trust model of the user."""
+        """The user's :class:`plane.api.models.generic.trust.Trust` trust model."""
         return self._trust
 
 
 class GetReputationResponse:
-    """The reputation response data model.
+    """A model response from :func:`plane.api.endpoints.users.Users.get_reputation`.
 
     Attributes
     ----------
     data : dict[str, Any]
-        The raw data from the API.
-    rep : list[ReputationEntry]
-        A list of reputation entry models.
+        The raw data returned from the Ravy API.
+    rep : ReputationEntry
+        The user's :class:`plane.api.models.users.ReputationEntry` reputation model.
     trust : Trust
-        The trust model of the user (limited).
+        The user's :class:`plane.api.models.generic.trust.Trust` trust model.
     """
 
     def __init__(self, data: dict[str, Any]) -> None:
@@ -205,31 +207,31 @@ class GetReputationResponse:
 
     @property
     def data(self) -> dict[str, Any]:
-        """The raw JSON data from the API."""
+        """The raw data returned from the Ravy API."""
         return self._data
 
     @property
     def rep(self) -> list[ReputationEntry]:
-        """A list of reputation entry models."""
+        """A list of the user's :class:`plane.api.models.users.ReputationEntry` reputation models."""
         return self._rep
 
     @property
     def trust(self) -> Trust:
-        """The trust model of the user."""
+        """The user's :class:`plane.api.models.generic.trust.Trust` trust model."""
         return self._trust
 
 
 class WhitelistEntry:
-    """The whitelist entry data model.
+    """A model for a user's whitelist entry.
 
     Attributes
     ----------
     data : dict[str, Any]
-        The raw data from the API.
+        The raw data returned from the Ravy API.
     provider : str
-        Source for where the user is whitelisted.
+        TODO
     reason : str
-        Why the user is whitelisted, usually STAFF.
+        TODO
     """
 
     def __init__(self, data: dict[str, Any]) -> None:
@@ -239,35 +241,35 @@ class WhitelistEntry:
 
     @property
     def data(self) -> dict[str, Any]:
-        """The raw JSON data from the API."""
+        """The raw data returned from the Ravy API."""
         return self._data
 
     @property
     def provider(self) -> str:
-        """Source for where the user is whitelisted."""
+        """TODO"""
         return self._provider
 
     @property
     def reason(self) -> str:
-        """Why the user is whitelisted, usually STAFF."""
+        """TODO"""
         return self._reason
 
 
 class ReputationEntry:
-    """The reputation entry data model.
+    """A model for a user's reputation entry.
 
     Attributes
     ----------
     data : dict[str, Any]
-        The raw data from the API.
+        The raw data returned from the Ravy API.
     provider : str
-        Source for where the user is banned.
+        TODO
     score : float
-        Normalized value (0-1) for reputation of the user, 0.5 is default
+        TODO
     upvotes : int | None
-        Amount of upvotes this user has received, optional
+        TODO
     downvotes : int | None
-        Amount of downvotes this user has received, optional
+        TODO
     """
 
     def __init__(self, data: dict[str, Any]) -> None:
@@ -279,39 +281,41 @@ class ReputationEntry:
 
     @property
     def data(self) -> dict[str, Any]:
-        """The raw JSON data from the API."""
+        """The raw data returned from the Ravy API."""
         return self._data
 
     @property
     def provider(self) -> str:
-        """Source for where the user is banned."""
+        """TODO"""
         return self._provider
 
     @property
     def score(self) -> float:
-        """Normalized value (0-1) for reputation of the user, 0.5 is default."""
+        """TODO"""
         return self._score
 
     @property
     def upvotes(self) -> int | None:
-        """Amount of upvotes this user has received, optional."""
+        """TODO"""
         return self._upvotes
 
     @property
     def downvotes(self) -> int | None:
-        """Amount of downvotes this user has received, optional."""
+        """TODO"""
         return self._downvotes
 
 
 class SentinelEntry:
-    """The sentinel entry data model.
+    """A model for a user's sentinel entry.
 
     Attributes
     ----------
+    data : dict[str, Any]
+        The raw data returned from the Ravy API.
     verified : bool
-        Whether this user has linked their account to sentinel
+        TODO
     internal_id : str
-        Internal ID for debug purposes
+        TODO
     """
 
     def __init__(self, data: dict[str, Any]) -> None:
@@ -321,18 +325,15 @@ class SentinelEntry:
 
     @property
     def data(self) -> dict[str, Any]:
-        """The raw JSON data from the API."""
+        """The raw data returned from the Ravy API."""
         return self._data
 
     @property
     def verified(self) -> bool:
-        """Whether this user has linked their account to sentinel."""
+        """TODO"""
         return self._verified
 
     @property
     def internal_id(self) -> str:
-        """Internal ID for debug purposes.
-
-        !!! note
-            This is a hex string and not converted to `int`."""
+        """TODO"""
         return self._internal_id

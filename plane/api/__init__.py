@@ -5,7 +5,8 @@
 # You may obtain a copy of the License at
 #
 # http://www.apache.org/licenses/LICENSE-2.0
-"""The core files for plane pertaining to the Ravy API."""
+"""Everything more specifically correlated to the Ravy API."""
+
 from __future__ import annotations
 
 from plane.api.errors import *

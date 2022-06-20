@@ -5,6 +5,8 @@
 # You may obtain a copy of the License at
 #
 # http://www.apache.org/licenses/LICENSE-2.0
+"""The implementations for the ``avatars`` endpoint."""
+
 from __future__ import annotations
 
 __all__: tuple[str, ...] = ("Avatars",)
@@ -20,9 +22,16 @@ from plane.http import HTTPAwareEndpoint
 from plane.utils import with_permission_check
 
 
-# TODO: Test this endpoint properly WHEN RAVY GIVES ME PERMISSIONS!
+# TODO: Test this endpoint properly when Ravy authorizes me for permissions!
+# Still waiting, lol. Patience, young padawan.
 class Avatars(HTTPAwareEndpoint):
-    """The implementation class for requests to the `guilds` route."""
+    """A class with implementations for the ``avatars`` endpoint.
+
+    Methods
+    -------
+    check_avatar -> CheckAvatarResponse
+        TODO
+    """
 
     @with_permission_check("avatars")
     async def check_avatar(

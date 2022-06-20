@@ -5,6 +5,8 @@
 # You may obtain a copy of the License at
 #
 # http://www.apache.org/licenses/LICENSE-2.0
+"""Constants used by library API wrapper."""
+
 from __future__ import annotations
 
 __all__: tuple[str, ...] = (
@@ -23,16 +25,16 @@ import aiohttp
 from plane._about import __author__, __repository__, __version__
 
 BASE_URL: Final[str] = "https://ravy.org/api/v1"
-"""The base URL of the Ravy API."""
+"""The base URL for the Ravy API."""
 
 RAVY_TOKEN_REGEX: Final[str] = r"[A-Za-z0-9_-]{24}\.[0-9a-f]{64}"
-"""The regex for validating a Ravy token."""
+"""The regex for a Ravy token."""
 
 KSOFT_TOKEN_REGEX: Final[str] = r"[0-9a-f]{40}"
-"""The regex for validating a KSoft token."""
+"""The regex for a KSoft token."""
 
 NULL: Final[str] = "\x00"
-"""Null byte."""
+"""A null byte."""
 
 # Totally not copied from Hikari lol
 USER_AGENT: Final[str] = (
@@ -41,3 +43,4 @@ USER_AGENT: Final[str] = (
     f"{platform.python_implementation()}/{platform.python_version()} "
     f"{platform.system()} {platform.architecture()[0]}"
 )
+"""The user agent for requests."""

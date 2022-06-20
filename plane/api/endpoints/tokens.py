@@ -5,6 +5,8 @@
 # You may obtain a copy of the License at
 #
 # http://www.apache.org/licenses/LICENSE-2.0
+"""Implementations for the ``tokens`` endpoint."""
+
 from __future__ import annotations
 
 __all__: tuple[str, ...] = ("Tokens",)
@@ -14,14 +16,14 @@ from plane.http import HTTPAwareEndpoint
 
 
 class Tokens(HTTPAwareEndpoint):
-    """The implementation class for requests to the `tokens` route."""
+    """A class with implementations for the ``tokens`` endpoint.
+    
+    Methods
+    -------
+    get_token -> None
+        TODO
+    """
 
     async def get_token(self: HTTPAwareEndpoint) -> GetTokenResponse:
-        """Get current token information.
-
-        Returns
-        -------
-        GetTokenResponse
-            The response from the API.
-        """
+        """TODO"""
         return GetTokenResponse(await self._http.get(self._http.paths.tokens.route))

@@ -5,6 +5,8 @@
 # You may obtain a copy of the License at
 #
 # http://www.apache.org/licenses/LICENSE-2.0
+"""Internal utilities for the API wrapper."""
+
 from __future__ import annotations
 
 __all__: tuple[str, ...] = ("with_permission_check",)
@@ -26,22 +28,19 @@ if TYPE_CHECKING:
 
 
 def has_permissions(required: str, permissions: list[str]) -> bool:
-    """Process the current token permissions to match against the required permissions.
-
-    !!! warning
-        This is an internal function and should not be used unless you know what you are doing.
+    """Check whether the required permissions match a list of permissions.
 
     Parameters
     ----------
     required : str
         The required permissions.
     permissions : list[str]
-        The permissions of the current token to match against.
+        The list of permissions.
 
     Returns
     -------
     bool
-        Whether or not the token has the required permissions.
+        Whether the permissions match.
     """
     required_list = required.split(".")
 
@@ -56,10 +55,20 @@ def has_permissions(required: str, permissions: list[str]) -> bool:
 def with_permission_check(
     required: str,
 ) -> Callable[[_EndpointF[_EndpointP, _EndpointT]], _EndpointF[_EndpointP, _EndpointT]]:
-    """Decorate an instance method of an `HTTPAwareEndpoint` to validate permissions.
+    """Decorate an instance method of :class:`plane.http.HTTPAwareEndpoint` to validate the required permissions.
 
     !!! warning
-        This is an internal decorator and should not be used unless you know what you are doing."""
+        This is an internal function and should not be used unless you know what you are doing.
+
+    Parameters
+    ----------
+    required : str
+        The required permissions.
+
+    Returns
+    -------
+    Callable[[_EndpointF[_EndpointP, _EndpointT]], _EndpointF[_EndpointP, _EndpointT]]
+    """
 
     def decorator(
         function: _EndpointF[_EndpointP, _EndpointT]

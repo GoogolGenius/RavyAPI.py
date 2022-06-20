@@ -5,6 +5,8 @@
 # You may obtain a copy of the License at
 #
 # http://www.apache.org/licenses/LICENSE-2.0
+"""API models for the ``guilds`` endpoint."""
+
 from __future__ import annotations
 
 __all__: tuple[str, ...] = ("GetGuildResponse",)
@@ -15,6 +17,17 @@ from plane.api.models.generic import Trust, BanEntryResponse
 
 
 class GetGuildResponse:
+    """A model response from :func:`plane.api.endpoints.guilds.Guilds.get_guild`.
+    
+    Attributes
+    ----------
+    data: dict[str, Any]
+        The raw data returned from the Ravy API.
+    trust: Trust
+        The guild's :class:`plane.api.models.generic.trust.Trust` trust model.
+    bans: list[BanEntryResponse]
+        A list of the guilds's :class:`plane.api.models.generic.ban_entry.BanEntryResponse` ban models.
+    """
     def __init__(self, data: dict[str, Any]) -> None:
         self._data: dict[str, Any] = data
         self._trust: Trust = data["trust"]
@@ -24,15 +37,15 @@ class GetGuildResponse:
 
     @property
     def data(self) -> dict[str, Any]:
-        """The raw JSON data from the API."""
+        """The raw data returned from the Ravy API."""
         return self._data
 
     @property
     def trust(self) -> Trust:
-        """The trust model of the guild."""
+        """The guild's :class:`plane.api.models.generic.trust.Trust` trust model."""
         return self._trust
 
     @property
     def bans(self) -> list[BanEntryResponse]:
-        """The ban entry model of the guild."""
+        """A list of the guilds's :class:`plane.api.models.generic.ban_entry.BanEntryResponse` ban models."""
         return self._bans

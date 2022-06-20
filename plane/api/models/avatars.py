@@ -5,6 +5,8 @@
 # You may obtain a copy of the License at
 #
 # http://www.apache.org/licenses/LICENSE-2.0
+"""API models for the ``avatars`` endpoint."""
+
 from __future__ import annotations
 
 __all__: tuple[str, ...] = ("CheckAvatarResponse",)
@@ -13,18 +15,18 @@ from typing import Any
 
 
 class CheckAvatarResponse:
-    """The avatar response data model.
-
+    """A model response from :func:`plane.api.endpoints.avatars.Avatars.check_avatar`.
+    
     Attributes
     ----------
-    data : dict[str, Any]
-        The raw data from the API.
-    matched : bool
-        Whether the avatar is matched.
-    key : str
-        The key of the avatar.
-    similarity : float
-        The similarity of the avatar.
+    data: dict[str, Any]
+        The raw data returned from the Ravy API.
+    matched: bool
+        TODO
+    key: str
+        TODO
+    similarity: float
+        TODO
     """
 
     def __init__(self, data: dict[str, Any]) -> None:
@@ -35,20 +37,20 @@ class CheckAvatarResponse:
 
     @property
     def data(self) -> dict[str, Any]:
-        """The raw JSON data from the API."""
+        """The raw data returned from the Ravy API."""
         return self._data
 
     @property
     def matched(self) -> bool:
-        """Whether the avatar is matched in the database."""
+        """TODO"""
         return self._matched
 
     @property
     def key(self) -> str:
-        """TODO: Ask Ravy about this."""
+        """TODO"""
         return self._key
 
     @property
     def similarity(self) -> float:
-        """The similarity rating of the avatar."""
+        """TODO"""
         return self._similarity

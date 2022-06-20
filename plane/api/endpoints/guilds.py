@@ -5,6 +5,8 @@
 # You may obtain a copy of the License at
 #
 # http://www.apache.org/licenses/LICENSE-2.0
+"""The implementations for the ``guilds`` endpoint."""
+
 from __future__ import annotations
 
 __all__: tuple[str, ...] = ("Guilds",)
@@ -15,7 +17,13 @@ from plane.utils import with_permission_check
 
 
 class Guilds(HTTPAwareEndpoint):
-    """The implementation class for requests to the `guilds` route."""
+    """A class with implementations for the ``guilds`` endpoint.
+
+    Methods
+    -------
+    get_guild -> GetGuildResponse
+        TODO
+    """
 
     @with_permission_check("guilds")
     async def get_guild(self: HTTPAwareEndpoint, guild_id: int) -> GetGuildResponse:

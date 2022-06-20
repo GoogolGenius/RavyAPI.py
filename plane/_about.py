@@ -5,6 +5,8 @@
 # You may obtain a copy of the License at
 #
 # http://www.apache.org/licenses/LICENSE-2.0
+"""Metadata information about the package."""
+
 from __future__ import annotations
 
 __all__: tuple[str, ...] = (

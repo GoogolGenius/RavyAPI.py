@@ -5,21 +5,24 @@
 # You may obtain a copy of the License at
 #
 # http://www.apache.org/licenses/LICENSE-2.0
+"""Exceptions raised when an error is encountered during API calls."""
+
 from __future__ import annotations
-from typing import Any
 
 __all__: tuple[str, ...] = ("HTTPException", "AccessException")
 
+from typing import Any
+
 
 class HTTPException(Exception):
-    """The base exception class for HTTP errors.
+    """A base class for all HTTP exceptions.
 
     Attributes
     ----------
     status : int
-        The HTTP status code of the error.
+        The HTTP status code of the response.
     exc_data : str | dict[str, Any]
-        The error data from the API.
+        The error data returned by the Ravy API.
     """
 
     def __init__(self, status: int, exc_data: str | dict[str, Any]) -> None:
@@ -36,13 +39,6 @@ class HTTPException(Exception):
         self._exc_data: str | dict[str, Any] = exc_data
 
     def __str__(self) -> str:
-        """Return the string representation of the exception.
-
-        Returns
-        -------
-        str
-            The string representation of the exception.
-        """
         if isinstance(self.exc_data, dict):
             return (
                 f"({self.status}) {self.exc_data['error']}"
@@ -53,18 +49,23 @@ class HTTPException(Exception):
 
     @property
     def status(self) -> int:
-        """The HTTP status code of the error."""
+        """The HTTP status code of the response."""
         return self._status
 
     @property
     def exc_data(self) -> str | dict[str, Any]:
-        """The error data from the API."""
+        """The error data returned by the Ravy API."""
         return self._exc_data
 
 
 class AccessException(Exception):
-    """The base exception class for permission errors."""
-
+    """A class denoting an exception raised when required permissions are not satisfied.
+    
+    Attributes
+    ----------
+    required : str
+        The required permissions for a path route.
+    """
     def __init__(self, required: str) -> None:
         """
         Parameters
@@ -76,16 +77,9 @@ class AccessException(Exception):
         self._required: str = required
 
     def __str__(self) -> str:
-        """Return the string representation of the exception.
-
-        Returns
-        -------
-        str
-            The string representation of the exception.
-        """
-        return f'Insufficient permissions accessing route requiring "{self.required}"'
+        return f'Insufficient permissions accessing path route requiring "{self.required}"'
 
     @property
     def required(self) -> str:
-        """The permissions that were needed to access the route."""
+        """The required permissions for a path route."""
         return self._required
