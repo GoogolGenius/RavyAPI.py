@@ -35,9 +35,9 @@ class Client:
 
     Methods
     -------
-    close() -> None
+    close()
         Closes the client, shutting down the underlying HTTP client.
-    set_phisherman_token(token: str) -> Client
+    set_phisherman_token(token)
         Sets the phisherman token for the client.
     """
 

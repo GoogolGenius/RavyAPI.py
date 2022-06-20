@@ -30,9 +30,9 @@ class Paths:
 
     Methods
     -------
-    guilds(guild_id: str) -> Guilds
+    guilds(guild_id)
         Returns a path class for the ``guilds`` endpoint.
-    users(user_id: str) -> Users
+    users(user_id)
         Returns a path class for the ``users`` endpoint.
     """
 
@@ -143,7 +143,7 @@ class KSoft:
 
     Methods
     -------
-    bans(user_id: int) -> str
+    bans(user_id)
         Returns the route for ``bans``.
     """
 

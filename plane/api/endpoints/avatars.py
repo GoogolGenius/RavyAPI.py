@@ -29,7 +29,7 @@ class Avatars(HTTPAwareEndpoint):
 
     Methods
     -------
-    check_avatar -> CheckAvatarResponse
+    check_avatar(avatar, threshold, method)
         TODO
     """
 

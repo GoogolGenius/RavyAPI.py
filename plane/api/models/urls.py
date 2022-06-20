@@ -69,7 +69,7 @@ class EditWebsiteRequest:
 
     Methods
     -------
-    from_model() -> dict[str, Any]
+    to_json()
         Returns a JSON representation of the model.
     """
 

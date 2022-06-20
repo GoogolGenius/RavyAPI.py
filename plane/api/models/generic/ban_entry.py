@@ -82,7 +82,7 @@ class BanEntryRequest:
 
     Methods
     -------
-    to_json() -> dict[str, Any]
+    to_json()
         Returns a JSON representation of the model.
     """
 
