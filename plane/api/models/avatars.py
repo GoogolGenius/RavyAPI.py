@@ -24,9 +24,9 @@ class CheckAvatarResponse:
     matched: bool
         Whether the avatar was matched.
     key: str
-        TODO: Ask Ravy
+        The avatar key that matched.
     similarity: float
-        Similarity of the avatar, represented as a float between 0 and 1.
+        Similarity of the avatar to the key, represented as a float between 0 and 1.
     """
 
     __slots__: tuple[str, ...] = ("_data", "_matched", "_key", "_similarity")
@@ -55,10 +55,10 @@ class CheckAvatarResponse:
 
     @property
     def key(self) -> str:
-        """TODO: Ask Ravy"""
+        """The avatar key that matched."""
         return self._key
 
     @property
     def similarity(self) -> float:
-        """Similarity of the avatar, represented as a float between 0 and 1."""
+        """Similarity of the avatar to the key, represented as a float between 0 and 1."""
         return self._similarity

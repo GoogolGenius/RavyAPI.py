@@ -22,8 +22,6 @@ from plane.http import HTTPAwareEndpoint
 from plane.utils import with_permission_check
 
 
-# TODO: Test this endpoint properly when Ravy authorizes me for permissions!
-# Still waiting, lol. Patience, young padawan.
 class Avatars(HTTPAwareEndpoint):
     """A class with implementations for the ``avatars`` endpoint.
 
