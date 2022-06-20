@@ -1,5 +1,5 @@
 # Some things borrowed from Hikari CI workflows
-name: lint
+name: test
 
 on: [push, pull_request]
 
