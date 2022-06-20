@@ -163,7 +163,7 @@ class HTTPClient:
     @property
     def permissions(self) -> list[str] | None:
         """The current permissions for the token.
-        
+
         This is ``None`` if the token has not yet been retrieved.
         Should be populated with a list of string permissions after an initial request.
         """

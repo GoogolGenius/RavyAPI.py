@@ -21,7 +21,7 @@ from plane.utils import with_permission_check
 
 class URLs(HTTPAwareEndpoint):
     """A class with implementations for the ``urls`` endpoint.
-    
+
     Methods
     -------
     get_website(self: URLs, website_id: int) -> GetWebsiteResponse
@@ -29,7 +29,7 @@ class URLs(HTTPAwareEndpoint):
     edit_website(self: URLs, website_id: int, request: EditWebsiteRequest) -> None
         TODO
     """
-    
+
     @with_permission_check("urls.cached")
     async def get_website(
         self: HTTPAwareEndpoint,
