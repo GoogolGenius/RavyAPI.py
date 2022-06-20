@@ -21,7 +21,7 @@ class Guilds(HTTPAwareEndpoint):
 
     Methods
     -------
-    get_guild()
+    get_guild -> GetGuildResponse
         TODO
     """
 

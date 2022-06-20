@@ -21,7 +21,7 @@ class KSoft(HTTPAwareEndpoint):
 
     Methods
     -------
-    get_ban()
+    get_ban -> GetKSoftBanResponse
         TODO
     """
 

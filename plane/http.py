@@ -27,11 +27,11 @@ class HTTPClient:
 
     Methods
     -------
-    get(path, **kwargs)
+    get(path: str, **kwargs: Any) -> dict[str, Any]
         Make a GET request to the given path.
-    post(path, **kwargs)
+    post(path: str, **kwargs: Any) -> dict[str, Any]
         Make a POST request to the given path.
-    close()
+    close() -> None
         Close the underlying aiohttp client.
     """
 
