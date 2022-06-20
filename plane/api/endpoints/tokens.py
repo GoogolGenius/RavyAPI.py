@@ -32,6 +32,7 @@ class Tokens(HTTPAwareEndpoint):
         Returns
         -------
         GetTokenResponse
-            A model response from :meth:`plane.api.endpoints.tokens.Tokens.get_token`. Located as :class:`plane.api.models.tokens.GetTokenResponse`.
+            A model response from :meth:`plane.api.endpoints.tokens.Tokens.get_token`.
+            Located as :class:`plane.api.models.tokens.GetTokenResponse`.
         """
         return GetTokenResponse(await self._http.get(self._http.paths.tokens.route))

@@ -44,7 +44,8 @@ class KSoft(HTTPAwareEndpoint):
         Returns
         -------
         GetKSoftBanResponse
-            A model response from :meth:`plane.api.endpoints.ksoft.KSoft.get_ban`. Located as :class:`plane.api.models.ksoft.GetKSoftBanResponse`.
+            A model response from :meth:`plane.api.endpoints.ksoft.KSoft.get_ban`.
+            Located as :class:`plane.api.models.ksoft.GetKSoftBanResponse`.
         """
         if not isinstance(user_id, int):
             raise TypeError('Parameter "user_id" must be of type "int"')

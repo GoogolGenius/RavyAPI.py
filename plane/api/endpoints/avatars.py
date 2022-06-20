@@ -63,7 +63,8 @@ class Avatars(HTTPAwareEndpoint):
         Returns
         -------
         CheckAvatarResponse
-            A model response from :meth:`plane.api.endpoints.avatars.Avatars.check_avatar`. Located as :class:`plane.api.models.avatars.CheckAvatarResponse`.
+            A model response from :meth:`plane.api.endpoints.avatars.Avatars.check_avatar`.
+            Located as :class:`plane.api.models.avatars.CheckAvatarResponse`.
         """
         if not isinstance(avatar, (str, bytes)):
             raise TypeError('Parameter "avatar" must be of type "str" or "bytes"')

@@ -24,9 +24,9 @@ class GetKSoftBanResponse:
     found: bool
         Whether the user was found in the database.
     user_id : int | None
-        The user ID, if found.
+        The user's ID, if found.
     tag : str | None
-        The user tag, if found.
+        The user's tag, if found.
     reason : str | None
         Reason for the ban, if found.
     proof : str | None
@@ -84,12 +84,12 @@ class GetKSoftBanResponse:
 
     @property
     def user_id(self) -> int | None:
-        """The user ID, if found."""
+        """The user's ID, if found."""
         return self._user_id
 
     @property
     def tag(self) -> str | None:
-        """The user tag, if found."""
+        """The user's tag, if found."""
         return self._tag
 
     @property

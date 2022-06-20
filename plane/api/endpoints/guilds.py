@@ -44,7 +44,8 @@ class Guilds(HTTPAwareEndpoint):
         Returns
         -------
         GetGuildResponse
-            A model response from :meth:`plane.api.endpoints.guilds.Guilds.get_guild`. Located as :class:`plane.api.models.guilds.GetGuildResponse`.
+            A model response from :meth:`plane.api.endpoints.guilds.Guilds.get_guild`.
+            Located as :class:`plane.api.models.guilds.GetGuildResponse`.
         """
         if not isinstance(guild_id, int):
             raise TypeError('Parameter "guild_id" must be of type "int"')

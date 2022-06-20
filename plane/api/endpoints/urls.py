@@ -61,7 +61,8 @@ class URLs(HTTPAwareEndpoint):
         Returns
         -------
         GetWebsiteResponse
-            A model response from :meth:`plane.api.endpoints.urls.URLs.get_website`. Located as :class:`plane.api.models.urls.GetWebsiteResponse`.
+            A model response from :meth:`plane.api.endpoints.urls.URLs.get_website`.
+            Located as :class:`plane.api.models.urls.GetWebsiteResponse`.
         """
         if not isinstance(url, str):
             raise TypeError('Parameter "url" must be of type "str"')
