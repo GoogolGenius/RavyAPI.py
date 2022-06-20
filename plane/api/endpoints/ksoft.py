@@ -21,24 +21,13 @@ class KSoft(HTTPAwareEndpoint):
 
     Methods
     -------
-    get_ban -> GetKSoftBanResponse
+    get_ban(user_id: int) -> GetKSoftBanResponse
         TODO
     """
 
     @with_permission_check("ksoft.bans")
     async def get_ban(self: HTTPAwareEndpoint, user_id: int) -> GetKSoftBanResponse:
-        """Get KSoft ban status.
-
-        Parameters
-        ----------
-        user_id : int
-            User ID of the user to look up.
-
-        Returns
-        -------
-        GetKSoftBanResponse
-            The response from the API.
-        """
+        """TODO"""
         if not isinstance(user_id, int):
             raise ValueError('Parameter "user_id" must be of "int" or derivative type')
 

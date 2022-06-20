@@ -24,9 +24,9 @@ class URLs(HTTPAwareEndpoint):
     
     Methods
     -------
-    get_website(self: URLs, website_id: int) -> GetWebsiteResponse
+    get_website(website_id: int) -> GetWebsiteResponse
         TODO
-    edit_website(self: URLs, website_id: int, request: EditWebsiteRequest) -> None
+    edit_website(website_id: int, request: EditWebsiteRequest) -> None
         TODO
     """
     

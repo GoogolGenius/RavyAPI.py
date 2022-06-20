@@ -28,17 +28,17 @@ class Users(HTTPAwareEndpoint):
     
     Methods
     -------
-    get_user(self: HTTPAwareEndpoint, user_id: int) -> GetUserResponse
+    get_user(user_id: int) -> GetUserResponse
         TODO
-    get_pronouns(self: HTTPAwareEndpoint, user_id: int) -> GetPronounsResponse
+    get_pronouns(user_id: int) -> GetPronounsResponse
         TODO
-    get_bans(self: HTTPAwareEndpoint, user_id: int) -> GetBansResponse
+    get_bans(user_id: int) -> GetBansResponse
         TODO
-    add_ban(self: HTTPAwareEndpoint, user_id: int, ban_entry: BanEntryRequest) -> None
+    add_ban(user_id: int, ban_entry: BanEntryRequest) -> None
         TODO
-    get_whitelists(self: HTTPAwareEndpoint, user_id: int) -> GetWhitelistsResponse
+    get_whitelists(user_id: int) -> GetWhitelistsResponse
         TODO
-    get_reputation(self: HTTPAwareEndpoint, user_id: int) -> GetReputationResponse
+    get_reputation(user_id: int) -> GetReputationResponse
         TODO
     """
     @with_permission_check("users")

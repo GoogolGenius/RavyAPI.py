@@ -29,7 +29,7 @@ class Avatars(HTTPAwareEndpoint):
 
     Methods
     -------
-    check_avatar -> CheckAvatarResponse
+    check_avatar(avatar: str | bytes, threshold: float = 0.97, method: Literal["ssim", "phash"] = "phash") -> CheckAvatarResponse
         TODO
     """
 
@@ -40,22 +40,7 @@ class Avatars(HTTPAwareEndpoint):
         threshold: float = 0.97,
         method: Literal["ssim", "phash"] = "phash",
     ) -> CheckAvatarResponse:
-        """Check if avatar is fraudulent (Discord CDN).
-
-        Parameters
-        ----------
-        avatar : str | bytes
-            Link to the avatar, should start with cdn.discordapp.com; or bytes.
-        threshold : float
-            How similar the avatar needs to be for it to match (0-1, default 0.97).
-        method : Literal["ssim", "phash"]
-            Which method to use for matching the avatars ("ssim" or "phash", default is "phash")
-
-        Returns
-        -------
-        CheckAvatarResponse
-            The response from the API.
-        """
+        """TODO"""
         if not isinstance(avatar, (str, bytes)):
             raise ValueError(
                 'Parameter "avatar" must be of "str", "bytes" or derivative types'

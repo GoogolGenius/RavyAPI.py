@@ -20,7 +20,7 @@ class Tokens(HTTPAwareEndpoint):
     
     Methods
     -------
-    get_token -> None
+    get_token() -> None
         TODO
     """
 

@@ -21,24 +21,13 @@ class Guilds(HTTPAwareEndpoint):
 
     Methods
     -------
-    get_guild -> GetGuildResponse
+    get_guild(guild_id: int) -> GetGuildResponse
         TODO
     """
 
     @with_permission_check("guilds")
     async def get_guild(self: HTTPAwareEndpoint, guild_id: int) -> GetGuildResponse:
-        """Get extensive guild information.
-
-        Parameters
-        ----------
-        guild_id : int
-            Guild ID of the guild to look up.
-
-        Returns
-        -------
-        GetGuildResponse
-            The response from the API.
-        """
+        """TODO"""
         if not isinstance(guild_id, int):
             raise ValueError('Parameter "guild_id" must be of "int" or derivative type')
 
