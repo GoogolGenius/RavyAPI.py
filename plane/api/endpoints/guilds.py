@@ -5,7 +5,7 @@
 # You may obtain a copy of the License at
 #
 # http://www.apache.org/licenses/LICENSE-2.0
-"""The implementations for the `guilds` endpoint."""
+"""Implementations for the `guilds` endpoint."""
 
 from __future__ import annotations
 
