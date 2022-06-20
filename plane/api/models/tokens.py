@@ -76,5 +76,5 @@ class GetTokenResponse:
 
     @property
     def token_type(self) -> Literal["ravy", "ksoft"]:
-        """The type of the token, either "ravy" or "ksoft.\""""
+        """The type of the token, either "ravy" or "ksoft.\" """
         return self._token_type

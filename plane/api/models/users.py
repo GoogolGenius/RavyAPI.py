@@ -60,7 +60,9 @@ class GetUserResponse:
         self._data: dict[str, Any] = data
         self._pronouns: str = data["pronouns"]
         self._trust = Trust(data["trust"])
-        self._whitelists = [WhitelistEntry(whitelist) for whitelist in data["whitelists"]]
+        self._whitelists = [
+            WhitelistEntry(whitelist) for whitelist in data["whitelists"]
+        ]
         self._bans = [BanEntryResponse(ban) for ban in data["bans"]]
         self._rep = [ReputationEntry(rep) for rep in data["rep"]]
         self._sentinel = SentinelEntry(data["sentinel"])
