@@ -40,14 +40,17 @@ class URLs(HTTPAwareEndpoint):
     ) -> GetWebsiteResponse:
         """TODO"""
         if not isinstance(url, str):
-            raise ValueError('Parameter "url" must be of "str" or derivative type')
+            raise TypeError('Parameter "url" must be of type "str"')
+
+        if not url:
+            raise ValueError('Parameter "url" must not empty')
 
         if author is not None and not isinstance(author, int):
-            raise ValueError('Parameter "author" must be of "int" or derivative type')
+            raise TypeError('Parameter "author" must be of type "int"')
 
         if phisherman_user is not None and not isinstance(phisherman_user, int):
-            raise ValueError(
-                'Parameter "phisherman_user" must be of "int" or derivative type'
+            raise TypeError(
+                'Parameter "phisherman_user" must be of type "int"'
             )
 
         if self._http.phisherman_token is None and phisherman_user:
@@ -79,18 +82,19 @@ class URLs(HTTPAwareEndpoint):
     ) -> None:
         """TODO"""
         if not isinstance(url, str):
-            raise ValueError('Parameter "url" must be of "str" or derivative type')
+            raise TypeError('Parameter "url" must be of type "str"')
+        
+        if not url:
+            raise ValueError('Parameter "url" must not be empty')
 
         if not isinstance(is_fraudulent, bool):
-            raise ValueError(
-                'Parameter "is_fraudulent" must be of "bool" or derivative type'
-            )
+            raise TypeError('Parameter "is_fraudulent" must be of type "bool"')
 
         if not isinstance(message, str):
-            raise ValueError('Parameter "message" must be of "str" or derivative type')
+            raise TypeError('Parameter "message" must be of type "str"')
 
         if not isinstance(encode, bool):
-            raise ValueError('Parameter "encode" must be of "bool" or derivative type')
+            raise TypeError('Parameter "encode" must be of type "bool"')
 
         if encode:
             message = urllib.parse.quote_plus(message)

@@ -46,7 +46,7 @@ class Users(HTTPAwareEndpoint):
     async def get_user(self: HTTPAwareEndpoint, user_id: int) -> GetUserResponse:
         """TODO"""
         if not isinstance(user_id, int):
-            raise ValueError('Parameter "user_id" must be of "int" or derivative type')
+            raise TypeError('Parameter "user_id" must be of type "int"')
 
         return GetUserResponse(
             await self._http.get(self._http.paths.users(user_id).route)
@@ -58,7 +58,7 @@ class Users(HTTPAwareEndpoint):
     ) -> GetPronounsResponse:
         """TODO"""
         if not isinstance(user_id, int):
-            raise ValueError('Parameter "user_id" must be of "int" or derivative type')
+            raise TypeError('Parameter "user_id" must be of type "int"')
 
         return GetPronounsResponse(
             await self._http.get(self._http.paths.users(user_id).pronouns)
@@ -68,7 +68,7 @@ class Users(HTTPAwareEndpoint):
     async def get_bans(self: HTTPAwareEndpoint, user_id: int) -> GetBansResponse:
         """TODO"""
         if not isinstance(user_id, int):
-            raise ValueError('Parameter "user_id" must be of "int" or derivative type')
+            raise TypeError('Parameter "user_id" must be of type "int"')
 
         return GetBansResponse(
             await self._http.get(self._http.paths.users(user_id).bans)
@@ -86,23 +86,28 @@ class Users(HTTPAwareEndpoint):
     ) -> None:
         """TODO"""
         if not isinstance(user_id, int):
-            raise ValueError('Parameter "user_id" must be of "int" or derivative type')
+            raise TypeError('Parameter "user_id" must be of type "int"')
 
         if not isinstance(provider, str):
-            raise ValueError('Parameter "provider" must be of "str" or derivative type')
+            raise TypeError('Parameter "provider" must be of type "str"')
+
+        if not provider:
+            raise ValueError('Parameter "provider" must not be empty')  # TODO: Ask Ravy
 
         if not isinstance(reason, str):
-            raise ValueError('Parameter "reason" must be of "str" or derivative type')
+            raise TypeError('Parameter "reason" must be of type "str"')
+
+        if not reason:
+            raise ValueError('Parameter "reason" must not be empty')  # TODO: Ask Ravy
 
         if not isinstance(moderator, int):
-            raise ValueError(
-                'Parameter "moderator" must be of "int" or derivative type'
-            )
+            raise TypeError('Parameter "moderator" must be of type "int"')
 
         if reason_key is not None and not isinstance(reason_key, str):
-            raise ValueError(
-                'Parameter "reason_key" must be of "str" or derivative type'
-            )
+            raise TypeError('Parameter "reason_key" must be of type "str"')
+
+        if reason_key is not None and not reason_key:
+            raise ValueError('Parameter "reason_key" must not be empty')
 
         await self._http.post(
             self._http.paths.users(user_id).bans,
@@ -115,7 +120,7 @@ class Users(HTTPAwareEndpoint):
     ) -> GetWhitelistsResponse:
         """TODO"""
         if not isinstance(user_id, int):
-            raise ValueError('Parameter "user_id" must be of "int" or derivative type')
+            raise TypeError('Parameter "user_id" must be of type "int"')
 
         return GetWhitelistsResponse(
             await self._http.get(self._http.paths.users(user_id).whitelists)
@@ -127,7 +132,7 @@ class Users(HTTPAwareEndpoint):
     ) -> GetReputationResponse:
         """TODO"""
         if not isinstance(user_id, int):
-            raise ValueError('Parameter "user_id" must be of "int" or derivative type')
+            raise TypeError('Parameter "user_id" must be of type "int"')
 
         return GetReputationResponse(
             await self._http.get(self._http.paths.users(user_id).reputation)

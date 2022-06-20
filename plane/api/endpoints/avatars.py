@@ -42,19 +42,18 @@ class Avatars(HTTPAwareEndpoint):
     ) -> CheckAvatarResponse:
         """TODO"""
         if not isinstance(avatar, (str, bytes)):
-            raise ValueError(
-                'Parameter "avatar" must be of "str", "bytes" or derivative types'
-            )
+            raise TypeError('Parameter "avatar" must be of type "str" or "bytes"')
+        
+        if not avatar:
+            raise ValueError('Parameter "avatar" must not be empty')
 
         if not 0 <= threshold <= 1:
             raise ValueError(
-                'Parameter "threshold" must be of "float" or derivative between 0 and 1'
+                'Parameter "threshold" must be of "float" type between 0 and 1'
             )
 
         if method not in ("ssim", "phash"):
-            raise ValueError(
-                'Parameter "method" must be of "Literal" "str" type "ssim" | "phash"'
-            )
+            raise ValueError('Parameter "method" must be either "ssim" or "phash"')
 
         if isinstance(avatar, str):
             if urllib.parse.urlparse(avatar).hostname != "cdn.discordapp.com":

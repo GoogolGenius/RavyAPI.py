@@ -29,7 +29,7 @@ class Guilds(HTTPAwareEndpoint):
     async def get_guild(self: HTTPAwareEndpoint, guild_id: int) -> GetGuildResponse:
         """TODO"""
         if not isinstance(guild_id, int):
-            raise ValueError('Parameter "guild_id" must be of "int" or derivative type')
+            raise TypeError('Parameter "guild_id" must be of type "int"')
 
         return GetGuildResponse(
             await self._http.get(

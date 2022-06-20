@@ -29,7 +29,7 @@ class KSoft(HTTPAwareEndpoint):
     async def get_ban(self: HTTPAwareEndpoint, user_id: int) -> GetKSoftBanResponse:
         """TODO"""
         if not isinstance(user_id, int):
-            raise ValueError('Parameter "user_id" must be of "int" or derivative type')
+            raise TypeError('Parameter "user_id" must be of type "int"')
 
         return GetKSoftBanResponse(
             await self._http.get(
