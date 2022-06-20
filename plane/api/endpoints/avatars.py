@@ -56,7 +56,7 @@ class Avatars(HTTPAwareEndpoint):
         TypeError
             If any parameters are of invalid types.
         ValueError
-            If any parameters are invalid value.
+            If any parameters are invalid values.
 
         Returns
         -------
