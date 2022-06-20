@@ -11,10 +11,10 @@ from __future__ import annotations
 
 __all__: tuple[str, ...] = ("URLs",)
 
+from typing import Any
 import urllib.parse
 
 from plane.api.models import GetWebsiteResponse, EditWebsiteRequest
-from plane.const import NULL
 from plane.http import HTTPAwareEndpoint
 from plane.utils import with_permission_check
 
@@ -82,16 +82,19 @@ class URLs(HTTPAwareEndpoint):
         if self._http.phisherman_token is not None and not phisherman_user:
             raise ValueError("Phisherman user required if phisherman token is set.")
 
+        params: dict[str, Any] = {"url": url}
+
+        if author is not None:
+            params["author"] = author
+
+        if self._http.phisherman_token is not None:
+            params["phisherman_token"] = self._http.phisherman_token
+
+        if phisherman_user is not None:
+            params["phisherman_user"] = phisherman_user
+
         return GetWebsiteResponse(
-            await self._http.get(
-                self._http.paths.urls.route,
-                params={
-                    "url": url,
-                    "author": author or NULL,
-                    "phisherman_token": self._http.phisherman_token or NULL,
-                    "phisherman_user": phisherman_user or NULL,
-                },
-            )
+            await self._http.get(self._http.paths.urls.route, params=params)
         )
 
     @with_permission_check("admin.urls")

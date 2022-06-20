@@ -180,7 +180,7 @@ class Users(HTTPAwareEndpoint):
         if reason_key is not None and not isinstance(reason_key, str):
             raise TypeError('Parameter "reason_key" must be of type "str"')
 
-        if not reason_key:
+        if reason_key is not None and not reason_key:
             raise ValueError('Parameter "reason_key" must not be empty')
 
         await self._http.post(

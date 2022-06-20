@@ -33,9 +33,6 @@ RAVY_TOKEN_REGEX: Final[str] = r"[A-Za-z0-9_-]{24}\.[0-9a-f]{64}"
 KSOFT_TOKEN_REGEX: Final[str] = r"[0-9a-f]{40}"
 """The regex for a KSoft token."""
 
-NULL: Final[str] = "\x00"
-"""A null byte."""
-
 # Totally not copied from Hikari lol
 USER_AGENT: Final[str] = (
     f"plane ({__repository__}, {__version__}) {__author__} "
