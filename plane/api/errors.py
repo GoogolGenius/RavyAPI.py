@@ -25,6 +25,8 @@ class HTTPException(Exception):
         The error data returned by the Ravy API.
     """
 
+    __slots__: tuple[str, ...] = ("_status", "_exc_data")
+
     def __init__(self, status: int, exc_data: str | dict[str, Any]) -> None:
         """
         Parameters
@@ -66,6 +68,8 @@ class AccessException(Exception):
     required : str
         The required permissions for a path route.
     """
+
+    __slots__: tuple[str, ...] = ("_required",)
 
     def __init__(self, required: str) -> None:
         """

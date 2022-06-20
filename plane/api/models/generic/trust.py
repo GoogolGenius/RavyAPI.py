@@ -27,6 +27,8 @@ class Trust:
         TODO
     """
 
+    __slots__: tuple[str, ...] = ("_data", "_level", "_label")
+
     def __init__(self, data: dict[str, Any]) -> None:
         self._data: dict[str, Any] = data
         self._level: int = data["level"]

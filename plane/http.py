@@ -11,10 +11,11 @@ from __future__ import annotations
 
 __all__: tuple[str, ...] = ("HTTPClient", "HTTPAwareEndpoint")
 
-import aiohttp
 import re
 
 from typing import Any
+
+import aiohttp
 
 from plane.api.errors import HTTPException
 from plane.api.models import GetTokenResponse
@@ -34,6 +35,14 @@ class HTTPClient:
     close() -> None
         Close the underlying aiohttp client.
     """
+
+    __slots__: tuple[str, ...] = (
+        "_token",
+        "_permissions",
+        "_phisherman_token",
+        "_headers",
+        "_session",
+    )
 
     def __init__(self, token: str) -> None:
         self._token: str = self._token_sentinel(token)
@@ -176,5 +185,9 @@ class HTTPClient:
 
 
 class HTTPAwareEndpoint:
+    """A class representing an endpoint implementation aware of the underlying :class:`plane.http.HTTPClient`."""
+
+    __slots__: tuple[str, ...] = ("_http",)
+
     def __init__(self, http: HTTPClient) -> None:
         self._http = http

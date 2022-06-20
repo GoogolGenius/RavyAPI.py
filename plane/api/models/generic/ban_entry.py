@@ -11,7 +11,6 @@ from __future__ import annotations
 
 __all__: tuple[str, ...] = ("BanEntryResponse", "BanEntryRequest")
 
-from dataclasses import dataclass
 from typing import Any
 
 
@@ -31,6 +30,14 @@ class BanEntryResponse:
     moderator: int
         TODO
     """
+
+    __slots__: tuple[str, ...] = (
+        "_data",
+        "_provider",
+        "_reason",
+        "_reason_key",
+        "_moderator",
+    )
 
     def __init__(self, data: dict[str, Any]) -> None:
         self._data: dict[str, Any] = data
@@ -65,9 +72,19 @@ class BanEntryResponse:
         return self._moderator
 
 
-@dataclass(frozen=True)
 class BanEntryRequest:
     """A generic model for ban entry requests.
+
+    Parameters
+    ----------
+    provider: str
+        TODO
+    reason: str
+        TODO
+    moderator: int
+        TODO
+    reason_key: str | None
+        TODO
 
     Attributes
     ----------
@@ -86,14 +103,47 @@ class BanEntryRequest:
         Returns a JSON representation of the model.
     """
 
-    provider: str
-    """TODO"""
-    reason: str
-    """TODO"""
-    moderator: int
-    """TODO"""
-    reason_key: str | None = None
-    """TODO"""
+    __slots__: tuple[str, ...] = ("_provider", "_reason", "_moderator", "_reason_key")
+
+    def __init__(
+        self, provider: str, reason: str, moderator: int, reason_key: str | None = None
+    ) -> None:
+        """
+        Parameters
+        ----------
+        provider: str
+            TODO
+        reason: str
+            TODO
+        moderator: int
+            TODO
+        reason_key: str | None
+            TODO
+        """
+        self._provider: str = provider
+        self._reason: str = reason
+        self._moderator: int = moderator
+        self._reason_key: str | None = reason_key
+
+    @property
+    def provider(self) -> str:
+        """TODO"""
+        return self._provider
+
+    @property
+    def reason(self) -> str:
+        """TODO"""
+        return self._reason
+
+    @property
+    def moderator(self) -> int:
+        """TODO"""
+        return self._moderator
+
+    @property
+    def reason_key(self) -> str | None:
+        """TODO"""
+        return self._reason_key
 
     def to_json(self) -> dict[str, Any]:
         """Returns a JSON representation of the model.

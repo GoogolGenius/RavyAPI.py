@@ -24,6 +24,8 @@ class Tokens(HTTPAwareEndpoint):
         TODO
     """
 
+    __slots__: tuple[str, ...] = ()
+
     async def get_token(self: HTTPAwareEndpoint) -> GetTokenResponse:
         """TODO"""
         return GetTokenResponse(await self._http.get(self._http.paths.tokens.route))

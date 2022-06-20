@@ -29,6 +29,8 @@ class CheckAvatarResponse:
         TODO
     """
 
+    __slots__: tuple[str, ...] = ("_data", "_matched", "_key", "_similarity")
+
     def __init__(self, data: dict[str, Any]) -> None:
         self._data: dict[str, Any] = data
         self._matched: bool = data["isFraudulent"]

@@ -36,6 +36,8 @@ class Paths:
         Returns a path class for the ``users`` endpoint.
     """
 
+    __slots__: tuple[str, ...] = ()
+
     @property
     def avatars(self) -> Avatars:
         """A path class for the ``avatars`` endpoint."""
@@ -98,6 +100,8 @@ class Avatars:
         The route for the endpoint.
     """
 
+    __slots__: tuple[str, ...] = ()
+
     @property
     def route(self) -> str:
         """The route for the endpoint.
@@ -117,6 +121,8 @@ class Guilds:
     guild_id : int
         The guild ID used to route to.
     """
+
+    __slots__: tuple[str, ...] = ("_guild_id", "_route")
 
     def __init__(self, guild_id: int) -> None:
         self._guild_id: int = guild_id
@@ -147,6 +153,8 @@ class KSoft:
         Returns the route for ``bans``.
     """
 
+    __slots__: tuple[str, ...] = ("_route",)
+
     def __init__(self) -> None:
         self._route: str = "/ksoft"
 
@@ -175,6 +183,8 @@ class Tokens:
         The route for the endpoint.
     """
 
+    __slots__: tuple[str, ...] = ()
+
     @property
     def route(self) -> str:
         """The route for the endpoint."""
@@ -189,6 +199,8 @@ class URLs:
     route : str
         The route for the endpoint.
     """
+
+    __slots__: tuple[str, ...] = ()
 
     @property
     def route(self) -> str:
@@ -214,6 +226,8 @@ class Users:
     reputation : str
         The route for ``reputation``.
     """
+
+    __slots__: tuple[str, ...] = ("_user_id", "_route")
 
     def __init__(self, user_id: int) -> None:
         self._user_id: int = user_id

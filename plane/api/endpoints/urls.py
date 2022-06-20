@@ -30,6 +30,8 @@ class URLs(HTTPAwareEndpoint):
         TODO
     """
 
+    __slots__: tuple[str, ...] = ()
+
     @with_permission_check("urls.cached")
     async def get_website(
         self: HTTPAwareEndpoint,

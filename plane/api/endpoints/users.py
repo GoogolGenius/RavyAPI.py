@@ -42,6 +42,8 @@ class Users(HTTPAwareEndpoint):
         TODO
     """
 
+    __slots__: tuple[str, ...] = ()
+
     @with_permission_check("users")
     async def get_user(self: HTTPAwareEndpoint, user_id: int) -> GetUserResponse:
         """TODO"""

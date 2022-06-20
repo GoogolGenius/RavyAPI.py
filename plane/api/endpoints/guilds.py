@@ -25,6 +25,8 @@ class Guilds(HTTPAwareEndpoint):
         TODO
     """
 
+    __slots__: tuple[str, ...] = ()
+
     @with_permission_check("guilds")
     async def get_guild(self: HTTPAwareEndpoint, guild_id: int) -> GetGuildResponse:
         """TODO"""

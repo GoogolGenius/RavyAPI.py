@@ -39,6 +39,18 @@ class GetKSoftBanResponse:
         TODO
     """
 
+    __slots__: tuple[str, ...] = (
+        "_data",
+        "_found",
+        "_user_id",
+        "_tag",
+        "_reason",
+        "_proof",
+        "_moderator",
+        "_severe",
+        "_timestamp",
+    )
+
     def __init__(self, data: dict[str, Any]) -> None:
         self._data: dict[str, Any] = data
         self._found: bool = data["found"]

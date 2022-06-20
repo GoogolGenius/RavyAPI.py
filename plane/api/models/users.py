@@ -46,6 +46,16 @@ class GetUserResponse:
         The user's :class:`plane.api.models.users.SentinelEntry` sentinel model.
     """
 
+    __slots__: tuple[str, ...] = (
+        "_data",
+        "_pronouns",
+        "_trust",
+        "_whitelists",
+        "_bans",
+        "_rep",
+        "_sentinel",
+    )
+
     def __init__(self, data: dict[str, Any]) -> None:
         self._data: dict[str, Any] = data
         self._pronouns: str = data["pronouns"]
@@ -102,6 +112,8 @@ class GetPronounsResponse:
         The user's pronouns.
     """
 
+    __slots__: tuple[str, ...] = ("_data", "_pronouns")
+
     def __init__(self, data: dict[str, Any]) -> None:
         self._data: dict[str, Any] = data
         self._pronouns: str = data["pronouns"]
@@ -129,6 +141,8 @@ class GetBansResponse:
     bans : list[BanEntryResponse]
         A list of the user's :class:`plane.api.models.generic.ban_entry.BanEntryResponse` ban models.
     """
+
+    __slots__: tuple[str, ...] = ("_data", "_trust", "_bans")
 
     def __init__(self, data: dict[str, Any]) -> None:
         self._data: dict[str, Any] = data
@@ -163,6 +177,8 @@ class GetWhitelistsResponse:
     trust : Trust
         The user's :class:`plane.api.models.generic.trust.Trust` trust model.
     """
+
+    __slots__: tuple[str, ...] = ("_data", "_whitelists", "_trust")
 
     def __init__(self, data: dict[str, Any]) -> None:
         self._data: dict[str, Any] = data
@@ -200,6 +216,8 @@ class GetReputationResponse:
         The user's :class:`plane.api.models.generic.trust.Trust` trust model.
     """
 
+    __slots__: tuple[str, ...] = ("_data", "_rep", "_trust")
+
     def __init__(self, data: dict[str, Any]) -> None:
         self._data: dict[str, Any] = data
         self._rep = [ReputationEntry(rep) for rep in data["rep"]]
@@ -233,6 +251,8 @@ class WhitelistEntry:
     reason : str
         TODO
     """
+
+    __slots__: tuple[str, ...] = ("_data", "_provider", "_reason")
 
     def __init__(self, data: dict[str, Any]) -> None:
         self._data: dict[str, Any] = data
@@ -271,6 +291,14 @@ class ReputationEntry:
     downvotes : int | None
         TODO
     """
+
+    __slots__: tuple[str, ...] = (
+        "_data",
+        "_provider",
+        "_score",
+        "_upvotes",
+        "_downvotes",
+    )
 
     def __init__(self, data: dict[str, Any]) -> None:
         self._data: dict[str, Any] = data
@@ -317,6 +345,8 @@ class SentinelEntry:
     internal_id : str
         TODO
     """
+
+    __slots__: tuple[str, ...] = ("_data", "_verified", "_internal_id")
 
     def __init__(self, data: dict[str, Any]) -> None:
         self._data: dict[str, Any] = data

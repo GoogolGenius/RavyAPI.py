@@ -29,6 +29,8 @@ class GetGuildResponse:
         A list of the guilds's :class:`plane.api.models.generic.ban_entry.BanEntryResponse` ban models.
     """
 
+    __slots__: tuple[str, ...] = ("_data", "_trust", "_bans")
+
     def __init__(self, data: dict[str, Any]) -> None:
         self._data: dict[str, Any] = data
         self._trust: Trust = data["trust"]

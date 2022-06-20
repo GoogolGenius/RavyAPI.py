@@ -11,7 +11,6 @@ from __future__ import annotations
 
 __all__: tuple[str, ...] = ("GetWebsiteResponse", "EditWebsiteRequest")
 
-from dataclasses import dataclass
 from typing import Any
 
 
@@ -27,6 +26,8 @@ class GetWebsiteResponse:
     message: str
         TODO
     """
+
+    __slots__: tuple[str, ...] = ("_data", "_is_fraudulent", "_message")
 
     def __init__(self, data: dict[str, Any]) -> None:
         self._data: dict[str, Any] = data
@@ -49,7 +50,6 @@ class GetWebsiteResponse:
         return self._message
 
 
-@dataclass(frozen=True)
 class EditWebsiteRequest:
     """A model request to :func:`plane.api.endpoints.urls.URLs.edit_website`.
 
@@ -73,10 +73,29 @@ class EditWebsiteRequest:
         Returns a JSON representation of the model.
     """
 
-    is_fraudulent: bool
-    """TODO"""
-    message: str
-    """TODO"""
+    __slots__: tuple[str, ...] = ("_is_fraudulent", "_message")
+
+    def __init__(self, is_fraudulent: bool, message: str) -> None:
+        """
+        Parameters
+        ----------
+        is_fraudulent: bool
+            TODO
+        message: str
+            TODO
+        """
+        self._is_fraudulent: bool = is_fraudulent
+        self._message: str = message
+
+    @property
+    def is_fraudulent(self) -> bool:
+        """TODO"""
+        return self._is_fraudulent
+
+    @property
+    def message(self) -> str:
+        """TODO"""
+        return self._message
 
     def to_json(self) -> dict[str, Any]:
         """Returns a JSON representation of the model.

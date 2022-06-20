@@ -33,6 +33,8 @@ class Avatars(HTTPAwareEndpoint):
         TODO
     """
 
+    __slots__: tuple[str, ...] = ()
+
     @with_permission_check("avatars")
     async def check_avatar(
         self: HTTPAwareEndpoint,

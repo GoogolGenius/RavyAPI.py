@@ -41,6 +41,18 @@ class Client:
         Sets the phisherman token for the client.
     """
 
+    __slots__: tuple[str, ...] = (
+        "_token",
+        "_http",
+        "_closed",
+        "_avatars",
+        "_guilds",
+        "_ksoft",
+        "_users",
+        "_urls",
+        "_tokens",
+    )
+
     def __init__(self, token: str) -> None:
         """
         Parameters

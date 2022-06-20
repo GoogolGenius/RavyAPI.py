@@ -25,6 +25,8 @@ class KSoft(HTTPAwareEndpoint):
         TODO
     """
 
+    __slots__: tuple[str, ...] = ()
+
     @with_permission_check("ksoft.bans")
     async def get_ban(self: HTTPAwareEndpoint, user_id: int) -> GetKSoftBanResponse:
         """TODO"""
