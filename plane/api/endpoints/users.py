@@ -25,7 +25,7 @@ from plane.utils import with_permission_check
 
 class Users(HTTPAwareEndpoint):
     """A class with implementations for the ``users`` endpoint.
-    
+
     Methods
     -------
     get_user(user_id: int) -> GetUserResponse
@@ -41,6 +41,7 @@ class Users(HTTPAwareEndpoint):
     get_reputation(user_id: int) -> GetReputationResponse
         TODO
     """
+
     @with_permission_check("users")
     async def get_user(self: HTTPAwareEndpoint, user_id: int) -> GetUserResponse:
         """TODO"""
