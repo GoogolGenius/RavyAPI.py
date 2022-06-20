@@ -49,9 +49,7 @@ class URLs(HTTPAwareEndpoint):
             raise TypeError('Parameter "author" must be of type "int"')
 
         if phisherman_user is not None and not isinstance(phisherman_user, int):
-            raise TypeError(
-                'Parameter "phisherman_user" must be of type "int"'
-            )
+            raise TypeError('Parameter "phisherman_user" must be of type "int"')
 
         if self._http.phisherman_token is None and phisherman_user:
             raise ValueError("Phisherman token required if phisherman user is set.")
@@ -83,7 +81,7 @@ class URLs(HTTPAwareEndpoint):
         """TODO"""
         if not isinstance(url, str):
             raise TypeError('Parameter "url" must be of type "str"')
-        
+
         if not url:
             raise ValueError('Parameter "url" must not be empty')
 

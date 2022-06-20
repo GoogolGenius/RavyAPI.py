@@ -43,7 +43,7 @@ class Avatars(HTTPAwareEndpoint):
         """TODO"""
         if not isinstance(avatar, (str, bytes)):
             raise TypeError('Parameter "avatar" must be of type "str" or "bytes"')
-        
+
         if not avatar:
             raise ValueError('Parameter "avatar" must not be empty')
 
