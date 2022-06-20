@@ -95,8 +95,8 @@ class Avatars(HTTPAwareEndpoint):
                 )
             )
 
-        form: aiohttp.FormData = aiohttp.FormData()
-        form.add_field("avatar", avatar, content_type="application/octet-stream")
+        data: aiohttp.FormData = aiohttp.FormData()
+        data.add_field("avatar", avatar, content_type="application/octet-stream")
 
         return CheckAvatarResponse(
             await self._http.post(
@@ -105,6 +105,6 @@ class Avatars(HTTPAwareEndpoint):
                     "threshold": threshold,
                     "method": method,
                 },
-                data=form(),
+                data=data,
             )
         )
