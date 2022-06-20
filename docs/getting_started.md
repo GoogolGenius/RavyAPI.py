@@ -57,7 +57,7 @@ You can catch the defined errors in the `plane.api.errors` module and handle the
 # Assume boilerplate is already set up
 try:
     token_info = await client.tokens.get_token()
-except plane.api.HTTPException as e:  # Generic HTTP error
+except plane.HTTPException as e:  # Generic HTTP error
     if e.status == 429:
         print(f"Encountered {e.status}: we are being ratelimited by Cloudflare!")
     else:
@@ -65,7 +65,7 @@ except plane.api.HTTPException as e:  # Generic HTTP error
 
 try:
     website_info = await client.urls.get_website("https://example.com")
-except plane.api.AccessException as e:  # Access denied
+except plane.AccessException as e:  # Access denied
     print(f"This errored as the endpoint route needed {e.required} permissions!")
 ```
 
