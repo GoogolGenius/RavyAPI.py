@@ -16,20 +16,20 @@ from typing_extensions import Literal
 
 
 class GetTokenResponse:
-    """A model response from :func:`plane.api.endpoints.tokens.Tokens.get_token`.
+    """A model response from :meth:`plane.api.endpoints.tokens.Tokens.get_token`.
 
     Attributes
     ----------
     data: dict[str, Any]
         The raw data returned from the Ravy API.
     user: str
-        TODO
+        The user ID associated with the token.
     access: list[str]
-        TODO
+        A list of valid permission nodes for the token.
     application: int
-        TODO
+        The application ID registered to the token.
     token_type: Literal["ravy", "ksoft"]
-        TODO
+        The type of the token, either "ravy" or "ksoft".
     """
 
     __slots__: tuple[str, ...] = (
@@ -42,7 +42,7 @@ class GetTokenResponse:
 
     def __init__(self, data: dict[str, Any]) -> None:
         self._data: dict[str, Any] = data
-        self._user: str = data["user"]
+        self._user: int = int(data["user"])
         self._access: list[str] = data["access"]
         self._application: int = int(data["application"])
         self._token_type: Literal["ravy", "ksoft"] = data["type"]
@@ -60,21 +60,21 @@ class GetTokenResponse:
         return self._data
 
     @property
-    def user(self) -> str:
-        """TODO"""
+    def user(self) -> int:
+        """The user ID associated with the token."""
         return self._user
 
     @property
     def access(self) -> list[str]:
-        """TODO"""
+        """A list of valid permission nodes for the token."""
         return self._access
 
     @property
     def application(self) -> int:
-        """TODO"""
+        """The application ID registered to the token."""
         return self._application
 
     @property
     def token_type(self) -> Literal["ravy", "ksoft"]:
-        """TODO"""
+        """The type of the token, either "ravy" or "ksoft"."""
         return self._token_type

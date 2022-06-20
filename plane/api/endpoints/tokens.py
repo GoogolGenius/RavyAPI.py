@@ -21,11 +21,17 @@ class Tokens(HTTPAwareEndpoint):
     Methods
     -------
     get_token() -> None
-        TODO
+        Get current token information.
     """
 
     __slots__: tuple[str, ...] = ()
 
     async def get_token(self: HTTPAwareEndpoint) -> GetTokenResponse:
-        """TODO"""
+        """Get current token information.
+
+        Returns
+        -------
+        GetTokenResponse
+            A model response from :meth:`plane.api.endpoints.tokens.Tokens.get_token`. Located as :class:`plane.api.models.tokens.GetTokenResponse`.
+        """
         return GetTokenResponse(await self._http.get(self._http.paths.tokens.route))

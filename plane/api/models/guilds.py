@@ -17,7 +17,7 @@ from plane.api.models.generic import Trust, BanEntryResponse
 
 
 class GetGuildResponse:
-    """A model response from :func:`plane.api.endpoints.guilds.Guilds.get_guild`.
+    """A model response from :meth:`plane.api.endpoints.guilds.Guilds.get_guild`.
 
     Attributes
     ----------

@@ -29,24 +29,40 @@ class Users(HTTPAwareEndpoint):
     Methods
     -------
     get_user(user_id: int) -> GetUserResponse
-        TODO
+        Get extensive user information.
     get_pronouns(user_id: int) -> GetPronounsResponse
-        TODO
+        Get pronouns.
     get_bans(user_id: int) -> GetBansResponse
-        TODO
+        Get bans.
     add_ban(user_id: int, ban_entry: BanEntryRequest) -> None
-        TODO
+        Add ban.
     get_whitelists(user_id: int) -> GetWhitelistsResponse
-        TODO
+        Get whitelists.
     get_reputation(user_id: int) -> GetReputationResponse
-        TODO
+        Get reputation.
     """
 
     __slots__: tuple[str, ...] = ()
 
     @with_permission_check("users")
     async def get_user(self: HTTPAwareEndpoint, user_id: int) -> GetUserResponse:
-        """TODO"""
+        """Get extensive user information.
+
+        Parameters
+        ----------
+        user_id : int
+            User ID of the user to look up.
+
+        Raises
+        ------
+        TypeError
+            If any parameters are invalid type.
+
+        Returns
+        -------
+        GetUserResponse
+            A model response from :meth:`plane.api.endpoints.users.Users.get_user`. Located as :class:`plane.api.models.users.GetUserResponse`.
+        """
         if not isinstance(user_id, int):
             raise TypeError('Parameter "user_id" must be of type "int"')
 
@@ -58,7 +74,23 @@ class Users(HTTPAwareEndpoint):
     async def get_pronouns(
         self: HTTPAwareEndpoint, user_id: int
     ) -> GetPronounsResponse:
-        """TODO"""
+        """Get pronouns.
+
+        Parameters
+        ----------
+        user_id : int
+            User ID of the user to look up.
+
+        Raises
+        ------
+        TypeError
+            If any parameters are invalid type.
+
+        Returns
+        -------
+        GetPronounsResponse
+            A model response from :meth:`plane.api.endpoints.users.Users.get_pronouns`. Located as :class:`plane.api.models.users.GetPronounsResponse`.
+        """
         if not isinstance(user_id, int):
             raise TypeError('Parameter "user_id" must be of type "int"')
 
@@ -68,7 +100,23 @@ class Users(HTTPAwareEndpoint):
 
     @with_permission_check("users.bans")
     async def get_bans(self: HTTPAwareEndpoint, user_id: int) -> GetBansResponse:
-        """TODO"""
+        """Get bans.
+
+        Parameters
+        ----------
+        user_id : int
+            User ID of the user to look up.
+
+        Raises
+        ------
+        TypeError
+            If any parameters are invalid type.
+
+        Returns
+        -------
+        GetBansResponse
+            A model response from :meth:`plane.api.endpoints.users.Users.get_bans`. Located as :class:`plane.api.models.users.GetBansResponse`.
+        """
         if not isinstance(user_id, int):
             raise TypeError('Parameter "user_id" must be of type "int"')
 
@@ -86,7 +134,28 @@ class Users(HTTPAwareEndpoint):
         moderator: int,
         reason_key: str | None = None,
     ) -> None:
-        """TODO"""
+        """Add ban.
+
+        Parameters
+        ----------
+        user_id : int
+            User ID of the user to ban.
+        provider : str
+            Source for where the user was banned.
+        reason : str
+            Why the user was banned.
+        moderator : int
+            User ID of the responsible moderator, usually Discord.
+        reason_key : str | None
+            Machine-readable version of the reason - only present for providers ravy and dservices.
+
+        Raises
+        ------
+        TypeError
+            If any parameters are invalid type.
+        ValueError
+            If any parameters are invalid value.
+        """
         if not isinstance(user_id, int):
             raise TypeError('Parameter "user_id" must be of type "int"')
 
@@ -120,7 +189,23 @@ class Users(HTTPAwareEndpoint):
     async def get_whitelists(
         self: HTTPAwareEndpoint, user_id: int
     ) -> GetWhitelistsResponse:
-        """TODO"""
+        """Get whitelists.
+
+        Parameters
+        ----------
+        user_id : int
+            User ID of the user to look up.
+
+        Raises
+        ------
+        TypeError
+            If any parameters are invalid type.
+
+        Returns
+        -------
+        GetWhitelistsResponse
+            A model response from :meth:`plane.api.endpoints.users.Users.get_whitelists`. Located as :class:`plane.api.models.users.GetWhitelistsResponse`.
+        """
         if not isinstance(user_id, int):
             raise TypeError('Parameter "user_id" must be of type "int"')
 
@@ -132,7 +217,23 @@ class Users(HTTPAwareEndpoint):
     async def get_reputation(
         self: HTTPAwareEndpoint, user_id: int
     ) -> GetReputationResponse:
-        """TODO"""
+        """Get reputation.
+
+        Parameters
+        ----------
+        user_id : int
+            User ID of the user to look up.
+
+        Raises
+        ------
+        TypeError
+            If any parameters are invalid type.
+
+        Returns
+        -------
+        GetReputationResponse
+            A model response from :meth:`plane.api.endpoints.users.Users.get_reputation`. Located as :class:`plane.api.models.users.GetReputationResponse`.
+        """
         if not isinstance(user_id, int):
             raise TypeError('Parameter "user_id" must be of type "int"')
 

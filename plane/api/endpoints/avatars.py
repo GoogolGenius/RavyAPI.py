@@ -30,7 +30,7 @@ class Avatars(HTTPAwareEndpoint):
     Methods
     -------
     check_avatar(avatar: str | bytes, threshold: float = 0.97, method: Literal["ssim", "phash"] = "phash") -> CheckAvatarResponse
-        TODO
+        Check if avatar is fraudulent.
     """
 
     __slots__: tuple[str, ...] = ()
@@ -42,7 +42,29 @@ class Avatars(HTTPAwareEndpoint):
         threshold: float = 0.97,
         method: Literal["ssim", "phash"] = "phash",
     ) -> CheckAvatarResponse:
-        """TODO"""
+        """Check if avatar is fraudulent.
+
+        Parameters
+        ----------
+        avatar : str | bytes
+            Link to the avatar, should start with "cdn.discordapp.com" or the avatar to query, as an octet stream.
+        threshold : float = 0.97
+            How similar the avatar needs to be for it to match (0-1, default 0.97).
+        method : Literal["ssim", "phash"] = "phash"
+            Which method to use for matching the avatars ("ssim" or "phash", default is "phash").
+
+        Raises
+        ------
+        TypeError
+            If any parameters are invalid type.
+        ValueError
+            If any parameters are invalid value.
+
+        Returns
+        -------
+        CheckAvatarResponse
+            A model response from :meth:`plane.api.endpoints.avatars.Avatars.check_avatar`. Located as :class:`plane.api.models.avatars.CheckAvatarResponse`.
+        """
         if not isinstance(avatar, (str, bytes)):
             raise TypeError('Parameter "avatar" must be of type "str" or "bytes"')
 
@@ -51,7 +73,7 @@ class Avatars(HTTPAwareEndpoint):
 
         if not 0 <= threshold <= 1:
             raise ValueError(
-                'Parameter "threshold" must be of "float" type between 0 and 1'
+                'Parameter "threshold" must be of type "float" between 0 and 1'
             )
 
         if method not in ("ssim", "phash"):

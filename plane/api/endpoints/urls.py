@@ -25,9 +25,9 @@ class URLs(HTTPAwareEndpoint):
     Methods
     -------
     get_website(website_id: int) -> GetWebsiteResponse
-        TODO
+        Get website information.
     edit_website(website_id: int, request: EditWebsiteRequest) -> None
-        TODO
+        Edit website information.
     """
 
     __slots__: tuple[str, ...] = ()
@@ -40,7 +40,29 @@ class URLs(HTTPAwareEndpoint):
         author: int | None = None,
         phisherman_user: int | None = None,
     ) -> GetWebsiteResponse:
-        """TODO"""
+        """Get website information.
+
+        Parameters
+        ----------
+        url : str
+            The url-encoded url to look up.
+        author : int | None
+            Optional, the user that posted the message containing this URL (for auto banning, requires admin.users).
+        phisherman_user : int | None
+            Optional, required if :meth:`plane.client.Client.set_phisherman_token` is called, Discord user ID of the token owner.
+
+        Raises
+        ------
+        TypeError
+            If any parameters are invalid type.
+        ValueError
+            If any parameters are invalid value.
+
+        Returns
+        -------
+        GetWebsiteResponse
+            A model response from :meth:`plane.api.endpoints.urls.URLs.get_website`. Located as :class:`plane.api.models.urls.GetWebsiteResponse`.
+        """
         if not isinstance(url, str):
             raise TypeError('Parameter "url" must be of type "str"')
 
@@ -80,7 +102,26 @@ class URLs(HTTPAwareEndpoint):
         message: str,
         encode: bool = True,
     ) -> None:
-        """TODO"""
+        """Edit website information.
+
+        Parameters
+        ----------
+        url : str
+            The url-encoded url to set data for.
+        is_fraudulent : bool
+            Whether the website is fraudulent.
+        message : str
+            An informational message about the website.
+        encode : bool
+            Whether to url-encode the :param:`url`.
+
+        Raises
+        ------
+        TypeError
+            If any parameters are invalid type.
+        ValueError
+            If any parameters are invalid value.
+        """
         if not isinstance(url, str):
             raise TypeError('Parameter "url" must be of type "str"')
 

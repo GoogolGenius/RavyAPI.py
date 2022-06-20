@@ -26,7 +26,7 @@ from plane.api.models.generic import Trust, BanEntryResponse
 
 
 class GetUserResponse:
-    """A model response from :func:`plane.api.endpoints.users.Users.get_user`.
+    """A model response from :meth:`plane.api.endpoints.users.Users.get_user`.
 
     Attributes
     ----------
@@ -110,7 +110,7 @@ class GetUserResponse:
 
 
 class GetPronounsResponse:
-    """A model response from :func:`plane.api.endpoints.users.Users.get_pronouns`.
+    """A model response from :meth:`plane.api.endpoints.users.Users.get_pronouns`.
 
     Attributes
     ----------
@@ -144,7 +144,7 @@ class GetPronounsResponse:
 
 
 class GetBansResponse:
-    """A model response from :func:`plane.api.endpoints.users.Users.get_bans`.
+    """A model response from :meth:`plane.api.endpoints.users.Users.get_bans`.
 
     Attributes
     ----------
@@ -186,7 +186,7 @@ class GetBansResponse:
 
 
 class GetWhitelistsResponse:
-    """A model response from :func:`plane.api.endpoints.users.Users.get_whitelists`.
+    """A model response from :meth:`plane.api.endpoints.users.Users.get_whitelists`.
 
     Attributes
     ----------
@@ -230,7 +230,7 @@ class GetWhitelistsResponse:
 
 
 class GetReputationResponse:
-    """A model response from :func:`plane.api.endpoints.users.Users.get_reputation`.
+    """A model response from :meth:`plane.api.endpoints.users.Users.get_reputation`.
 
     Attributes
     ----------
@@ -279,9 +279,9 @@ class WhitelistEntry:
     data : dict[str, Any]
         The raw data returned from the Ravy API.
     provider : str
-        TODO
+        Source for where the user is whitelisted.
     reason : str
-        TODO
+        Why the user is whitelisted, usually STAFF.
     """
 
     __slots__: tuple[str, ...] = ("_data", "_provider", "_reason")
@@ -304,12 +304,12 @@ class WhitelistEntry:
 
     @property
     def provider(self) -> str:
-        """TODO"""
+        """Source for where the user is whitelisted."""
         return self._provider
 
     @property
     def reason(self) -> str:
-        """TODO"""
+        """Why the user is whitelisted, usually STAFF."""
         return self._reason
 
 
@@ -321,13 +321,13 @@ class ReputationEntry:
     data : dict[str, Any]
         The raw data returned from the Ravy API.
     provider : str
-        TODO
+        Source for the reputation data.
     score : float
-        TODO
+        Normalized value (0-1) for reputation of the user, 0.5 is default.
     upvotes : int | None
-        TODO
+        Amount of upvotes this user has received, optional.
     downvotes : int | None
-        TODO
+        Amount of downvotes this user has received, optional.
     """
 
     __slots__: tuple[str, ...] = (
@@ -359,22 +359,22 @@ class ReputationEntry:
 
     @property
     def provider(self) -> str:
-        """TODO"""
+        """Source for the reputation data."""
         return self._provider
 
     @property
     def score(self) -> float:
-        """TODO"""
+        """Normalized value (0-1) for reputation of the user, 0.5 is default."""
         return self._score
 
     @property
     def upvotes(self) -> int | None:
-        """TODO"""
+        """Amount of upvotes this user has received, optional."""
         return self._upvotes
 
     @property
     def downvotes(self) -> int | None:
-        """TODO"""
+        """Amount of downvotes this user has received, optional."""
         return self._downvotes
 
 
@@ -386,9 +386,9 @@ class SentinelEntry:
     data : dict[str, Any]
         The raw data returned from the Ravy API.
     verified : bool
-        TODO
+        Whether this user has linked their account to sentinel.
     internal_id : str
-        TODO
+        Internal ID for debug purposes.
     """
 
     __slots__: tuple[str, ...] = ("_data", "_verified", "_internal_id")
@@ -411,10 +411,10 @@ class SentinelEntry:
 
     @property
     def verified(self) -> bool:
-        """TODO"""
+        """Whether this user has linked their account to sentinel."""
         return self._verified
 
     @property
     def internal_id(self) -> str:
-        """TODO"""
+        """Internal ID for debug purposes."""
         return self._internal_id

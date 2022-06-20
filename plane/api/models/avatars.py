@@ -15,18 +15,18 @@ from typing import Any
 
 
 class CheckAvatarResponse:
-    """A model response from :func:`plane.api.endpoints.avatars.Avatars.check_avatar`.
+    """A model response from :meth:`plane.api.endpoints.avatars.Avatars.check_avatar`.
 
     Attributes
     ----------
     data: dict[str, Any]
         The raw data returned from the Ravy API.
     matched: bool
-        TODO
+        Whether the avatar was matched.
     key: str
-        TODO
+        TODO: Ask Ravy
     similarity: float
-        TODO
+        Similarity of the avatar, represented as a float between 0 and 1.
     """
 
     __slots__: tuple[str, ...] = ("_data", "_matched", "_key", "_similarity")
@@ -50,15 +50,15 @@ class CheckAvatarResponse:
 
     @property
     def matched(self) -> bool:
-        """TODO"""
+        """Whether the avatar was matched."""
         return self._matched
 
     @property
     def key(self) -> str:
-        """TODO"""
+        """TODO: Ask Ravy"""
         return self._key
 
     @property
     def similarity(self) -> float:
-        """TODO"""
+        """Similarity of the avatar, represented as a float between 0 and 1."""
         return self._similarity

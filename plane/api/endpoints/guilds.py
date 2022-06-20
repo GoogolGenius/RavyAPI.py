@@ -22,14 +22,30 @@ class Guilds(HTTPAwareEndpoint):
     Methods
     -------
     get_guild(guild_id: int) -> GetGuildResponse
-        TODO
+        Get extensive guild information.
     """
 
     __slots__: tuple[str, ...] = ()
 
     @with_permission_check("guilds")
     async def get_guild(self: HTTPAwareEndpoint, guild_id: int) -> GetGuildResponse:
-        """TODO"""
+        """Get extensive guild information.
+
+        Parameters
+        ----------
+        guild_id : int
+            Guild ID of the guild to look up.
+
+        Raises
+        ------
+        TypeError
+            If any parameters are invalid type.
+
+        Returns
+        -------
+        GetGuildResponse
+            A model response from :meth:`plane.api.endpoints.guilds.Guilds.get_guild`. Located as :class:`plane.api.models.guilds.GetGuildResponse`.
+        """
         if not isinstance(guild_id, int):
             raise TypeError('Parameter "guild_id" must be of type "int"')
 
