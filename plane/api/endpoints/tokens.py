@@ -17,7 +17,7 @@ from plane.http import HTTPAwareEndpoint
 
 class Tokens(HTTPAwareEndpoint):
     """A class with implementations for the ``tokens`` endpoint.
-    
+
     Methods
     -------
     get_token -> None

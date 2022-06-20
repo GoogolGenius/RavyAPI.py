@@ -16,7 +16,7 @@ from typing import Any
 
 class Trust:
     """A generic model for trust.
-    
+
     Attributes
     ----------
     data: dict[str, Any]

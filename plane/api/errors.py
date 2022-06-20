@@ -60,12 +60,13 @@ class HTTPException(Exception):
 
 class AccessException(Exception):
     """A class denoting an exception raised when required permissions are not satisfied.
-    
+
     Attributes
     ----------
     required : str
         The required permissions for a path route.
     """
+
     def __init__(self, required: str) -> None:
         """
         Parameters
@@ -77,7 +78,9 @@ class AccessException(Exception):
         self._required: str = required
 
     def __str__(self) -> str:
-        return f'Insufficient permissions accessing path route requiring "{self.required}"'
+        return (
+            f'Insufficient permissions accessing path route requiring "{self.required}"'
+        )
 
     @property
     def required(self) -> str:
