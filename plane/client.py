@@ -70,7 +70,7 @@ class Client:
         ----------
         token: str
             The phisherman token to set.
-        
+
         Returns
         -------
         Client
