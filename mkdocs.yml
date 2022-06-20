@@ -5,6 +5,8 @@ copyright: Copyright &copy; 2022-Present GoogleGenius
 repo_url: https://github.com/GoogleGenius/plane
 repo_name: GoogleGenius/plane
 
+edit_uri: edit/main/docs/
+
 theme:
   name: material
   features:
