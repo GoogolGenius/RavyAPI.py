@@ -1,6 +1,13 @@
 # Plane
 
-A simple and dynamic asynchronous Python wrapper for the Ravy API. Easy to use and statically typed with Pyright.
+A simple and dynamic asynchronous Python wrapper for the Ravy API.
+
+## Features
+
+- Easy usability
+- 100% API coverage
+- Unit tested (soon™️)
+- Pyright type compatible
 
 ## Installation
 
@@ -8,7 +15,7 @@ A simple and dynamic asynchronous Python wrapper for the Ravy API. Easy to use a
 - Not yet available on PyPI
 
 ```bash
-python3 pip install git+https://github.com/GoogleGenius/plane.git
+python3 -m pip install git+https://github.com/GoogleGenius/plane.git
 ```
 
 ## Usage
@@ -40,4 +47,4 @@ asyncio.run(main())
 
 Feel free to create pull requests and issues. Just be civil, kind, and respectful.
 
-This is my first library, so if you have any suggestions or questions, please let me know! Reach out via GitHub Issues or Discord `@GoogleGenius#7777`.
+This is my first library, so if you have any suggestions or questions, please let me know! Reach out via GitHub Issues or Discord `GoogleGenius#7777`.

@@ -20,32 +20,32 @@ class Paths:
     Attributes
     ----------
     avatars : Avatars
-        A path class for the ``avatars`` endpoint.
+        A path class for the `avatars` endpoint.
     ksoft : KSoft
-        A path class for the ``ksoft`` endpoint.
+        A path class for the `ksoft` endpoint.
     tokens : Tokens
-        A path class for the ``tokens`` endpoint.
+        A path class for the `tokens` endpoint.
     urls : URLs
-        A path class for the ``urls`` endpoint.
+        A path class for the `urls` endpoint.
 
     Methods
     -------
     guilds(guild_id: str) -> Guilds
-        Returns a path class for the ``guilds`` endpoint.
+        Returns a path class for the `guilds` endpoint.
     users(user_id: str) -> Users
-        Returns a path class for the ``users`` endpoint.
+        Returns a path class for the `users` endpoint.
     """
 
     __slots__: tuple[str, ...] = ()
 
     @property
     def avatars(self) -> Avatars:
-        """A path class for the ``avatars`` endpoint."""
+        """A path class for the `avatars` endpoint."""
         return Avatars()
 
     @staticmethod
     def guilds(guild_id: int) -> Guilds:
-        """Returns a path class for the ``guilds`` endpoint.
+        """Returns a path class for the `guilds` endpoint.
 
         Parameters
         ----------
@@ -55,28 +55,28 @@ class Paths:
         Returns
         -------
         Guilds
-            A path class for the ``guilds`` endpoint.
+            A path class for the `guilds` endpoint.
         """
         return Guilds(guild_id)
 
     @property
     def ksoft(self) -> KSoft:
-        """A path class for the ``ksoft`` endpoint."""
+        """A path class for the `ksoft` endpoint."""
         return KSoft()
 
     @property
     def tokens(self) -> Tokens:
-        """A path class for the ``tokens`` endpoint."""
+        """A path class for the `tokens` endpoint."""
         return Tokens()
 
     @property
     def urls(self) -> URLs:
-        """A path class for the ``urls`` endpoint."""
+        """A path class for the `urls` endpoint."""
         return URLs()
 
     @staticmethod
     def users(user_id: int) -> Users:
-        """Returns a path class for the ``users`` endpoint.
+        """Returns a path class for the `users` endpoint.
 
         Parameters
         ----------
@@ -86,13 +86,13 @@ class Paths:
         Returns
         -------
         Users
-            A path class for the ``users`` endpoint.
+            A path class for the `users` endpoint.
         """
         return Users(user_id)
 
 
 class Avatars:
-    """A path class for the ``avatars`` endpoint.
+    """A path class for the `avatars` endpoint.
 
     Attributes
     ----------
@@ -112,7 +112,7 @@ class Avatars:
 
 
 class Guilds:
-    """A path class for the ``guilds`` endpoint.
+    """A path class for the `guilds` endpoint.
 
     Attributes
     ----------
@@ -140,7 +140,7 @@ class Guilds:
 
 
 class KSoft:
-    """A path class for the ``ksoft`` endpoint.
+    """A path class for the `ksoft` endpoint.
 
     Attributes
     ----------
@@ -150,7 +150,7 @@ class KSoft:
     Methods
     -------
     bans(user_id: int) -> str
-        Returns the route for ``bans``.
+        Returns the route for `bans`.
     """
 
     __slots__: tuple[str, ...] = ("_route",)
@@ -164,7 +164,7 @@ class KSoft:
         return self._route
 
     def bans(self, user_id: int) -> str:
-        """Returns the route for ``bans``.
+        """Returns the route for `bans`.
 
         Parameters
         ----------
@@ -175,7 +175,7 @@ class KSoft:
 
 
 class Tokens:
-    """A path class for the ``tokens`` endpoint.
+    """A path class for the `tokens` endpoint.
 
     Attributes
     ----------
@@ -192,7 +192,7 @@ class Tokens:
 
 
 class URLs:
-    """A path class for the ``urls`` endpoint.
+    """A path class for the `urls` endpoint.
 
     Attributes
     ----------
@@ -209,7 +209,7 @@ class URLs:
 
 
 class Users:
-    """A path class for the ``users`` endpoint.
+    """A path class for the `users` endpoint.
 
     Attributes
     ----------
@@ -218,13 +218,13 @@ class Users:
     user_id : int
         The user ID used to route to.
     pronouns : str
-        The route for ``pronouns``.
+        The route for `pronouns`.
     bans : str
-        The route for ``bans``.
+        The route for `bans`.
     whitelists : str
-        The route for ``whitelists``.
+        The route for `whitelists`.
     reputation : str
-        The route for ``reputation``.
+        The route for `reputation`.
     """
 
     __slots__: tuple[str, ...] = ("_user_id", "_route")
@@ -245,20 +245,20 @@ class Users:
 
     @property
     def pronouns(self) -> str:
-        """The route for ``pronouns``."""
+        """The route for `pronouns`."""
         return f"{self._route}/pronouns"
 
     @property
     def bans(self) -> str:
-        """The route for ``bans``."""
+        """The route for `bans`."""
         return f"{self._route}/bans"
 
     @property
     def whitelists(self) -> str:
-        """The route for ``whitelists``."""
+        """The route for `whitelists`."""
         return f"{self._route}/whitelists"
 
     @property
     def reputation(self) -> str:
-        """The route for ``reputation``."""
+        """The route for `reputation`."""
         return f"{self._route}/rep"

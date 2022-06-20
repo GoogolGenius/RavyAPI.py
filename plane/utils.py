@@ -55,7 +55,7 @@ def has_permissions(required: str, permissions: list[str]) -> bool:
 def with_permission_check(
     required: str,
 ) -> Callable[[_EndpointF[_EndpointP, _EndpointT]], _EndpointF[_EndpointP, _EndpointT]]:
-    """Decorate an instance method of :class:`plane.http.HTTPAwareEndpoint` to validate the required permissions.
+    """Decorate an instance method of `plane.http.HTTPAwareEndpoint` to validate the required permissions.
 
     !!! warning
         This is an internal function and should not be used unless you know what you are doing.

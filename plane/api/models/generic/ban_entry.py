@@ -22,13 +22,13 @@ class BanEntryResponse:
     data: dict[str, Any]
         The raw data returned from the Ravy API.
     provider: str
-        TODO
+        Source for where the user or guild was banned.
     reason: str
-        TODO
+        Why the user or guild was banned.
     reason_key: str | None
-        TODO
+        Machine-readable version of the reason - only present for providers ravy and dservices.
     moderator: int
-        TODO
+        User ID of the responsible moderator, usually Discord.
     """
 
     __slots__: tuple[str, ...] = (
@@ -60,22 +60,22 @@ class BanEntryResponse:
 
     @property
     def provider(self) -> str:
-        """TODO"""
+        """Source for where the user or guild was banned."""
         return self._provider
 
     @property
     def reason(self) -> str:
-        """TODO"""
+        """Why the user or guild was banned."""
         return self._reason
 
     @property
     def reason_key(self) -> str | None:
-        """TODO"""
+        """Machine-readable version of the reason - only present for providers ravy and dservices."""
         return self._reason_key
 
     @property
     def moderator(self) -> int:
-        """TODO"""
+        """User ID of the responsible moderator, usually Discord."""
         return self._moderator
 
 
@@ -85,24 +85,24 @@ class BanEntryRequest:
     Parameters
     ----------
     provider: str
-        TODO
+        Source for where the user or guild is banned.
     reason: str
-        TODO
+        Why the user or guild is banned.
     moderator: int
-        TODO
+        User ID of the responsible moderator, usually Discord.
     reason_key: str | None
-        TODO
+        Machine-readable version of the reason - only present for providers ravy and dservices.
 
     Attributes
     ----------
     provider: str
-        TODO
+        Source for where the user or guild is banned.
     reason: str
-        TODO
+        Why the user or guild is banned.
     moderator: int
-        TODO
+        User ID of the responsible moderator, usually Discord.
     reason_key: str | None
-        TODO
+        Machine-readable version of the reason - only present for providers ravy and dservices.
 
     Methods
     -------
@@ -119,13 +119,13 @@ class BanEntryRequest:
         Parameters
         ----------
         provider: str
-            TODO
+            Source for where the user or guild is banned.
         reason: str
-            TODO
+            Why the user or guild is banned.
         moderator: int
-            TODO
+            User ID of the responsible moderator, usually Discord.
         reason_key: str | None
-            TODO
+            Machine-readable version of the reason - only present for providers ravy and dservices.
         """
         self._provider: str = provider
         self._reason: str = reason
@@ -141,22 +141,22 @@ class BanEntryRequest:
 
     @property
     def provider(self) -> str:
-        """TODO"""
+        """Source for where the user or guild is banned."""
         return self._provider
 
     @property
     def reason(self) -> str:
-        """TODO"""
+        """Why the user or guild is banned."""
         return self._reason
 
     @property
     def moderator(self) -> int:
-        """TODO"""
+        """User ID of the responsible moderator, usually Discord."""
         return self._moderator
 
     @property
     def reason_key(self) -> str | None:
-        """TODO"""
+        """Machine-readable version of the reason - only present for providers ravy and dservices."""
         return self._reason_key
 
     def to_json(self) -> dict[str, Any]:

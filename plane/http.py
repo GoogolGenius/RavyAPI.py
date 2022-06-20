@@ -152,7 +152,7 @@ class HTTPClient:
             return await response.json()
 
     def set_phisherman_token(self, token: str) -> None:
-        """Set the phisherman token for use in ``urls`` endpoint routes."""
+        """Set the phisherman token for use in `urls` endpoint routes."""
         self._phisherman_token = token
 
     async def close(self) -> None:
@@ -166,26 +166,26 @@ class HTTPClient:
 
     @property
     def paths(self) -> Paths:
-        """An instance of :class:`plane.api.paths.Path` for routing."""
+        """An instance of `plane.api.paths.Path` for routing."""
         return Paths()
 
     @property
     def permissions(self) -> list[str] | None:
         """The current permissions for the token.
 
-        This is ``None`` if the token has not yet been retrieved.
+        This is `None` if the token has not yet been retrieved.
         Should be populated with a list of string permissions after an initial request.
         """
         return self._permissions
 
     @property
     def phisherman_token(self) -> str | None:
-        """The phisherman token for use in ``urls`` endpoint routes."""
+        """The phisherman token for use in `urls` endpoint routes."""
         return self._phisherman_token
 
 
 class HTTPAwareEndpoint:
-    """A class representing an endpoint implementation aware of the underlying :class:`plane.http.HTTPClient`."""
+    """A class representing an endpoint implementation aware of the underlying `plane.http.HTTPClient`."""
 
     __slots__: tuple[str, ...] = ("_http",)
 

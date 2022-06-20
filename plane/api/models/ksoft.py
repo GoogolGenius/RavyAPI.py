@@ -5,7 +5,7 @@
 # You may obtain a copy of the License at
 #
 # http://www.apache.org/licenses/LICENSE-2.0
-"""API models for the ``ksoft`` endpoint."""
+"""API models for the `ksoft` endpoint."""
 
 from __future__ import annotations
 
@@ -15,28 +15,28 @@ from typing import Any
 
 
 class GetKSoftBanResponse:
-    """A model response from :func:`plane.api.endpoints.ksoft.KSoft.get_ban`.
+    """A model response from `plane.api.endpoints.ksoft.KSoft.get_ban`.
 
     Attributes
     ----------
     data : dict[str, Any]
         The raw data returned from the Ravy API.
     found: bool
-        TODO
+        Whether the user was found in the database.
     user_id : int | None
-        TODO
+        The user's ID, if found.
     tag : str | None
-        TODO
+        The user's tag, if found.
     reason : str | None
-        TODO
+        Reason for the ban, if found.
     proof : str | None
-        TODO
+        Evidence for the ban, if found.
     moderator : int | None
-        TODO
+        User ID of the responsible moderator, if found.
     severe : bool | None
-        TODO
+        Whether the ban is severe, if found.
     timestamp : str | None
-        TODO
+        A timestamp of the ban, if found.
     """
 
     __slots__: tuple[str, ...] = (
@@ -79,40 +79,40 @@ class GetKSoftBanResponse:
 
     @property
     def found(self) -> bool:
-        """TODO"""
+        """Whether the user was found in the database."""
         return self._found
 
     @property
     def user_id(self) -> int | None:
-        """TODO"""
+        """The user's ID, if found."""
         return self._user_id
 
     @property
     def tag(self) -> str | None:
-        """TODO"""
+        """The user's tag, if found."""
         return self._tag
 
     @property
     def reason(self) -> str | None:
-        """TODO"""
+        """Reason for the ban, if found."""
         return self._reason
 
     @property
     def proof(self) -> str | None:
-        """TODO"""
+        """Evidence for the ban, if found."""
         return self._proof
 
     @property
     def moderator(self) -> int | None:
-        """TODO"""
+        """User ID of the responsible moderator, if found."""
         return self._moderator
 
     @property
     def severe(self) -> bool | None:
-        """TODO"""
+        """Whether the ban is severe, if found."""
         return self._severe
 
     @property
     def timestamp(self) -> str | None:
-        """TODO"""
+        """A timestamp of the ban, if found."""
         return self._timestamp

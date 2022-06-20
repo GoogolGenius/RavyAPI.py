@@ -5,7 +5,7 @@
 # You may obtain a copy of the License at
 #
 # http://www.apache.org/licenses/LICENSE-2.0
-"""API models for the ``urls`` endpoint."""
+"""API models for the `urls` endpoint."""
 
 from __future__ import annotations
 
@@ -15,16 +15,16 @@ from typing import Any
 
 
 class GetWebsiteResponse:
-    """A model response from :func:`plane.api.endpoints.urls.URLs.get_website`.
+    """A model response from `plane.api.endpoints.urls.URLs.get_website`.
 
     Attributes
     ----------
     data: dict[str, Any]
         The raw data returned from the Ravy API.
     is_fraudulent: bool
-        TODO
+        Whether the website is fraudulent.
     message: str
-        TODO
+        An informational message about the website.
     """
 
     __slots__: tuple[str, ...] = ("_data", "_is_fraudulent", "_message")
@@ -47,31 +47,31 @@ class GetWebsiteResponse:
 
     @property
     def is_fraudulent(self) -> bool:
-        """TODO"""
+        """Whether the website is fraudulent."""
         return self._is_fraudulent
 
     @property
     def message(self) -> str:
-        """TODO"""
+        """An informational message about the website."""
         return self._message
 
 
 class EditWebsiteRequest:
-    """A model request to :func:`plane.api.endpoints.urls.URLs.edit_website`.
+    """A model request to `plane.api.endpoints.urls.URLs.edit_website`.
 
     Parameters
     ----------
     is_fraudulent: bool
-        TODO
+        Whether the website is fraudulent.
     message: str
-        TODO
+        An informational message about the website.
 
     Attributes
     ----------
     is_fraudulent: bool
-        TODO
+        Whether the website is fraudulent.
     message: str
-        TODO
+        An informational message about the website.
 
     Methods
     -------
@@ -86,9 +86,9 @@ class EditWebsiteRequest:
         Parameters
         ----------
         is_fraudulent: bool
-            TODO
+            Whether the website is fraudulent.
         message: str
-            TODO
+            An informational message about the website.
         """
         self._is_fraudulent: bool = is_fraudulent
         self._message: str = message
@@ -101,12 +101,12 @@ class EditWebsiteRequest:
 
     @property
     def is_fraudulent(self) -> bool:
-        """TODO"""
+        """Whether the website is fraudulent."""
         return self._is_fraudulent
 
     @property
     def message(self) -> str:
-        """TODO"""
+        """An informational message about the website."""
         return self._message
 
     def to_json(self) -> dict[str, Any]:

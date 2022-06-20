@@ -22,9 +22,9 @@ class Trust:
     data: dict[str, Any]
         The raw data returned from the Ravy API.
     level: int
-        TODO
+        From 0-6, higher is better, default is 3.
     label: str
-        TODO
+        What the number means.
     """
 
     __slots__: tuple[str, ...] = ("_data", "_level", "_label")
@@ -47,10 +47,10 @@ class Trust:
 
     @property
     def level(self) -> int:
-        """TODO"""
+        """From 0-6, higher is better, default is 3."""
         return self._level
 
     @property
     def label(self) -> str:
-        """TODO"""
+        """What the number means."""
         return self._label
