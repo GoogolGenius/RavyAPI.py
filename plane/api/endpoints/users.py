@@ -166,13 +166,13 @@ class Users(HTTPAwareEndpoint):
             raise TypeError('Parameter "provider" must be of type "str"')
 
         if not provider:
-            raise ValueError('Parameter "provider" must not be empty')  # TODO: Ask Ravy
+            raise ValueError('Parameter "provider" must not be empty')
 
         if not isinstance(reason, str):
             raise TypeError('Parameter "reason" must be of type "str"')
 
         if not reason:
-            raise ValueError('Parameter "reason" must not be empty')  # TODO: Ask Ravy
+            raise ValueError('Parameter "reason" must not be empty')
 
         if not isinstance(moderator, int):
             raise TypeError('Parameter "moderator" must be of type "int"')
@@ -180,7 +180,7 @@ class Users(HTTPAwareEndpoint):
         if reason_key is not None and not isinstance(reason_key, str):
             raise TypeError('Parameter "reason_key" must be of type "str"')
 
-        if reason_key is not None and not reason_key:
+        if not reason_key:
             raise ValueError('Parameter "reason_key" must not be empty')
 
         await self._http.post(

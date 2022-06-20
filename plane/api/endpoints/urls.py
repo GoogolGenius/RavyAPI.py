@@ -135,6 +135,9 @@ class URLs(HTTPAwareEndpoint):
         if not isinstance(message, str):
             raise TypeError('Parameter "message" must be of type "str"')
 
+        if not message:
+            raise ValueError('Parameter "message" must not be empty')
+
         if not isinstance(encode, bool):
             raise TypeError('Parameter "encode" must be of type "bool"')
 
