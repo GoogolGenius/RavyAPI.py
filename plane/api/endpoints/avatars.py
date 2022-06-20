@@ -95,7 +95,7 @@ class Avatars(HTTPAwareEndpoint):
                 )
             )
 
-        form = aiohttp.FormData()
+        form: aiohttp.FormData = aiohttp.FormData()
         form.add_field("avatar", avatar, content_type="application/octet-stream")
 
         return CheckAvatarResponse(
