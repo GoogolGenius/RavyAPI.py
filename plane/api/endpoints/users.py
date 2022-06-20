@@ -157,7 +157,7 @@ class Users(HTTPAwareEndpoint):
         TypeError
             If any parameters are of invalid types.
         ValueError
-            If any parameters are invalid value.
+            If any parameters are invalid values.
         """
         if not isinstance(user_id, int):
             raise TypeError('Parameter "user_id" must be of type "int"')
