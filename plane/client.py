@@ -21,17 +21,17 @@ class Client:
     closed : bool
         Whether or not the client is closed.
     avatars : Avatars
-        The ``avatars`` endpoint.
+        The `avatars` endpoint.
     guilds : Guilds
-        The ``guilds`` endpoint.
+        The `guilds` endpoint.
     ksoft : KSoft
-        The ``ksoft`` endpoint.
+        The `ksoft` endpoint.
     users : Users
-        The ``users`` endpoint.
+        The `users` endpoint.
     urls : URLs
-        The ``urls`` endpoint.
+        The `urls` endpoint.
     tokens : Tokens
-        The ``tokens`` endpoint.
+        The `tokens` endpoint.
 
     Methods
     -------
@@ -98,30 +98,30 @@ class Client:
 
     @property
     def avatars(self) -> Avatars:
-        """The ``avatars`` endpoint."""
+        """The `avatars` endpoint."""
         return self._avatars
 
     @property
     def guilds(self) -> Guilds:
-        """The ``guilds`` endpoint."""
+        """The `guilds` endpoint."""
         return self._guilds
 
     @property
     def ksoft(self) -> KSoft:
-        """The ``ksoft`` endpoint."""
+        """The `ksoft` endpoint."""
         return self._ksoft
 
     @property
     def users(self) -> Users:
-        """The ``users`` endpoint."""
+        """The `users` endpoint."""
         return self._users
 
     @property
     def urls(self) -> URLs:
-        """The ``urls`` endpoint."""
+        """The `urls` endpoint."""
         return self._urls
 
     @property
     def tokens(self) -> Tokens:
-        """The ``tokens`` endpoint."""
+        """The `tokens` endpoint."""
         return self._tokens

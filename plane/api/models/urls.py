@@ -5,7 +5,7 @@
 # You may obtain a copy of the License at
 #
 # http://www.apache.org/licenses/LICENSE-2.0
-"""API models for the ``urls`` endpoint."""
+"""API models for the `urls` endpoint."""
 
 from __future__ import annotations
 
@@ -15,7 +15,7 @@ from typing import Any
 
 
 class GetWebsiteResponse:
-    """A model response from :meth:`plane.api.endpoints.urls.URLs.get_website`.
+    """A model response from `plane.api.endpoints.urls.URLs.get_website`.
 
     Attributes
     ----------
@@ -57,7 +57,7 @@ class GetWebsiteResponse:
 
 
 class EditWebsiteRequest:
-    """A model request to :meth:`plane.api.endpoints.urls.URLs.edit_website`.
+    """A model request to `plane.api.endpoints.urls.URLs.edit_website`.
 
     Parameters
     ----------

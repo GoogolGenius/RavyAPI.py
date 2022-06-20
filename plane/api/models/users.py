@@ -5,7 +5,7 @@
 # You may obtain a copy of the License at
 #
 # http://www.apache.org/licenses/LICENSE-2.0
-"""API models for the ``users`` endpoint."""
+"""API models for the `users` endpoint."""
 
 from __future__ import annotations
 
@@ -26,7 +26,7 @@ from plane.api.models.generic import Trust, BanEntryResponse
 
 
 class GetUserResponse:
-    """A model response from :meth:`plane.api.endpoints.users.Users.get_user`.
+    """A model response from `plane.api.endpoints.users.Users.get_user`.
 
     Attributes
     ----------
@@ -35,15 +35,15 @@ class GetUserResponse:
     pronouns : str
         The user's pronouns.
     trust : Trust
-        The user's :class:`plane.api.models.generic.trust.Trust` trust model.
+        The user's `plane.api.models.generic.trust.Trust` trust model.
     whitelists : WhitelistEntry
-        The user's :class:`plane.api.models.users.WhitelistEntry` whitelist model.
+        The user's `plane.api.models.users.WhitelistEntry` whitelist model.
     bans : BanEntryResponse
-        The user's :class:`plane.api.models.generic.ban_entry.BanEntryResponse` ban model.
+        The user's `plane.api.models.generic.ban_entry.BanEntryResponse` ban model.
     rep : ReputationEntry
-        The user's :class:`plane.api.models.users.ReputationEntry` reputation model.
+        The user's `plane.api.models.users.ReputationEntry` reputation model.
     sentinel : SentinelEntry
-        The user's :class:`plane.api.models.users.SentinelEntry` sentinel model.
+        The user's `plane.api.models.users.SentinelEntry` sentinel model.
     """
 
     __slots__: tuple[str, ...] = (
@@ -85,32 +85,32 @@ class GetUserResponse:
 
     @property
     def trust(self) -> Trust:
-        """The user's :class:`plane.api.models.generic.trust.Trust` trust model."""
+        """The user's `plane.api.models.generic.trust.Trust` trust model."""
         return self._trust
 
     @property
     def whitelists(self) -> WhitelistEntry:
-        """The user's :class:`plane.api.models.users.WhitelistEntry` whitelist model."""
+        """The user's `plane.api.models.users.WhitelistEntry` whitelist model."""
         return self._whitelists
 
     @property
     def bans(self) -> BanEntryResponse:
-        """The user's :class:`plane.api.models.generic.ban_entry.BanEntryResponse` ban model."""
+        """The user's `plane.api.models.generic.ban_entry.BanEntryResponse` ban model."""
         return self._bans
 
     @property
     def rep(self) -> ReputationEntry:
-        """The user's :class:`plane.api.models.users.ReputationEntry` reputation model."""
+        """The user's `plane.api.models.users.ReputationEntry` reputation model."""
         return self._rep
 
     @property
     def sentinel(self) -> SentinelEntry:
-        """The user's :class:`plane.api.models.users.SentinelEntry` sentinel model."""
+        """The user's `plane.api.models.users.SentinelEntry` sentinel model."""
         return self._sentinel
 
 
 class GetPronounsResponse:
-    """A model response from :meth:`plane.api.endpoints.users.Users.get_pronouns`.
+    """A model response from `plane.api.endpoints.users.Users.get_pronouns`.
 
     Attributes
     ----------
@@ -144,16 +144,16 @@ class GetPronounsResponse:
 
 
 class GetBansResponse:
-    """A model response from :meth:`plane.api.endpoints.users.Users.get_bans`.
+    """A model response from `plane.api.endpoints.users.Users.get_bans`.
 
     Attributes
     ----------
     data : dict[str, Any]
         The raw data returned from the Ravy API.
     trust : Trust
-        The user's :class:`plane.api.models.generic.trust.Trust` trust model.
+        The user's `plane.api.models.generic.trust.Trust` trust model.
     bans : list[BanEntryResponse]
-        A list of the user's :class:`plane.api.models.generic.ban_entry.BanEntryResponse` ban models.
+        A list of the user's `plane.api.models.generic.ban_entry.BanEntryResponse` ban models.
     """
 
     __slots__: tuple[str, ...] = ("_data", "_trust", "_bans")
@@ -176,26 +176,26 @@ class GetBansResponse:
 
     @property
     def trust(self) -> Trust:
-        """The user's :class:`plane.api.models.generic.trust.Trust` trust model."""
+        """The user's `plane.api.models.generic.trust.Trust` trust model."""
         return self._trust
 
     @property
     def bans(self) -> list[BanEntryResponse]:
-        """A list of the user's :class:`plane.api.models.generic.ban_entry.BanEntryResponse` ban models."""
+        """A list of the user's `plane.api.models.generic.ban_entry.BanEntryResponse` ban models."""
         return self._bans
 
 
 class GetWhitelistsResponse:
-    """A model response from :meth:`plane.api.endpoints.users.Users.get_whitelists`.
+    """A model response from `plane.api.endpoints.users.Users.get_whitelists`.
 
     Attributes
     ----------
     data : dict[str, Any]
         The raw data returned from the Ravy API.
     whitelists : list[WhitelistEntry]
-        A list of the user's :class:`plane.api.models.users.WhitelistEntry` whitelist models.
+        A list of the user's `plane.api.models.users.WhitelistEntry` whitelist models.
     trust : Trust
-        The user's :class:`plane.api.models.generic.trust.Trust` trust model.
+        The user's `plane.api.models.generic.trust.Trust` trust model.
     """
 
     __slots__: tuple[str, ...] = ("_data", "_whitelists", "_trust")
@@ -220,26 +220,26 @@ class GetWhitelistsResponse:
 
     @property
     def whitelists(self) -> list[WhitelistEntry]:
-        """A list of the user's :class:`plane.api.models.users.WhitelistEntry` whitelist models."""
+        """A list of the user's `plane.api.models.users.WhitelistEntry` whitelist models."""
         return self._whitelists
 
     @property
     def trust(self) -> Trust:
-        """The user's :class:`plane.api.models.generic.trust.Trust` trust model."""
+        """The user's `plane.api.models.generic.trust.Trust` trust model."""
         return self._trust
 
 
 class GetReputationResponse:
-    """A model response from :meth:`plane.api.endpoints.users.Users.get_reputation`.
+    """A model response from `plane.api.endpoints.users.Users.get_reputation`.
 
     Attributes
     ----------
     data : dict[str, Any]
         The raw data returned from the Ravy API.
     rep : ReputationEntry
-        The user's :class:`plane.api.models.users.ReputationEntry` reputation model.
+        The user's `plane.api.models.users.ReputationEntry` reputation model.
     trust : Trust
-        The user's :class:`plane.api.models.generic.trust.Trust` trust model.
+        The user's `plane.api.models.generic.trust.Trust` trust model.
     """
 
     __slots__: tuple[str, ...] = ("_data", "_rep", "_trust")
@@ -262,12 +262,12 @@ class GetReputationResponse:
 
     @property
     def rep(self) -> list[ReputationEntry]:
-        """A list of the user's :class:`plane.api.models.users.ReputationEntry` reputation models."""
+        """A list of the user's `plane.api.models.users.ReputationEntry` reputation models."""
         return self._rep
 
     @property
     def trust(self) -> Trust:
-        """The user's :class:`plane.api.models.generic.trust.Trust` trust model."""
+        """The user's `plane.api.models.generic.trust.Trust` trust model."""
         return self._trust
 
 

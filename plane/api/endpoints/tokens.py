@@ -5,7 +5,7 @@
 # You may obtain a copy of the License at
 #
 # http://www.apache.org/licenses/LICENSE-2.0
-"""Implementations for the ``tokens`` endpoint."""
+"""Implementations for the `tokens` endpoint."""
 
 from __future__ import annotations
 
@@ -16,7 +16,7 @@ from plane.http import HTTPAwareEndpoint
 
 
 class Tokens(HTTPAwareEndpoint):
-    """A class with implementations for the ``tokens`` endpoint.
+    """A class with implementations for the `tokens` endpoint.
 
     Methods
     -------
@@ -32,7 +32,7 @@ class Tokens(HTTPAwareEndpoint):
         Returns
         -------
         GetTokenResponse
-            A model response from :meth:`plane.api.endpoints.tokens.Tokens.get_token`.
-            Located as :class:`plane.api.models.tokens.GetTokenResponse`.
+            A model response from `plane.api.endpoints.tokens.Tokens.get_token`.
+            Located as `plane.api.models.tokens.GetTokenResponse`.
         """
         return GetTokenResponse(await self._http.get(self._http.paths.tokens.route))

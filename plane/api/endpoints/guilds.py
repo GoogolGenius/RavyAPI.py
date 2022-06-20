@@ -5,7 +5,7 @@
 # You may obtain a copy of the License at
 #
 # http://www.apache.org/licenses/LICENSE-2.0
-"""The implementations for the ``guilds`` endpoint."""
+"""The implementations for the `guilds` endpoint."""
 
 from __future__ import annotations
 
@@ -17,7 +17,7 @@ from plane.utils import with_permission_check
 
 
 class Guilds(HTTPAwareEndpoint):
-    """A class with implementations for the ``guilds`` endpoint.
+    """A class with implementations for the `guilds` endpoint.
 
     Methods
     -------
@@ -44,8 +44,8 @@ class Guilds(HTTPAwareEndpoint):
         Returns
         -------
         GetGuildResponse
-            A model response from :meth:`plane.api.endpoints.guilds.Guilds.get_guild`.
-            Located as :class:`plane.api.models.guilds.GetGuildResponse`.
+            A model response from `plane.api.endpoints.guilds.Guilds.get_guild`.
+            Located as `plane.api.models.guilds.GetGuildResponse`.
         """
         if not isinstance(guild_id, int):
             raise TypeError('Parameter "guild_id" must be of type "int"')

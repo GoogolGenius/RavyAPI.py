@@ -5,7 +5,7 @@
 # You may obtain a copy of the License at
 #
 # http://www.apache.org/licenses/LICENSE-2.0
-"""Implementations for the ``urls`` endpoint."""
+"""Implementations for the `urls` endpoint."""
 
 from __future__ import annotations
 
@@ -20,7 +20,7 @@ from plane.utils import with_permission_check
 
 
 class URLs(HTTPAwareEndpoint):
-    """A class with implementations for the ``urls`` endpoint.
+    """A class with implementations for the `urls` endpoint.
 
     Methods
     -------
@@ -49,7 +49,7 @@ class URLs(HTTPAwareEndpoint):
         author : int | None
             Optional, the user that posted the message containing this URL (for auto banning, requires admin.users).
         phisherman_user : int | None
-            Optional, required if :meth:`plane.client.Client.set_phisherman_token` is called, Discord user ID of the token owner.
+            Optional, required if `plane.client.Client.set_phisherman_token` is called, Discord user ID of the token owner.
 
         Raises
         ------
@@ -61,8 +61,8 @@ class URLs(HTTPAwareEndpoint):
         Returns
         -------
         GetWebsiteResponse
-            A model response from :meth:`plane.api.endpoints.urls.URLs.get_website`.
-            Located as :class:`plane.api.models.urls.GetWebsiteResponse`.
+            A model response from `plane.api.endpoints.urls.URLs.get_website`.
+            Located as `plane.api.models.urls.GetWebsiteResponse`.
         """
         if not isinstance(url, str):
             raise TypeError('Parameter "url" must be of type "str"')

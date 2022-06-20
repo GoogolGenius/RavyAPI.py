@@ -5,7 +5,7 @@
 # You may obtain a copy of the License at
 #
 # http://www.apache.org/licenses/LICENSE-2.0
-"""Implementations for the ``users`` endpoint."""
+"""Implementations for the `users` endpoint."""
 
 from __future__ import annotations
 
@@ -24,7 +24,7 @@ from plane.utils import with_permission_check
 
 
 class Users(HTTPAwareEndpoint):
-    """A class with implementations for the ``users`` endpoint.
+    """A class with implementations for the `users` endpoint.
 
     Methods
     -------
@@ -61,8 +61,8 @@ class Users(HTTPAwareEndpoint):
         Returns
         -------
         GetUserResponse
-            A model response from :meth:`plane.api.endpoints.users.Users.get_user`.
-            Located as :class:`plane.api.models.users.GetUserResponse`.
+            A model response from `plane.api.endpoints.users.Users.get_user`.
+            Located as `plane.api.models.users.GetUserResponse`.
         """
         if not isinstance(user_id, int):
             raise TypeError('Parameter "user_id" must be of type "int"')
@@ -90,8 +90,8 @@ class Users(HTTPAwareEndpoint):
         Returns
         -------
         GetPronounsResponse
-            A model response from :meth:`plane.api.endpoints.users.Users.get_pronouns`.
-            Located as :class:`plane.api.models.users.GetPronounsResponse`.
+            A model response from `plane.api.endpoints.users.Users.get_pronouns`.
+            Located as `plane.api.models.users.GetPronounsResponse`.
         """
         if not isinstance(user_id, int):
             raise TypeError('Parameter "user_id" must be of type "int"')
@@ -117,8 +117,8 @@ class Users(HTTPAwareEndpoint):
         Returns
         -------
         GetBansResponse
-            A model response from :meth:`plane.api.endpoints.users.Users.get_bans`.
-            Located as :class:`plane.api.models.users.GetBansResponse`.
+            A model response from `plane.api.endpoints.users.Users.get_bans`.
+            Located as `plane.api.models.users.GetBansResponse`.
         """
         if not isinstance(user_id, int):
             raise TypeError('Parameter "user_id" must be of type "int"')
@@ -207,8 +207,8 @@ class Users(HTTPAwareEndpoint):
         Returns
         -------
         GetWhitelistsResponse
-            A model response from :meth:`plane.api.endpoints.users.Users.get_whitelists`.
-            Located as :class:`plane.api.models.users.GetWhitelistsResponse`.
+            A model response from `plane.api.endpoints.users.Users.get_whitelists`.
+            Located as `plane.api.models.users.GetWhitelistsResponse`.
         """
         if not isinstance(user_id, int):
             raise TypeError('Parameter "user_id" must be of type "int"')
@@ -236,8 +236,8 @@ class Users(HTTPAwareEndpoint):
         Returns
         -------
         GetReputationResponse
-            A model response from :meth:`plane.api.endpoints.users.Users.get_reputation`.
-            Located as :class:`plane.api.models.users.GetReputationResponse`.
+            A model response from `plane.api.endpoints.users.Users.get_reputation`.
+            Located as `plane.api.models.users.GetReputationResponse`.
         """
         if not isinstance(user_id, int):
             raise TypeError('Parameter "user_id" must be of type "int"')

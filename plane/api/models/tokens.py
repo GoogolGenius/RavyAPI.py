@@ -5,7 +5,7 @@
 # You may obtain a copy of the License at
 #
 # http://www.apache.org/licenses/LICENSE-2.0
-"""API models for the ``tokens`` endpoint."""
+"""API models for the `tokens` endpoint."""
 
 from __future__ import annotations
 
@@ -16,7 +16,7 @@ from typing_extensions import Literal
 
 
 class GetTokenResponse:
-    """A model response from :meth:`plane.api.endpoints.tokens.Tokens.get_token`.
+    """A model response from `plane.api.endpoints.tokens.Tokens.get_token`.
 
     Attributes
     ----------

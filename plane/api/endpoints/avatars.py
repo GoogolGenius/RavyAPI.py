@@ -5,7 +5,7 @@
 # You may obtain a copy of the License at
 #
 # http://www.apache.org/licenses/LICENSE-2.0
-"""The implementations for the ``avatars`` endpoint."""
+"""The implementations for the `avatars` endpoint."""
 
 from __future__ import annotations
 
@@ -23,7 +23,7 @@ from plane.utils import with_permission_check
 
 
 class Avatars(HTTPAwareEndpoint):
-    """A class with implementations for the ``avatars`` endpoint.
+    """A class with implementations for the `avatars` endpoint.
 
     Methods
     -------
@@ -61,8 +61,8 @@ class Avatars(HTTPAwareEndpoint):
         Returns
         -------
         CheckAvatarResponse
-            A model response from :meth:`plane.api.endpoints.avatars.Avatars.check_avatar`.
-            Located as :class:`plane.api.models.avatars.CheckAvatarResponse`.
+            A model response from `plane.api.endpoints.avatars.Avatars.check_avatar`.
+            Located as `plane.api.models.avatars.CheckAvatarResponse`.
         """
         if not isinstance(avatar, (str, bytes)):
             raise TypeError('Parameter "avatar" must be of type "str" or "bytes"')

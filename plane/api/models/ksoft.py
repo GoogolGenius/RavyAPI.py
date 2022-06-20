@@ -5,7 +5,7 @@
 # You may obtain a copy of the License at
 #
 # http://www.apache.org/licenses/LICENSE-2.0
-"""API models for the ``ksoft`` endpoint."""
+"""API models for the `ksoft` endpoint."""
 
 from __future__ import annotations
 
@@ -15,7 +15,7 @@ from typing import Any
 
 
 class GetKSoftBanResponse:
-    """A model response from :meth:`plane.api.endpoints.ksoft.KSoft.get_ban`.
+    """A model response from `plane.api.endpoints.ksoft.KSoft.get_ban`.
 
     Attributes
     ----------
