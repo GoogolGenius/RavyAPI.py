@@ -1,5 +1,5 @@
 # Some things borrowed from Hikari CI workflows
-name: test
+name: lint
 
 on: [push, pull_request]
 
@@ -19,7 +19,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Set up Python
-      uses: actions/setup-python@v3
+      uses: actions/setup-python@v4
       with:
         python-version: 3.7
     - name: Install Python dependencies
