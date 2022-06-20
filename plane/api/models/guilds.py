@@ -18,7 +18,7 @@ from plane.api.models.generic import Trust, BanEntryResponse
 
 class GetGuildResponse:
     """A model response from :func:`plane.api.endpoints.guilds.Guilds.get_guild`.
-    
+
     Attributes
     ----------
     data: dict[str, Any]
@@ -28,6 +28,7 @@ class GetGuildResponse:
     bans: list[BanEntryResponse]
         A list of the guilds's :class:`plane.api.models.generic.ban_entry.BanEntryResponse` ban models.
     """
+
     def __init__(self, data: dict[str, Any]) -> None:
         self._data: dict[str, Any] = data
         self._trust: Trust = data["trust"]

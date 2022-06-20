@@ -17,7 +17,7 @@ from typing_extensions import Literal
 
 class GetTokenResponse:
     """A model response from :func:`plane.api.endpoints.tokens.Tokens.get_token`.
-    
+
     Attributes
     ----------
     data: dict[str, Any]

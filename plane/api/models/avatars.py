@@ -16,7 +16,7 @@ from typing import Any
 
 class CheckAvatarResponse:
     """A model response from :func:`plane.api.endpoints.avatars.Avatars.check_avatar`.
-    
+
     Attributes
     ----------
     data: dict[str, Any]

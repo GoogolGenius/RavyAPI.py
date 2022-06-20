@@ -16,7 +16,7 @@ from typing import Any
 
 class GetKSoftBanResponse:
     """A model response from :func:`plane.api.endpoints.ksoft.KSoft.get_ban`.
-    
+
     Attributes
     ----------
     data : dict[str, Any]
