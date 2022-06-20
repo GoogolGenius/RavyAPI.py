@@ -48,7 +48,7 @@ class Avatars(HTTPAwareEndpoint):
             Link to the avatar, should start with "cdn.discordapp.com" or the avatar to query, as an octet stream.
         threshold : float = 0.97
             How similar the avatar needs to be for it to match (0-1, default 0.97).
-        method : Literal["ssim", "phash"] = "phash"
+        method : Literal["ssim", "phash"]
             Which method to use for matching the avatars ("ssim" or "phash", default is "phash").
 
         Raises

@@ -68,12 +68,12 @@ class HTTPException(Exception):
 
 
 class AccessException(Exception):
-    """A class denoting an exception raised when required permissions are not satisfied.
+    """A class denoting an exception raised when required permission is not satisfied.
 
     Attributes
     ----------
     required : str
-        The required permissions for a path route.
+        The required permission for a path route.
     """
 
     __slots__: tuple[str, ...] = ("_required",)
@@ -82,8 +82,8 @@ class AccessException(Exception):
         """
         Parameters
         ----------
-        required : list[str]
-            The permissions that were needed.
+        required : str
+            The permission that was needed.
         """
         super().__init__()
         self._required: str = required
@@ -95,5 +95,5 @@ class AccessException(Exception):
 
     @property
     def required(self) -> str:
-        """The required permissions for a path route."""
+        """The required permission for a path route."""
         return self._required

@@ -26,7 +26,7 @@ class GetGuildResponse:
     trust: Trust
         The guild's `plane.api.models.generic.trust.Trust` trust model.
     bans: list[BanEntryResponse]
-        A list of the guilds's `plane.api.models.generic.ban_entry.BanEntryResponse` ban models.
+        A list of the guild's `plane.api.models.generic.ban_entry.BanEntryResponse` ban models.
     """
 
     __slots__: tuple[str, ...] = ("_data", "_trust", "_bans")

@@ -114,7 +114,7 @@ class URLs(HTTPAwareEndpoint):
         message : str
             An informational message about the website.
         encode : bool
-            Whether to url-encode the :param:`url`.
+            Whether to url-encode the parameter `url`.
 
         Raises
         ------

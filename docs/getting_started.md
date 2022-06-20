@@ -41,7 +41,7 @@ website_info = await client.urls.get_website("https://example.com")
 
 ## Permissions
 
-The API wrapper automatically validates your token's permissions upon the first method call. If you attempt to use an API method that you do not have permission to use, the library will raise a `plane.api.errors.AccessException`. This information is currently stored internally, but not publicly accessible. To manually check for permissions, call the `plane.client.Client.get_token()` method and use the `access` property.
+The API wrapper automatically validates your token's permissions upon the first method call. If you attempt to use an API method that you do not have permission to use, the library will raise a `plane.api.errors.AccessException`. This information is currently stored internally, but not publicly accessible. To manually check for permissions, call the `plane.client.Client.tokens.get_token()` method and use the `access` property.
 
 ```python
 # Assume boilerplate is already set up
@@ -66,7 +66,7 @@ except plane.HTTPException as e:  # Generic HTTP error
 try:
     website_info = await client.urls.get_website("https://example.com")
 except plane.AccessException as e:  # Access denied
-    print(f"This errored as the endpoint route needed {e.required} permissions!")
+    print(f"This errored as the endpoint route needed {e.required} permission!")
 ```
 
 ## More Information

@@ -97,22 +97,24 @@ class Avatars:
     Attributes
     ----------
     route : str
-        The route for the endpoint.
+        The route for the endpoint. This is the same as the base URL.
     """
 
     __slots__: tuple[str, ...] = ()
 
     @property
     def route(self) -> str:
-        """The route for the endpoint.
-
-        This is the same as the base URL.
-        """
+        """The route for the endpoint. This is the same as the base URL."""
         return BASE_URL
 
 
 class Guilds:
     """A path class for the `guilds` endpoint.
+
+    Parameters
+    ----------
+    guild_id : int
+        The guild ID to route to.
 
     Attributes
     ----------
@@ -130,12 +132,12 @@ class Guilds:
 
     @property
     def route(self) -> str:
-        """The route path for the `guilds` route."""
+        """The route for the endpoint."""
         return self._route
 
     @property
     def guild_id(self) -> int:
-        """The guild ID passed in to the `guilds` route"""
+        """The guild ID used to route to."""
         return self._guild_id
 
 
@@ -210,6 +212,11 @@ class URLs:
 
 class Users:
     """A path class for the `users` endpoint.
+
+    Parameters
+    ----------
+    user_id : int
+        The user ID to route to.
 
     Attributes
     ----------

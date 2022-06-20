@@ -37,11 +37,11 @@ class GetUserResponse:
     trust : Trust
         The user's `plane.api.models.generic.trust.Trust` trust model.
     whitelists : WhitelistEntry
-        The user's `plane.api.models.users.WhitelistEntry` whitelist model.
+        A list of the user's `plane.api.models.users.WhitelistEntry` whitelist models.
     bans : BanEntryResponse
-        The user's `plane.api.models.generic.ban_entry.BanEntryResponse` ban model.
+        A list of the user's `plane.api.models.generic.ban_entry.BanEntryResponse` ban models.
     rep : ReputationEntry
-        The user's `plane.api.models.users.ReputationEntry` reputation model.
+        A list of the user's `plane.api.models.users.ReputationEntry` reputation models.
     sentinel : SentinelEntry
         The user's `plane.api.models.users.SentinelEntry` sentinel model.
     """
@@ -60,9 +60,9 @@ class GetUserResponse:
         self._data: dict[str, Any] = data
         self._pronouns: str = data["pronouns"]
         self._trust = Trust(data["trust"])
-        self._whitelists = WhitelistEntry(data["whitelists"])
-        self._bans = BanEntryResponse(data["bans"])
-        self._rep = ReputationEntry(data["rep"])
+        self._whitelists = [WhitelistEntry(whitelist) for whitelist in data["whitelists"]]
+        self._bans = [BanEntryResponse(ban) for ban in data["bans"]]
+        self._rep = [ReputationEntry(rep) for rep in data["rep"]]
         self._sentinel = SentinelEntry(data["sentinel"])
 
     def __repr__(self) -> str:
@@ -89,18 +89,18 @@ class GetUserResponse:
         return self._trust
 
     @property
-    def whitelists(self) -> WhitelistEntry:
-        """The user's `plane.api.models.users.WhitelistEntry` whitelist model."""
+    def whitelists(self) -> list[WhitelistEntry]:
+        """A list of the user's `plane.api.models.users.WhitelistEntry` whitelist models."""
         return self._whitelists
 
     @property
-    def bans(self) -> BanEntryResponse:
-        """The user's `plane.api.models.generic.ban_entry.BanEntryResponse` ban model."""
+    def bans(self) -> list[BanEntryResponse]:
+        """A list of the user's `plane.api.models.generic.ban_entry.BanEntryResponse` ban models."""
         return self._bans
 
     @property
-    def rep(self) -> ReputationEntry:
-        """The user's `plane.api.models.users.ReputationEntry` reputation model."""
+    def rep(self) -> list[ReputationEntry]:
+        """A list of the user's `plane.api.models.users.ReputationEntry` reputation models."""
         return self._rep
 
     @property
@@ -236,8 +236,8 @@ class GetReputationResponse:
     ----------
     data : dict[str, Any]
         The raw data returned from the Ravy API.
-    rep : ReputationEntry
-        The user's `plane.api.models.users.ReputationEntry` reputation model.
+    rep : list[ReputationEntry]
+        A list of the user's `plane.api.models.users.ReputationEntry` reputation models.
     trust : Trust
         The user's `plane.api.models.generic.trust.Trust` trust model.
     """

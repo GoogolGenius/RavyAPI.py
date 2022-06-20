@@ -29,7 +29,7 @@ class GetTokenResponse:
     application: int
         The application ID registered to the token.
     token_type: Literal["ravy", "ksoft"]
-        The type of the token, either "ravy" or "ksoft".
+        The type of the token, either "ravy" or "ksoft."
     """
 
     __slots__: tuple[str, ...] = (
@@ -76,5 +76,5 @@ class GetTokenResponse:
 
     @property
     def token_type(self) -> Literal["ravy", "ksoft"]:
-        """The type of the token, either "ravy" or "ksoft"."""
+        """The type of the token, either "ravy" or "ksoft.\""""
         return self._token_type
