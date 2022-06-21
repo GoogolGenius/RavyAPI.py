@@ -9,8 +9,14 @@ from __future__ import annotations
 
 __all__: tuple[str, ...] = ("Client",)
 
+import logging
+
+from typing_extensions import Final
+
 from plane.http import HTTPClient
 from plane.api.endpoints import Avatars, Guilds, KSoft, URLs, Users, Tokens
+
+_LOGGER: Final[logging.Logger] = logging.getLogger("plane.client")
 
 
 class Client:
@@ -74,6 +80,8 @@ class Client:
         """Closes the client, shutting down the underlying HTTP client."""
         await self._http.close()
         self._closed = True
+
+        _LOGGER.info("Client is successfully closed")
 
     def set_phisherman_token(self, token: str) -> Client:
         """Sets the phisherman token for the client.

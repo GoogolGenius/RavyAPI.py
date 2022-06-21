@@ -11,9 +11,11 @@ from __future__ import annotations
 
 __all__: tuple[str, ...] = ("HTTPClient", "HTTPAwareEndpoint")
 
+import logging
 import re
 
 from typing import Any
+from typing_extensions import Final
 
 import aiohttp
 
@@ -21,6 +23,8 @@ from plane.api.errors import HTTPException
 from plane.api.models import GetTokenResponse
 from plane.api.paths import Paths
 from plane.const import BASE_URL, KSOFT_TOKEN_REGEX, RAVY_TOKEN_REGEX, USER_AGENT
+
+_LOGGER: Final[logging.Logger] = logging.getLogger("plane.http")
 
 
 class HTTPClient:
@@ -73,10 +77,15 @@ class HTTPClient:
         if not response.ok:
             try:
                 data: str | dict[str, Any] = await response.json()
+                _LOGGER.debug("Response type is of JSON; returning as %s", type(data))
             except aiohttp.ContentTypeError:
-                data: str | dict[str, Any] = await response.text()
+                data = await response.text()  # errors are not always JSON
+                _LOGGER.debug("Response type is not of JSON; returning as %s", type(data))
 
+            _LOGGER.critical("Response status is not ok: %s", response.status)
             raise HTTPException(response.status, data)
+
+        _LOGGER.debug("Handling response successfully: %s", response.status)
 
     @staticmethod
     def _token_sentinel(token: str) -> str:
@@ -96,18 +105,23 @@ class HTTPClient:
         ksoft: re.Pattern[str] = re.compile(KSOFT_TOKEN_REGEX)
 
         if not any(regex.match(token) for regex in (ravy, ksoft)):
+            _LOGGER.critical("An error occurred while validating token")
             raise ValueError("Invalid token provided")
 
+        _LOGGER.debug("Token is successfully validated")
         return token
 
     async def _get_permissions(self) -> None:
         """Get the permissions for the current token."""
         if self._permissions is not None:
+            _LOGGER.debug("Permissions already set; skipping API call")
             return
 
         async with self._session.get(BASE_URL + self.paths.tokens.route) as response:
             await self._handle_response(response)
             self._permissions = GetTokenResponse(await response.json()).access
+
+            _LOGGER.debug("Permissions are now set: %s", self.permissions)
 
     async def get(self, path: str, **kwargs: Any) -> dict[str, Any]:
         """Internal method to make a GET request to the given path.
@@ -124,11 +138,15 @@ class HTTPClient:
         dict[str, Any]
             The JSON response from the API.
         """
+        _LOGGER.debug("Getting permissions from token")
         await self._get_permissions()
 
+        _LOGGER.debug("Making GET request to %s", path)
         async with self._session.get(BASE_URL + path, **kwargs) as response:
             await self._handle_response(response)
-            return await response.json()
+
+            data: dict[str, Any] = await response.json()
+            return data
 
     async def post(self, path: str, **kwargs: Any) -> dict[str, Any]:
         """Internal method to make a POST request to the given path.
@@ -145,11 +163,15 @@ class HTTPClient:
         dict[str, Any]
             The JSON response from the API.
         """
+        _LOGGER.debug("Getting permissions from token")
         await self._get_permissions()
 
+        _LOGGER.debug("Making POST request to %s", path)
         async with self._session.post(BASE_URL + path, **kwargs) as response:
             await self._handle_response(response)
-            return await response.json()
+
+            data: dict[str, Any] = await response.json()
+            return data
 
     def set_phisherman_token(self, token: str) -> None:
         """Set the phisherman token for use in `urls` endpoint routes."""
@@ -157,6 +179,7 @@ class HTTPClient:
 
     async def close(self) -> None:
         """Close the underlying aiohttp client."""
+        _LOGGER.debug("Closing underlying aiohttp client")
         await self._session.close()
 
     @property
