@@ -80,7 +80,9 @@ class HTTPClient:
                 _LOGGER.debug("Response type is of JSON; returning as %s", type(data))
             except aiohttp.ContentTypeError:
                 data = await response.text()  # errors are not always JSON
-                _LOGGER.debug("Response type is not of JSON; returning as %s", type(data))
+                _LOGGER.debug(
+                    "Response type is not of JSON; returning as %s", type(data)
+                )
 
             _LOGGER.critical("Response status is not ok: %s", response.status)
             raise HTTPException(response.status, data)
