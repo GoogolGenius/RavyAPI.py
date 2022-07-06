@@ -80,32 +80,31 @@ class HTTPClient:
         HTTPException
             If the response is not an acceptable status code.
         """
-        if not response.ok:
-            try:
-                data: str | dict[str, Any] = await response.json()
-                _LOGGER.debug("Response type is of JSON; returning as %s", type(data))
-            except aiohttp.ContentTypeError:
-                data = await response.text()  # errors are not always JSON
-                _LOGGER.debug(
-                    "Response type is not of JSON; returning as %s", type(data)
-                )
+        if response.ok:
+            _LOGGER.debug("Handling response successfully: %s", response.status)
+            return
 
-            _LOGGER.critical("Response status is not ok: %s", response.status)
+        try:
+            data: str | dict[str, Any] = await response.json()
+            _LOGGER.debug("Response type is of JSON; returning as %s", type(data))
+        except aiohttp.ContentTypeError:
+            data = await response.text()  # errors are not always JSON
+            _LOGGER.debug("Response type is not of JSON; returning as %s", type(data))
 
-            exception_map = {
-                400: BadRequestError,
-                401: UnauthorizedError,
-                403: ForbiddenError,
-                404: NotFoundError,
-                429: TooManyRequestsError,
-            }
+        _LOGGER.critical("Response status is not ok: %s", response.status)
 
-            if response.status in exception_map:
-                raise exception_map[response.status](data)
-            else:
-                raise HTTPError(response.status, data)
+        exception_map = {
+            400: BadRequestError,
+            401: UnauthorizedError,
+            403: ForbiddenError,
+            404: NotFoundError,
+            429: TooManyRequestsError,
+        }
 
-        _LOGGER.debug("Handling response successfully: %s", response.status)
+        if response.status in exception_map:
+            raise exception_map[response.status](data)
+        else:
+            raise HTTPError(response.status, data)
 
     @staticmethod
     def _token_sentinel(token: str) -> str:
