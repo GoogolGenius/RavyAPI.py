@@ -13,6 +13,6 @@ from plane.api.models.avatars import *
 from plane.api.models.generic import *
 from plane.api.models.guilds import *
 from plane.api.models.ksoft import *
+from plane.api.models.tokens import *
 from plane.api.models.urls import *
 from plane.api.models.users import *
-from plane.api.models.tokens import *

@@ -11,8 +11,6 @@ from __future__ import annotations
 
 __all__: tuple[str, ...] = ("Paths",)
 
-from plane.const import BASE_URL
-
 
 class Paths:
     """A main class for routing paths to the Ravy API.
@@ -97,7 +95,7 @@ class Avatars:
     Attributes
     ----------
     route : str
-        The route for the endpoint. This is the same as the base URL.
+        The route for the endpoint.
     """
 
     __slots__: tuple[str, ...] = ()
@@ -105,7 +103,7 @@ class Avatars:
     @property
     def route(self) -> str:
         """The route for the endpoint. This is the same as the base URL."""
-        return BASE_URL
+        return "/avatars"
 
 
 class Guilds:

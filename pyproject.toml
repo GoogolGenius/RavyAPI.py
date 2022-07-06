@@ -55,3 +55,6 @@ strict = true
 
 [tool.black]
 lineLength = 88
+
+[tool.isort]
+profile = "black"

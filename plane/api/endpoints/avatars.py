@@ -13,9 +13,8 @@ __all__: tuple[str, ...] = ("Avatars",)
 
 import urllib.parse
 
-from typing_extensions import Literal
-
 import aiohttp
+from typing_extensions import Literal
 
 from plane.api.models import CheckAvatarResponse
 from plane.http import HTTPAwareEndpoint

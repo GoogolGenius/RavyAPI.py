@@ -5,6 +5,8 @@
 # You may obtain a copy of the License at
 #
 # http://www.apache.org/licenses/LICENSE-2.0
+"""Module containing the client interfacing for interactions."""
+
 from __future__ import annotations
 
 __all__: tuple[str, ...] = ("Client",)
@@ -13,8 +15,8 @@ import logging
 
 from typing_extensions import Final
 
+from plane.api.endpoints import Avatars, Guilds, KSoft, Tokens, URLs, Users
 from plane.http import HTTPClient
-from plane.api.endpoints import Avatars, Guilds, KSoft, URLs, Users, Tokens
 
 _LOGGER: Final[logging.Logger] = logging.getLogger("plane.client")
 

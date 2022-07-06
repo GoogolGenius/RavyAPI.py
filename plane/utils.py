@@ -12,7 +12,8 @@ from __future__ import annotations
 __all__: tuple[str, ...] = ("with_permission_check",)
 
 from functools import wraps
-from typing import Any, Callable, Coroutine, TYPE_CHECKING, TypeVar
+from typing import TYPE_CHECKING, Any, Callable, Coroutine, TypeVar
+
 from typing_extensions import Concatenate, ParamSpec, TypeAlias
 
 from plane.api.errors import AccessException

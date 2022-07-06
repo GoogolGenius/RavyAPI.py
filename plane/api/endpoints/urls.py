@@ -12,7 +12,6 @@ from __future__ import annotations
 __all__: tuple[str, ...] = ("URLs",)
 
 import urllib.parse
-
 from typing import Any
 
 from plane.api.models import EditWebsiteRequest, GetWebsiteResponse

@@ -12,6 +12,7 @@ from __future__ import annotations
 __all__: tuple[str, ...] = ("GetTokenResponse",)
 
 from typing import Any
+
 from typing_extensions import Literal
 
 

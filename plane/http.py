@@ -13,11 +13,10 @@ __all__: tuple[str, ...] = ("HTTPClient", "HTTPAwareEndpoint")
 
 import logging
 import re
-
 from typing import Any
-from typing_extensions import Final
 
 import aiohttp
+from typing_extensions import Final
 
 from plane.api.errors import HTTPException
 from plane.api.models import GetTokenResponse
@@ -72,7 +71,7 @@ class HTTPClient:
         Raises
         ------
         HTTPException
-            If the response is not a 200 status code.
+            If the response is not an acceptable status code.
         """
         if not response.ok:
             try:

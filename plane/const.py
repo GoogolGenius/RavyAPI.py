@@ -18,9 +18,8 @@ __all__: tuple[str, ...] = (
 
 import platform
 
-from typing_extensions import Final
-
 import aiohttp
+from typing_extensions import Final
 
 from plane._about import __author__, __repository__, __version__
 
