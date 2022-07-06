@@ -77,7 +77,7 @@ class HTTPClient:
 
         Raises
         ------
-        HTTPException
+        HTTPError
             If the response is not an acceptable status code.
         """
         if response.ok:
