@@ -22,13 +22,7 @@ from plane.utils import with_permission_check
 
 
 class Avatars(HTTPAwareEndpoint):
-    """A class with implementations for the `avatars` endpoint.
-
-    Methods
-    -------
-    check_avatar(avatar: str | bytes, threshold: float = 0.97, method: Literal["ssim", "phash"] = "phash") -> CheckAvatarResponse
-        Check if avatar is fraudulent.
-    """
+    """A class with implementations for the `avatars` endpoint."""
 
     __slots__: tuple[str, ...] = ()
 

@@ -103,11 +103,6 @@ class BanEntryRequest:
         User ID of the responsible moderator, usually Discord.
     reason_key: str | None
         Machine-readable version of the reason - only present for providers ravy and dservices.
-
-    Methods
-    -------
-    to_json() -> dict[str, Any]
-        Returns a JSON representation of the model.
     """
 
     __slots__: tuple[str, ...] = ("_provider", "_reason", "_moderator", "_reason_key")

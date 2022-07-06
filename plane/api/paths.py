@@ -25,13 +25,6 @@ class Paths:
         A path class for the `tokens` endpoint.
     urls : URLs
         A path class for the `urls` endpoint.
-
-    Methods
-    -------
-    guilds(guild_id: str) -> Guilds
-        Returns a path class for the `guilds` endpoint.
-    users(user_id: str) -> Users
-        Returns a path class for the `users` endpoint.
     """
 
     __slots__: tuple[str, ...] = ()
@@ -146,11 +139,6 @@ class KSoft:
     ----------
     route : str
         The route for the endpoint.
-
-    Methods
-    -------
-    bans(user_id: int) -> str
-        Returns the route for `bans`.
     """
 
     __slots__: tuple[str, ...] = ("_route",)

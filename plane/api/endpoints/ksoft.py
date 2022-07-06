@@ -17,13 +17,7 @@ from plane.utils import with_permission_check
 
 
 class KSoft(HTTPAwareEndpoint):
-    """A class with implementations for the `ksoft` endpoint.
-
-    Methods
-    -------
-    get_ban(user_id: int) -> GetKSoftBanResponse
-        Get ban status.
-    """
+    """A class with implementations for the `ksoft` endpoint."""
 
     __slots__: tuple[str, ...] = ()
 

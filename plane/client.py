@@ -40,13 +40,6 @@ class Client:
         The `urls` endpoint.
     tokens : Tokens
         The `tokens` endpoint.
-
-    Methods
-    -------
-    close() -> None
-        Closes the client, shutting down the underlying HTTP client.
-    set_phisherman_token(token: str) -> Client
-        Sets the phisherman token for the client.
     """
 
     __slots__: tuple[str, ...] = (

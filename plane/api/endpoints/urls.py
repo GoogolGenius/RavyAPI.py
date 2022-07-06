@@ -20,15 +20,7 @@ from plane.utils import with_permission_check
 
 
 class URLs(HTTPAwareEndpoint):
-    """A class with implementations for the `urls` endpoint.
-
-    Methods
-    -------
-    get_website(website_id: int) -> GetWebsiteResponse
-        Get website information.
-    edit_website(website_id: int, request: EditWebsiteRequest) -> None
-        Edit website information.
-    """
+    """A class with implementations for the `urls` endpoint."""
 
     __slots__: tuple[str, ...] = ()
 

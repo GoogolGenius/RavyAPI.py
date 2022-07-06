@@ -24,23 +24,7 @@ from plane.utils import with_permission_check
 
 
 class Users(HTTPAwareEndpoint):
-    """A class with implementations for the `users` endpoint.
-
-    Methods
-    -------
-    get_user(user_id: int) -> GetUserResponse
-        Get extensive user information.
-    get_pronouns(user_id: int) -> GetPronounsResponse
-        Get pronouns.
-    get_bans(user_id: int) -> GetBansResponse
-        Get bans.
-    add_ban(user_id: int, ban_entry: BanEntryRequest) -> None
-        Add ban.
-    get_whitelists(user_id: int) -> GetWhitelistsResponse
-        Get whitelists.
-    get_reputation(user_id: int) -> GetReputationResponse
-        Get reputation.
-    """
+    """A class with implementations for the `users` endpoint."""
 
     __slots__: tuple[str, ...] = ()
 

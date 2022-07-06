@@ -34,17 +34,7 @@ _LOGGER: Final[logging.Logger] = logging.getLogger("plane.http")
 
 
 class HTTPClient:
-    """Internal client using aiohttp to work with networking.
-
-    Methods
-    -------
-    get(path: str, **kwargs: Any) -> dict[str, Any]
-        Make a GET request to the given path.
-    post(path: str, **kwargs: Any) -> dict[str, Any]
-        Make a POST request to the given path.
-    close() -> None
-        Close the underlying aiohttp client.
-    """
+    """Internal client using aiohttp to work with networking."""
 
     __slots__: tuple[str, ...] = (
         "_token",

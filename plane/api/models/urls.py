@@ -72,11 +72,6 @@ class EditWebsiteRequest:
         Whether the website is fraudulent.
     message: str
         An informational message about the website.
-
-    Methods
-    -------
-    from_model() -> dict[str, Any]
-        Returns a JSON representation of the model.
     """
 
     __slots__: tuple[str, ...] = ("_is_fraudulent", "_message")

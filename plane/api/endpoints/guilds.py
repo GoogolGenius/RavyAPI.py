@@ -17,13 +17,7 @@ from plane.utils import with_permission_check
 
 
 class Guilds(HTTPAwareEndpoint):
-    """A class with implementations for the `guilds` endpoint.
-
-    Methods
-    -------
-    get_guild(guild_id: int) -> GetGuildResponse
-        Get extensive guild information.
-    """
+    """A class with implementations for the `guilds` endpoint."""
 
     __slots__: tuple[str, ...] = ()
 
