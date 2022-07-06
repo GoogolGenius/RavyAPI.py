@@ -16,7 +16,7 @@ from typing import TYPE_CHECKING, Any, Callable, Coroutine, TypeVar
 
 from typing_extensions import Concatenate, ParamSpec, TypeAlias
 
-from plane.api.errors import AccessException
+from plane.api.errors import AccessError
 
 if TYPE_CHECKING:
     from plane.http import HTTPAwareEndpoint
@@ -43,7 +43,7 @@ def has_permissions(required: str, permissions: list[str]) -> bool:
     bool
         Whether the permissions match.
     """
-    required_list: list[str] = required.split(".")
+    required_list = required.split(".")
 
     while required_list:
         if ".".join(required_list) in permissions:
@@ -84,7 +84,7 @@ def with_permission_check(
                 )
 
             if not has_permissions(required, self._http.permissions):
-                raise AccessException(required)
+                raise AccessError(required)
 
             return await function(self, *args, **kwargs)
 

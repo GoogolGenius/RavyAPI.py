@@ -9,12 +9,20 @@
 
 from __future__ import annotations
 
-__all__: tuple[str, ...] = ("HTTPException", "AccessException")
+__all__: tuple[str, ...] = (
+    "AccessError",
+    "BadRequestError",
+    "ForbiddenError",
+    "HTTPError",
+    "NotFoundError",
+    "TooManyRequestsError",
+    "UnauthorizedError",
+)
 
 from typing import Any
 
 
-class HTTPException(Exception):
+class HTTPError(Exception):
     """A base class for all HTTP exceptions.
 
     Parameters
@@ -67,7 +75,7 @@ class HTTPException(Exception):
         return self._exc_data
 
 
-class AccessException(Exception):
+class AccessError(Exception):
     """A class denoting an exception raised when required permission is not satisfied.
 
     Attributes
@@ -97,3 +105,108 @@ class AccessException(Exception):
     def required(self) -> str:
         """The required permission for a path route."""
         return self._required
+
+
+class BadRequestError(HTTPError):
+    """A class denoting an exception raised when a bad request is made.
+
+    Attributes
+    ----------
+    exc_data : str | dict[str, Any]
+        The error data returned by the Ravy API.
+    """
+
+    __slots__: tuple[str, ...] = ("_exc_data",)
+
+    def __init__(self, exc_data: str | dict[str, Any]) -> None:
+        """
+        Parameters
+        ----------
+        exc_data : str | dict[str, Any]
+            The error data returned by the Ravy API.
+        """
+        super().__init__(400, exc_data)
+
+
+class UnauthorizedError(HTTPError):
+    """A class denoting an exception raised when an unauthorized request is made.
+
+    Attributes
+    ----------
+    exc_data : str | dict[str, Any]
+        The error data returned by the Ravy API.
+    """
+
+    __slots__: tuple[str, ...] = ("_exc_data",)
+
+    def __init__(self, exc_data: str | dict[str, Any]) -> None:
+        """
+        Parameters
+        ----------
+        exc_data : str | dict[str, Any]
+            The error data returned by the Ravy API.
+        """
+        super().__init__(401, exc_data)
+
+
+class ForbiddenError(HTTPError):
+    """A class denoting an exception raised when a forbidden request is made.
+
+    Attributes
+    ----------
+    exc_data : str | dict[str, Any]
+        The error data returned by the Ravy API.
+    """
+
+    __slots__: tuple[str, ...] = ("_exc_data",)
+
+    def __init__(self, exc_data: str | dict[str, Any]) -> None:
+        """
+        Parameters
+        ----------
+        exc_data : str | dict[str, Any]
+            The error data returned by the Ravy API.
+        """
+        super().__init__(403, exc_data)
+
+
+class NotFoundError(HTTPError):
+    """A class denoting an exception raised when a resource is not found.
+
+    Attributes
+    ----------
+    exc_data : str | dict[str, Any]
+        The error data returned by the Ravy API.
+    """
+
+    __slots__: tuple[str, ...] = ("_exc_data",)
+
+    def __init__(self, exc_data: str | dict[str, Any]) -> None:
+        """
+        Parameters
+        ----------
+        exc_data : str | dict[str, Any]
+            The error data returned by the Ravy API.
+        """
+        super().__init__(404, exc_data)
+
+
+class TooManyRequestsError(HTTPError):
+    """A class denoting an exception raised when a request is made too frequently.
+
+    Attributes
+    ----------
+    exc_data : str | dict[str, Any]
+        The error data returned by the Ravy API.
+    """
+
+    __slots__: tuple[str, ...] = ("_exc_data",)
+
+    def __init__(self, exc_data: str | dict[str, Any]) -> None:
+        """
+        Parameters
+        ----------
+        exc_data : str | dict[str, Any]
+            The error data returned by the Ravy API.
+        """
+        super().__init__(429, exc_data)

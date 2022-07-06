@@ -18,7 +18,14 @@ from typing import Any
 import aiohttp
 from typing_extensions import Final
 
-from plane.api.errors import HTTPException
+from plane.api.errors import (
+    BadRequestError,
+    ForbiddenError,
+    HTTPError,
+    NotFoundError,
+    TooManyRequestsError,
+    UnauthorizedError,
+)
 from plane.api.models import GetTokenResponse
 from plane.api.paths import Paths
 from plane.const import BASE_URL, KSOFT_TOKEN_REGEX, RAVY_TOKEN_REGEX, USER_AGENT
@@ -84,7 +91,19 @@ class HTTPClient:
                 )
 
             _LOGGER.critical("Response status is not ok: %s", response.status)
-            raise HTTPException(response.status, data)
+
+            exception_map = {
+                400: BadRequestError,
+                401: UnauthorizedError,
+                403: ForbiddenError,
+                404: NotFoundError,
+                429: TooManyRequestsError,
+            }
+
+            if response.status in exception_map:
+                raise exception_map[response.status](data)
+            else:
+                raise HTTPError(response.status, data)
 
         _LOGGER.debug("Handling response successfully: %s", response.status)
 
@@ -102,8 +121,8 @@ class HTTPClient:
         ValueError
             If the token is invalid.
         """
-        ravy: re.Pattern[str] = re.compile(RAVY_TOKEN_REGEX)
-        ksoft: re.Pattern[str] = re.compile(KSOFT_TOKEN_REGEX)
+        ravy = re.compile(RAVY_TOKEN_REGEX)
+        ksoft = re.compile(KSOFT_TOKEN_REGEX)
 
         if not any(regex.match(token) for regex in (ravy, ksoft)):
             _LOGGER.critical("An error occurred while validating token")
