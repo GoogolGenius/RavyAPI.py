@@ -15,7 +15,7 @@ A simple and dynamic asynchronous Python wrapper for the Ravy API.
 - Not yet available on PyPI
 
 ```bash
-python3 -m pip install git+https://github.com/GoogleGenius/plane.git
+python3 -m pip install git+https://github.com/GoogleGenius/plane
 ```
 
 ## Usage
