@@ -23,8 +23,10 @@ if TYPE_CHECKING:
 
     _EndpointP = ParamSpec("_EndpointP")
     _EndpointT = TypeVar("_EndpointT")
+    _EndpointR = TypeVar("_EndpointR")
     _EndpointF: TypeAlias = Callable[
-        Concatenate[HTTPAwareEndpoint, _EndpointP], Coroutine[_EndpointT, Any, Any]
+        Concatenate[HTTPAwareEndpoint, _EndpointP],
+        Coroutine[_EndpointT, Any, _EndpointR],
     ]
 
 
@@ -55,7 +57,10 @@ def has_permissions(required: str, permissions: list[str]) -> bool:
 
 def with_permission_check(
     required: str,
-) -> Callable[[_EndpointF[_EndpointP, _EndpointT]], _EndpointF[_EndpointP, _EndpointT]]:
+) -> Callable[
+    [_EndpointF[_EndpointP, _EndpointT, _EndpointR]],
+    _EndpointF[_EndpointP, _EndpointT, _EndpointR],
+]:
     """Decorate an instance method of `plane.http.HTTPAwareEndpoint` to validate the required permissions.
 
     !!! warning
@@ -72,12 +77,12 @@ def with_permission_check(
     """
 
     def decorator(
-        function: _EndpointF[_EndpointP, _EndpointT]
-    ) -> _EndpointF[_EndpointP, _EndpointT]:
+        function: _EndpointF[_EndpointP, _EndpointT, _EndpointR]
+    ) -> _EndpointF[_EndpointP, _EndpointT, _EndpointR]:
         @wraps(function)
         async def wrapper(
             self: HTTPAwareEndpoint, *args: _EndpointP.args, **kwargs: _EndpointP.kwargs
-        ) -> Coroutine[_EndpointT, Any, Any]:
+        ) -> _EndpointR:
             if self._http.permissions is None:
                 raise AssertionError(
                     'Permissions is "None"; were permissions not yet fetched or unexpectedly modified?'
