@@ -126,17 +126,17 @@ class HTTPClient:
         _LOGGER.debug("Token is successfully validated")
         return token
 
-    async def _get_permissions(self) -> None:
+    async def get_permissions(self) -> None:
         """Get the permissions for the current token."""
+        _LOGGER.debug("Getting permissions from token")
+
         if self._permissions is not None:
             _LOGGER.debug("Permissions already set; skipping API call")
             return
 
-        async with self._session.get(BASE_URL + self.paths.tokens.route) as response:
-            await self._handle_response(response)
-            self._permissions = GetTokenResponse(await response.json()).access
+        self._permissions = GetTokenResponse(await self.get(self.paths.tokens.route)).access
 
-            _LOGGER.debug("Permissions are now set: %s", self.permissions)
+        _LOGGER.debug("Permissions are now set: %s", self.permissions)
 
     async def get(self, path: str, **kwargs: Any) -> dict[str, Any]:
         """Internal method to make a GET request to the given path.
@@ -153,9 +153,6 @@ class HTTPClient:
         dict[str, Any]
             The JSON response from the API.
         """
-        _LOGGER.debug("Getting permissions from token")
-        await self._get_permissions()
-
         _LOGGER.debug("Making GET request to %s", path)
         async with self._session.get(BASE_URL + path, **kwargs) as response:
             await self._handle_response(response)
@@ -178,9 +175,6 @@ class HTTPClient:
         dict[str, Any]
             The JSON response from the API.
         """
-        _LOGGER.debug("Getting permissions from token")
-        await self._get_permissions()
-
         _LOGGER.debug("Making POST request to %s", path)
         async with self._session.post(BASE_URL + path, **kwargs) as response:
             await self._handle_response(response)
@@ -212,7 +206,8 @@ class HTTPClient:
         """The current permissions for the token.
 
         This is `None` if the token has not yet been retrieved.
-        Should be populated with a list of string permissions after an initial request.
+        Should be populated with a list of string permissions after an initial request
+        that is known to require validatation.
         """
         return self._permissions
 

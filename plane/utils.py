@@ -89,6 +89,8 @@ def with_permission_check(
         async def wrapper(
             self: HTTPAwareEndpoint, *args: _EndpointP.args, **kwargs: _EndpointP.kwargs
         ) -> _EndpointR:
+            await self._http.get_permissions()
+
             if self._http.permissions is None:
                 raise AssertionError(
                     'Permissions is "None"; were permissions not yet fetched or unexpectedly modified?'
