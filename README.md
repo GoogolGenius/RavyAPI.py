@@ -1,5 +1,7 @@
 # Plane
 
+**PLEASE NOTE THIS IS STILL IN HEAVY DEVELOPMENT AND VERY UNSTABLE DUE TO LACK OF TESTING CURRENTLY**
+
 A simple and dynamic asynchronous Python wrapper for the Ravy API.
 
 ## Features
