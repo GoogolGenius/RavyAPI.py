@@ -40,8 +40,8 @@ class CheckAvatarResponse:
     def __init__(self, data: dict[str, Any]) -> None:
         self._data: dict[str, Any] = data
         self._matched: bool = data["matched"]
-        self._key: str = data["key"]
-        self._similarity: float = data["similarity"]
+        self._key: str | None = data.get("key")
+        self._similarity: float | None = data.get("similarity")
 
     def __repr__(self) -> str:
         return (
@@ -60,11 +60,11 @@ class CheckAvatarResponse:
         return self._matched
 
     @property
-    def key(self) -> str:
+    def key(self) -> str | None:
         """The avatar key that matched."""
         return self._key
 
     @property
-    def similarity(self) -> float:
+    def similarity(self) -> float | None:
         """Similarity of the avatar to the key, represented as a float between 0 and 1."""
         return self._similarity
