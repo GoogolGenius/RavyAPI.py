@@ -134,7 +134,9 @@ class HTTPClient:
             _LOGGER.debug("Permissions already set; skipping API call")
             return
 
-        self._permissions = GetTokenResponse(await self.get(self.paths.tokens.route)).access
+        self._permissions = GetTokenResponse(
+            await self.get(self.paths.tokens.route)
+        ).access
 
         _LOGGER.debug("Permissions are now set: %s", self.permissions)
 
