@@ -13,10 +13,11 @@ classifiers = [
   "Programming Language :: Python :: 3.8",
   "Programming Language :: Python :: 3.9",
   "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
   "Natural Language :: English",
   "Typing :: Typed",
 ]
-dependencies = ["aiohttp==3.8.1", "typing-extensions==4.2.0"]
+dependencies = ["aiohttp~=3.8", "typing-extensions~=4.1"]
 description = "A simple experimental Python wrapper for the Ravy API."
 keywords = [
   "API",
