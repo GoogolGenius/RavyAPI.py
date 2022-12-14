@@ -1,6 +1,6 @@
 black==22.12.0
 isort==5.11.1
-pyright==1.1.283
+pyright==1.1.284
 mypy==0.991
 mkdocs-material==8.5.11
 mkdocstrings==0.19.1
