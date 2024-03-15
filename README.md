@@ -1,5 +1,7 @@
 # Plane
 
+According to an update from Hazel, the Ravy API will no longer be in operation. The maintenance status of this library is currently in jeopardy.
+
 **PLEASE NOTE THIS IS STILL IN HEAVY DEVELOPMENT AND VERY UNSTABLE DUE TO LACK OF TESTING CURRENTLY**
 
 A simple and dynamic asynchronous Python wrapper for the Ravy API.
