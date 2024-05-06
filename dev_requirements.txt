@@ -3,5 +3,5 @@ isort==5.13.2
 pyright==1.1.352
 mypy==1.10.0
 mkdocs-material==9.5.12
-mkdocstrings==0.24.1
+mkdocstrings==0.25.1
 mkdocstrings[python]==0.24.1
