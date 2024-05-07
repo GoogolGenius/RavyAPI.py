@@ -1,4 +1,4 @@
-black==24.3.0
+black==24.4.2
 isort==5.13.2
 pyright==1.1.361
 mypy==1.10.0
