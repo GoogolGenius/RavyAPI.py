@@ -1,2 +1,2 @@
 aiohttp~=3.9
-typing-extensions~=4.11
+typing-extensions~=4.12
