@@ -20,7 +20,7 @@ __all__: tuple[str, ...] = ("with_permission_check",)
 from functools import wraps
 from typing import TYPE_CHECKING, Any, Callable, Coroutine, TypeVar
 
-from typing import Concatenate, ParamSpec, TypeAlias
+from typing_extensions import Concatenate, ParamSpec, TypeAlias
 
 from ravyapi.api.errors import AccessError
 
