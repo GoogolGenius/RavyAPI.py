@@ -58,7 +58,12 @@ class Paths:
         A path class for the `urls` endpoint.
     """
 
-    __slots__: tuple[str, ...] = ("avatars", "ksoft", "tokens", "urls",)
+    __slots__: tuple[str, ...] = (
+        "avatars",
+        "ksoft",
+        "tokens",
+        "urls",
+    )
 
     @property
     def avatars(self) -> Avatars:
