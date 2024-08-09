@@ -15,7 +15,7 @@ A simple and dynamic asynchronous Python wrapper for the Ravy API.
 
 ## Installation
 
-- Compatible with Python 3.7+
+- Compatible with Python 3.8+
 - Not yet available on PyPI
 
 ```bash
