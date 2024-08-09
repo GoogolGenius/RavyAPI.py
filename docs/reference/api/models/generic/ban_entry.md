@@ -1,1 +1,1 @@
-::: plane.api.models.generic.ban_entry
+::: ravyapi.api.models.generic.ban_entry

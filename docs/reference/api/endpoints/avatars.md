@@ -1,1 +1,1 @@
-::: plane.api.endpoints.avatars
+::: ravyapi.api.endpoints.avatars

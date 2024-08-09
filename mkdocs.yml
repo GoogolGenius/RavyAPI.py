@@ -1,9 +1,9 @@
-site_name: Plane Docs
+site_name: RavyAPI.py Docs
 
-copyright: Copyright &copy; 2022-Present GoogleGenius
+copyright: Copyright &copy; 2022-Present GoogolGenius
 
-repo_url: https://github.com/GoogleGenius/plane
-repo_name: GoogleGenius/plane
+repo_url: https://github.com/GoogolGenius/ravyapi.py
+repo_name: GoogolGenius/RavyAPI.py
 
 edit_uri: edit/main/docs/
 
@@ -42,7 +42,7 @@ plugins:
             show_signature_annotations: true
             show_source: false
       watch:
-        - plane
+        - ravyapi
 
 markdown_extensions:
   - admonition

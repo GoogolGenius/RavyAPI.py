@@ -1,4 +1,4 @@
-# Copyright 2022-Present GoogleGenius
+# Copyright 2022-Present GoogolGenius
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -21,10 +21,10 @@ import logging
 
 from typing_extensions import Final
 
-from plane.api.endpoints import Avatars, Guilds, KSoft, Tokens, URLs, Users
-from plane.http import HTTPClient
+from ravyapi.api.endpoints import Avatars, Guilds, KSoft, Tokens, URLs, Users
+from ravyapi.http import HTTPClient
 
-_LOGGER: Final[logging.Logger] = logging.getLogger("plane.client")
+_LOGGER: Final[logging.Logger] = logging.getLogger("ravyapi.client")
 
 
 class Client:

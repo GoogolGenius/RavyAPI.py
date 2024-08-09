@@ -1,4 +1,4 @@
-# Copyright 2022-Present GoogleGenius
+# Copyright 2022-Present GoogolGenius
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -21,7 +21,7 @@ from typing import Any
 
 
 class CheckAvatarResponse:
-    """A model response from `plane.api.endpoints.avatars.Avatars.check_avatar`.
+    """A model response from `ravyapi.api.endpoints.avatars.Avatars.check_avatar`.
 
     Attributes
     ----------

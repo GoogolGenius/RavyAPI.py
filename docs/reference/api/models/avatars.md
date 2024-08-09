@@ -1,1 +1,1 @@
-::: plane.api.models.avatars
+::: ravyapi.api.models.avatars

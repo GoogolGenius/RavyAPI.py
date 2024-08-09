@@ -1,4 +1,4 @@
-# Copyright 2022-Present GoogleGenius
+# Copyright 2022-Present GoogolGenius
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -20,9 +20,9 @@ __all__: tuple[str, ...] = ("URLs",)
 import urllib.parse
 from typing import Any
 
-from plane.api.models import EditWebsiteRequest, GetWebsiteResponse
-from plane.http import HTTPAwareEndpoint
-from plane.utils import with_permission_check
+from ravyapi.api.models import EditWebsiteRequest, GetWebsiteResponse
+from ravyapi.http import HTTPAwareEndpoint
+from ravyapi.utils import with_permission_check
 
 
 class URLs(HTTPAwareEndpoint):
@@ -47,7 +47,7 @@ class URLs(HTTPAwareEndpoint):
         author : int | None
             Optional, the user that posted the message containing this URL (for auto banning, requires admin.users).
         phisherman_user : int | None
-            Optional, required if `plane.client.Client.set_phisherman_token` is called, Discord user ID of the token owner.
+            Optional, required if `ravyapi.client.Client.set_phisherman_token` is called, Discord user ID of the token owner.
 
         Raises
         ------
@@ -59,8 +59,8 @@ class URLs(HTTPAwareEndpoint):
         Returns
         -------
         GetWebsiteResponse
-            A model response from `plane.api.endpoints.urls.URLs.get_website`.
-            Located as `plane.api.models.urls.GetWebsiteResponse`.
+            A model response from `ravyapi.api.endpoints.urls.URLs.get_website`.
+            Located as `ravyapi.api.models.urls.GetWebsiteResponse`.
         """
         if not isinstance(url, str):
             raise TypeError('Parameter "url" must be of type "str"')

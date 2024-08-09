@@ -1,4 +1,4 @@
-# Copyright 2022-Present GoogleGenius
+# Copyright 2022-Present GoogolGenius
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -18,6 +18,31 @@ from __future__ import annotations
 __all__: tuple[str, ...] = ("Paths",)
 
 
+class BasePath:
+    """A base class for routing paths to the Ravy API.
+
+    Attributes
+    ----------
+    route : str
+        The route for the endpoint.
+    """
+
+    __slots__: tuple[str, ...] = ("_route", "_id")
+
+    def __init__(self, route: str, id: int | None = None) -> None:
+        self._route: str = route
+        self._id: int | None = id
+
+    @property
+    def route(self) -> str:
+        """The route for the endpoint."""
+        return self._route
+
+    @property
+    def id(self) -> int | None:
+        return self._id
+
+
 class Paths:
     """A main class for routing paths to the Ravy API.
 
@@ -33,7 +58,12 @@ class Paths:
         A path class for the `urls` endpoint.
     """
 
-    __slots__: tuple[str, ...] = ()
+    __slots__: tuple[str, ...] = (
+        "avatars",
+        "ksoft",
+        "tokens",
+        "urls",
+    )
 
     @property
     def avatars(self) -> Avatars:
@@ -88,7 +118,7 @@ class Paths:
         return Users(user_id)
 
 
-class Avatars:
+class Avatars(BasePath):
     """A path class for the `avatars` endpoint.
 
     Attributes
@@ -99,13 +129,11 @@ class Avatars:
 
     __slots__: tuple[str, ...] = ()
 
-    @property
-    def route(self) -> str:
-        """The route for the endpoint. This is the same as the base URL."""
-        return "/avatars"
+    def __init__(self) -> None:
+        super().__init__("/avatars")
 
 
-class Guilds:
+class Guilds(BasePath):
     """A path class for the `guilds` endpoint.
 
     Parameters
@@ -117,28 +145,17 @@ class Guilds:
     ----------
     route : str
         The route for the endpoint.
-    guild_id : int
+    id : int
         The guild ID used to route to.
     """
 
-    __slots__: tuple[str, ...] = ("_guild_id", "_route")
+    __slots__: tuple[str, ...] = ()
 
     def __init__(self, guild_id: int) -> None:
-        self._guild_id: int = guild_id
-        self._route: str = f"/guilds/{self._guild_id}"
-
-    @property
-    def route(self) -> str:
-        """The route for the endpoint."""
-        return self._route
-
-    @property
-    def guild_id(self) -> int:
-        """The guild ID used to route to."""
-        return self._guild_id
+        super().__init__(f"/guilds/{guild_id}", guild_id)
 
 
-class KSoft:
+class KSoft(BasePath):
     """A path class for the `ksoft` endpoint.
 
     Attributes
@@ -147,15 +164,10 @@ class KSoft:
         The route for the endpoint.
     """
 
-    __slots__: tuple[str, ...] = ("_route",)
+    __slots__: tuple[str, ...] = ("bans",)
 
     def __init__(self) -> None:
-        self._route: str = "/ksoft"
-
-    @property
-    def route(self) -> str:
-        """The route for the endpoint."""
-        return self._route
+        super().__init__("/ksoft")
 
     def bans(self, user_id: int) -> str:
         """Returns the route for `bans`.
@@ -165,10 +177,10 @@ class KSoft:
         user_id : int
             The user ID to route to.
         """
-        return f"{self._route}/bans/{user_id}"
+        return f"{self.route}/bans/{user_id}"
 
 
-class Tokens:
+class Tokens(BasePath):
     """A path class for the `tokens` endpoint.
 
     Attributes
@@ -179,13 +191,11 @@ class Tokens:
 
     __slots__: tuple[str, ...] = ()
 
-    @property
-    def route(self) -> str:
-        """The route for the endpoint."""
-        return "/tokens/@current"
+    def __init__(self) -> None:
+        super().__init__("/tokens/@current")
 
 
-class URLs:
+class URLs(BasePath):
     """A path class for the `urls` endpoint.
 
     Attributes
@@ -196,13 +206,11 @@ class URLs:
 
     __slots__: tuple[str, ...] = ()
 
-    @property
-    def route(self) -> str:
-        """The route for the endpoint."""
-        return "/urls"
+    def __init__(self) -> None:
+        super().__init__("/urls")
 
 
-class Users:
+class Users(BasePath):
     """A path class for the `users` endpoint.
 
     Parameters
@@ -214,7 +222,7 @@ class Users:
     ----------
     route : str
         The route for the endpoint.
-    user_id : int
+    id : int
         The user ID used to route to.
     pronouns : str
         The route for `pronouns`.
@@ -229,35 +237,24 @@ class Users:
     __slots__: tuple[str, ...] = ("_user_id", "_route")
 
     def __init__(self, user_id: int) -> None:
-        self._user_id: int = user_id
-        self._route: str = f"/users/{self._user_id}"
-
-    @property
-    def route(self) -> str:
-        """The route for the endpoint."""
-        return self._route
-
-    @property
-    def user_id(self) -> int:
-        """The user ID used to route to."""
-        return self._user_id
+        super().__init__(f"/users/{user_id}", user_id)
 
     @property
     def pronouns(self) -> str:
         """The route for `pronouns`."""
-        return f"{self._route}/pronouns"
+        return f"{self.route}/pronouns"
 
     @property
     def bans(self) -> str:
         """The route for `bans`."""
-        return f"{self._route}/bans"
+        return f"{self.route}/bans"
 
     @property
     def whitelists(self) -> str:
         """The route for `whitelists`."""
-        return f"{self._route}/whitelists"
+        return f"{self.route}/whitelists"
 
     @property
     def reputation(self) -> str:
         """The route for `reputation`."""
-        return f"{self._route}/rep"
+        return f"{self.route}/rep"

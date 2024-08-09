@@ -1,4 +1,4 @@
-# Copyright 2022-Present GoogleGenius
+# Copyright 2022-Present GoogolGenius
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -48,7 +48,7 @@ import platform
 import aiohttp
 from typing_extensions import Final
 
-from plane._about import __author__, __repository__, __version__
+from ravyapi._about import __author__, __repository__, __version__
 
 BASE_URL: Final[str] = "https://ravy.org/api/v1"
 """The base URL for the Ravy API."""
@@ -61,7 +61,7 @@ KSOFT_TOKEN_REGEX: Final[str] = r"[0-9a-f]{40}"
 
 # Totally not copied from Hikari lol
 USER_AGENT: Final[str] = (
-    f"plane ({__repository__}, {__version__}) {__author__} "
+    f"RavyAPI.py ({__repository__}, {__version__}) {__author__} "
     f"aiohttp/{aiohttp.__version__} "
     f"{platform.python_implementation()}/{platform.python_version()} "
     f"{platform.system()} {platform.architecture()[0]}"
