@@ -1,4 +1,4 @@
-# Copyright 2022-Present GoogleGenius
+# Copyright 2022-Present GoogolGenius
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,9 +17,9 @@ from __future__ import annotations
 
 __all__: tuple[str, ...] = ("KSoft",)
 
-from plane.api.models import GetKSoftBanResponse
-from plane.http import HTTPAwareEndpoint
-from plane.utils import with_permission_check
+from ravyapi.api.models import GetKSoftBanResponse
+from ravyapi.http import HTTPAwareEndpoint
+from ravyapi.utils import with_permission_check
 
 
 class KSoft(HTTPAwareEndpoint):
@@ -44,8 +44,8 @@ class KSoft(HTTPAwareEndpoint):
         Returns
         -------
         GetKSoftBanResponse
-            A model response from `plane.api.endpoints.ksoft.KSoft.get_ban`.
-            Located as `plane.api.models.ksoft.GetKSoftBanResponse`.
+            A model response from `ravyapi.api.endpoints.ksoft.KSoft.get_ban`.
+            Located as `ravyapi.api.models.ksoft.GetKSoftBanResponse`.
         """
         if not isinstance(user_id, int):
             raise TypeError('Parameter "user_id" must be of type "int"')

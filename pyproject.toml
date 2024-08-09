@@ -9,7 +9,6 @@ classifiers = [
   "Framework :: AsyncIO",
   "Framework :: aiohttp",
   "License :: OSI Approved :: Apache Software License",
-  "Programming Language :: Python :: 3.7",
   "Programming Language :: Python :: 3.8",
   "Programming Language :: Python :: 3.9",
   "Programming Language :: Python :: 3.10",
@@ -29,29 +28,29 @@ license = {file = "LICENSE"}
 maintainers = [
   {name = "Erich Nguyen", email = "erich.nguyen@outlook.com"},
 ]
-name = "plane"
+name = "RavyAPI.py"
 readme = "README.md"
-requires-python = ">=3.7"
+requires-python = ">=3.8"
 version = "0.1.0a"
 
 [project.urls]
-homepage = "https://github.com/GoogleGenius/plane"
-repository = "https://github.com/GoogleGenius/plane"
+homepage = "https://github.com/GoogolGenius/RavyAPI.py"
+repository = "https://github.com/GoogolGenius/RavyAPI.py"
 
 [tool.setuptools]
 license-files = ["LICENSE"]
 
 [tool.setuptools.packages.find]
-include = ["plane*"]
+include = ["ravyapi*"]
 
 [tool.pyright]
-pythonVersion = "3.7"
+pythonVersion = "3.8"
 reportUnnecessaryIsInstance = false
 reportPrivateUsage = "warning"
 typeCheckingMode = "strict"
 
 [tool.mypy]
-python_version = "3.7"
+python_version = "3.8"
 strict = true
 
 [tool.black]

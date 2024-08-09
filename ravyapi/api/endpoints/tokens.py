@@ -1,4 +1,4 @@
-# Copyright 2022-Present GoogleGenius
+# Copyright 2022-Present GoogolGenius
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,8 +17,8 @@ from __future__ import annotations
 
 __all__: tuple[str, ...] = ("Tokens",)
 
-from plane.api.models import GetTokenResponse
-from plane.http import HTTPAwareEndpoint
+from ravyapi.api.models import GetTokenResponse
+from ravyapi.http import HTTPAwareEndpoint
 
 
 class Tokens(HTTPAwareEndpoint):
@@ -32,7 +32,7 @@ class Tokens(HTTPAwareEndpoint):
         Returns
         -------
         GetTokenResponse
-            A model response from `plane.api.endpoints.tokens.Tokens.get_token`.
-            Located as `plane.api.models.tokens.GetTokenResponse`.
+            A model response from `ravyapi.api.endpoints.tokens.Tokens.get_token`.
+            Located as `ravyapi.api.models.tokens.GetTokenResponse`.
         """
         return GetTokenResponse(await self._http.get(self._http.paths.tokens.route))

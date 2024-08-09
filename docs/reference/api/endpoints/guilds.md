@@ -1,1 +1,1 @@
-::: plane.api.endpoints.guilds
+::: ravyapi.api.endpoints.guilds

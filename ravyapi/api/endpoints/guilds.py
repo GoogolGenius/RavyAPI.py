@@ -1,4 +1,4 @@
-# Copyright 2022-Present GoogleGenius
+# Copyright 2022-Present GoogolGenius
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,9 +17,9 @@ from __future__ import annotations
 
 __all__: tuple[str, ...] = ("Guilds",)
 
-from plane.api.models import GetGuildResponse
-from plane.http import HTTPAwareEndpoint
-from plane.utils import with_permission_check
+from ravyapi.api.models import GetGuildResponse
+from ravyapi.http import HTTPAwareEndpoint
+from ravyapi.utils import with_permission_check
 
 
 class Guilds(HTTPAwareEndpoint):
@@ -44,8 +44,8 @@ class Guilds(HTTPAwareEndpoint):
         Returns
         -------
         GetGuildResponse
-            A model response from `plane.api.endpoints.guilds.Guilds.get_guild`.
-            Located as `plane.api.models.guilds.GetGuildResponse`.
+            A model response from `ravyapi.api.endpoints.guilds.Guilds.get_guild`.
+            Located as `ravyapi.api.models.guilds.GetGuildResponse`.
         """
         if not isinstance(guild_id, int):
             raise TypeError('Parameter "guild_id" must be of type "int"')
