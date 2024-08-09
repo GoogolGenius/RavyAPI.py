@@ -1,4 +1,4 @@
-# Copyright 2022-Present GoogleGenius
+# Copyright 2022-Present GoogolGenius
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -22,9 +22,9 @@ import urllib.parse
 import aiohttp
 from typing_extensions import Literal
 
-from plane.api.models import CheckAvatarResponse
-from plane.http import HTTPAwareEndpoint
-from plane.utils import with_permission_check
+from ravyapi.api.models import CheckAvatarResponse
+from ravyapi.http import HTTPAwareEndpoint
+from ravyapi.utils import with_permission_check
 
 
 class Avatars(HTTPAwareEndpoint):
@@ -60,8 +60,8 @@ class Avatars(HTTPAwareEndpoint):
         Returns
         -------
         CheckAvatarResponse
-            A model response from `plane.api.endpoints.avatars.Avatars.check_avatar`.
-            Located as `plane.api.models.avatars.CheckAvatarResponse`.
+            A model response from `ravyapi.api.endpoints.avatars.Avatars.check_avatar`.
+            Located as `ravyapi.api.models.avatars.CheckAvatarResponse`.
         """
         if not isinstance(avatar, (str, bytes)):
             raise TypeError('Parameter "avatar" must be of type "str" or "bytes"')

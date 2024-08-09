@@ -1,4 +1,4 @@
-# Plane
+# RavyAPI.py
 
 A simple and dynamic asynchronous Python wrapper for the Ravy API.
 
@@ -15,7 +15,7 @@ A simple and dynamic asynchronous Python wrapper for the Ravy API.
 - Not yet available on PyPI
 
 ```bash
-python3 -m pip install git+https://github.com/GoogleGenius/plane.git
+python3 -m pip install git+https://github.com/GoogolGenius/RavyAPI.py.git
 ```
 
 ## Usage
@@ -24,12 +24,12 @@ python3 -m pip install git+https://github.com/GoogleGenius/plane.git
 # Import required packages
 import asyncio
 
-import plane
+import ravyapi
 
 
 async def main() -> None:
-    # Construct a plane client object
-    client = plane.Client("token")  # Replace "token" with your API key
+    # Construct a ravyapi client object
+    client = ravyapi.Client("token")  # Replace "token" with your API key
 
     # Make a simple request to get token information
     token_info = await client.tokens.get_token()
@@ -47,4 +47,4 @@ asyncio.run(main())
 
 Feel free to create pull requests and issues. Just be civil, kind, and respectful.
 
-This is my first library, so if you have any suggestions or questions, please let me know! Reach out via GitHub Issues or Discord `@googlegenius`.
+This is my first library, so if you have any suggestions or questions, please let me know! Reach out via GitHub Issues or Discord `@googolgenius`.

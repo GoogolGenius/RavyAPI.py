@@ -6,12 +6,12 @@
 # Import required packages
 import asyncio
 
-import plane
+import ravyapi
 
 
 async def main() -> None:
-    # Construct a plane client object
-    client = plane.Client("token")  # Replace "token" with your API key
+    # Construct a ravyapi client object
+    client = ravyapi.Client("token")  # Replace "token" with your API key
 
     # Make a simple request to get token information
     token_info = await client.tokens.get_token()
@@ -27,21 +27,21 @@ asyncio.run(main())
 
 ## KSoft Tokens
 
-If you have a KSoft token, you can simply pass it to the constructor for the `plane.client.Client`. Please note that KSoft tokens are not compatible with any endpoints other than `ksoft` and `tokens`.
+If you have a KSoft token, you can simply pass it to the constructor for the `ravyapi.client.Client`. Please note that KSoft tokens are not compatible with any endpoints other than `ksoft` and `tokens`.
 
 ## Phisherman Token
 
-You might have noticed there is no available kwarg to set the phisherman.gg token using the `urls` endpoint. This is because you can instead set it directly to the `plane.client.Client` using the `plane.client.Client.set_phisherman_token()` method. This also returns the `plane.client.Client` object so you can chain calls.
+You might have noticed there is no available kwarg to set the phisherman.gg token using the `urls` endpoint. This is because you can instead set it directly to the `ravyapi.client.Client` using the `ravyapi.client.Client.set_phisherman_token()` method. This also returns the `ravyapi.client.Client` object so you can chain calls.
 
 ```python
 # Assume boilerplate is already set up
-client = plane.Client("token").set_phisherman_token("phisherman_token")
+client = ravyapi.Client("token").set_phisherman_token("phisherman_token")
 website_info = await client.urls.get_website("https://example.com")
 ```
 
 ## Permissions
 
-The API wrapper automatically validates your token's permissions upon the first method call. If you attempt to use an API method that you do not have permission to use, the library will raise a `plane.api.errors.AccessException`. This information is currently stored internally, but not publicly accessible. To manually check for permissions, call the `plane.client.Client.tokens.get_token()` method and use the `access` property.
+The API wrapper automatically validates your token's permissions upon the first method call. If you attempt to use an API method that you do not have permission to use, the library will raise a `ravyapi.api.errors.AccessException`. This information is currently stored internally, but not publicly accessible. To manually check for permissions, call the `ravyapi.client.Client.tokens.get_token()` method and use the `access` property.
 
 ```python
 # Assume boilerplate is already set up
@@ -51,13 +51,13 @@ permissions = token_info.access
 
 ## Error Handling
 
-You can catch the defined errors in the `plane.api.errors` module and handle them appropriately.
+You can catch the defined errors in the `ravyapi.api.errors` module and handle them appropriately.
 
 ```python
 # Assume boilerplate is already set up
 try:
     token_info = await client.tokens.get_token()
-except plane.HTTPException as e:  # Generic HTTP error
+except ravyapi.HTTPException as e:  # Generic HTTP error
     if e.status == 429:
         print(f"Encountered {e.status}: we are being ratelimited by Cloudflare!")
     else:
@@ -65,7 +65,7 @@ except plane.HTTPException as e:  # Generic HTTP error
 
 try:
     website_info = await client.urls.get_website("https://example.com")
-except plane.AccessException as e:  # Access denied
+except ravyapi.AccessException as e:  # Access denied
     print(f"This errored as the endpoint route needed {e.required} permission!")
 ```
 

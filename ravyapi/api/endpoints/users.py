@@ -1,4 +1,4 @@
-# Copyright 2022-Present GoogleGenius
+# Copyright 2022-Present GoogolGenius
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,7 +17,7 @@ from __future__ import annotations
 
 __all__: tuple[str, ...] = ("Users",)
 
-from plane.api.models import (
+from ravyapi.api.models import (
     BanEntryRequest,
     GetBansResponse,
     GetPronounsResponse,
@@ -25,8 +25,8 @@ from plane.api.models import (
     GetUserResponse,
     GetWhitelistsResponse,
 )
-from plane.http import HTTPAwareEndpoint
-from plane.utils import with_permission_check
+from ravyapi.http import HTTPAwareEndpoint
+from ravyapi.utils import with_permission_check
 
 
 class Users(HTTPAwareEndpoint):
@@ -51,8 +51,8 @@ class Users(HTTPAwareEndpoint):
         Returns
         -------
         GetUserResponse
-            A model response from `plane.api.endpoints.users.Users.get_user`.
-            Located as `plane.api.models.users.GetUserResponse`.
+            A model response from `ravyapi.api.endpoints.users.Users.get_user`.
+            Located as `ravyapi.api.models.users.GetUserResponse`.
         """
         if not isinstance(user_id, int):
             raise TypeError('Parameter "user_id" must be of type "int"')
@@ -80,8 +80,8 @@ class Users(HTTPAwareEndpoint):
         Returns
         -------
         GetPronounsResponse
-            A model response from `plane.api.endpoints.users.Users.get_pronouns`.
-            Located as `plane.api.models.users.GetPronounsResponse`.
+            A model response from `ravyapi.api.endpoints.users.Users.get_pronouns`.
+            Located as `ravyapi.api.models.users.GetPronounsResponse`.
         """
         if not isinstance(user_id, int):
             raise TypeError('Parameter "user_id" must be of type "int"')
@@ -107,8 +107,8 @@ class Users(HTTPAwareEndpoint):
         Returns
         -------
         GetBansResponse
-            A model response from `plane.api.endpoints.users.Users.get_bans`.
-            Located as `plane.api.models.users.GetBansResponse`.
+            A model response from `ravyapi.api.endpoints.users.Users.get_bans`.
+            Located as `ravyapi.api.models.users.GetBansResponse`.
         """
         if not isinstance(user_id, int):
             raise TypeError('Parameter "user_id" must be of type "int"')
@@ -197,8 +197,8 @@ class Users(HTTPAwareEndpoint):
         Returns
         -------
         GetWhitelistsResponse
-            A model response from `plane.api.endpoints.users.Users.get_whitelists`.
-            Located as `plane.api.models.users.GetWhitelistsResponse`.
+            A model response from `ravyapi.api.endpoints.users.Users.get_whitelists`.
+            Located as `ravyapi.api.models.users.GetWhitelistsResponse`.
         """
         if not isinstance(user_id, int):
             raise TypeError('Parameter "user_id" must be of type "int"')
@@ -226,8 +226,8 @@ class Users(HTTPAwareEndpoint):
         Returns
         -------
         GetReputationResponse
-            A model response from `plane.api.endpoints.users.Users.get_reputation`.
-            Located as `plane.api.models.users.GetReputationResponse`.
+            A model response from `ravyapi.api.endpoints.users.Users.get_reputation`.
+            Located as `ravyapi.api.models.users.GetReputationResponse`.
         """
         if not isinstance(user_id, int):
             raise TypeError('Parameter "user_id" must be of type "int"')

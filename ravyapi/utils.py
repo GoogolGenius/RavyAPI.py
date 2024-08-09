@@ -1,4 +1,4 @@
-# Copyright 2022-Present GoogleGenius
+# Copyright 2022-Present GoogolGenius
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -22,10 +22,10 @@ from typing import TYPE_CHECKING, Any, Callable, Coroutine, TypeVar
 
 from typing_extensions import Concatenate, ParamSpec, TypeAlias
 
-from plane.api.errors import AccessError
+from ravyapi.api.errors import AccessError
 
 if TYPE_CHECKING:
-    from plane.http import HTTPAwareEndpoint
+    from ravyapi.http import HTTPAwareEndpoint
 
     _EndpointP = ParamSpec("_EndpointP")
     _EndpointT = TypeVar("_EndpointT")
@@ -67,7 +67,7 @@ def with_permission_check(
     [_EndpointF[_EndpointP, _EndpointT, _EndpointR]],
     _EndpointF[_EndpointP, _EndpointT, _EndpointR],
 ]:
-    """Decorate an instance method of `plane.http.HTTPAwareEndpoint` to validate the required permissions.
+    """Decorate an instance method of `ravyapi.http.HTTPAwareEndpoint` to validate the required permissions.
 
     !!! warning
         This is an internal function and should not be used unless you know what you are doing.

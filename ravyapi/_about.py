@@ -1,4 +1,4 @@
-# Copyright 2022-Present GoogleGenius
+# Copyright 2022-Present GoogolGenius
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -28,11 +28,11 @@ __all__: tuple[str, ...] = (
 
 from typing_extensions import Final
 
-__author__: Final[str] = "GoogleGenius"
-__repository__: Final[str] = "https://github.com/GoogleGenius/plane"
-__copyright__: Final[str] = "Copyright 2022-Present GoogleGenius"
+__author__: Final[str] = "GoogolGenius"
+__repository__: Final[str] = "https://github.com/GoogolGenius/RavyAPI.py"
+__copyright__: Final[str] = "Copyright 2022-Present GoogolGenius"
 __license__: Final[str] = "Apache v2"
 __version__: Final[str] = "0.1.0a"
-__maintainer__: Final[str] = "GoogleGenius"
+__maintainer__: Final[str] = "GoogolGenius"
 __email__: Final[str] = "erich.nguyen@outlook.com"
 __status__: Final[str] = "Development"

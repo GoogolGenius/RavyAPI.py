@@ -29,20 +29,20 @@ license = {file = "LICENSE"}
 maintainers = [
   {name = "Erich Nguyen", email = "erich.nguyen@outlook.com"},
 ]
-name = "plane"
+name = "RavyAPI.py"
 readme = "README.md"
 requires-python = ">=3.7"
 version = "0.1.0a"
 
 [project.urls]
-homepage = "https://github.com/GoogleGenius/plane"
-repository = "https://github.com/GoogleGenius/plane"
+homepage = "https://github.com/GoogolGenius/RavyAPI.py"
+repository = "https://github.com/GoogolGenius/RavyAPI.py"
 
 [tool.setuptools]
 license-files = ["LICENSE"]
 
 [tool.setuptools.packages.find]
-include = ["plane*"]
+include = ["ravyapi*"]
 
 [tool.pyright]
 pythonVersion = "3.7"

@@ -1,1 +1,1 @@
-::: plane.api.endpoints.urls
+::: ravyapi.api.endpoints.urls
