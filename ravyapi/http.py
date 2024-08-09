@@ -1,4 +1,4 @@
-# Copyright 2022-Present GoogleGenius
+# Copyright 2022-Present GoogolGenius
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -24,7 +24,7 @@ from typing import Any
 import aiohttp
 from typing_extensions import Final
 
-from plane.api.errors import (
+from ravyapi.api.errors import (
     BadRequestError,
     ForbiddenError,
     HTTPError,
@@ -32,11 +32,11 @@ from plane.api.errors import (
     TooManyRequestsError,
     UnauthorizedError,
 )
-from plane.api.models import GetTokenResponse
-from plane.api.paths import Paths
-from plane.const import BASE_URL, KSOFT_TOKEN_REGEX, RAVY_TOKEN_REGEX, USER_AGENT
+from ravyapi.api.models import GetTokenResponse
+from ravyapi.api.paths import Paths
+from ravyapi.const import BASE_URL, KSOFT_TOKEN_REGEX, RAVY_TOKEN_REGEX, USER_AGENT
 
-_LOGGER: Final[logging.Logger] = logging.getLogger("plane.http")
+_LOGGER: Final[logging.Logger] = logging.getLogger("ravyapi.http")
 
 
 class HTTPClient:
@@ -200,7 +200,7 @@ class HTTPClient:
 
     @property
     def paths(self) -> Paths:
-        """An instance of `plane.api.paths.Path` for routing."""
+        """An instance of `ravyapi.api.paths.Path` for routing."""
         return Paths()
 
     @property
@@ -220,7 +220,7 @@ class HTTPClient:
 
 
 class HTTPAwareEndpoint:
-    """A class representing an endpoint implementation aware of the underlying `plane.http.HTTPClient`."""
+    """A class representing an endpoint implementation aware of the underlying `ravyapi.http.HTTPClient`."""
 
     __slots__: tuple[str, ...] = ("_http",)
 

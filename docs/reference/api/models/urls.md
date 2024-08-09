@@ -1,1 +1,1 @@
-::: plane.api.models.urls
+::: ravyapi.api.models.urls

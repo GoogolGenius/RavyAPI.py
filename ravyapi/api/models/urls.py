@@ -1,4 +1,4 @@
-# Copyright 2022-Present GoogleGenius
+# Copyright 2022-Present GoogolGenius
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -21,7 +21,7 @@ from typing import Any
 
 
 class GetWebsiteResponse:
-    """A model response from `plane.api.endpoints.urls.URLs.get_website`.
+    """A model response from `ravyapi.api.endpoints.urls.URLs.get_website`.
 
     Attributes
     ----------
@@ -63,7 +63,7 @@ class GetWebsiteResponse:
 
 
 class EditWebsiteRequest:
-    """A model request to `plane.api.endpoints.urls.URLs.edit_website`.
+    """A model request to `ravyapi.api.endpoints.urls.URLs.edit_website`.
 
     Parameters
     ----------

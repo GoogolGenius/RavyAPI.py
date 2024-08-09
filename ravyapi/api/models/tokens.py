@@ -1,4 +1,4 @@
-# Copyright 2022-Present GoogleGenius
+# Copyright 2022-Present GoogolGenius
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -23,7 +23,7 @@ from typing_extensions import Literal
 
 
 class GetTokenResponse:
-    """A model response from `plane.api.endpoints.tokens.Tokens.get_token`.
+    """A model response from `ravyapi.api.endpoints.tokens.Tokens.get_token`.
 
     Attributes
     ----------

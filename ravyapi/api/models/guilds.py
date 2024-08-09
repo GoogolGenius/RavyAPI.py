@@ -1,4 +1,4 @@
-# Copyright 2022-Present GoogleGenius
+# Copyright 2022-Present GoogolGenius
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -19,20 +19,20 @@ __all__: tuple[str, ...] = ("GetGuildResponse",)
 
 from typing import Any
 
-from plane.api.models.generic import BanEntryResponse, Trust
+from ravyapi.api.models.generic import BanEntryResponse, Trust
 
 
 class GetGuildResponse:
-    """A model response from `plane.api.endpoints.guilds.Guilds.get_guild`.
+    """A model response from `ravyapi.api.endpoints.guilds.Guilds.get_guild`.
 
     Attributes
     ----------
     data: dict[str, Any]
         The raw data returned from the Ravy API.
     trust: Trust
-        The guild's `plane.api.models.generic.trust.Trust` trust model.
+        The guild's `ravyapi.api.models.generic.trust.Trust` trust model.
     bans: list[BanEntryResponse]
-        A list of the guild's `plane.api.models.generic.ban_entry.BanEntryResponse` ban models.
+        A list of the guild's `ravyapi.api.models.generic.ban_entry.BanEntryResponse` ban models.
     """
 
     __slots__: tuple[str, ...] = ("_data", "_trust", "_bans")
@@ -57,10 +57,10 @@ class GetGuildResponse:
 
     @property
     def trust(self) -> Trust:
-        """The guild's `plane.api.models.generic.trust.Trust` trust model."""
+        """The guild's `ravyapi.api.models.generic.trust.Trust` trust model."""
         return self._trust
 
     @property
     def bans(self) -> list[BanEntryResponse]:
-        """A list of the guilds's `plane.api.models.generic.ban_entry.BanEntryResponse` ban models."""
+        """A list of the guilds's `ravyapi.api.models.generic.ban_entry.BanEntryResponse` ban models."""
         return self._bans
