@@ -83,7 +83,7 @@ def with_permission_check(
     """
 
     def decorator(
-        function: _EndpointF[_EndpointP, _EndpointT, _EndpointR]
+        function: _EndpointF[_EndpointP, _EndpointT, _EndpointR],
     ) -> _EndpointF[_EndpointP, _EndpointT, _EndpointR]:
         @wraps(function)
         async def wrapper(
