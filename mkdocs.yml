@@ -34,15 +34,12 @@ plugins:
       default_handler: python
       handlers:
         python:
-          selection:
+          options:
             docstring_style: numpy
-            inherited_members: true
-          rendering:
-            docstring_section_style: spacy
             show_signature_annotations: true
+            separate_signature: true
+            inherited_members: true
             show_source: false
-      watch:
-        - ravyapi
 
 markdown_extensions:
   - admonition
