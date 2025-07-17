@@ -1,8 +1,6 @@
-# RavyAPI.py
+# RavyAPI.py [![codecov](https://codecov.io/github/GoogolGenius/RavyAPI.py/graph/badge.svg?token=KOQWEG60MZ)](https://codecov.io/github/GoogolGenius/RavyAPI.py)
 
-According to an update from Hazel, the Ravy API will no longer be in operation. The maintenance status of this library is currently in jeopardy.
-
-**PLEASE NOTE THIS IS STILL IN HEAVY DEVELOPMENT AND VERY UNSTABLE DUE TO LACK OF TESTING CURRENTLY**
+> According to an update from Hazel, the Ravy API will no longer be in operation. The maintenance status of this library is currently in jeopardy.
 
 A simple and dynamic asynchronous Python wrapper for the Ravy API.
 
