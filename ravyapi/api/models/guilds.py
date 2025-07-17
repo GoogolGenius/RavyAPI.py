@@ -39,7 +39,7 @@ class GetGuildResponse:
 
     def __init__(self, data: dict[str, Any]) -> None:
         self._data: dict[str, Any] = data
-        self._trust: Trust = data["trust"]
+        self._trust: Trust = Trust(data["trust"])
         self._bans: list[BanEntryResponse] = [
             BanEntryResponse(ban) for ban in data["bans"]
         ]
