@@ -27,20 +27,31 @@ class BasePath:
         The route for the endpoint.
     """
 
-    __slots__: tuple[str, ...] = ("_route", "_id")
+    __slots__: tuple[str, ...] = ("_base_path",)
 
-    def __init__(self, route: str, id: int | None = None) -> None:
-        self._route: str = route
-        self._id: int | None = id
+    def __init__(self, base_path: str = "") -> None:
+        self._base_path = base_path.rstrip("/")
+
+    def __str__(self) -> str:
+        return self._base_path
+
+    def __truediv__(self, path: str | int) -> BasePath:
+        """Enable path building with / operator."""
+        return self.__class__(f"{self._base_path}/{path}")
 
     @property
     def route(self) -> str:
         """The route for the endpoint."""
-        return self._route
+        return self._base_path
 
     @property
     def id(self) -> int | None:
-        return self._id
+        # extract id from path if it exists
+        parts = self._base_path.split("/")
+        for part in reversed(parts):
+            if part.isdigit():
+                return int(part)
+        return None
 
 
 class Paths:
@@ -56,14 +67,13 @@ class Paths:
         A path class for the `tokens` endpoint.
     urls : URLs
         A path class for the `urls` endpoint.
+    guilds : Callable[[int], Guilds]
+        A callable that returns a path class for the `guilds` endpoint.
+    users : Callable[[int], Users]
+        A callable that returns a path class for the `users` endpoint.
     """
 
-    __slots__: tuple[str, ...] = (
-        "avatars",
-        "ksoft",
-        "tokens",
-        "urls",
-    )
+    __slots__: tuple[str, ...] = ()
 
     @property
     def avatars(self) -> Avatars:
@@ -152,7 +162,7 @@ class Guilds(BasePath):
     __slots__: tuple[str, ...] = ()
 
     def __init__(self, guild_id: int) -> None:
-        super().__init__(f"/guilds/{guild_id}", guild_id)
+        super().__init__(f"/guilds/{guild_id}")
 
 
 class KSoft(BasePath):
@@ -164,7 +174,7 @@ class KSoft(BasePath):
         The route for the endpoint.
     """
 
-    __slots__: tuple[str, ...] = ("bans",)
+    __slots__: tuple[str, ...] = ()
 
     def __init__(self) -> None:
         super().__init__("/ksoft")
@@ -234,10 +244,10 @@ class Users(BasePath):
         The route for `reputation`.
     """
 
-    __slots__: tuple[str, ...] = ("_user_id", "_route")
+    __slots__: tuple[str, ...] = ()
 
     def __init__(self, user_id: int) -> None:
-        super().__init__(f"/users/{user_id}", user_id)
+        super().__init__(f"/users/{user_id}")
 
     @property
     def pronouns(self) -> str:
