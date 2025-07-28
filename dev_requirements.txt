@@ -4,7 +4,7 @@ isort==6.0.1
 pyright==1.1.403
 mypy==1.17.0
 mkdocs-material==9.6.16
-mkdocstrings==0.29.1
-mkdocstrings[python]==0.29.1
+mkdocstrings==0.30.0
+mkdocstrings[python]==0.30.0
 pytest==8.4.1
 pytest-asyncio==1.1.0
