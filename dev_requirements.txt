@@ -1,7 +1,7 @@
 aioresponses==0.7.8
 black==25.1.0
 isort==6.0.1
-pyright==1.1.403
+pyright==1.1.404
 mypy==1.17.0
 mkdocs-material==9.6.16
 mkdocstrings==0.30.0
